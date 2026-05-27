@@ -1,0 +1,1844 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>NDG Linux Essentials | Módulo 2 - Sistemas Operacionais</title>
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <!-- Google Fonts Inter -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <!-- ==================== NAVBAR ==================== -->
+    <div class="top-bar">
+      <button class="menu-toggle" id="openMenu">
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+      </button>
+      <a href="index.html" class="top-bar-brand">
+        <i class="fab fa-linux"></i> NDG Linux Essentials
+      </a>
+      <a href="index.html" class="btn-outline">
+        <i class="fas fa-graduation-cap"></i> Módulo 2
+      </a>
+    </div>
+
+    <!-- Menu Lateral -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-compass"></i> Navegação - Módulo 2</h3>
+        <button class="close-sidebar" id="closeMenu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="nav-modules">
+        <li>
+          <a href="#secao2-1"
+            ><i class="fas fa-microchip"></i> 2.1 Sistemas Operacionais</a
+          >
+        </li>
+        <li>
+          <a href="#secao2-2"
+            ><i class="fas fa-balance-scale"></i> 2.2 Pontos de Decisão</a
+          >
+        </li>
+        <li>
+          <a href="#secao2-3"
+            ><i class="fab fa-windows"></i> 2.3 Microsoft Windows</a
+          >
+        </li>
+        <li>
+          <a href="#secao2-4"><i class="fab fa-apple"></i> 2.4 Apple macOS</a>
+        </li>
+        <li>
+          <a href="#secao2-5"><i class="fab fa-linux"></i> 2.5 Linux</a>
+        </li>
+        <li>
+          <a href="#secao2-6"
+            ><i class="fas fa-boxes"></i> 2.6 Distribuições Linux</a
+          >
+        </li>
+        <li>
+          <a href="#secao2-7"
+            ><i class="fas fa-microchip"></i> 2.7 Sistemas Embarcados</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <!-- Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="hero">
+      <div class="container">
+        <div class="badge-lab">
+          <i class="fas fa-graduation-cap"></i> NDG Linux Essentials | Módulo 2
+        </div>
+        <h1>Sistemas Operacionais</h1>
+        <p>
+          Entenda o que são sistemas operacionais, como funcionam e as
+          principais diferenças entre Linux, Windows e macOS
+        </p>
+        <div style="margin-top: 2rem">
+          <i
+            class="fab fa-linux"
+            style="color: var(--primary); font-size: 2rem; margin: 0 0.5rem"
+          ></i>
+          <i
+            class="fab fa-windows"
+            style="color: var(--primary); font-size: 2rem; margin: 0 0.5rem"
+          ></i>
+          <i
+            class="fab fa-apple"
+            style="color: var(--primary); font-size: 2rem; margin: 0 0.5rem"
+          ></i>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- ============================================ -->
+      <!-- SEÇÃO 2.1 - OPERATING SYSTEMS               -->
+      <!-- ============================================ -->
+      <section id="secao2-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-microchip"></i>
+          <span class="section-number">2.1</span> Sistemas Operacionais
+        </h2>
+
+        <div class="card">
+          <p>
+            Um <strong>sistema operacional</strong> (<em>operating system</em>)
+            é um software que executa em um dispositivo computacional e gerencia
+            os componentes de hardware e software que compõem um sistema
+            computacional funcional.
+          </p>
+          <br />
+          <p>
+            Os sistemas operacionais modernos não apenas gerenciam recursos de
+            hardware e software, eles programam tarefas para executar de maneira
+            multitarefa (compartilhando o processador para que múltiplas tarefas
+            possam ocorrer aparentemente simultaneamente), fornecem serviços
+            padrão que permitem que usuários e programas solicitem algo (por
+            exemplo, um trabalho de impressão) do sistema operacional e, desde
+            que seja solicitado corretamente, o sistema operacional aceitará a
+            solicitação e executará a função necessária.
+          </p>
+        </div>
+
+        <!-- Substituição da imagem do diagrama OS (Users → Applications → OS → Hardware) -->
+        <div class="terminal" style="text-align: center">
+          <pre style="color: var(--primary)">
+┌─────────────────────────────────────────────────────────┐
+│                      👤 USUÁRIOS                        │
+├─────────────────────────────────────────────────────────┤
+│                   📱 APLICAÇÕES                         │
+│         (Navegador, Editor, E-mail, Jogos)              │
+├─────────────────────────────────────────────────────────┤
+│              ⚙️ SISTEMA OPERACIONAL                      │
+│         (Gerencia hardware, processos, memória)          │
+├─────────────────────────────────────────────────────────┤
+│                   🖥️ HARDWARE                            │
+│      (CPU, Memória, Disco, Rede, Periféricos)            │
+└─────────────────────────────────────────────────────────┘
+            </pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            Sistemas operacionais de desktop e servidores são, por natureza,
+            mais complexos do que um sistema operacional executado em um
+            dispositivo de propósito único, como um firewall ou um telefone
+            celular. Desde um simples set-top box que fornece uma interface de
+            menu para um provedor de TV a cabo, até supercomputadores e enormes
+            clusters de computação paralela, o termo genérico
+            <strong>sistema operacional</strong> é usado para descrever qualquer
+            software que é inicializado e executado nesse dispositivo.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-layer-group"></i>
+          <h3>O Software de um Sistema</h3>
+          <p>
+            O software de um sistema é o intermediário entre usuários e
+            hardware. O software inclui o <strong>software de sistema</strong>,
+            <strong>aplicações</strong> e o
+            <strong>sistema operacional</strong>.
+          </p>
+        </div>
+
+        <!-- Tabela comparativa dos 3 principais SOs -->
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Sistema Operacional</th>
+              <th>Base</th>
+              <th>Característica Principal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <i class="fab fa-windows"></i>
+                <strong>Microsoft Windows</strong>
+              </td>
+              <td>Código proprietário (não UNIX/Linux)</td>
+              <td>Administrado principalmente via GUI</td>
+            </tr>
+            <tr>
+              <td><i class="fab fa-apple"></i> <strong>Apple macOS</strong></td>
+              <td>UNIX (BSD Unix) + código proprietário</td>
+              <td>Hardware otimizado para o software Apple</td>
+            </tr>
+            <tr>
+              <td><i class="fab fa-linux"></i> <strong>Linux</strong></td>
+              <td>UNIX-like (código aberto)</td>
+              <td>Centenas de distribuições para diversas finalidades</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="card">
+          <i class="fas fa-tasks"></i>
+          <h3>Interação e Administração</h3>
+          <p>
+            Um usuário pode facilmente interagir com qualquer um desses sistemas
+            apontando e clicando em tarefas diárias de produtividade que se
+            comportam de forma semelhante, independentemente do sistema
+            operacional subjacente.
+          </p>
+          <br />
+          <p>
+            Exceto pelo Windows, que é administrado principalmente via GUI, a
+            maioria das tarefas de administração de sistema é executada usando
+            comandos digitados em um terminal. Um administrador familiarizado
+            com UNIX normalmente pode executar tarefas em um sistema Linux e
+            vice-versa. Muitas funções de linha de comando do Linux também têm
+            equivalentes no Microsoft Windows que os administradores usam para
+            trabalhar de forma eficiente.
+          </p>
+        </div>
+
+        <!-- Terminal com exemplos comparativos -->
+        <div class="terminal">
+          <pre>
+$ # Comandos Linux e seus equivalentes no Windows
+$ ls          # Linux: lista arquivos
+$ dir         # Windows: lista arquivos
+
+$ ps aux      # Linux: lista processos
+$ tasklist    # Windows: lista processos
+
+$ chmod 755 script.sh  # Linux: permissões
+$ icacls script.sh /grant User:F  # Windows: permissões</pre
+          >
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-info-circle"></i>
+          <strong>💡 Você sabia?</strong> Dos três principais sistemas
+          operacionais, apenas o Microsoft Windows é único em seu código
+          subjacente. O macOS é um UNIX totalmente certificado baseado no BSD
+          Unix, e o Linux é um sistema UNIX-like de código aberto.
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- NOVAS SEÇÕES DO MÓDULO 2 SERÃO ADICIONADAS AQUI -->
+      <!-- ============================================ -->
+      <!-- ============================================ -->
+      <!-- SEÇÃO 2.2 - DECISION POINTS                 -->
+      <!-- ============================================ -->
+      <section id="secao2-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-balance-scale"></i>
+          <span class="section-number">2.2</span> Pontos de Decisão
+        </h2>
+
+        <!-- Role -->
+        <div class="card">
+          <i class="fas fa-user-tie"></i>
+          <h3>Função (Role)</h3>
+          <p>
+            A primeira decisão ao especificar qualquer sistema computacional é a
+            <strong>função da máquina</strong>. Você estará sentado no console
+            executando aplicativos de produtividade ou navegando na web? Se sim,
+            um desktop familiar é o melhor. A máquina será acessada remotamente
+            por muitos usuários ou fornecerá serviços para usuários remotos?
+            Então é um <strong>servidor</strong>.
+          </p>
+          <br />
+          <p>
+            Servidores normalmente ficam em rack e compartilham teclado e
+            monitor com muitos outros computadores, pois o acesso ao console
+            geralmente é usado apenas para configuração e solução de problemas.
+            Servidores geralmente executam uma <strong>CLI</strong>, o que
+            libera recursos para o propósito real do computador: servir
+            informações para clientes. Sistemas desktop executam principalmente
+            uma <strong>GUI</strong> para facilitar o uso por seus usuários.
+          </p>
+        </div>
+
+        <!-- Function -->
+        <div class="card">
+          <i class="fas fa-cogs"></i>
+          <h3>Função (Function)</h3>
+          <p>
+            Em seguida, determine as <strong>funções da máquina</strong>. Existe
+            software específico que ela precisa executar ou funções específicas
+            que precisa realizar? Haverá centenas, ou até milhares, dessas
+            máquinas rodando ao mesmo tempo? Qual é o conjunto de habilidades da
+            equipe que gerencia o computador e o software?
+          </p>
+        </div>
+
+        <!-- Life Cycle -->
+        <div class="card">
+          <i class="fas fa-chart-line"></i>
+          <h3>Ciclo de Vida (Life Cycle)</h3>
+          <p>
+            O <strong>tempo de vida do serviço</strong> e a
+            <strong>tolerância a riscos</strong> do servidor também precisam ser
+            determinados. As atualizações de sistemas operacionais e software
+            vêm em bases periódicas, chamadas de
+            <strong>ciclo de lançamento</strong>. Os fornecedores suportam
+            versões mais antigas de software apenas por um certo período antes
+            de não oferecerem mais atualizações; isso é chamado de
+            <strong>ciclo de manutenção</strong> ou
+            <strong>ciclo de vida</strong>.
+          </p>
+          <br />
+          <p>
+            Em um ambiente de servidor empresarial, os ciclos de manutenção e
+            lançamento são considerações críticas, porque é demorado e caro
+            fazer grandes atualizações. Em vez disso, o próprio hardware do
+            servidor é frequentemente substituído porque o aumento de desempenho
+            vale o custo extra, e os recursos envolvidos são muitas vezes mais
+            caros que o hardware.
+          </p>
+        </div>
+
+        <!-- Consider This -->
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i>
+          <strong>📌 Considere Isto:</strong>
+          <br /><br />
+          Há uma quantidade considerável de trabalho envolvido na atualização de
+          um servidor devido a configurações especializadas, correções de
+          software de aplicação e testes de usuários. Portanto, uma organização
+          proativa buscará maximizar seu retorno sobre o investimento tanto em
+          capital humano quanto monetário.
+        </div>
+
+        <!-- Virtualization -->
+        <div class="card">
+          <i class="fas fa-cloud"></i>
+          <h3>Virtualização e Nuvem</h3>
+          <p>
+            Os data centers modernos estão enfrentando esse desafio através da
+            <strong>virtualização</strong>. Em um ambiente virtual, uma única
+            máquina física pode hospedar dezenas ou até centenas de máquinas
+            virtuais, diminuindo os requisitos de espaço e energia, além de
+            fornecer automação para muitas das tarefas anteriormente feitas
+            manualmente por administradores de sistemas.
+          </p>
+          <br />
+          <p>
+            A necessidade de atualizações de hardware físico também diminuiu
+            imensamente com o advento dos provedores de serviços em nuvem como
+            <strong>Amazon Web Services (AWS)</strong>,
+            <strong>Rackspace</strong> e <strong>Microsoft Azure</strong>.
+            Avanços semelhantes ajudaram administradores de desktop a gerenciar
+            atualizações de forma automatizada e com pouca ou nenhuma
+            interrupção para o usuário.
+          </p>
+        </div>
+
+        <!-- Terminal - Scripting -->
+        <div class="terminal">
+          <pre>
+$ # Exemplo de automação com script para gerenciar VMs
+$ for vm in web-server-{01..10}; do
+    echo "Criando VM: $vm"
+    # Comandos para criar/configurar VM
+done</pre
+          >
+        </div>
+
+        <!-- Stability -->
+        <div class="card">
+          <i class="fas fa-chart-simple"></i>
+          <h3>Estabilidade (Stability)</h3>
+          <p>
+            Lançamentos individuais de software podem ser caracterizados como
+            <strong>beta</strong> ou <strong>estável</strong>, dependendo de
+            onde estão no ciclo de lançamento. Quando um lançamento de software
+            tem muitos recursos novos que não foram testados, é tipicamente
+            chamado de <strong>beta</strong>. Após ser testado em campo, sua
+            designação muda para <strong>estável</strong>.
+          </p>
+          <br />
+          <p>
+            Usuários que precisam dos recursos mais recentes podem decidir usar
+            software beta. Isso é frequentemente feito na fase de
+            desenvolvimento de uma nova implantação e fornece a capacidade de
+            solicitar recursos não disponíveis na versão estável.
+          </p>
+          <br />
+          <p>
+            <strong>Servidores de produção</strong> tipicamente usam software
+            estável, a menos que os recursos necessários não estejam disponíveis
+            e o risco de executar código que não foi completamente testado seja
+            superado pela utilidade fornecida.
+          </p>
+        </div>
+
+        <!-- Open Source vs Proprietary -->
+        <div class="grid-2">
+          <div class="card">
+            <i class="fab fa-linux"></i>
+            <h3>Código Aberto (Open Source)</h3>
+            <p>
+              Software no reino do código aberto é frequentemente lançado para
+              revisão por pares muito cedo em seu processo de desenvolvimento e
+              pode ser rapidamente colocado em ambientes de teste e até mesmo de
+              produção, fornecendo feedback extremamente útil e submissões de
+              código para corrigir problemas encontrados ou recursos
+              necessários.
+            </p>
+          </div>
+          <div class="card">
+            <i class="fas fa-lock"></i>
+            <h3>Código Proprietário</h3>
+            <p>
+              Por outro lado, software proprietário é frequentemente mantido em
+              segredo durante a maior parte de seu desenvolvimento, só
+              alcançando um estágio beta público quando está quase pronto para
+              ser lançado.
+            </p>
+          </div>
+        </div>
+
+        <!-- Compatibility -->
+        <div class="card">
+          <i class="fas fa-plug"></i>
+          <h3>Compatibilidade (Compatibility)</h3>
+          <p>
+            Um conceito relacionado é a
+            <strong>compatibilidade reversa</strong>, que se refere à capacidade
+            de sistemas operacionais posteriores serem compatíveis com software
+            feito para versões anteriores. Isso geralmente é uma preocupação
+            quando é necessário atualizar um sistema operacional, mas uma
+            atualização de software de aplicação não é possível devido ao custo
+            ou falta de disponibilidade.
+          </p>
+          <br />
+          <p>
+            A norma para o desenvolvimento de software de código aberto é
+            garantir a compatibilidade reversa primeiro e quebrar coisas apenas
+            como último recurso. A prática comum de manter e versionar
+            bibliotecas de funções ajuda muito nisso.
+          </p>
+        </div>
+
+        <!-- Cost -->
+        <div class="card">
+          <i class="fas fa-dollar-sign"></i>
+          <h3>Custo (Cost)</h3>
+          <p>
+            <strong>Custo</strong> é sempre um fator ao especificar novos
+            sistemas. A Microsoft tem taxas de licenciamento anuais que se
+            aplicam a usuários, servidores e outros softwares, assim como muitas
+            outras empresas de software. Em última análise, a escolha do sistema
+            operacional será afetada pelo hardware disponível, recursos e
+            habilidades da equipe, custo de compra, manutenção e requisitos
+            futuros projetados.
+          </p>
+          <br />
+          <p>
+            Virtualização e serviços de suporte terceirizados oferecem à
+            organização de TI moderna a promessa de pagar apenas pelo que usa,
+            em vez de construir capacidade excedente. Isso não apenas controla
+            custos, mas oferece oportunidades para pessoas dentro e fora da
+            organização fornecerem expertise e valor.
+          </p>
+        </div>
+
+        <!-- Tabela comparativa: Desktop vs Servidor -->
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Característica</th>
+              <th>Desktop</th>
+              <th>Servidor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Interface</td>
+              <td>GUI</td>
+              <td>CLI</td>
+            </tr>
+            <tr>
+              <td>Acesso</td>
+              <td>Console local</td>
+              <td>Remoto</td>
+            </tr>
+            <tr>
+              <td>Propósito</td>
+              <td>Produtividade</td>
+              <td>Fornecer serviços</td>
+            </tr>
+            <tr>
+              <td>Atualizações</td>
+              <td>Mais frequentes</td>
+              <td>Planejadas e testadas</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Interface -->
+        <div class="card">
+          <i class="fas fa-mouse-pointer"></i>
+          <h3>Interface</h3>
+          <p>
+            Os primeiros sistemas de computadores eletrônicos eram controlados
+            por meio de chaves e painéis de plugues semelhantes aos usados por
+            operadoras de telefonia na época. Depois vieram os cartões
+            perfurados e finalmente um sistema de terminal baseado em texto
+            semelhante à <strong>interface de linha de comando (CLI)</strong> do
+            Linux em uso hoje. A
+            <strong>interface gráfica do usuário (GUI)</strong>, com mouse e
+            botões para clicar, foi pioneira no Xerox PARC no início dos anos
+            1970 e popularizada pela Apple Computer nos anos 1980.
+          </p>
+          <br />
+          <p>
+            Hoje, os sistemas operacionais oferecem interfaces GUI e CLI, no
+            entanto, a maioria dos sistemas operacionais de consumo (Windows,
+            macOS) são projetados para proteger o usuário dos detalhes da CLI.
+          </p>
+        </div>
+
+        <!-- Terminal -->
+        <div class="terminal">
+          <pre>
+$ echo "A escolha do sistema depende da função, estabilidade, compatibilidade e custo"
+A escolha do sistema depende da função, estabilidade, compatibilidade e custo</pre
+          >
+        </div>
+
+        <div class="alert alert-success">
+          <i class="fas fa-check-circle"></i>
+          <strong>✅ Resumo:</strong> Ao especificar um sistema, considere:
+          Função → Funções → Ciclo de Vida → Estabilidade → Compatibilidade →
+          Custo → Interface.
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 2.3 - MICROSOFT WINDOWS               -->
+      <!-- ============================================ -->
+      <section id="secao2-3" class="section">
+        <h2 class="section-title">
+          <i class="fab fa-windows"></i>
+          <span class="section-number">2.3</span> Microsoft Windows
+        </h2>
+
+        <div class="card">
+          <p>
+            A Microsoft oferece diferentes versões de seu sistema operacional de
+            acordo com a <strong>função da máquina</strong>: desktop ou
+            servidor. A versão desktop do Windows passou por vários esquemas de
+            nomenclatura, com a versão atual (no momento desta escrita) sendo
+            simplesmente <strong>Windows 11</strong>.
+          </p>
+          <br />
+          <p>
+            Enquanto novas versões da maioria das distribuições Linux saem duas
+            vezes por ano, por volta de março e setembro, novas versões do
+            Windows tendem a ser lançadas apenas a cada poucos anos. No total,
+            houve <strong>16 versões do Windows desde 1985</strong>. A
+            <strong>compatibilidade reversa</strong> é uma prioridade para a
+            Microsoft, chegando até mesmo a incluir tecnologia de máquina
+            virtual para que os usuários possam executar softwares mais antigos.
+          </p>
+        </div>
+
+        <!-- Windows Server -->
+        <div class="card">
+          <i class="fas fa-server"></i>
+          <h3>Windows Server</h3>
+          <p>
+            O <strong>Windows Server</strong> atualmente (no momento desta
+            escrita) está na versão <strong>2019</strong> para denotar a data de
+            lançamento. O servidor pode executar uma GUI, mas recentemente a
+            Microsoft, em grande parte como uma resposta competitiva ao Linux,
+            fez avanços incríveis em suas capacidades de script de linha de
+            comando através do <strong>PowerShell</strong> e do
+            <strong>Windows Subsystem for Linux (WSL)</strong>.
+          </p>
+          <br />
+          <p>
+            Há também um pacote opcional chamado
+            <strong>Desktop Experience</strong> que imita uma máquina de
+            produtividade padrão. A Microsoft também incentiva ativamente os
+            clientes empresariais a incorporar seu serviço de nuvem
+            <strong>Azure</strong>.
+          </p>
+        </div>
+
+        <!-- Tabela comparativa - Versões do Windows -->
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Categoria</th>
+              <th>Versão Desktop</th>
+              <th>Versão Servidor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Última Versão</td>
+              <td>Windows 11</td>
+              <td>Windows Server 2019</td>
+            </tr>
+            <tr>
+              <td>Frequência de Lançamento</td>
+              <td>A cada poucos anos</td>
+              <td>A cada poucos anos</td>
+            </tr>
+            <tr>
+              <td>Interface</td>
+              <td>GUI principal</td>
+              <td>GUI ou CLI (PowerShell/WSL)</td>
+            </tr>
+            <tr>
+              <td>Compatibilidade</td>
+              <td>Alta (prioridade)</td>
+              <td>Alta (inclui VM para software antigo)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- PowerShell e WSL -->
+        <div class="grid-2">
+          <div class="card">
+            <i class="fas fa-terminal"></i>
+            <h3>PowerShell</h3>
+            <p>
+              Ferramenta de linha de comando e scripting da Microsoft que
+              combina comandos tradicionais do Windows (cmd) com uma linguagem
+              de script poderosa baseada no .NET. Permite administração avançada
+              e automação de tarefas.
+            </p>
+          </div>
+          <div class="card">
+            <i class="fab fa-linux"></i>
+            <h3>WSL (Windows Subsystem for Linux)</h3>
+            <p>
+              Camada de compatibilidade que permite executar binários Linux (em
+              formato ELF) nativamente no Windows 10 e Windows 11. Inclui
+              distribuições como Ubuntu, Debian e Kali Linux.
+            </p>
+          </div>
+        </div>
+
+        <!-- Terminal - Exemplos PowerShell vs Bash -->
+        <div class="terminal">
+          <pre>
+$ # PowerShell (Windows)
+PS C:\> Get-Process
+PS C:\> Get-Service
+
+$ # Bash (Linux/WSL)
+$ ps aux
+$ systemctl list-units</pre
+          >
+        </div>
+
+        <!-- Azure Cloud -->
+        <div class="card">
+          <i class="fas fa-cloud-upload-alt"></i>
+          <h3>Microsoft Azure</h3>
+          <p>
+            A Microsoft incentiva ativamente clientes empresariais a incorporar
+            seu serviço de nuvem <strong>Azure</strong>. A plataforma oferece
+            máquinas virtuais Linux e Windows, serviços de contêineres, bancos
+            de dados e soluções de IA, integrando-se perfeitamente com
+            ferramentas de administração Windows como o Active Directory e o
+            System Center.
+          </p>
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i>
+          <strong>📌 Curiosidade:</strong> A compatibilidade reversa é tão
+          importante para a Microsoft que o Windows ainda suporta muitas
+          aplicações originalmente escritas para Windows 95, usando técnicas
+          como virtualização e emulação.
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 2.4 - APPLE MACOS                     -->
+      <!-- ============================================ -->
+      <section id="secao2-4" class="section">
+        <h2 class="section-title">
+          <i class="fab fa-apple"></i>
+          <span class="section-number">2.4</span> Apple macOS
+        </h2>
+
+        <div class="card">
+          <p>
+            A Apple desenvolve o sistema operacional <strong>macOS</strong>, que
+            é parcialmente baseado no software do projeto
+            <strong>FreeBSD</strong> e passou pela certificação UNIX. O macOS é
+            conhecido por ser "fácil de usar" e, como tal, continua sendo
+            favorecido por usuários com acesso limitado a recursos de TI, como
+            escolas e pequenas empresas. Também é muito popular entre
+            programadores devido à sua base robusta em UNIX.
+          </p>
+        </div>
+
+        <!-- macOS Server -->
+        <div class="card">
+          <i class="fas fa-server"></i>
+          <h3>macOS Server</h3>
+          <p>
+            No lado do servidor, o <strong>macOS Server</strong> é direcionado
+            principalmente para organizações menores. Esta adição de baixo custo
+            ao macOS desktop permite que os usuários colaborem e que os
+            administradores controlem o acesso a recursos compartilhados. Ele
+            também fornece integração com dispositivos iOS, como iPhone e iPad.
+          </p>
+        </div>
+
+        <!-- Popularidade e adoção -->
+        <div class="card">
+          <i class="fas fa-chart-line"></i>
+          <h3>Adoção em Empresas</h3>
+          <p>
+            Alguns grandes departamentos de TI corporativos permitem que os
+            usuários escolham o macOS, pois os usuários geralmente precisam de
+            menos suporte do que as implantações padrão de produtividade da
+            Microsoft. A contínua popularidade do macOS garantiu um suporte
+            saudável dos fornecedores de software.
+          </p>
+          <br />
+          <p>
+            O macOS também é bastante popular nas
+            <strong>indústrias criativas</strong>, como produção de gráficos e
+            vídeo. Para muitos desses usuários, a escolha do aplicativo
+            direciona a decisão do sistema operacional.
+          </p>
+        </div>
+
+        <!-- Integração Hardware/Software -->
+        <div class="card">
+          <i class="fas fa-microchip"></i>
+          <h3>Integração Hardware e Software</h3>
+          <p>
+            O hardware da Apple, sendo tão integrado ao sistema operacional e
+            sua insistência na adesão a padrões na programação de aplicativos,
+            oferece a esses profissionais criativos uma
+            <strong>plataforma estável</strong> para executar muitas funções
+            computacionalmente intensivas com menos preocupações sobre
+            compatibilidade.
+          </p>
+        </div>
+
+        <!-- Tabela comparativa - macOS características -->
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Característica</th>
+              <th>Descrição</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Base técnica</td>
+            </tr>
+            <tr>
+              <td>Base UNIX (FreeBSD) + certificação UNIX</td>
+            </tr>
+
+            <tr>
+              <td>Público-alvo desktop</td>
+              <td>
+                Usuários domésticos, escolas, pequenas empresas, programadores
+              </td>
+            </tr>
+
+            <tr>
+              <td>Público-alvo servidor</td>
+              <td>Pequenas organizações (macOS Server)</td>
+            </tr>
+
+            <tr>
+              <td>Indústrias principais</td>
+              <td>Criativa (gráficos, vídeo), desenvolvimento de software</td>
+            </tr>
+
+            <tr>
+              <td>Integração</td>
+              <td>iOS (iPhone/iPad), hardware Apple otimizado</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Grid com pontos fortes -->
+        <div class="grid-2">
+          <div class="card">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Certificação UNIX</h3>
+            <p>
+              O macOS é um sistema operacional UNIX certificado, o que significa
+              que segue padrões rigorosos de compatibilidade e segurança,
+              diferentemente de sistemas "UNIX-like" que apenas imitam o
+              comportamento.
+            </p>
+          </div>
+          <div class="card">
+            <i class="fas fa-code-branch"></i>
+            <h3>FreeBSD</h3>
+            <p>
+              O núcleo do macOS (Darwin) é baseado no FreeBSD, um sistema UNIX
+              de código aberto conhecido por sua estabilidade, segurança e
+              recursos avançados de rede.
+            </p>
+          </div>
+          <div class="card">
+            <i class="fas fa-palette"></i>
+            <h3>Indústria Criativa</h3>
+            <p>
+              Adobe Creative Cloud, Final Cut Pro, Logic Pro e outras
+              ferramentas criativas líderes de mercado são desenvolvidas
+              primariamente para macOS.
+            </p>
+          </div>
+          <div class="card">
+            <i class="fas fa-mobile-alt"></i>
+            <h3>Ecosistema Apple</h3>
+            <p>
+              Integração perfeita com iPhone, iPad, Apple Watch e iCloud,
+              permitindo Continuidade, Handoff e AirDrop entre dispositivos.
+            </p>
+          </div>
+        </div>
+
+        <!-- Terminal - Comandos UNIX no macOS -->
+        <div class="terminal">
+          <pre>
+$ # macOS é UNIX certificado - comandos familiares funcionam!
+$ sw_vers
+ProductName: macOS
+ProductVersion: 13.5
+BuildVersion: 22G74
+
+$ uname -a
+Darwin MacBook-Pro.local 22.6.0 Darwin Kernel
+
+$ # Comandos UNIX padrão disponíveis
+$ ls -la | grep Documents
+$ ps aux | grep Safari</pre
+          >
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i>
+          <strong>📌 Você sabia?</strong> O macOS é um dos poucos sistemas
+          operacionais que possuem certificação UNIX oficial (junto com IBM AIX,
+          HP-UX e Oracle Solaris). Isso garante compatibilidade com padrões
+          POSIX e ferramentas UNIX tradicionais.
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 2.5 - LINUX                           -->
+      <!-- ============================================ -->
+      <section id="secao2-5" class="section">
+        <h2 class="section-title">
+          <i class="fab fa-linux"></i>
+          <span class="section-number">2.5</span> Linux
+        </h2>
+
+        <!-- Introdução -->
+        <div class="card">
+          <p>
+            Usuários Linux normalmente obtêm um sistema operacional baixando uma
+            <strong>distribuição</strong>. Uma distribuição Linux é um pacote de
+            software, tipicamente composto pelo kernel Linux, utilitários,
+            ferramentas de gerenciamento e até mesmo alguns softwares
+            aplicativos em um pacote que também inclui os meios para atualizar o
+            software central e instalar aplicações adicionais.
+          </p>
+          <br />
+          <p>
+            A distribuição cuida da configuração do armazenamento, construção do
+            kernel e instalação de drivers de hardware, bem como da instalação
+            de aplicações e utilitários para fazer um sistema computacional
+            totalmente funcional. As organizações que criam distribuições também
+            incluem ferramentas para gerenciar o sistema, um
+            <strong>gerenciador de pacotes</strong> para adicionar e remover
+            software, além de programas de atualização para fornecer correções
+            de segurança e funcionalidade.
+          </p>
+          <br />
+          <p>
+            O número de distribuições Linux disponíveis chega a centenas, então
+            a escolha pode parecer assustadora no início. No entanto, os pontos
+            de decisão são praticamente os mesmos destacados para a escolha de
+            um sistema operacional.
+          </p>
+        </div>
+
+        <!-- Role -->
+        <div class="card">
+          <i class="fas fa-user-tie"></i>
+          <h3>Função (Role)</h3>
+          <p>
+            Com o Linux, há múltiplas opções para escolher dependendo das
+            necessidades organizacionais. A variedade de distribuições e
+            software acompanhante permite que o sistema operacional seja
+            significativamente mais flexível e customizável. Distribuições estão
+            disponíveis para uma variedade muito maior de sistemas, desde
+            ofertas comerciais para funções tradicionais de servidor ou desktop,
+            até distribuições especializadas projetadas para transformar um
+            computador antigo em um firewall de rede; desde distribuições
+            criadas para alimentar um supercomputador até aquelas que habilitam
+            sistemas embarcados.
+          </p>
+        </div>
+
+        <!-- Function -->
+        <div class="card">
+          <i class="fas fa-cogs"></i>
+          <h3>Função (Function)</h3>
+          <p>
+            Governos e grandes empresas também podem limitar suas escolhas a
+            distribuições que oferecem <strong>suporte comercial</strong> porque
+            pagar por um nível adicional de suporte pode ser melhor do que
+            arriscar extensas interrupções. Na maior parte, as preocupações com
+            segurança foram abordadas através da grande comunidade de código
+            aberto, que monitora as mudanças do kernel em busca de
+            vulnerabilidades e fornece relatórios de bugs e correções em uma
+            escala muito maior do que os fornecedores de código fechado podem
+            alcançar.
+          </p>
+          <br />
+          <p>
+            O suporte para aplicações necessárias pode variar e é, portanto, uma
+            consideração adicional. Frequentemente, os fornecedores de
+            aplicações escolhem um subconjunto de distribuições para suportar.
+            No entanto, algumas aplicações como Firefox e LibreOffice são
+            amplamente suportadas e disponíveis para todas as principais
+            distribuições.
+          </p>
+        </div>
+
+        <!-- Life Cycle -->
+        <div class="card">
+          <i class="fas fa-chart-line"></i>
+          <h3>Ciclo de Vida (Life Cycle)</h3>
+          <p>
+            A maioria das distribuições tem ciclos de atualização maiores e
+            menores para introduzir novos recursos e corrigir bugs existentes.
+            Além disso, existem pacotes de desenvolvimento onde os usuários
+            podem contribuir com código e enviar correções para possível
+            inclusão em novos lançamentos.
+          </p>
+          <br />
+          <p>
+            Distribuições Linux podem ser amplamente classificadas em duas
+            categorias principais: <strong>enthusiast</strong> (entusiasta) e
+            <strong>enterprise</strong> (empresarial).
+          </p>
+        </div>
+
+        <!-- Tabela - Enthusiast vs Enterprise -->
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Categoria</th>
+              <th>Características</th>
+              <th>Exemplos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Enthusiast</strong> (Entusiasta)</td>
+              <td>
+                Ciclo de atualização rápido, sem suporte empresarial, recursos
+                podem mudar ou ser removidos
+              </td>
+              <td>openSUSE Tumbleweed, Fedora, Ubuntu Desktop</td>
+            </tr>
+            <tr>
+              <td><strong>Enterprise</strong> (Empresarial)</td>
+              <td>Estável e consistente, suporte enterprise de 5-13 anos</td>
+              <td>RHEL (Red Hat), Ubuntu LTS, SLES (SUSE)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- LTS -->
+        <div class="card">
+          <i class="fas fa-calendar-alt"></i>
+          <h3>Suporte de Longo Prazo (LTS)</h3>
+          <p>
+            Software aplicativo pode ser escrito de forma que suporte apenas um
+            lançamento específico de uma distribuição, exigindo que os usuários
+            permaneçam em um sistema operacional mais antigo e menos seguro do
+            que gostariam. Portanto, algumas versões do Linux são consideradas
+            de <strong>suporte de longo prazo (LTS)</strong> de 5 anos ou mais,
+            enquanto outras são suportadas apenas por dois anos ou menos.
+          </p>
+        </div>
+
+        <!-- Stability -->
+        <div class="card">
+          <i class="fas fa-chart-simple"></i>
+          <h3>Estabilidade (Stability)</h3>
+          <p>
+            Algumas distribuições oferecem lançamentos
+            <strong>estável</strong> (<em>stable</em>),
+            <strong>teste</strong> (<em>testing</em>) e
+            <strong>instável</strong> (<em>unstable</em>). Ao escolher uma
+            versão instável para recursos necessários, deve-se considerar que
+            esses recursos podem mudar a qualquer momento durante o ciclo de
+            desenvolvimento. Quando os recursos foram integrados ao sistema por
+            um longo tempo, com a maioria dos bugs e questões resolvidos, o
+            software passa do teste para o lançamento estável.
+          </p>
+        </div>
+
+        <!-- Fedora e openSUSE -->
+        <div class="grid-2">
+          <div class="card">
+            <i class="fab fa-fedora"></i>
+            <h3>Fedora → Red Hat</h3>
+            <p>
+              O Fedora é frequentemente considerado a versão beta comunitária do
+              Red Hat. Recursos são adicionados e alterados no Fedora antes de
+              chegarem à distribuição Red Hat pronta para empresas.
+            </p>
+          </div>
+          <div class="card">
+            <i class="fab fa-suse"></i>
+            <h3>openSUSE → SLES</h3>
+            <p>
+              openSUSE e sua contraparte empresarial SLES são similares. Versões
+              posteriores têm codebases quase idênticos, permitindo migração
+              mais fácil de recursos e código.
+            </p>
+          </div>
+        </div>
+
+        <!-- Consider This - Debian sid warning -->
+        <div class="alert alert-warning">
+          <i class="fas fa-exclamation-triangle"></i>
+          <strong>📌 Considere Isto:</strong>
+          <br /><br />
+          A distribuição Debian avisa os usuários sobre as armadilhas de usar a
+          versão "sid" (instável) com o seguinte aviso:
+          <br /><br />
+          <em
+            >"'sid' está sujeito a mudanças massivas e atualizações de
+            bibliotecas in-place. Isso pode resultar em um sistema muito
+            'instável' que contém pacotes que não podem ser instalados devido a
+            bibliotecas faltantes, dependências que não podem ser satisfeitas,
+            etc. Use por sua conta e risco!"</em
+          >
+        </div>
+
+        <!-- Cost -->
+        <div class="card">
+          <i class="fas fa-dollar-sign"></i>
+          <h3>Custo (Cost)</h3>
+          <p>
+            Sua distribuição Linux escolhida pode ter custo zero, mas pagar por
+            suporte pode valer a pena dependendo das necessidades e capacidades
+            organizacionais.
+          </p>
+        </div>
+
+        <!-- Interface - Substituição da primeira imagem (Desktop gráfico) -->
+        <div class="card">
+          <i class="fas fa-desktop"></i>
+          <h3>Interface Gráfica (GUI)</h3>
+          <p>
+            Como a maioria dos sistemas operacionais, o Linux pode ser usado de
+            duas maneiras: gráfica (GUI) e não gráfica (CLI). Abaixo está um
+            exemplo de um desktop gráfico, com uma barra de menu de aplicativos
+            populares à esquerda, um documento LibreOffice sendo editado em
+            primeiro plano e um navegador web em segundo plano.
+          </p>
+        </div>
+
+        <!-- Arte ASCII - Desktop gráfico estilo Linux -->
+        <div class="terminal" style="text-align: center; background: #0d1117">
+          <pre style="color: var(--text)">
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  📁 Atividades  💻 Desenvolvimento IT  🔧 NETLAB  ❤️ Suporte  📰 News  📞 Contato │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ ┌──────────────┐ ┌─────────────────────────────────────────────────────────┐│
+│ │ 📱 Apps      │ │  📄 Untitled 2 - LibreOffice Writer                      ││
+│ │ 🌐 Firefox   │ │  ┌─────────────────────────────────────────────────────┐││
+│ │ 📧 Thunderbird│ │  │ 📁 Arquivo  ✏️ Editar  👁️ Visualizar  📄 Inserir    │││
+│ │ 📝 Writer    │ │  ├─────────────────────────────────────────────────────┤││
+│ │ 🎨 GIMP      │ │  │                                                     │││
+│ │ 🖥️ Terminal  │ │  │   There are two basic types of interfaces...       │││
+│ │ ⚙️ Config    │ │  │                                                     │││
+│ └──────────────┘ │  │   [GUI vs CLI - Conteúdo do curso]                  │││
+│                  │  │                                                     │││
+│                  │  └─────────────────────────────────────────────────────┘││
+│                  │  ┌─────────────────────────────────────────────────────┐││
+│                  │  │  🌐 Navegador Web - Background                      │││
+│                  │  │  https://www.netdevgroup.com | NDG ONLINE           │││
+│                  │  └─────────────────────────────────────────────────────┘││
+│                  └─────────────────────────────────────────────────────────┘│
+│                                                                             │
+│ [ 🔒 Cookies ] [ ✓ Allow cookies ] [ 🍪 Decline ] [ 📊 Google Analytics ]    │
+└─────────────────────────────────────────────────────────────────────────────┘
+<span style="color: var(--primary);">📌 Exemplo de desktop gráfico Linux: barra de menu superior, aplicativos à esquerda, documento LibreOffice em primeiro plano e navegador em segundo plano.</span></pre>
+        </div>
+
+        <!-- Texto sobre modo gráfico -->
+        <div class="card">
+          <p>
+            No modo gráfico, os usuários podem ter várias janelas diferentes com
+            aplicativos de terminal (shells) abertos, o que é muito útil ao
+            realizar tarefas em múltiplos computadores remotos. Administradores
+            e usuários podem fazer login com seu nome de usuário e senha através
+            de uma interface gráfica.
+          </p>
+        </div>
+
+        <!-- CLI Explanation -->
+        <div class="card">
+          <i class="fas fa-terminal"></i>
+          <h3>Interface de Linha de Comando (CLI)</h3>
+          <p>
+            O segundo tipo de interface, a <strong>CLI</strong>, é uma interface
+            baseada em texto para o computador, onde o usuário digita um comando
+            e o computador então o executa. O ambiente CLI é fornecido por uma
+            aplicação no computador conhecida como <strong>terminal</strong>. O
+            terminal aceita o que o usuário digita e passa para um
+            <strong>shell</strong>. O shell interpreta o que o usuário digitou
+            em instruções que podem ser executadas pelo sistema operacional. Se
+            a saída for produzida pelo comando, então este texto é exibido no
+            terminal. Se problemas com o comando forem encontrados, então uma
+            mensagem de erro é exibida.
+          </p>
+        </div>
+
+        <!-- Login Terminal - Substituindo a imagem do login -->
+        <div class="terminal">
+          <pre>$ # CLI - Login baseado em texto
+Ubuntu 22.04 LTS ubuntu tty2
+
+ubuntu login: <span style="color: var(--text);">sue</span>
+Password: <span style="color: var(--text-dim);">********</span>
+
+Welcome to Ubuntu 22.04 LTS (GNU/Linux 5.15.0-generic x86_64)
+
+* Documentation: https://help.ubuntu.com
+
+212 packages can be updated.
+91 updates are security updates.
+
+sue@ubuntu:~$ <span style="color: var(--primary);">_</span></pre>
+        </div>
+
+        <!-- Texto explicativo do login -->
+        <div class="card">
+          <p>
+            A CLI começa com um login baseado em texto como mostrado acima. Em
+            um login bem-sucedido, após ser solicitado um nome de usuário e
+            senha, você é levado a um shell CLI customizado para o usuário
+            específico.
+          </p>
+          <br />
+          <p>
+            No modo CLI não há janelas para mover. Editores de texto,
+            navegadores web e clientes de e-mail são apresentados apenas em
+            formato de texto. Foi assim que o UNIX operou antes dos ambientes
+            gráficos se tornarem a norma. A maioria dos servidores também
+            executa neste modo, já que as pessoas não fazem login diretamente
+            neles, tornando uma interface gráfica um desperdício de recursos.
+          </p>
+        </div>
+
+        <!-- Exemplo do comando w após login -->
+        <div class="terminal">
+          <pre>sue@ubuntu:~$ <span style="color: var(--primary);">w</span>
+ 17:27:22 up 14 min,  2 users,  load average: 1.73, 1.83, 1.69
+USER     TTY     FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+sue      tty2    20:08            14.35   0.05s   0.00s  w</pre>
+        </div>
+
+        <!-- Explicação do MOTD e prompt -->
+        <div class="card">
+          <p>
+            O prompt de login original está no topo, com texto mais novo
+            adicionado abaixo. Durante o login, pode haver algum texto exibido
+            chamado <strong>mensagem do dia (MOTD)</strong> (<em
+              >message of the day</em
+            >). Esta é uma oportunidade para o administrador do sistema passar
+            informações aos usuários, ou apenas fazer uma piada boba.
+          </p>
+          <br />
+          <p>
+            Após o MOTD vem o <strong>prompt de comando</strong>. No exemplo
+            acima, o usuário digitou o comando <code>w</code> que mostra quem
+            está logado. Conforme novos comandos são inseridos e processados, a
+            janela rola para cima e o texto mais antigo é perdido no topo. O
+            terminal em si é responsável por manter qualquer histórico, como
+            permitir que o usuário role para cima e veja comandos inseridos
+            anteriormente. Do ponto de vista do Linux, o que está na tela é tudo
+            o que existe. Não há nada para mover.
+          </p>
+        </div>
+
+        <!-- Resumo final -->
+        <div class="alert alert-success">
+          <i class="fas fa-check-circle"></i>
+          <strong>✅ Resumo:</strong> O Linux oferece centenas de distribuições
+          para diferentes necessidades (Role, Function, Life Cycle, Stability,
+          Cost, Interface). A escolha certa depende do seu caso de uso -
+          desktop, servidor, firewall, supercomputador ou sistemas embarcados.
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 2.6 - LINUX DISTRIBUTIONS             -->
+      <!-- ============================================ -->
+      <section id="secao2-6" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-boxes"></i>
+          <span class="section-number">2.6</span> Distribuições Linux
+        </h2>
+
+        <!-- Red Hat -->
+        <div class="card">
+          <i class="fab fa-redhat"></i>
+          <h3>Red Hat</h3>
+          <p>
+            A Red Hat começou como uma distribuição simples que introduziu o
+            <strong>Red Hat Package Manager (RPM)</strong>. O desenvolvedor
+            eventualmente formou uma empresa em torno dela, que tentou
+            comercializar um desktop Linux para negócios. Com o tempo, a Red Hat
+            começou a focar mais em aplicações para servidores, como servidores
+            web e arquivos, e lançou o
+            <strong>Red Hat Enterprise Linux (RHEL)</strong>, que era um serviço
+            pago com um ciclo de lançamento longo.
+          </p>
+          <br />
+          <p>
+            O ciclo de lançamento dita com que frequência o software é
+            atualizado. Uma empresa pode valorizar a estabilidade e querer
+            ciclos de lançamento longos, enquanto um hobbyista ou uma startup
+            pode querer o software mais recente e optar por um ciclo de
+            lançamento mais curto. Para satisfazer este último grupo, a Red Hat
+            patrocina o <strong>Projeto Fedora</strong>, que cria um desktop
+            pessoal com o software mais recente, mas ainda construído sobre as
+            mesmas bases da versão empresarial.
+          </p>
+        </div>
+
+        <!-- CentOS -->
+        <div class="card">
+          <i class="fas fa-code-branch"></i>
+          <h3>CentOS e Derivados</h3>
+          <p>
+            Como tudo no Red Hat Enterprise Linux é código aberto, um projeto
+            chamado <strong>CentOS</strong> surgiu. Ele recompilou todos os
+            pacotes do RHEL (convertendo seu código-fonte da linguagem de
+            programação em que foram escritos para uma linguagem utilizável pelo
+            sistema) e os distribuiu gratuitamente. CentOS e outros como ele
+            (como o Scientific Linux) são amplamente compatíveis com o RHEL e
+            integram alguns softwares mais novos, mas não oferecem o suporte
+            pago que a Red Hat oferece.
+          </p>
+          <br />
+          <p>
+            <strong>Scientific Linux</strong> é um exemplo de uma distribuição
+            de uso específico baseada no Red Hat. O projeto é uma distribuição
+            patrocinada pelo Fermilab projetada para permitir a computação
+            científica. Entre suas muitas aplicações, o Scientific Linux é usado
+            com aceleradores de partículas, incluindo o Grande Colisor de
+            Hádrons no CERN.
+          </p>
+        </div>
+
+        <!-- SUSE -->
+        <div class="card">
+          <i class="fab fa-suse"></i>
+          <h3>SUSE</h3>
+          <p>
+            SUSE, originalmente derivada do Slackware, foi uma das primeiras
+            distribuições Linux abrangentes, tendo muitas semelhanças com o Red
+            Hat Enterprise Linux. A empresa original foi comprada pela Novell em
+            2003, que foi então comprada pelo Attachmate Group em 2011. O grupo
+            Attachmate então se fundiu com a Micro Focus International em 2014,
+            e em 2018 a SUSE anunciou planos de seguir como um negócio
+            independente. Através de todas as fusões e aquisições, a SUSE
+            conseguiu continuar e crescer.
+          </p>
+          <br />
+          <p>
+            Enquanto o <strong>SUSE Linux Enterprise</strong> contém código
+            proprietário e é vendido como produto para servidores, o
+            <strong>openSUSE</strong> é uma versão completamente aberta e
+            gratuita com múltiplos pacotes de desktop, semelhante ao CentOS e
+            Linux Mint.
+          </p>
+        </div>
+
+        <!-- Debian -->
+        <div class="card">
+          <i class="fab fa-debian"></i>
+          <h3>Debian</h3>
+          <p>
+            Debian é mais um esforço comunitário e, como tal, também promove o
+            uso de software de código aberto e a adesão a padrões. O Debian
+            criou seu próprio sistema de gerenciamento de pacotes baseado no
+            formato de arquivo <strong>.deb</strong>. Enquanto a Red Hat deixa o
+            suporte a plataformas não-Intel e AMD para projetos derivados, o
+            Debian suporta muitas dessas plataformas diretamente.
+          </p>
+        </div>
+
+        <!-- Ubuntu -->
+        <div class="card">
+          <i class="fab fa-ubuntu"></i>
+          <h3>Ubuntu</h3>
+          <p>
+            <strong>Ubuntu</strong> é a distribuição derivada do Debian mais
+            popular. É uma criação da Canonical, uma empresa criada para
+            promover o crescimento do Ubuntu e ganha dinheiro fornecendo
+            suporte. O Ubuntu tem várias variantes diferentes para desktop,
+            servidor e várias aplicações especializadas. Eles também oferecem
+            uma versão <strong>LTS</strong> que é mantida atualizada por 3 anos
+            em desktops e 5 anos em servidores, o que dá aos desenvolvedores e
+            às empresas em que trabalham confiança para construir soluções
+            baseadas em uma distribuição estável.
+          </p>
+        </div>
+
+        <!-- Linux Mint -->
+        <div class="card">
+          <i class="fab fa-linux-mint"></i>
+          <h3>Linux Mint</h3>
+          <p>
+            <strong>Linux Mint</strong> foi iniciado como um fork do Ubuntu
+            Linux, ainda dependendo dos repositórios do Ubuntu. Existem várias
+            versões, todas gratuitas, mas algumas incluem codecs proprietários,
+            que não podem ser distribuídos sem restrições de licença em certos
+            países.
+          </p>
+        </div>
+
+        <!-- Android -->
+        <div class="card">
+          <i class="fab fa-android"></i>
+          <h3>Android</h3>
+          <p>
+            Linux é um kernel, e muitos dos comandos abordados neste curso são
+            na verdade parte do pacote GNU. É por isso que algumas pessoas
+            insistem em usar o termo <strong>GNU/Linux</strong> em vez de apenas
+            Linux.
+          </p>
+          <br />
+          <p>
+            <strong>Android</strong>, patrocinado pelo Google, é a distribuição
+            Linux mais popular do mundo. É fundamentalmente diferente de suas
+            contrapartes. O Android usa a máquina virtual Dalvik com Linux,
+            fornecendo uma plataforma robusta para dispositivos móveis, como
+            telefones e tablets. No entanto, por não ter os pacotes tradicionais
+            que são frequentemente distribuídos com Linux (como GNU e Xorg), o
+            Android é geralmente incompatível com distribuições Linux desktop.
+          </p>
+          <br />
+          <p>
+            Essa incompatibilidade significa que um usuário Red Hat ou Ubuntu
+            não pode baixar software da Google Play store. Da mesma forma, um
+            emulador de terminal no Android não tem muitos dos comandos de suas
+            contrapartes Linux. É possível, no entanto, usar
+            <strong>BusyBox</strong> com Android para habilitar a maioria dos
+            comandos a funcionar.
+          </p>
+        </div>
+
+        <!-- Raspbian e LFS -->
+        <div class="grid-2">
+          <div class="card">
+            <i class="fas fa-microchip"></i>
+            <h3>Raspbian</h3>
+            <p>
+              <strong>Raspbian</strong> é uma distribuição Linux especializada
+              otimizada para funcionar em hardware Raspberry Pi. Esta combinação
+              tem visto uso significativo no treinamento de programadores e
+              designers de hardware em todos os níveis. Seu baixo custo e
+              facilidade de uso a tornaram uma favorita de educadores em todo o
+              mundo, e muitos dispositivos adicionais estão disponíveis para
+              estender suas capacidades para o mundo físico.
+            </p>
+          </div>
+          <div class="card">
+            <i class="fas fa-book"></i>
+            <h3>Linux From Scratch (LFS)</h3>
+            <p>
+              <strong>Linux From Scratch (LFS)</strong> é mais uma ferramenta de
+              aprendizado do que uma distribuição funcional. Este projeto
+              consiste em um livro online e código-fonte, com "instruções passo
+              a passo" para construir uma distribuição Linux personalizada a
+              partir do código-fonte. Esta "distribuição" incorpora o verdadeiro
+              espírito do Linux, onde os usuários podem modificar qualquer
+              aspecto do sistema operacional e aprender como todas as peças
+              funcionam juntas.
+            </p>
+          </div>
+        </div>
+
+        <!-- Substituição da imagem da linha do tempo (1991-2013) -->
+        <div class="card">
+          <i class="fas fa-timeline"></i>
+          <h3>Linha do Tempo das Distribuições Linux</h3>
+          <p>
+            A evolução das principais distribuições Linux ao longo dos anos:
+          </p>
+        </div>
+
+        <div class="terminal" style="text-align: center; overflow-x: auto">
+          <pre style="color: var(--primary); font-size: 0.7rem">
+1991 1992 1993 1994 1995 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010 2011 2012 2013
+ │    │    │    │    │    │    │    │    │    │    │    │    │    │    │    │    │    │    │    │    │    │    │
+ ▼    ▼    ▼    ▼    ▼    ▼    ▼    ▼    ▼    ▼    ▼    ▼    ▼    ▼    ▼    ▼    ▼    ▼    ▼    ▼    ▼    ▼    ▼
+┌─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                                                                                                 │
+│  <span style="color: var(--text);">SLACKWARE</span> ─────────────────────────────────────────────────────────────────────────────────────►               │
+│                                                                                                                 │
+│       <span style="color: var(--text);">DEBIAN</span> ──────────────────────────────────────────────────────────────────────────────►                    │
+│                                                                                                                 │
+│            <span style="color: var(--text);">SUSE</span> ──────────────────────────────────────────────────────────► <span style="color: var(--text);">openSUSE</span> ─────►                     │
+│                                                                                                                 │
+│                 <span style="color: var(--text);">RED HAT</span> ──────────────────────────► <span style="color: var(--text);">RHEL</span> ──────────────────►                                    │
+│                                      │                                                                          │
+│                                      └─► <span style="color: var(--text);">Fedora Core</span> ──► <span style="color: var(--text);">Fedora</span> ──────►                                         │
+│                                                                                                                 │
+│                                           <span style="color: var(--text);">CentOS</span> ──────────────────────────────────────►                        │
+│                                                                                                                 │
+│                                                      <span style="color: var(--text);">UBUNTU</span> ──────────────────────────►                         │
+│                                                                                                                 │
+│                                                           <span style="color: var(--text);">RASPBIAN</span> ──────────►                                  │
+│                                                                                                                 │
+│                                                                <span style="color: var(--text);">ANDROID</span> ─────────────────►                       │
+│                                                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+<span style="color: var(--text-dim);">Legenda: Slackware │ Debian │ SUSE/openSUSE │ Red Hat/RHEL/Fedora/CentOS │ Ubuntu │ Raspbian │ Android</span></pre>
+        </div>
+
+        <!-- Tabela resumo das distribuições -->
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Distribuição</th>
+              <th>Base</th>
+              <th>Gerenciador de Pacotes</th>
+              <th>Uso Principal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Red Hat / RHEL</strong></td>
+              <td>Red Hat</td>
+              <td>RPM / DNF</td>
+              <td>Servidores empresariais</td>
+            </tr>
+            <tr>
+              <td><strong>Fedora</strong></td>
+              <td>Red Hat</td>
+              <td>DNF</td>
+              <td>Desktop (software mais recente)</td>
+            </tr>
+            <tr>
+              <td><strong>CentOS / Scientific</strong></td>
+              <td>RHEL</td>
+              <td>YUM / DNF</td>
+              <td>Computação científica / gratuito</td>
+            </tr>
+            <tr>
+              <td><strong>SUSE / openSUSE</strong></td>
+              <td>Slackware</td>
+              <td>ZYpp / YaST</td>
+              <td>Servidores / Desktop</td>
+            </tr>
+            <tr>
+              <td><strong>Debian</strong></td>
+              <td>Debian</td>
+              <td>APT (arquivos .deb)</td>
+              <td>Estabilidade universal</td>
+            </tr>
+            <tr>
+              <td><strong>Ubuntu</strong></td>
+              <td>Debian</td>
+              <td>APT / Snap</td>
+              <td>Desktop / Servidor LTS</td>
+            </tr>
+            <tr>
+              <td><strong>Linux Mint</strong></td>
+              <td>Ubuntu</td>
+              <td>APT</td>
+              <td>Desktop amigável</td>
+            </tr>
+            <tr>
+              <td><strong>Android</strong></td>
+              <td>Linux Kernel</td>
+              <td>APK (Google Play)</td>
+              <td>Dispositivos móveis</td>
+            </tr>
+            <tr>
+              <td><strong>Raspbian</strong></td>
+              <td>Debian</td>
+              <td>APT</td>
+              <td>Raspberry Pi / Educação</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Outras distribuições -->
+        <div class="card">
+          <i class="fas fa-ellipsis-h"></i>
+          <h3>Outras Distribuições</h3>
+          <p>
+            Discutimos as distribuições explicitamente mencionadas nos objetivos
+            do Linux Essentials. Esteja ciente de que existem centenas, senão
+            milhares, disponíveis. Embora existam muitas distribuições
+            diferentes do Linux, muitos dos programas e comandos permanecem os
+            mesmos ou são muito semelhantes.
+          </p>
+        </div>
+
+        <!-- Terminal - Comandos comuns em qualquer distro -->
+        <div class="terminal">
+          <pre>
+$ # Comandos que funcionam em QUALQUER distribuição Linux
+$ ls -la
+$ cd /etc
+$ ps aux
+$ grep "error" /var/log/syslog
+$ echo "Comandos são universais entre distribuições!"</pre
+          >
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i>
+          <strong>📌 Resumo:</strong> As principais famílias de distribuições
+          Linux são Red Hat (RHEL, Fedora, CentOS), Debian (Ubuntu, Mint,
+          Raspbian), SUSE (SLES, openSUSE) e Android. Cada uma tem seu próprio
+          gerenciador de pacotes, mas os comandos fundamentais são os mesmos!
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 2.7 - EMBEDDED SYSTEMS                -->
+      <!-- ============================================ -->
+      <section id="secao2-7" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-microchip"></i>
+          <span class="section-number">2.7</span> Sistemas Embarcados (Embedded
+          Systems)
+        </h2>
+
+        <!-- Introdução -->
+        <div class="card">
+          <p>
+            O Linux começou como algo que só funcionaria em um computador como o
+            de Linus Torvalds: um PC Intel 386 com um controlador de disco
+            rígido específico, mas como qualquer um poderia adicionar ou
+            modificar o Linux, as pessoas começaram a construir suporte para
+            outros hardwares. Eventualmente, o Linux começou a suportar outros
+            chips com ênfase em tamanho pequeno e baixo consumo de energia.
+          </p>
+        </div>
+
+        <!-- Definição de Embedded Systems -->
+        <div class="card">
+          <i class="fas fa-microchip"></i>
+          <h3>O que são Sistemas Embarcados?</h3>
+          <p>
+            Devido a essa flexibilidade, um número significativo de fabricantes
+            de dispositivos usou o Linux como sistema operacional para seus
+            produtos de hardware. Hoje chamamos esses de
+            <strong>sistemas embarcados</strong> (<em>embedded systems</em>)
+            porque são projetados para fazer uma tarefa específica em hardware
+            otimizado apenas para esse propósito. Esses sistemas abrangem uma
+            tremenda diversidade de dispositivos usados hoje, desde telefones
+            celulares até TVs inteligentes e eletrodomésticos, até sistemas de
+            monitoramento remoto para oleodutos e fábricas.
+          </p>
+        </div>
+
+        <!-- Evolução e processadores especializados -->
+        <div class="card">
+          <i class="fas fa-chart-line"></i>
+          <h3>Evolução do Linux Embarcado</h3>
+          <p>
+            À medida que o Linux evoluiu, chips de processador especializados
+            foram desenvolvidos para dispositivos de consumo e industriais para
+            aproveitar suas capacidades. O suporte ao Linux se tornou tão
+            onipresente que é possível prototipar e lançar no mercado novos
+            dispositivos usando componentes prontos (<em>off-the-shelf</em>).
+          </p>
+          <br />
+          <p>
+            A ascensão de computadores de placa única (<em
+              >single-board computers</em
+            >) baratos, pequenos e adaptáveis, como o
+            <strong>Raspberry Pi</strong>, deu a experimentadores e
+            empreendedores de todo o mundo ferramentas para construir
+            rapidamente soluções personalizadas, alimentadas por Linux, que
+            teriam exigido meses de trabalho de equipes especializadas há apenas
+            alguns anos.
+          </p>
+        </div>
+
+        <!-- Arte ASCII - Raspberry Pi e componentes -->
+        <div class="terminal" style="text-align: center">
+          <pre style="color: var(--primary)">
+┌─────────────────────────────────────────────────────────────────┐
+│                    🖥️ RASPBERRY PI 4                            │
+│  ┌─────────────────────────────────────────────────────────┐    │
+│  │  ┌───────┐                                              │    │
+│  │  │ USB-C │  🧠 CPU ARM Cortex-A72                       │    │
+│  │  │ Power │  💾 RAM 4GB/8GB                              │    │
+│  │  └───────┘  🔌 GPIO Pins                                │    │
+│  │                                                         │    │
+│  │  [ HDMI ] [ Ethernet ] [ USB 3.0 ] [ USB 2.0 ] [ Audio ]│    │
+│  │                                                         │    │
+│  │              🐧 LINUX (Raspbian OS)                     │    │
+│  └─────────────────────────────────────────────────────────┘    │
+│                                                                 │
+│  Pequeno, barato, versátil - Roda Linux completo!               │
+└─────────────────────────────────────────────────────────────────┘</pre
+          >
+        </div>
+
+        <!-- Dispositivos embarcados -->
+        <div class="grid-2">
+          <div class="card">
+            <i class="fas fa-tv"></i>
+            <h3>Entretenimento</h3>
+            <p>
+              DVRs (gravadores de vídeo digitais), Smart TVs, set-top boxes,
+              players de mídia como Roku e Apple TV utilizam Linux embarcado.
+            </p>
+          </div>
+          <div class="card">
+            <i class="fas fa-mobile-alt"></i>
+            <h3>Dispositivos Móveis</h3>
+            <p>
+              Smartphones (Android), tablets, wearables (smartwatches),
+              e-readers como Kindle rodam em kernel Linux.
+            </p>
+          </div>
+          <div class="card">
+            <i class="fas fa-industry"></i>
+            <h3>Industrial</h3>
+            <p>
+              Monitoramento de oleodutos, fábricas, controle de processos, CLPs
+              industriais, robótica.
+            </p>
+          </div>
+          <div class="card">
+            <i class="fas fa-home"></i>
+            <h3>Eletrodomésticos Inteligentes</h3>
+            <p>
+              Geladeiras, máquinas de lavar, fornos, aspiradores robô (Roomba),
+              assistentes virtuais (Alexa).
+            </p>
+          </div>
+        </div>
+
+        <!-- Internet das Coisas (IoT) -->
+        <div class="card">
+          <i class="fas fa-wifi"></i>
+          <h3>Internet das Coisas (IoT)</h3>
+          <p>
+            Embora os consumidores estejam familiarizados com dispositivos de
+            entretenimento Linux embarcados como DVRs e "Smart TVs", o impacto
+            real do Linux embarcado está apenas começando a ser percebido. A
+            <strong>internet das coisas (IoT)</strong> está crescendo com
+            dispositivos baratos e onipresentes sendo implantados em tudo, desde
+            poços de petróleo até fazendas de geração solar.
+          </p>
+          <br />
+          <p>
+            Essas redes de sensores inteligentes e controladores permitem que
+            engenheiros ajustem processos críticos em tempo real, enquanto
+            monitoram e reportam de volta a estações centrais de controle.
+          </p>
+        </div>
+
+        <!-- Arte ASCII - IoT / Rede de sensores -->
+        <div class="terminal" style="text-align: center">
+          <pre style="color: var(--primary)">
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         INTERNET DAS COISAS (IoT)                           │
+│                                                                             │
+│                      ☁️  NUVEM / CENTRAL DE CONTROLE                        │
+│                              │                                              │
+│              ┌───────────────┼───────────────┐                              │
+│              │               │               │                              │
+│              ▼               ▼               ▼                              │
+│        ┌─────────────┐   ┌───────────┐    ┌──────────────┐                  │
+│        │ 📡 SENSOR   │   │ 📡 SENSOR │    │ 📡 SENSOR    │                  │
+│        │🌡️🌧️         │   │  🔥💨     │    │  💧🌱        │                  │
+│        │Temp/Umidade │   │Fumaça/Gás │    │Umidade Solo  │                  │
+│        └─────────────┘   └───────────┘    └──────────────┘                  │
+│              │               │               │                              │
+│              └───────────────┼───────────────┘                              │
+│                              │                                              │
+│                         🏭 ATUADORES                                        │
+│                   (Válvulas, Relés, Motores)                                │
+│                                                                             │
+│    Todos rodando LINUX embarcado + conectividade sem fio                    │
+└─────────────────────────────────────────────────────────────────────────────┘</pre
+          >
+        </div>
+
+        <!-- IA e Machine Learning -->
+        <div class="card">
+          <i class="fas fa-brain"></i>
+          <h3>Integração com IA e Machine Learning</h3>
+          <p>
+            À medida que mais processos estão sendo monitorados e mais dados
+            estão sendo integrados com
+            <strong>aprendizado de máquina</strong> (<em>machine learning</em>)
+            e <strong>inteligência artificial (IA)</strong>, podemos antecipar
+            ganhos em eficiência, segurança e produtividade que só foram
+            sonhados por gerações passadas.
+          </p>
+        </div>
+
+        <!-- Tabela - Exemplos de Sistemas Embarcados -->
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Categoria</th>
+              <th>Exemplos</th>
+              <th>Hardware Comum</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Educação/Prototipagem</strong></td>
+              <td>Raspberry Pi, Arduino (com Linux), BeagleBone</td>
+              <td>ARM Cortex-A, Cortex-M</td>
+            </tr>
+            <tr>
+              <td><strong>Automação Residencial</strong></td>
+              <td>Smart TVs, DVRs, Termostatos (Nest), Assistentes</td>
+              <td>SoC (System on Chip) - Broadcom, Amlogic</td>
+            </tr>
+            <tr>
+              <td><strong>Industrial</strong></td>
+              <td>CLPs, Monitoramento de dutos, Controle de fábrica</td>
+              <td>x86 embarcado, ARM industrial</td>
+            </tr>
+            <tr>
+              <td><strong>Agrícola</strong></td>
+              <td>Estações meteorológicas, Irrigação inteligente, Drones</td>
+              <td>ESP32, Raspberry Pi, Nvidia Jetson</td>
+            </tr>
+            <tr>
+              <td><strong>Automotivo</strong></td>
+              <td>Sistemas de infoentretenimento, ADAS, Telemetria</td>
+              <td>Automotive Grade Linux (AGL)</td>
+            </tr>
+            <tr>
+              <td><strong>Saúde</strong></td>
+              <td>Monitores de sinais vitais, Bombas de infusão</td>
+              <td>ARM de baixo consumo</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Placas populares -->
+        <div class="card">
+          <i class="fas fa-plug"></i>
+          <h3>Plataformas Populares para Linux Embarcado</h3>
+          <ul class="icon-list" style="list-style: none; padding-left: 0">
+            <li>
+              <i class="fas fa-microchip"></i> <strong>Raspberry Pi</strong> - A
+              mais popular para aprendizado e prototipagem
+            </li>
+            <li>
+              <i class="fas fa-microchip"></i>
+              <strong>BeagleBone Black</strong> - Mais GPIOs, foco em industrial
+            </li>
+            <li>
+              <i class="fas fa-microchip"></i> <strong>NVIDIA Jetson</strong> -
+              IA e visão computacional embarcada
+            </li>
+            <li>
+              <i class="fas fa-microchip"></i>
+              <strong>Orange Pi / Banana Pi</strong> - Alternativas chinesas ao
+              Raspberry
+            </li>
+            <li>
+              <i class="fas fa-microchip"></i> <strong>ESP32</strong> - IoT de
+              baixo custo (pode rodar MicroPython/Linux minimal)
+            </li>
+          </ul>
+        </div>
+
+        <!-- Terminal - Comandos úteis para embarcados -->
+        <div class="terminal">
+          <pre>
+$ # Comandos úteis em sistemas embarcados
+$ cat /proc/cpuinfo          # Ver informações do processador
+$ free -h                    # Ver memória disponível
+$ df -h                      # Ver espaço em disco
+$ i2cdetect -y 1             # Detectar dispositivos I2C
+$ gpio readall               # Ver status das portas GPIO (Raspberry Pi)</pre
+          >
+        </div>
+
+        <div class="alert alert-success">
+          <i class="fas fa-check-circle"></i>
+          <strong>✅ Conclusão:</strong> O Linux se tornou o sistema operacional
+          dominante para sistemas embarcados devido à sua flexibilidade, suporte
+          a múltiplas arquiteturas, baixo consumo de recursos e comunidade
+          ativa. Da sua smart TV ao seu robo aspirador, o Linux está em toda
+          parte!
+        </div>
+      </section>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+      <p>
+        <i class="fab fa-linux"></i> NDG Linux Essentials – Módulo 2: Sistemas
+        Operacionais
+      </p>
+      <p style="font-size: 0.8rem; margin-top: 0.5rem">
+        Conteúdo traduzido com fidelidade para o português (PT-BR)
+      </p>
+    </footer>
+    <script src="../js/menu.js"></script>
+  </body>
+</html>

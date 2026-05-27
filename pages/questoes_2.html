@@ -1,0 +1,656 @@
+siga o padrão e vamos adicionar aqui as perguntas do módulo 3 organizando a
+listagem deixando claro que perguntas de qual móudlo estamos vendo
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>NDG Linux Essentials | Banco de Questões - Módulo 2</title>
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <!-- Google Fonts Inter -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/questoes.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <button class="menu-toggle" id="openMenu">
+          <i class="fas fa-bars"></i>
+          <span>Menu</span>
+        </button>
+        <a href="../index.html" class="navbar-brand">
+          <i class="fab fa-linux"></i> NDG Linux Essentials
+        </a>
+        <a href="../index.html" class="btn-outline">
+          <i class="fas fa-home"></i> Voltar
+        </a>
+      </div>
+    </nav>
+
+    <!-- Menu Lateral -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-compass"></i> Navegação - Questões</h3>
+        <button class="close-sidebar" id="closeMenu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="nav-modules">
+        <li>
+          <a href="#questao1"
+            ><i class="fas fa-question-circle"></i> Questão 1</a
+          >
+        </li>
+        <li>
+          <a href="#questao2"
+            ><i class="fas fa-question-circle"></i> Questão 2</a
+          >
+        </li>
+        <li>
+          <a href="#questao3"
+            ><i class="fas fa-question-circle"></i> Questão 3</a
+          >
+        </li>
+        <li>
+          <a href="#questao4"
+            ><i class="fas fa-question-circle"></i> Questão 4</a
+          >
+        </li>
+        <li>
+          <a href="#questao5"
+            ><i class="fas fa-question-circle"></i> Questão 5</a
+          >
+        </li>
+        <li>
+          <a href="#questao6"
+            ><i class="fas fa-question-circle"></i> Questão 6</a
+          >
+        </li>
+        <li>
+          <a href="#questao7"
+            ><i class="fas fa-question-circle"></i> Questão 7</a
+          >
+        </li>
+        <li>
+          <a href="#questao8"
+            ><i class="fas fa-question-circle"></i> Questão 8</a
+          >
+        </li>
+        <li>
+          <a href="#questao9"
+            ><i class="fas fa-question-circle"></i> Questão 9</a
+          >
+        </li>
+        <li>
+          <a href="#questao10"
+            ><i class="fas fa-question-circle"></i> Questão 10</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <!-- Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <section class="hero">
+      <div class="container">
+        <div class="badge-lab">
+          <i class="fas fa-graduation-cap"></i> NDG Linux Essentials | Banco de
+          Questões
+        </div>
+        <h1>Exame do Módulo 2</h1>
+        <p>
+          Sistemas Operacionais - Teste seus conhecimentos com justificativas
+        </p>
+        <div style="margin-top: 1.5rem">
+          <i
+            class="fab fa-linux"
+            style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"
+          ></i>
+          <i
+            class="fab fa-windows"
+            style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"
+          ></i>
+          <i
+            class="fab fa-apple"
+            style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"
+          ></i>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- QUESTÃO 1 -->
+      <section id="questao1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q1</span> RPM no Linux
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-tag"></i> Em Linux, RPM pode ser definido como:
+          </div>
+          <div class="options" id="q1-options">
+            <li>
+              <input type="radio" name="q1" value="a" /> Relational peak
+              monitoring
+            </li>
+            <li>
+              <input type="radio" name="q1" value="b" /> O programa Gerenciador
+              de Pacotes para Red Hat Linux
+            </li>
+            <li>
+              <input type="radio" name="q1" value="c" /> Radical performance
+              machine
+            </li>
+            <li>
+              <input type="radio" name="q1" value="d" /> Random program memory
+            </li>
+            <li>
+              <input type="radio" name="q1" value="e" /> A velocidade que um
+              disco toca
+            </li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q1',
+                'b',
+                'RPM significa Red Hat Package Manager, é o gerenciador de pacotes usado em distribuições baseadas no Red Hat como RHEL, Fedora e CentOS.',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q1-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 2 -->
+      <section id="questao2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q2</span> Ciclo de Lançamento Longo
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-clock"></i> Um ciclo de lançamento de software
+            longo é:
+          </div>
+          <div class="options" id="q2-options">
+            <li>
+              <input type="radio" name="q2" value="a" /> Valorizado por empresas
+              que buscam estabilidade
+            </li>
+            <li>
+              <input type="radio" name="q2" value="b" /> Caracterizado por
+              correções de segurança pouco frequentes
+            </li>
+            <li>
+              <input type="radio" name="q2" value="c" /> Oferecido apenas por
+              Red Hat e SUSE
+            </li>
+            <li>
+              <input type="radio" name="q2" value="d" /> Melhor porque hardware
+              antigo pode ser utilizado além de sua vida útil
+            </li>
+            <li>
+              <input type="radio" name="q2" value="e" /> Torna a programação
+              mais difícil pois novos recursos não podem ser usados
+            </li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q2',
+                'a',
+                'Empresas valorizam ciclos longos porque garantem estabilidade, menos atualizações disruptivas e maior previsibilidade para planejamento de TI.',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q2-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 3 - IoT com justificativa -->
+      <section id="questao3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q3</span> IoT e Sistemas Embarcados
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-microchip"></i> IoT é uma aplicação de sistemas
+            embarcados: Verdadeiro ou Falso?
+          </div>
+          <div class="options" id="q3-options">
+            <li><input type="radio" name="q3" value="true" /> Verdadeiro</li>
+            <li><input type="radio" name="q3" value="false" /> Falso</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkTrueFalse(
+                'q3',
+                'true',
+                '✅ Correto! IoT (Internet das Coisas) utiliza dispositivos embarcados com sensores e conectividade. Sistemas embarcados são a base tecnológica que torna IoT possível.',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q3-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 4 - Debian com justificativa -->
+      <section id="questao4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q4</span> Debian e Suporte a Hardware
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fab fa-debian"></i> Debian é um esforço comunitário que
+            suporta muitas plataformas de hardware: Verdadeiro ou Falso?
+          </div>
+          <div class="options" id="q4-options">
+            <li><input type="radio" name="q4" value="true" /> Verdadeiro</li>
+            <li><input type="radio" name="q4" value="false" /> Falso</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkTrueFalse(
+                'q4',
+                'true',
+                '✅ Correto! Debian é mantido por uma comunidade global e suporta oficialmente múltiplas arquiteturas: x86, ARM, PowerPC, MIPS, s390x e outras.',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q4-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 5 -->
+      <section id="questao5" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q5</span> Rede de Sensores
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-wifi"></i> Uma rede de computadores de baixo custo
+            conectados a sensores e controladores é chamada de:
+          </div>
+          <div class="options" id="q5-options">
+            <li>
+              <input type="radio" name="q5" value="a" /> Internet of Things
+              (IoT)
+            </li>
+            <li>
+              <input type="radio" name="q5" value="b" /> Closed source computing
+            </li>
+            <li>
+              <input type="radio" name="q5" value="c" /> Relational database
+            </li>
+            <li><input type="radio" name="q5" value="d" /> Creative commons</li>
+            <li>
+              <input type="radio" name="q5" value="e" /> Open source networking
+            </li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q5',
+                'a',
+                'IoT (Internet of Things) conecta dispositivos embarcados, sensores e atuadores à internet, permitindo monitoramento e automação.',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q5-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 6 -->
+      <section id="questao6" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q6</span> Linux em Dispositivos Móveis
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-mobile-alt"></i> A plataforma Linux que roda em
+            telefones celulares é chamada de:
+          </div>
+          <div class="options" id="q6-options">
+            <li><input type="radio" name="q6" value="a" /> IOS</li>
+            <li><input type="radio" name="q6" value="b" /> LinuxMobile</li>
+            <li><input type="radio" name="q6" value="c" /> Teledroid</li>
+            <li><input type="radio" name="q6" value="d" /> Android</li>
+            <li><input type="radio" name="q6" value="e" /> MicroLinux</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q6',
+                'd',
+                'Android é baseado no kernel Linux e é atualmente a plataforma móvel mais usada no mundo.',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q6-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 7 -->
+      <section id="questao7" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q7</span> Gerenciamento de Software
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-box"></i> O que uma distribuição fornece para
+            adicionar e remover software do sistema?
+          </div>
+          <div class="options" id="q7-options">
+            <li><input type="radio" name="q7" value="a" /> Compiler</li>
+            <li><input type="radio" name="q7" value="b" /> Package Manager</li>
+            <li>
+              <input type="radio" name="q7" value="c" /> Application Programming
+              Interface (API)
+            </li>
+            <li>
+              <input type="radio" name="q7" value="d" /> Partitioning tool
+            </li>
+            <li><input type="radio" name="q7" value="e" /> Bash</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q7',
+                'b',
+                'O Gerenciador de Pacotes (Package Manager) como APT, DNF ou Pacman é responsável por instalar, atualizar e remover software.',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q7-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 8 -->
+      <section id="questao8" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q8</span> Origem do Ubuntu
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fab fa-ubuntu"></i> Ubuntu é derivado de qual
+            distribuição?
+          </div>
+          <div class="options" id="q8-options">
+            <li><input type="radio" name="q8" value="a" /> Slackware</li>
+            <li>
+              <input type="radio" name="q8" value="b" /> Red Hat Enterprise
+              Linux
+            </li>
+            <li><input type="radio" name="q8" value="c" /> Debian</li>
+            <li><input type="radio" name="q8" value="d" /> Scientific Linux</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q8',
+                'c',
+                'Ubuntu é baseado no Debian, utilizando seu sistema de pacotes .deb e o gerenciador APT, mas com foco em facilidade de uso e ciclos regulares de lançamento.',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q8-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 9 - Beta com justificativa -->
+      <section id="questao9" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q9</span> Software Beta
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-flask"></i> Se um lançamento de software está em um
+            estado onde tem muitos novos recursos que não foram rigorosamente
+            testados, é tipicamente chamado de software beta. Verdadeiro ou
+            Falso?
+          </div>
+          <div class="options" id="q9-options">
+            <li><input type="radio" name="q9" value="true" /> Verdadeiro</li>
+            <li><input type="radio" name="q9" value="false" /> Falso</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkTrueFalse(
+                'q9',
+                'true',
+                '✅ Correto! A fase beta é caracterizada por novas funcionalidades ainda em teste, podendo conter bugs. Após testes rigorosos, a versão se torna estável (release candidate).',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q9-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 10 -->
+      <section id="questao10" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q10</span> Características do Microsoft
+          Windows
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fab fa-windows"></i> Microsoft Windows: (escolha três)
+          </div>
+          <div class="options" id="q10-options">
+            <li>
+              <input type="checkbox" name="q10" value="a" /> Tem uma nova versão
+              desktop a cada ano
+            </li>
+            <li>
+              <input type="checkbox" name="q10" value="b" /> Tem um modo de
+              compatibilidade Linux
+            </li>
+            <li>
+              <input type="checkbox" name="q10" value="c" /> Tem um ciclo de
+              manutenção curto
+            </li>
+            <li>
+              <input type="checkbox" name="q10" value="d" /> Tem um ambiente de
+              scripting chamado PowerShell
+            </li>
+            <li>
+              <input type="checkbox" name="q10" value="e" /> É geralmente
+              compatível com versões anteriores
+            </li>
+            <li>
+              <input type="checkbox" name="q10" value="f" /> Oferece produtos
+              desktop e servidor
+            </li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q10',
+                ['d', 'e', 'f'],
+                'O Windows possui PowerShell para automação, forte compatibilidade reversa (ex: suporte a software antigo via WOW64), e versões separadas para desktop (Windows 11) e servidor (Windows Server).',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q10-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <details class="answer-key">
+        <summary><i class="fas fa-key"></i> 📋 Gabarito - Módulo 2</summary>
+        <div style="margin-top: 1rem">
+          <p>
+            <strong>Q1:</strong> O programa Gerenciador de Pacotes para Red Hat
+            Linux
+          </p>
+          <p>
+            <strong>Q2:</strong> Valorizado por empresas que buscam estabilidade
+          </p>
+          <p>
+            <strong>Q3:</strong> Verdadeiro - IoT usa sistemas embarcados como
+            base
+          </p>
+          <p>
+            <strong>Q4:</strong> Verdadeiro - Debian suporta múltiplas
+            arquiteturas
+          </p>
+          <p><strong>Q5:</strong> Internet of Things (IoT)</p>
+          <p><strong>Q6:</strong> Android</p>
+          <p><strong>Q7:</strong> Package Manager</p>
+          <p><strong>Q8:</strong> Debian</p>
+          <p>
+            <strong>Q9:</strong> Verdadeiro - Beta é fase de testes de novos
+            recursos
+          </p>
+          <p>
+            <strong>Q10:</strong> PowerShell, Compatibilidade com versões
+            anteriores, Oferece desktop e servidor
+          </p>
+        </div>
+      </details>
+    </div>
+
+    <footer>
+      <p>
+        <i class="fab fa-linux"></i> NDG Linux Essentials – Banco de Questões
+        com Justificativas
+      </p>
+      <p style="font-size: 0.8rem; margin-top: 0.5rem">
+        Módulo 2: Sistemas Operacionais
+      </p>
+    </footer>
+
+    <script>
+      function checkAnswer(questionId, correctValue, justification) {
+        const selected = document.querySelector(
+          `input[name="${questionId}"]:checked`,
+        );
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`);
+
+        if (!selected) {
+          feedbackDiv.innerHTML =
+            '<i class="fas fa-exclamation-triangle"></i> Selecione uma resposta primeiro!';
+          feedbackDiv.className = "feedback incorrect";
+          return;
+        }
+
+        if (selected.value === correctValue) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`;
+          feedbackDiv.className = "feedback correct";
+        } else {
+          const correctText = document
+            .querySelector(
+              `input[name="${questionId}"][value="${correctValue}"]`,
+            )
+            .closest("li").innerText;
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-book-open"></i> A resposta correta é: <strong>${correctText}</strong><br><br><i class="fas fa-info-circle"></i> ${justification}</div>`;
+          feedbackDiv.className = "feedback incorrect";
+        }
+      }
+
+      function checkTrueFalse(questionId, correctValue, justification) {
+        const selected = document.querySelector(
+          `input[name="${questionId}"]:checked`,
+        );
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`);
+
+        if (!selected) {
+          feedbackDiv.innerHTML =
+            '<i class="fas fa-exclamation-triangle"></i> Selecione uma resposta primeiro!';
+          feedbackDiv.className = "feedback incorrect";
+          return;
+        }
+
+        const isCorrect = selected.value === correctValue;
+        const selectedText = selected.value === "true" ? "Verdadeiro" : "Falso";
+
+        if (isCorrect) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto! (${selectedText})<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`;
+          feedbackDiv.className = "feedback correct";
+        } else {
+          const correctText = correctValue === "true" ? "Verdadeiro" : "Falso";
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto. Você respondeu ${selectedText}.<div class="justification"><i class="fas fa-book-open"></i> A resposta correta é: <strong>${correctText}</strong><br><br><i class="fas fa-info-circle"></i> ${justification}</div>`;
+          feedbackDiv.className = "feedback incorrect";
+        }
+      }
+
+      function checkMultipleAnswer(questionId, correctValues, justification) {
+        const selected = document.querySelectorAll(
+          `input[name="${questionId}"]:checked`,
+        );
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`);
+
+        if (selected.length === 0) {
+          feedbackDiv.innerHTML =
+            '<i class="fas fa-exclamation-triangle"></i> Selecione pelo menos uma resposta!';
+          feedbackDiv.className = "feedback incorrect";
+          return;
+        }
+
+        const selectedValues = Array.from(selected).map((cb) => cb.value);
+        const isCorrect =
+          correctValues.length === selectedValues.length &&
+          correctValues.every((val) => selectedValues.includes(val));
+
+        if (isCorrect) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`;
+          feedbackDiv.className = "feedback correct";
+        } else {
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-book-open"></i> As respostas corretas são: PowerShell, Compatibilidade com versões anteriores, Oferece desktop e servidor.<br><br><i class="fas fa-info-circle"></i> ${justification}</div>`;
+          feedbackDiv.className = "feedback incorrect";
+        }
+      }
+    </script>
+    <script src="../js/menu.js"></script>
+  </body>
+</html>

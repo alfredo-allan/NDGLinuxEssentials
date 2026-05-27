@@ -1,0 +1,499 @@
+/* ============================================ */
+/* CSS GLOBAL - IDENTIDADE VISUAL NDG LINUX    */
+/* ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden !important;
+}
+
+body {
+  background-color: #0a0a0a;
+  color: #e0e0e0;
+  font-family: "Inter", sans-serif;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+/* CSS Variables (Briefing) */
+:root {
+  --bg-dark: #0a0a0a;
+  --bg-card: #111111;
+  --bg-card-hover: #1a1a1a;
+  --text: #e0e0e0;
+  --text-dim: #888888;
+  --primary: #00ff88;
+  --primary-dark: #00cc6a;
+  --secondary: #0078d4;
+  --success: #00ff88;
+  --warning: #ffcc00;
+  --danger: #ff4444;
+  --info: #00aaff;
+  --border: #222222;
+  --sidebar-width: 280px;
+  --sidebar-width-collapsed: 0px;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ===== NAVBAR SUPERIOR (SIMPLIFICADA) ===== */
+.top-bar {
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 0.8rem 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu-toggle {
+  background: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.menu-toggle:hover {
+  background: var(--primary);
+  color: var(--bg-dark);
+}
+
+.top-bar-brand {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.top-bar-brand i {
+  font-size: 1.3rem;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.btn-outline:hover {
+  background: var(--primary);
+  color: var(--bg-dark);
+}
+
+/* ===== MENU LATERAL ===== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: var(--sidebar-width);
+  background: rgba(17, 17, 17, 0.98);
+  backdrop-filter: blur(15px);
+  border-right: 1px solid var(--border);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 1002;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar-header h3 {
+  color: var(--primary);
+  font-size: 1.2rem;
+}
+
+.close-sidebar {
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-sidebar:hover {
+  color: var(--danger);
+}
+
+.nav-modules {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.nav-modules li a {
+  display: block;
+  padding: 0.7rem 1rem;
+  color: var(--text-dim);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.2s;
+  font-size: 0.85rem;
+}
+
+.nav-modules li a:hover {
+  color: var(--primary);
+  background: rgba(0, 255, 136, 0.1);
+  transform: translateX(5px);
+}
+
+/* Overlay para fechar o menu */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+  display: none;
+}
+
+.sidebar-overlay.active {
+  display: block;
+}
+
+/* ===== CONTEÚDO PRINCIPAL ===== */
+.main-content {
+  transition: margin-left 0.3s ease;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  padding: 60px 0 40px 0;
+  text-align: center;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+}
+
+.badge-lab {
+  display: inline-block;
+  background: rgba(0, 255, 136, 0.1);
+  color: var(--primary);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: var(--text-dim);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ===== SECTIONS ===== */
+.section {
+  padding: 40px 0;
+  border-bottom: 1px solid var(--border);
+  scroll-margin-top: 80px;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-title i {
+  color: var(--primary);
+  font-size: 1.8rem;
+}
+
+.section-number {
+  color: var(--primary);
+  font-family: monospace;
+  font-size: 1.5rem;
+}
+
+/* ===== CARDS ===== */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: all 0.3s;
+  margin-bottom: 1.5rem;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+  background: var(--bg-card-hover);
+}
+
+.card i {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+/* ===== TERMINAL ===== */
+.terminal {
+  background: #0d1117;
+  border-radius: 12px;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  font-family: "Courier New", monospace;
+  overflow-x: auto !important;
+  margin: 1.5rem 0;
+}
+
+.terminal pre {
+  margin: 0;
+  color: var(--primary);
+  font-size: 0.85rem;
+  white-space: pre;
+  word-wrap: normal;
+  font-family: "Courier New", monospace;
+  display: inline-block;
+  min-width: 100%;
+}
+
+/* ===== TABELAS ===== */
+.table-custom {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+.table-custom th,
+.table-custom td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.table-custom th {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ===== ALERTAS ===== */
+.alert {
+  padding: 1rem;
+  border-radius: 12px;
+  margin: 1rem 0;
+  border-left: 4px solid;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.alert-success {
+  border-left-color: var(--success);
+}
+
+.alert-success i {
+  color: var(--success);
+}
+
+.alert-info {
+  border-left-color: var(--info);
+}
+
+.alert-info i {
+  color: var(--info);
+}
+
+/* ===== GRID ===== */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .section {
+    padding: 40px 0;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+    flex-wrap: wrap;
+  }
+
+  .sidebar {
+    width: 80%;
+    max-width: 300px;
+  }
+
+  .terminal {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .terminal pre {
+    font-size: 0.7rem;
+    white-space: pre;
+  }
+}
+
+/* Desktop - sidebar pode ficar semi-aberta */
+@media (max-width: 768px) {
+  .menu-toggle {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+    gap: 0.3rem;
+  }
+
+  .menu-toggle i {
+    font-size: 0.9rem;
+  }
+
+  .menu-toggle span {
+    font-size: 0.7rem;
+  }
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+  color: var(--text-dim);
+}
+
+@media (max-width: 768px) {
+  /* Top bar fixa no topo do mobile */
+  .top-bar {
+    position: fixed;
+    top: 0;
+    left: 0px;
+    right: 0;
+    z-index: 1001;
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(10px);
+    padding: 0.5rem 3rem;
+  }
+
+  /* Botão toggle menor e mais clean */
+  .menu-toggle {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+    gap: 0.3rem;
+    border-radius: 6px;
+    position: relative;
+    left: -35px;
+  }
+
+  .menu-toggle i {
+    font-size: 0.9rem;
+  }
+
+  .menu-toggle span {
+    font-size: 0.7rem;
+  }
+
+  /* Brand menor */
+  .top-bar-brand {
+    font-size: 0.9rem;
+    position: relative;
+    left: -40px;
+  }
+
+  .top-bar-brand i {
+    font-size: 1rem;
+  }
+
+  /* Botão voltar menor */
+  .btn-outline {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.7rem;
+    display: none !important;
+  }
+
+  /* Adiciona padding no body para não esconder conteúdo atrás do header fixo */
+  body {
+    padding-top: 55px;
+  }
+
+  /* Hero section ajustada para o header fixo */
+  .hero {
+    padding: 30px 0 20px 0;
+    margin-top: 0;
+  }
+
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .badge-lab {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.8rem;
+  }
+}

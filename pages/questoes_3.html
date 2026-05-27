@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>NDG Linux Essentials | Banco de Questões - Módulo 3</title>
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <!-- Google Fonts Inter -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/questoes.css" />
+  </head>
+  <body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <button class="menu-toggle" id="openMenu">
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+      </button>
+      <a href="index.html" class="top-bar-brand">
+        <i class="fab fa-linux"></i> NDG Linux Essentials
+      </a>
+      <a href="index.html" class="btn-outline">
+        <i class="fas fa-home"></i> Voltar
+      </a>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-compass"></i> Navegação - Questões</h3>
+        <button class="close-sidebar" id="closeMenu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="nav-modules">
+        <li>
+          <a href="#questao1"
+            ><i class="fas fa-question-circle"></i> Questão 1 - Blog</a
+          >
+        </li>
+        <li>
+          <a href="#questao2"
+            ><i class="fas fa-question-circle"></i> Questão 2 - Shells</a
+          >
+        </li>
+        <li>
+          <a href="#questao3"
+            ><i class="fas fa-question-circle"></i> Questão 3 - Relatório</a
+          >
+        </li>
+        <li>
+          <a href="#questao4"
+            ><i class="fas fa-question-circle"></i> Questão 4 - Atualizações</a
+          >
+        </li>
+        <li>
+          <a href="#questao5"
+            ><i class="fas fa-question-circle"></i> Questão 5 - Cloud
+            Computing</a
+          >
+        </li>
+        <li>
+          <a href="#questao6"
+            ><i class="fas fa-question-circle"></i> Questão 6 - Virtualização</a
+          >
+        </li>
+        <li>
+          <a href="#questao7"
+            ><i class="fas fa-question-circle"></i> Questão 7 - Multiusuário</a
+          >
+        </li>
+        <li>
+          <a href="#questao8"
+            ><i class="fas fa-question-circle"></i> Questão 8 - Firewall</a
+          >
+        </li>
+        <li>
+          <a href="#questao9"
+            ><i class="fas fa-question-circle"></i> Questão 9 - Senha Forte</a
+          >
+        </li>
+        <li>
+          <a href="#questao10"
+            ><i class="fas fa-question-circle"></i> Questão 10 - Acesso
+            Remoto</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <!-- Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="badge-lab">
+          <i class="fas fa-graduation-cap"></i> NDG Linux Essentials | Banco de
+          Questões
+        </div>
+        <h1>Exame do Módulo 3</h1>
+        <p>
+          Aplicações e Ferramentas - Teste seus conhecimentos com justificativas
+        </p>
+        <div style="margin-top: 1.5rem">
+          <i
+            class="fas fa-terminal"
+            style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"
+          ></i>
+          <i
+            class="fab fa-linux"
+            style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"
+          ></i>
+          <i
+            class="fas fa-cloud"
+            style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"
+          ></i>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- QUESTÃO 1 - Módulo 3: Blog -->
+      <section id="questao1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q1</span> Software para Blog
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-blog"></i> Se você quisesse criar um blog, qual
+            software seria mais útil?
+          </div>
+          <div class="options" id="q1-options">
+            <li><input type="radio" name="q1" value="a" /> WordPress</li>
+            <li><input type="radio" name="q1" value="b" /> Samba</li>
+            <li><input type="radio" name="q1" value="c" /> Dovecot</li>
+            <li><input type="radio" name="q1" value="d" /> Postfix</li>
+            <li><input type="radio" name="q1" value="e" /> MySQL</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q1',
+                'a',
+                'WordPress é a plataforma de blogging mais popular do mundo, ideal para criar e gerenciar blogs. Samba é para compartilhamento de arquivos, Dovecot e Postfix são servidores de email, MySQL é banco de dados.',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q1-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 2 - Módulo 3: Famílias de Shell -->
+      <section id="questao2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q2</span> Famílias de Shell
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-terminal"></i> As duas principais famílias de
+            shells do Linux são: (escolha duas)
+          </div>
+          <div class="options" id="q2-options">
+            <li><input type="checkbox" name="q2" value="a" /> C Shell</li>
+            <li><input type="checkbox" name="q2" value="b" /> Emacs</li>
+            <li><input type="checkbox" name="q2" value="c" /> Bourne Shell</li>
+            <li><input type="checkbox" name="q2" value="d" /> Korn shell</li>
+            <li><input type="checkbox" name="q2" value="e" /> Python Shell</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q2',
+                ['a', 'c'],
+                'As duas principais famílias são Bourne Shell (sh, bash, ksh, zsh) e C Shell (csh, tcsh). Emacs é um editor de texto, Python Shell é interpretador Python.',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q2-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 3 - Módulo 3: Relatório para imprimir -->
+      <section id="questao3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q3</span> Software para Relatório
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-print"></i> Se você quisesse escrever um relatório
+            para ser impresso, provavelmente usaria:
+          </div>
+          <div class="options" id="q3-options">
+            <li><input type="radio" name="q3" value="a" /> Firefox</li>
+            <li><input type="radio" name="q3" value="b" /> LibreOffice</li>
+            <li><input type="radio" name="q3" value="c" /> Adobe Flash</li>
+            <li><input type="radio" name="q3" value="d" /> Chrome</li>
+            <li><input type="radio" name="q3" value="e" /> Wiki</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q3',
+                'b',
+                'LibreOffice Writer é o processador de texto ideal para criar documentos e relatórios para impressão. Firefox/Chrome são navegadores, Flash está obsoleto, Wiki é colaborativo online.',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q3-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 4 - Módulo 3: Atualizações e Privacidade -->
+      <section id="questao4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q4</span> Atualizações e Privacidade
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-shield-alt"></i> Para proteger sua privacidade
+            online, você pode configurar seu computador para verificar
+            atualizações periodicamente. Verdadeiro ou Falso?
+          </div>
+          <div class="options" id="q4-options">
+            <li><input type="radio" name="q4" value="true" /> Verdadeiro</li>
+            <li><input type="radio" name="q4" value="false" /> Falso</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkTrueFalse(
+                'q4',
+                'true',
+                '✅ Correto! Atualizações periódicas trazem correções de segurança que protegem sua privacidade e dados contra vulnerabilidades conhecidas.',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q4-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 5 - Módulo 3: Cloud Computing -->
+      <section id="questao5" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q5</span> Cloud Computing
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-cloud"></i> Computação em nuvem (Cloud Computing):
+          </div>
+          <div class="options" id="q5-options">
+            <li>
+              <input type="radio" name="q5" value="a" /> Requer menos recursos
+              porque os sistemas são compartilhados entre muitos usuários
+            </li>
+            <li>
+              <input type="radio" name="q5" value="b" /> É possível graças a
+              velocidades de internet mais rápidas
+            </li>
+            <li>
+              <input type="radio" name="q5" value="c" /> Permite que usuários em
+              diferentes regiões geográficas trabalhem juntos em tempo real
+            </li>
+            <li>
+              <input type="radio" name="q5" value="d" /> Todas estão corretas
+            </li>
+            <li>
+              <input type="radio" name="q5" value="e" /> É útil tanto para
+              empresas quanto para usuários domésticos
+            </li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q5',
+                'd',
+                'Todas as alternativas são corretas: a nuvem compartilha recursos, depende de internet rápida, permite colaboração global e serve para todos os tipos de usuários.',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q5-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 6 - Módulo 3: Virtualização -->
+      <section id="questao6" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q6</span> Virtualização
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-server"></i> O termo para computadores individuais
+            executando múltiplos sistemas ao mesmo tempo é:
+          </div>
+          <div class="options" id="q6-options">
+            <li><input type="radio" name="q6" value="a" /> Distribuição</li>
+            <li><input type="radio" name="q6" value="b" /> Virtualização</li>
+            <li><input type="radio" name="q6" value="c" /> Cloud priority</li>
+            <li><input type="radio" name="q6" value="d" /> Googleization</li>
+            <li><input type="radio" name="q6" value="e" /> MultiRun</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q6',
+                'b',
+                'Virtualização permite que um único computador físico (host) execute múltiplos sistemas operacionais convidados (guests) simultaneamente.',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q6-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 7 - Módulo 3: Sistema Multiusuário -->
+      <section id="questao7" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q7</span> Sistema Multiusuário
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-users"></i> Quais das seguintes são características
+            de um sistema operacional multiusuário? (escolha três)
+          </div>
+          <div class="options" id="q7-options">
+            <li>
+              <input type="checkbox" name="q7" value="a" /> Usuários podem
+              proteger suas informações de outros usuários
+            </li>
+            <li>
+              <input type="checkbox" name="q7" value="b" /> Cada usuário só pode
+              fazer login uma vez por dia
+            </li>
+            <li>
+              <input type="checkbox" name="q7" value="c" /> Recursos são
+              compartilhados entre usuários
+            </li>
+            <li>
+              <input type="checkbox" name="q7" value="d" /> Muitos usuários
+              podem fazer login simultaneamente com uma conta única
+            </li>
+            <li>
+              <input type="checkbox" name="q7" value="e" /> Muitos usuários
+              podem fazer login simultaneamente com contas únicas
+            </li>
+            <li>
+              <input type="checkbox" name="q7" value="f" /> Um usuário
+              administrativo recebe uma CPU dedicada
+            </li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q7',
+                ['a', 'c', 'e'],
+                'Sistemas multiusuário permitem: proteção entre usuários (permissões), compartilhamento de recursos e múltiplos logins simultâneos com contas únicas.',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q7-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 8 - Módulo 3: Firewall -->
+      <section id="questao8" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q8</span> Componentes de Firewall
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-firewall"></i> Dois componentes que fornecem a
+            capacidade de implementar um firewall incluem: (escolha duas)
+          </div>
+          <div class="options" id="q8-options">
+            <li><input type="checkbox" name="q8" value="a" /> ipfw</li>
+            <li><input type="checkbox" name="q8" value="b" /> gufw</li>
+            <li><input type="checkbox" name="q8" value="c" /> ifconfig</li>
+            <li><input type="checkbox" name="q8" value="d" /> Cerberus</li>
+            <li><input type="checkbox" name="q8" value="e" /> iptables</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q8',
+                ['b', 'e'],
+                'iptables é o firewall nativo do Linux (back-end), gufw é uma interface gráfica (front-end) para o UFW. ipfw é do FreeBSD, ifconfig configura rede, Cerberus não é firewall.',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q8-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 9 - Módulo 3: Senha Forte -->
+      <section id="questao9" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q9</span> Propriedades de uma Senha Forte
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-key"></i> Quais das seguintes são propriedades de
+            uma senha forte? (escolha três)
+          </div>
+          <div class="options" id="q9-options">
+            <li>
+              <input type="checkbox" name="q9" value="a" /> Inclui símbolos
+            </li>
+            <li>
+              <input type="checkbox" name="q9" value="b" /> Baseada em itens
+              fáceis de lembrar como aniversários
+            </li>
+            <li>
+              <input type="checkbox" name="q9" value="c" /> Longa para que possa
+              ser reutilizada em múltiplos sites
+            </li>
+            <li>
+              <input type="checkbox" name="q9" value="d" /> Mistura de
+              maiúsculas e minúsculas
+            </li>
+            <li>
+              <input type="checkbox" name="q9" value="e" /> Pelo menos 10
+              caracteres de comprimento
+            </li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q9',
+                ['a', 'd', 'e'],
+                'Senhas fortes devem ter: símbolos, mistura de maiúsculas/minúsculas e mínimo de 10 caracteres. Não devem ser baseadas em dados pessoais nem reutilizadas entre sites.',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q9-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 10 - Módulo 3: Acesso Remoto -->
+      <section id="questao10" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q10</span> Prevenir Acesso Remoto Não
+          Autorizado
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-ban"></i> O que pode ser feito para prevenir que
+            usuários não autorizados acessem seu computador remotamente?
+            (escolha duas)
+          </div>
+          <div class="options" id="q10-options">
+            <li>
+              <input type="checkbox" name="q10" value="a" /> Usar senhas fortes
+              em todas as contas de usuário
+            </li>
+            <li>
+              <input type="checkbox" name="q10" value="b" /> Bloquear cookies de
+              terceiros
+            </li>
+            <li>
+              <input type="checkbox" name="q10" value="c" /> Ligar um firewall
+            </li>
+            <li>
+              <input type="checkbox" name="q10" value="d" /> Não usar redes sem
+              fio - apenas com fio
+            </li>
+            <li>
+              <input type="checkbox" name="q10" value="e" /> Bloquear todos os
+              cookies
+            </li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q10',
+                ['a', 'c'],
+                'Senhas fortes impedem acesso indevido por autenticação. O firewall bloqueia conexões não autorizadas vindas da rede. Cookies não estão relacionados a acesso remoto direto.',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q10-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- Gabarito -->
+      <details class="answer-key">
+        <summary><i class="fas fa-key"></i> 📋 Gabarito - Módulo 3</summary>
+        <div style="margin-top: 1rem">
+          <p><strong>Q1:</strong> WordPress</p>
+          <p><strong>Q2:</strong> C Shell e Bourne Shell</p>
+          <p><strong>Q3:</strong> LibreOffice</p>
+          <p><strong>Q4:</strong> Verdadeiro</p>
+          <p><strong>Q5:</strong> Todas estão corretas</p>
+          <p><strong>Q6:</strong> Virtualização</p>
+          <p>
+            <strong>Q7:</strong> Usuários podem proteger informações, Recursos
+            compartilhados, Múltiplos logins com contas únicas
+          </p>
+          <p><strong>Q8:</strong> gufw e iptables</p>
+          <p>
+            <strong>Q9:</strong> Inclui símbolos, Mistura de
+            maiúsculas/minúsculas, Pelo menos 10 caracteres
+          </p>
+          <p><strong>Q10:</strong> Usar senhas fortes e Ligar um firewall</p>
+        </div>
+      </details>
+    </div>
+
+    <footer>
+      <p>
+        <i class="fab fa-linux"></i> NDG Linux Essentials – Banco de Questões
+        com Justificativas
+      </p>
+      <p style="font-size: 0.8rem; margin-top: 0.5rem">
+        Módulo 3: Aplicações e Ferramentas
+      </p>
+    </footer>
+
+    <script>
+      function checkAnswer(questionId, correctValue, justification) {
+        const selected = document.querySelector(
+          `input[name="${questionId}"]:checked`,
+        );
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`);
+
+        if (!selected) {
+          feedbackDiv.innerHTML =
+            '<i class="fas fa-exclamation-triangle"></i> Selecione uma resposta primeiro!';
+          feedbackDiv.className = "feedback incorrect";
+          return;
+        }
+
+        if (selected.value === correctValue) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`;
+          feedbackDiv.className = "feedback correct";
+        } else {
+          const correctElement = document.querySelector(
+            `input[name="${questionId}"][value="${correctValue}"]`,
+          );
+          const correctText = correctElement
+            ? correctElement.closest("li").innerText
+            : correctValue;
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-book-open"></i> A resposta correta é: <strong>${correctText}</strong><br><br><i class="fas fa-info-circle"></i> ${justification}</div>`;
+          feedbackDiv.className = "feedback incorrect";
+        }
+      }
+
+      function checkTrueFalse(questionId, correctValue, justification) {
+        const selected = document.querySelector(
+          `input[name="${questionId}"]:checked`,
+        );
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`);
+
+        if (!selected) {
+          feedbackDiv.innerHTML =
+            '<i class="fas fa-exclamation-triangle"></i> Selecione uma resposta primeiro!';
+          feedbackDiv.className = "feedback incorrect";
+          return;
+        }
+
+        const isCorrect = selected.value === correctValue;
+        const selectedText = selected.value === "true" ? "Verdadeiro" : "Falso";
+
+        if (isCorrect) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto! (${selectedText})<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`;
+          feedbackDiv.className = "feedback correct";
+        } else {
+          const correctText = correctValue === "true" ? "Verdadeiro" : "Falso";
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto. Você respondeu ${selectedText}.<div class="justification"><i class="fas fa-book-open"></i> A resposta correta é: <strong>${correctText}</strong><br><br><i class="fas fa-info-circle"></i> ${justification}</div>`;
+          feedbackDiv.className = "feedback incorrect";
+        }
+      }
+
+      function checkMultipleAnswer(questionId, correctValues, justification) {
+        const selected = document.querySelectorAll(
+          `input[name="${questionId}"]:checked`,
+        );
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`);
+
+        if (selected.length === 0) {
+          feedbackDiv.innerHTML =
+            '<i class="fas fa-exclamation-triangle"></i> Selecione pelo menos uma resposta!';
+          feedbackDiv.className = "feedback incorrect";
+          return;
+        }
+
+        const selectedValues = Array.from(selected).map((cb) => cb.value);
+        const isCorrect =
+          correctValues.length === selectedValues.length &&
+          correctValues.every((val) => selectedValues.includes(val));
+
+        if (isCorrect) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`;
+          feedbackDiv.className = "feedback correct";
+        } else {
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-book-open"></i> ${justification}</div>`;
+          feedbackDiv.className = "feedback incorrect";
+        }
+      }
+    </script>
+
+    <script>
+      // Menu Sidebar JavaScript
+      class SidebarMenu {
+        constructor() {
+          this.sidebar = document.getElementById("sidebar");
+          this.overlay = document.getElementById("sidebarOverlay");
+          this.openBtn = document.getElementById("openMenu");
+          this.closeBtn = document.getElementById("closeMenu");
+          this.init();
+        }
+
+        init() {
+          if (!this.sidebar) return;
+
+          if (this.openBtn) {
+            this.openBtn.addEventListener("click", () => this.open());
+          }
+          if (this.closeBtn) {
+            this.closeBtn.addEventListener("click", () => this.close());
+          }
+          if (this.overlay) {
+            this.overlay.addEventListener("click", () => this.close());
+          }
+
+          document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && this.sidebar.classList.contains("open")) {
+              this.close();
+            }
+          });
+
+          const links = document.querySelectorAll(".sidebar .nav-modules a");
+          links.forEach((link) => {
+            link.addEventListener("click", () => this.close());
+          });
+        }
+
+        open() {
+          this.sidebar.classList.add("open");
+          this.overlay.classList.add("active");
+          document.body.style.overflow = "hidden";
+        }
+
+        close() {
+          this.sidebar.classList.remove("open");
+          this.overlay.classList.remove("active");
+          document.body.style.overflow = "";
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        new SidebarMenu();
+      });
+    </script>
+  </body>
+</html>
