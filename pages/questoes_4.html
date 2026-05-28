@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>NDG Linux Essentials | Módulo 4 - Open Source e Licenciamento</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/questoes.css" />
+  </head>
+  <body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <button class="menu-toggle" id="openMenu">
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+      </button>
+      <a href="../index.html" class="top-bar-brand">
+        <i class="fab fa-linux"></i> NDG Linux Essentials
+      </a>
+      <a href="../index.html" class="btn-outline">
+        <i class="fas fa-home"></i> Voltar
+      </a>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-compass"></i> Navegação - Questões</h3>
+        <button class="close-sidebar" id="closeMenu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="nav-modules">
+        <li>
+          <a href="#questao1"
+            ><i class="fas fa-question-circle"></i> Questão 1 - Acesso ao
+            código-fonte</a
+          >
+        </li>
+        <li>
+          <a href="#questao2"
+            ><i class="fas fa-question-circle"></i> Questão 2 - O que é
+            código-fonte?</a
+          >
+        </li>
+        <li>
+          <a href="#questao3"
+            ><i class="fas fa-question-circle"></i> Questão 3 - GPLv2 vs BSD</a
+          >
+        </li>
+        <li>
+          <a href="#questao4"
+            ><i class="fas fa-question-circle"></i> Questão 4 - Licença do
+            Linux</a
+          >
+        </li>
+        <li>
+          <a href="#questao5"
+            ><i class="fas fa-question-circle"></i> Questão 5 - Fundadores da
+            OSI</a
+          >
+        </li>
+        <li>
+          <a href="#questao6"
+            ><i class="fas fa-question-circle"></i> Questão 6 - Licenças
+            permissivas</a
+          >
+        </li>
+        <li>
+          <a href="#questao7"
+            ><i class="fas fa-question-circle"></i> Questão 7 - CC BY-ND</a
+          >
+        </li>
+        <li>
+          <a href="#questao8"
+            ><i class="fas fa-question-circle"></i> Questão 8 - GPL vs LGPL</a
+          >
+        </li>
+        <li>
+          <a href="#questao9"
+            ><i class="fas fa-question-circle"></i> Questão 9 - Licenças
+            permissivas (múltipla)</a
+          >
+        </li>
+        <li>
+          <a href="#questao10"
+            ><i class="fas fa-question-circle"></i> Questão 10 - CC0</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <!-- Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="badge-lab">
+          <i class="fas fa-graduation-cap"></i> NDG Linux Essentials | Banco de
+          Questões
+        </div>
+        <h1>Exame do Módulo 4</h1>
+        <p>
+          Open Source Software and Licensing - Teste seus conhecimentos sobre
+          licenças e software livre
+        </p>
+        <div style="margin-top: 1.5rem">
+          <i
+            class="fab fa-linux"
+            style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"
+          ></i>
+          <i
+            class="fas fa-balance-scale"
+            style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"
+          ></i>
+          <i
+            class="fab fa-creative-commons"
+            style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"
+          ></i>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- QUESTÃO 1 -->
+      <section id="questao1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q1</span> Acesso ao código-fonte do Linux
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-code"></i> O código-fonte do Linux está disponível
+            para:
+          </div>
+          <div class="options" id="q1-options">
+            <li>
+              <input type="radio" name="q1" value="a" /> Qualquer pessoa que
+              tenha o conhecimento necessário para acessá-lo
+            </li>
+            <li>
+              <input type="radio" name="q1" value="b" /> Apenas funcionários da
+              Linux Foundation
+            </li>
+            <li>
+              <input type="radio" name="q1" value="c" /> Apenas pesquisadores
+              universitários com bolsa do governo
+            </li>
+            <li>
+              <input type="radio" name="q1" value="d" /> Funcionários do FBI,
+              CIA e NSA com autorização de alto sigilo
+            </li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q1',
+                'a',
+                'O Linux é open source e seu código-fonte está disponível gratuitamente para qualquer pessoa que queira acessá-lo, estudá-lo, modificá-lo ou distribuí-lo, sob os termos da licença GPLv2.',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q1-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 2 -->
+      <section id="questao2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q2</span> O que é código-fonte?
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-file-code"></i> Código-fonte se refere a:
+          </div>
+          <div class="options" id="q2-options">
+            <li>
+              <input type="radio" name="q2" value="a" /> A interface que o
+              software usa para se comunicar com o kernel
+            </li>
+            <li>
+              <input type="radio" name="q2" value="b" /> A versão de um programa
+              que o computador executa na CPU
+            </li>
+            <li>
+              <input type="radio" name="q2" value="c" /> Uma versão legível por
+              humanos de um software de computador
+            </li>
+            <li>
+              <input type="radio" name="q2" value="d" /> A licença que dita como
+              você pode usar e compartilhar o software
+            </li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q2',
+                'c',
+                'Código-fonte é um conjunto de instruções escritas em linguagem de programação que humanos podem ler e entender. Ele precisa ser compilado em código de máquina para o computador executar.',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q2-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 3 -->
+      <section id="questao3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q3</span> GPLv2 vs BSD
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-balance-scale"></i> A maior diferença entre as
+            licenças GPLv2 e BSD é:
+          </div>
+          <div class="options" id="q3-options">
+            <li>
+              <input type="radio" name="q3" value="a" /> Apenas BSD permite uso
+              comercial
+            </li>
+            <li>
+              <input type="radio" name="q3" value="b" /> Nada, elas são
+              virtualmente idênticas
+            </li>
+            <li>
+              <input type="radio" name="q3" value="c" /> GPLv2 não é aprovada
+              pela OSI
+            </li>
+            <li>
+              <input type="radio" name="q3" value="d" /> BSD não tem cláusula de
+              copyleft
+            </li>
+            <li>
+              <input type="radio" name="q3" value="e" /> GPLv2 exige atribuição
+              de copyright à FSF
+            </li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q3',
+                'd',
+                'A principal diferença é que a BSD é uma licença permissiva SEM copyleft (não exige que modificações sejam compartilhadas), enquanto a GPLv2 tem copyleft forte.',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q3-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 4 -->
+      <section id="questao4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q4</span> Licença do Linux
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fab fa-linux"></i> O Linux é distribuído sob qual licença?
+          </div>
+          <div class="options" id="q4-options">
+            <li><input type="radio" name="q4" value="a" /> GPLv3</li>
+            <li><input type="radio" name="q4" value="b" /> MIT</li>
+            <li><input type="radio" name="q4" value="c" /> GPLv2</li>
+            <li><input type="radio" name="q4" value="d" /> Linux Foundation</li>
+            <li><input type="radio" name="q4" value="e" /> BSD</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q4',
+                'c',
+                'O kernel Linux é distribuído sob a licença GNU General Public License versão 2 (GPLv2). Linus Torvalds optou por permanecer com a GPLv2 e não migrar para a GPLv3.',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q4-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 5 -->
+      <section id="questao5" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q5</span> Fundadores da Open Source
+          Initiative
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-users"></i> Quem fundou a Open Source Initiative
+            (OSI)? (escolha duas)
+          </div>
+          <div class="options" id="q5-options">
+            <li><input type="checkbox" name="q5" value="a" /> Eric Raymond</li>
+            <li>
+              <input type="checkbox" name="q5" value="b" /> University of
+              California at Berkeley
+            </li>
+            <li>
+              <input type="checkbox" name="q5" value="c" /> Linus Torvalds
+            </li>
+            <li>
+              <input type="checkbox" name="q5" value="d" /> Richard Stallman
+            </li>
+            <li><input type="checkbox" name="q5" value="e" /> Bruce Perens</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q5',
+                ['a', 'e'],
+                'A Open Source Initiative (OSI) foi fundada em 1998 por Bruce Perens e Eric Raymond. Eles acreditavam que a FSF era politicamente carregada demais e queriam um foco mais prático para o código aberto.',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q5-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 6 -->
+      <section id="questao6" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q6</span> Exemplos de licenças
+          permissivas
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-check-circle"></i> Quais são exemplos de licenças
+            de software permissivas? (escolha duas)
+          </div>
+          <div class="options" id="q6-options">
+            <li><input type="checkbox" name="q6" value="a" /> MIT</li>
+            <li><input type="checkbox" name="q6" value="b" /> GPLv3</li>
+            <li><input type="checkbox" name="q6" value="c" /> BSD</li>
+            <li><input type="checkbox" name="q6" value="d" /> GPLv2</li>
+            <li><input type="checkbox" name="q6" value="e" /> LGPLv3</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q6',
+                ['a', 'c'],
+                'Licenças permissivas como MIT e BSD permitem que o software seja usado, modificado e redistribuído, inclusive em produtos de código fechado, desde que a atribuição original seja mantida.',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q6-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 7 -->
+      <section id="questao7" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q7</span> CC BY-ND
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fab fa-creative-commons-nd"></i> Se um podcast é
+            licenciado sob CC BY-ND, você pode: (escolha duas)
+          </div>
+          <div class="options" id="q7-options">
+            <li>
+              <input type="checkbox" name="q7" value="a" /> Publicá-lo em seu
+              site
+            </li>
+            <li>
+              <input type="checkbox" name="q7" value="b" /> Compartilhá-lo desde
+              que dê crédito ao autor
+            </li>
+            <li>
+              <input type="checkbox" name="q7" value="c" /> Usar uma entrevista
+              ou música dele para seu próprio podcast
+            </li>
+            <li>
+              <input type="checkbox" name="q7" value="d" /> Adicionar anúncios e
+              publicá-lo em seu site
+            </li>
+            <li>
+              <input type="checkbox" name="q7" value="e" /> Vendê-lo como parte
+              de uma compilação
+            </li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q7',
+                ['a', 'b'],
+                'CC BY-ND (Attribution-NoDerivs) permite redistribuição (inclusive publicar no site) e exige atribuição ao autor, mas NÃO permite modificações (ND = NoDerivatives - sem derivações).',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q7-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 8 -->
+      <section id="questao8" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q8</span> GPL vs LGPL
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-copyright"></i> A diferença entre as licenças GPL e
+            LGPL é:
+          </div>
+          <div class="options" id="q8-options">
+            <li>
+              <input type="radio" name="q8" value="a" /> LGPL se aplica a
+              serviços web
+            </li>
+            <li>
+              <input type="radio" name="q8" value="b" /> LGPL permite distribuir
+              o software apenas em formato binário
+            </li>
+            <li>
+              <input type="radio" name="q8" value="c" /> LGPL garante que todas
+              as variantes do programa GPL original tenham a mesma liberdade de
+              uso que o original
+            </li>
+            <li>
+              <input type="radio" name="q8" value="d" /> LGPL é mais curta que a
+              GPL
+            </li>
+            <li>
+              <input type="radio" name="q8" value="e" /> LGPL foi feita pela OSI
+              enquanto GPL foi feita pela FSF
+            </li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q8',
+                'c',
+                'A LGPL (Lesser General Public License) é uma versão da GPL que permite que bibliotecas sejam vinculadas a software proprietário. Ela garante que as versões modificadas da biblioteca permaneçam livres.',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q8-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 9 -->
+      <section id="questao9" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q9</span> Licenças de software livre
+          permissivas
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-unlock-alt"></i> Licenças de software livre
+            permissivas: (escolha três)
+          </div>
+          <div class="options" id="q9-options">
+            <li>
+              <input type="checkbox" name="q9" value="a" /> Não têm cláusula de
+              copyleft
+            </li>
+            <li>
+              <input type="checkbox" name="q9" value="b" /> Não são aprovadas
+              pela FSF
+            </li>
+            <li>
+              <input type="checkbox" name="q9" value="c" /> Não são aprovadas
+              pela OSI
+            </li>
+            <li>
+              <input type="checkbox" name="q9" value="d" /> Incluem GPLv2 e BSD
+            </li>
+            <li>
+              <input type="checkbox" name="q9" value="e" /> Podem permitir que o
+              software seja usado dentro de software de código fechado
+            </li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q9',
+                ['a', 'b', 'e'],
+                'Licenças permissivas (como BSD, MIT) não têm copyleft, NÃO são aprovadas pela FSF (que exige copyleft), e permitem uso em software fechado com atribuição adequada.',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q9-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 10 -->
+      <section id="questao10" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q10</span> Creative Commons e Domínio
+          Público
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fab fa-creative-commons-zero"></i> A versão Creative
+            Commons da licença de Domínio Público é:
+          </div>
+          <div class="options" id="q10-options">
+            <li>
+              <input type="radio" name="q10" value="a" />
+              NoAttribution-ShareAlike (CC BY-SA)
+            </li>
+            <li>
+              <input type="radio" name="q10" value="b" /> No Rights Reserved
+              (CC0)
+            </li>
+            <li>
+              <input type="radio" name="q10" value="c" />
+              Attribution-NonCommercial (CC BY-NC)
+            </li>
+            <li>
+              <input type="radio" name="q10" value="d" />
+              Attribution-NonCommercial-ShareAlike (CC BY-NC-SA)
+            </li>
+            <li>
+              <input type="radio" name="q10" value="e" /> Attribution (CC BY)
+            </li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q10',
+                'b',
+                'CC0 (No Rights Reserved) é a licença Creative Commons que permite ao criador renunciar a todos os direitos sobre sua obra, colocando-a em domínio público.',
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q10-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- Gabarito -->
+      <details class="answer-key">
+        <summary><i class="fas fa-key"></i> 📋 Gabarito - Módulo 4</summary>
+        <div style="margin-top: 1rem">
+          <p>
+            <strong>Q1:</strong> Qualquer pessoa que tenha o conhecimento
+            necessário para acessá-lo
+          </p>
+          <p>
+            <strong>Q2:</strong> Uma versão legível por humanos de um software
+            de computador
+          </p>
+          <p><strong>Q3:</strong> BSD não tem cláusula de copyleft</p>
+          <p><strong>Q4:</strong> GPLv2</p>
+          <p><strong>Q5:</strong> Eric Raymond e Bruce Perens</p>
+          <p><strong>Q6:</strong> MIT e BSD</p>
+          <p>
+            <strong>Q7:</strong> Publicá-lo em seu site; Compartilhá-lo desde
+            que dê crédito ao autor
+          </p>
+          <p>
+            <strong>Q8:</strong> LGPL garante que todas as variantes do programa
+            GPL original tenham a mesma liberdade de uso que o original
+          </p>
+          <p>
+            <strong>Q9:</strong> Não têm cláusula de copyleft; Não são aprovadas
+            pela FSF; Podem permitir uso em software fechado
+          </p>
+          <p><strong>Q10:</strong> No Rights Reserved (CC0)</p>
+        </div>
+      </details>
+    </div>
+
+    <footer>
+      <p>
+        <i class="fab fa-linux"></i> NDG Linux Essentials – Banco de Questões
+        com Justificativas
+      </p>
+      <p style="font-size: 0.8rem; margin-top: 0.5rem">
+        Módulo 4: Open Source Software and Licensing
+      </p>
+    </footer>
+
+    <script>
+      function checkAnswer(questionId, correctValue, justification) {
+        const selected = document.querySelector(
+          `input[name="${questionId}"]:checked`,
+        );
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`);
+
+        if (!selected) {
+          feedbackDiv.innerHTML =
+            '<i class="fas fa-exclamation-triangle"></i> Selecione uma resposta primeiro!';
+          feedbackDiv.className = "feedback incorrect";
+          return;
+        }
+
+        if (selected.value === correctValue) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`;
+          feedbackDiv.className = "feedback correct";
+        } else {
+          const correctElement = document.querySelector(
+            `input[name="${questionId}"][value="${correctValue}"]`,
+          );
+          const correctText = correctElement
+            ? correctElement.closest("li").innerText
+            : correctValue;
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-book-open"></i> A resposta correta é: <strong>${correctText}</strong><br><br><i class="fas fa-info-circle"></i> ${justification}</div>`;
+          feedbackDiv.className = "feedback incorrect";
+        }
+      }
+
+      function checkMultipleAnswer(questionId, correctValues, justification) {
+        const selected = document.querySelectorAll(
+          `input[name="${questionId}"]:checked`,
+        );
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`);
+
+        if (selected.length === 0) {
+          feedbackDiv.innerHTML =
+            '<i class="fas fa-exclamation-triangle"></i> Selecione pelo menos uma resposta!';
+          feedbackDiv.className = "feedback incorrect";
+          return;
+        }
+
+        const selectedValues = Array.from(selected).map((cb) => cb.value);
+        const isCorrect =
+          correctValues.length === selectedValues.length &&
+          correctValues.every((val) => selectedValues.includes(val));
+
+        if (isCorrect) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`;
+          feedbackDiv.className = "feedback correct";
+        } else {
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-book-open"></i> ${justification}</div>`;
+          feedbackDiv.className = "feedback incorrect";
+        }
+      }
+    </script>
+
+    <script src="../js/menu.js"></script>
+  </body>
+</html>

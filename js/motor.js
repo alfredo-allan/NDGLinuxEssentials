@@ -16,6 +16,16 @@ class NDGLinuxSearch {
         path: "pages/modulo_3.html",
         name: "Módulo 3",
         title: "Trabalhando em Linux",
+      },
+      {
+        path: "pages/modulo_4.html",
+        name: "Módulo 4",
+        title: "Software de Código Aberto e Licenciamento",
+      },
+      {
+        path: "pages/modulo_5.html",
+        name: "Módulo 5",
+        title: "Habilidades de Linha de Comando",
       }, // NOVO
       // Adicione novos módulos aqui:
       // { path: "pages/modulo_3.html", name: "Módulo 3", title: "Título" },

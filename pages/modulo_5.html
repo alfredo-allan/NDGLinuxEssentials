@@ -1,0 +1,3753 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>NDG Linux Essentials | Módulo 5 - Command Line Skills</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <button class="menu-toggle" id="openMenu">
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+      </button>
+      <a href="../index.html" class="top-bar-brand"> <i class="fab fa-linux"></i> NDG Linux Essentials </a>
+      <a href="../index.html" class="btn-outline"> <i class="fas fa-home"></i> Voltar </a>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-compass"></i> Navegação - Módulo 5</h3>
+        <button class="close-sidebar" id="closeMenu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="nav-modules">
+        <li>
+          <a href="#secao5-1"><i class="fas fa-terminal"></i> 5.1 Introdução à Linha de Comando</a>
+        </li>
+        <li>
+          <a href="#secao5-2"><i class="fas fa-terminal"></i> 5.2 Shell</a>
+        </li>
+        <li>
+          <a href="#secao5-3"><i class="fas fa-terminal"></i> 5.3 Comandos</a>
+        </li>
+        <li>
+          <a href="#secao5-3-1"><i class="fas fa-terminal"></i> 5.3.1 Argumentos</a>
+        </li>
+        <li>
+          <a href="#secao5-3-2"><i class="fas fa-terminal"></i> 5.3.2 Opções</a>
+        </li>
+        <li>
+          <a href="#secao5-3-3"><i class="fas fa-history"></i> 5.3.3 Histórico de Comandos</a>
+        </li>
+        <li>
+          <a href="#secao5-4"><i class="fas fa-code-branch"></i> 5.4 Variáveis</a>
+        </li>
+        <li>
+          <a href="#secao5-4-1"><i class="fas fa-laptop-code"></i> 5.4.1 Variáveis Locais</a>
+        </li>
+        <li>
+          <a href="#secao5-4-2"><i class="fas fa-globe"></i> 5.4.2 Variáveis de Ambiente</a>
+        </li>
+        <li>
+          <a href="#secao5-4-3"><i class="fas fa-road"></i> 5.4.3 Variável PATH</a>
+        </li>
+        <li>
+          <a href="#secao5-5"><i class="fas fa-terminal"></i> 5.5 Tipos de Comandos</a>
+        </li>
+        <li>
+          <a href="#secao5-5-1"><i class="fas fa-microchip"></i> 5.5.1 Comandos Internos</a>
+        </li>
+        <li>
+          <a href="#secao5-5-2"><i class="fas fa-file-code"></i> 5.5.2 Comandos Externos</a>
+        </li>
+        <li>
+          <a href="#secao5-5-3"><i class="fas fa-tag"></i> 5.5.3 Aliases</a>
+        </li>
+        <li>
+          <a href="#secao5-5-4"><i class="fas fa-cogs"></i> 5.5.4 Funções</a>
+        </li>
+        <li>
+          <a href="#secao5-6"><i class="fas fa-quote-left"></i> 5.6 Aspas</a>
+        </li>
+        <li>
+          <a href="#secao5-6-1"><i class="fas fa-quote-right"></i> 5.6.1 Aspas Duplas</a>
+        </li>
+        <li>
+          <a href="#secao5-6-2"><i class="fas fa-quote-left"></i> 5.6.2 Aspas Simples</a>
+        </li>
+        <li>
+          <a href="#secao5-6-3"><i class="fas fa-backward"></i> 5.6.3 Caractere de Escape</a>
+        </li>
+        <li>
+          <a href="#secao5-6-4"><i class="fas fa-terminal"></i> 5.6.4 Aspas Invertidas</a>
+        </li>
+        <li>
+          <a href="#secao5-7"><i class="fas fa-code-branch"></i> 5.7 Declarações de Controle</a>
+        </li>
+        <li>
+          <a href="#secao5-7-1"><i class="fas fa-semicolon"></i> 5.7.1 Ponto e Vírgula</a>
+        </li>
+        <li>
+          <a href="#secao5-7-2"><i class="fas fa-code-branch"></i> 5.7.2 Duplo E Comercial</a>
+        </li>
+        <li>
+          <a href="#secao5-7-3"><i class="fas fa-code-branch"></i> 5.7.3 Duplo Pipe</a>
+        </li>
+        <!-- Novas seções serão adicionadas aqui -->
+      </ul>
+    </div>
+
+    <!-- Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="badge-lab"><i class="fas fa-graduation-cap"></i> NDG Linux Essentials | Módulo 5</div>
+        <h1>Command Line Skills</h1>
+        <p>Habilidades de Linha de Comando</p>
+        <div style="margin-top: 1.5rem">
+          <i class="fas fa-terminal" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-code" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-angle-right" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-dollar-sign" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- SEÇÃO 5.1: Introduction -->
+      <section id="secao5-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-terminal"></i>
+          <span class="section-number">5.1</span> Introdução à Linha de Comando
+        </h2>
+
+        <div class="card">
+          <i class="fas fa-desktop"></i>
+          <p>
+            A maioria dos sistemas operacionais de consumo são projetados para proteger o usuário dos detalhes da
+            <strong>CLI (Command Line Interface)</strong> - Interface de Linha de Comando. A comunidade Linux é diferente, pois celebra
+            positivamente a CLI por seu poder, velocidade e capacidade de realizar uma vasta gama de tarefas com uma única instrução de
+            linha de comando.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-brain"></i>
+          <p>
+            Quando um usuário encontra a CLI pela primeira vez, pode achá-la desafiadora porque exige memorizar uma quantidade
+            impressionante de comandos e suas opções. No entanto, uma vez que o usuário aprendeu a estrutura de como os comandos são usados,
+            onde os arquivos e diretórios necessários estão localizados e como navegar na hierarquia de um sistema de arquivos, ele pode ser
+            imensamente produtivo.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-rocket"></i>
+          <p>
+            Esta capacidade proporciona <strong>controle mais preciso</strong>, <strong>maior velocidade</strong> e a
+            <strong>capacidade de automatizar tarefas</strong> mais facilmente através de scripts.
+          </p>
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i>
+          <strong>Vantagem do CLI:</strong> Ao aprender a CLI, um usuário pode ser produtivo quase instantaneamente em QUALQUER sabor ou
+          distribuição Linux, reduzindo o tempo necessário para se familiarizar com um sistema devido às variações na interface gráfica
+          (GUI).
+        </div>
+
+        <div class="terminal">
+          <pre>
+# Exemplo de prompt de comando no Linux
+usuario@linux:~$ 
+            
+# Comandos básicos que você aprenderá
+usuario@linux:~$ pwd          # Mostra o diretório atual
+usuario@linux:~$ ls           # Lista arquivos
+usuario@linux:~$ cd /home     # Navega para o diretório /home
+usuario@linux:~$ whoami       # Mostra o usuário atual</pre
+          >
+        </div>
+      </section>
+
+      <!-- MAIS SEÇÕES SERÃO ADICIONADAS AQUI -->
+
+      <!-- SEÇÃO 5.2: Shell -->
+      <section id="secao5-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-terminal"></i>
+          <span class="section-number">5.2</span> Shell
+        </h2>
+
+        <div class="card">
+          <i class="fas fa-arrow-right"></i>
+          <p>
+            Uma vez que um usuário insere um comando, o terminal então aceita o que o usuário digitou e o passa para um
+            <strong>shell</strong>. O shell é o interpretador de linha de comando que traduz comandos inseridos por um usuário em ações a
+            serem executadas pelo sistema operacional. Se a saída for produzida pelo comando, o texto é exibido no terminal. Se problemas
+            com o comando forem encontrados, uma mensagem de erro é exibida.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-code-branch"></i>
+          <p>
+            O ambiente Linux permite o uso de muitos shells diferentes, alguns dos quais existem há muitos anos. O shell mais comumente
+            usado para distribuições Linux é chamado de <strong>Bash shell</strong> (Bourne Again SHell). O Bash fornece muitos recursos
+            avançados, como <strong>histórico de comandos</strong> e <strong>edição inline</strong>, que permitem ao usuário reexecutar
+            facilmente comandos executados anteriormente ou uma variação deles através de edição simples.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-list"></i>
+          <p>O Bash shell também tem outros recursos populares, alguns dos quais listados abaixo:</p>
+          <ul style="margin-top: 0.75rem; margin-left: 1.5rem">
+            <li>
+              <strong><i class="fas fa-script"></i> Scripting (Scripts):</strong>
+              A capacidade de colocar comandos em um arquivo e então interpretar (efetivamente usar o Bash para executar o conteúdo do)
+              arquivo, resultando em todos os comandos sendo executados. Este recurso também tem algumas características de programação,
+              como declarações condicionais e a capacidade de criar funções (também conhecidas como sub-rotinas).
+            </li>
+            <li>
+              <strong><i class="fas fa-tag"></i> Aliases (Apelidos):</strong> A capacidade de criar apelidos curtos para comandos mais
+              longos.
+            </li>
+            <li>
+              <strong><i class="fas fa-database"></i> Variables (Variáveis):</strong>
+              Usadas para armazenar informações para o Bash shell e para o usuário. Essas variáveis podem ser usadas para modificar como
+              comandos e recursos funcionam, bem como fornecer informações vitais do sistema.
+            </li>
+          </ul>
+          <p class="text-dim" style="margin-top: 0.75rem">
+            O Bash tem uma extensa lista de recursos; esta é apenas uma amostra de suas capacidades.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-dollar-sign"></i>
+          <p>
+            Quando um aplicativo de terminal é executado e um shell aparece, exibe uma parte importante da interface — o
+            <strong>prompt</strong>. O prompt não está apenas lá para indicar que comandos podem ser executados, mas também transmite
+            informações úteis ao usuário. O prompt é totalmente configurável e pode ser tão simples ou tão completo quanto seja prático e
+            útil.
+          </p>
+        </div>
+
+        <div class="card">
+          <p>
+            A estrutura do prompt pode variar entre distribuições, mas tipicamente contém informações sobre o usuário e o sistema. Abaixo
+            está uma estrutura comum de prompt:
+          </p>
+
+          <div class="terminal">
+            <pre>sysadmin@localhost:~$</pre>
+          </div>
+
+          <p>O prompt mostrado contém as seguintes informações:</p>
+
+          <div class="table-custom">
+            <table class="table-custom">
+              <thead>
+                <tr>
+                  <th>Componente</th>
+                  <th>Exemplo</th>
+                  <th>Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>User Name (Nome do Usuário)</strong></td>
+                  <td><code>sysadmin</code></td>
+                  <td>O nome do usuário atual</td>
+                </tr>
+                <tr>
+                  <td><strong>System Name (Nome do Sistema)</strong></td>
+                  <td><code>localhost</code></td>
+                  <td>O nome do computador/host</td>
+                </tr>
+                <tr>
+                  <td><strong>Current Directory (Diretório Atual)</strong></td>
+                  <td><code>~</code></td>
+                  <td>Diretório atual (~ é shorthand para o home do usuário)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            O símbolo <strong>~</strong> (til) é usado como abreviação para o <strong>diretório home do usuário</strong>. Tipicamente, o
+            diretório home do usuário fica sob o diretório <code>/home</code> e é nomeado após o nome da conta de usuário; por exemplo,
+            <code>/home/sysadmin</code>.
+          </p>
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i>
+          <strong>Dica:</strong> O Bash não é o único shell disponível. Outros shells populares incluem Zsh (Z shell), Fish e Ksh (Korn
+          shell). Cada um tem suas próprias características e vantagens.
+        </div>
+
+        <div class="terminal">
+          <pre>
+# Comandos úteis relacionados ao shell
+
+# Verificar qual shell você está usando
+echo $SHELL
+
+# Verificar versão do Bash
+bash --version
+
+# Ver histórico de comandos
+history
+
+# Criar um alias (apelido)
+alias ll='ls -la'
+
+# Remover um alias
+unalias ll
+
+# Listar todos os aliases ativos
+alias
+
+# Ver valor de uma variável
+echo $PATH
+echo $HOME
+echo $USER</pre
+          >
+        </div>
+
+        <div class="alert alert-success">
+          <i class="fas fa-check-circle"></i>
+          <strong>Estrutura do Prompt (para referência):</strong>
+          <ul style="margin-top: 0.5rem; margin-left: 1.5rem">
+            <li><code>usuario@host:~$</code> – Usuário comum (non-root)</li>
+            <li><code>root@host:~#</code> – Usuário root (administrador)</li>
+            <li><code>$</code> – Indica final do prompt para usuário comum</li>
+            <li><code>#</code> – Indica final do prompt para usuário root</li>
+          </ul>
+        </div>
+      </section>
+      <!-- SEÇÃO 5.3: Commands -->
+      <section id="secao5-3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-terminal"></i>
+          <span class="section-number">5.3</span> Comandos
+        </h2>
+
+        <div class="card">
+          <i class="fas fa-question-circle"></i>
+          <p>
+            O que é um comando? A resposta mais simples é que um
+            <strong>comando</strong> é um programa de software que, quando executado no CLI, realiza uma ação no computador.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-play"></i>
+          <p>
+            Para executar um comando, o primeiro passo é digitar o nome do comando. Clique no terminal à direita. Digite <code>ls</code> e
+            pressione Enter. O resultado deve se assemelhar ao exemplo abaixo:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos</pre
+            >
+          </div>
+
+          <div class="alert alert-info" style="margin-top: 0.75rem">
+            <i class="fas fa-info-circle"></i>
+            <strong>Nota:</strong> Por si só, o comando <code>ls</code> lista arquivos e diretórios contidos no diretório de trabalho atual.
+            Neste ponto, você não deve se preocupar muito com a saída do comando; em vez disso, concentre-se em entender como formatar e
+            executar comandos. O comando <code>ls</code> será coberto em detalhes mais adiante no curso.
+          </div>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-cog"></i>
+          <p>
+            Muitos comandos podem ser usados por si só, sem nenhuma entrada adicional. Alguns comandos exigem entrada adicional para serem
+            executados corretamente. Essa entrada adicional vem em duas formas:
+            <strong>opções</strong> e <strong>argumentos</strong>.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary); margin-bottom: 0.5rem">Formato Típico de um Comando</h3>
+
+          <div class="terminal">
+            <pre>comando [opções] [argumentos]</pre>
+          </div>
+
+          <ul style="margin-top: 0.75rem; margin-left: 1.5rem">
+            <li>
+              <strong>Opções (options)</strong> – Usadas para modificar o comportamento principal de um comando. Geralmente começam com um
+              hífen (<code>-</code>) ou dois hifens (<code>--</code>).
+            </li>
+            <li>
+              <strong>Argumentos (arguments)</strong> – Usados para fornecer informações adicionais (como um nome de arquivo ou um nome de
+              usuário).
+            </li>
+          </ul>
+
+          <p>Cada opção e argumento é normalmente separado por um espaço, embora as opções possam frequentemente ser combinadas.</p>
+        </div>
+
+        <div class="alert alert-warning">
+          <i class="fas fa-exclamation-triangle"></i>
+          <strong>Atenção:</strong> O Linux é <strong>case-sensitive</strong> (sensível a maiúsculas e minúsculas). Comandos, opções,
+          argumentos, variáveis e nomes de arquivos devem ser digitados exatamente como mostrados. <code>ls</code> é diferente de
+          <code>LS</code> ou <code>Ls</code>.
+        </div>
+
+        <div class="table-custom">
+          <table class="table-custom">
+            <thead>
+              <tr>
+                <th>Componente</th>
+                <th>Exemplo</th>
+                <th>Descrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Comando</strong></td>
+                <td><code>ls</code></td>
+                <td>Programa base a ser executado</td>
+              </tr>
+              <tr>
+                <td><strong>Opção curta</strong></td>
+                <td><code>-l</code></td>
+                <td>Modificador (um hífen + uma letra)</td>
+              </tr>
+              <tr>
+                <td><strong>Opção longa</strong></td>
+                <td><code>--all</code></td>
+                <td>Modificador (dois hifens + palavra)</td>
+              </tr>
+              <tr>
+                <td><strong>Argumento</strong></td>
+                <td><code>/home</code></td>
+                <td>Informação adicional para o comando</td>
+              </tr>
+              <tr>
+                <td><strong>Comando completo</strong></td>
+                <td><code>ls -la /home</code></td>
+                <td>Comando + opções + argumento</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="terminal">
+          <pre>
+# Exemplos de comandos com diferentes formatos
+
+# Comando sozinho
+date
+whoami
+pwd
+
+# Comando com opção curta
+ls -l
+ls -a
+ls -la      # Opções combinadas (-l e -a juntos)
+
+# Comando com opção longa
+ls --all
+ls --human-readable
+
+# Comando com argumento
+cat /etc/passwd
+cd /home
+echo "Olá Mundo"
+
+# Comando com opções e argumentos
+ls -la /etc
+cp -v arquivo.txt backup/
+rm -rf pasta_temporaria/
+
+# Múltiplos argumentos
+touch arquivo1.txt arquivo2.txt arquivo3.txt</pre
+          >
+        </div>
+
+        <div class="alert alert-success">
+          <i class="fas fa-check-circle"></i>
+          <strong>Dicas importantes:</strong>
+          <ul style="margin-top: 0.5rem; margin-left: 1.5rem">
+            <li>📖 Use <code>man comando</code> para ver o manual de qualquer comando</li>
+            <li>🔍 Use <code>comando --help</code> ou <code>comando -h</code> para ajuda rápida</li>
+            <li>⬆️ Seta para cima recupera comandos anteriores do histórico</li>
+            <li>↹ Tecla TAB autocompleta comandos e nomes de arquivos</li>
+            <li>
+              ❌ Linux é case-sensitive: <code>Documentos</code> ≠
+              <code>documentos</code>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <!-- SEÇÃO 5.3.1: Arguments -->
+      <section id="secao5-3-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-terminal"></i>
+          <span class="section-number">5.3.1</span> Argumentos
+        </h2>
+
+        <div class="card">
+          <i class="fas fa-code"></i>
+          <div class="terminal" style="margin-bottom: 1rem">
+            <pre>comando [opções] [argumentos]</pre>
+          </div>
+          <p>
+            Um <strong>argumento</strong> pode ser usado para especificar algo sobre o qual o comando deve agir. Se o comando
+            <code>ls</code> receber o nome de um diretório como argumento, ele lista o conteúdo desse diretório.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary); margin-bottom: 0.5rem">Exemplo com um argumento</h3>
+          <p>
+            No exemplo a seguir, o diretório <code>/etc/ppp</code> é usado como argumento; a saída resultante é uma lista de arquivos
+            contidos nesse diretório:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls /etc/ppp
+ip-down.d  ip-up.d</pre
+            >
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary); margin-bottom: 0.5rem">Múltiplos argumentos</h3>
+          <p>
+            O comando <code>ls</code> também aceita <strong>múltiplos argumentos</strong>. Para listar o conteúdo de ambos os diretórios
+            <code>/etc/ppp</code> e <code>/etc/ssh</code>, passe ambos como argumentos:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls /etc/ppp /etc/ssh
+/etc/ppp:
+ip-down.d  ip-up.d
+
+/etc/ssh:
+moduli               ssh_host_dsa_key.pub     ssh_host_rsa_key      sshd_config
+ssh_config           ssh_host_ecdsa_key       ssh_host_rsa_key.pub
+ssh_host_dsa_key     ssh_host_ecdsa_key.pub   ssh_import_id</pre
+            >
+          </div>
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i>
+          <strong>Entendendo a saída:</strong> Quando múltiplos argumentos são passados, o <code>ls</code> exibe primeiro o nome do
+          diretório seguido por seu conteúdo, depois o próximo diretório e seu conteúdo, e assim por diante.
+        </div>
+
+        <div class="table-custom">
+          <table class="table-custom">
+            <thead>
+              <tr>
+                <th>Tipo de Argumento</th>
+                <th>Exemplo</th>
+                <th>O que faz</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Arquivo</strong></td>
+                <td><code>ls arquivo.txt</code></td>
+                <td>Lista informações sobre o arquivo específico</td>
+              </tr>
+              <tr>
+                <td><strong>Diretório</strong></td>
+                <td><code>ls /home</code></td>
+                <td>Lista o conteúdo do diretório</td>
+              </tr>
+              <tr>
+                <td><strong>Múltiplos diretórios</strong></td>
+                <td><code>ls /etc /var /home</code></td>
+                <td>Lista o conteúdo de todos os diretórios especificados</td>
+              </tr>
+              <tr>
+                <td><strong>Curingas (Wildcards)</strong></td>
+                <td><code>ls *.txt</code></td>
+                <td>Lista todos os arquivos que terminam com .txt</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="terminal">
+          <pre>
+# Exemplos práticos de argumentos
+
+# Listar um diretório específico
+ls /var/log
+
+# Listar um arquivo específico
+ls /etc/passwd
+
+# Listar múltiplos diretórios
+ls /bin /sbin /usr/bin
+
+# Usar ~ (home do usuário) como argumento
+ls ~
+ls ~/Documents
+
+# Usar . (diretório atual) como argumento
+ls .
+
+# Usar .. (diretório pai) como argumento
+ls ..
+
+# Argumentos com espaços (usar aspas)
+ls "Meus Documentos"
+ls 'Arquivo com espaco.txt'
+
+# Usar curingas (wildcards)
+ls *.conf
+ls /etc/*.conf
+ls arquivo?.txt</pre
+          >
+        </div>
+
+        <div class="alert alert-success">
+          <i class="fas fa-check-circle"></i>
+          <strong>Resumo:</strong>
+          <ul style="margin-top: 0.5rem; margin-left: 1.5rem">
+            <li>📁 <strong>Argumentos</strong> dizem ao comando SOBRE O QUE agir</li>
+            <li>🎯 Podem ser nomes de arquivos, diretórios, usuários, etc.</li>
+            <li>📋 Múltiplos argumentos são separados por espaço</li>
+            <li>🔧 Argumentos são POSICIONAIS – a ordem importa para alguns comandos</li>
+            <li>🔄 O curinga <code>*</code> significa "qualquer coisa"</li>
+            <li>❓ O curinga <code>?</code> significa "um único caractere"</li>
+          </ul>
+        </div>
+      </section>
+      <!-- SEÇÃO 5.3.2: Options -->
+      <section id="secao5-3-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-terminal"></i>
+          <span class="section-number">5.3.2</span> Opções
+        </h2>
+
+        <div class="card">
+          <i class="fas fa-code"></i>
+          <div class="terminal" style="margin-bottom: 1rem">
+            <pre>comando [opções] [argumentos]</pre>
+          </div>
+          <p><strong>Opções</strong> podem ser usadas com comandos para expandir ou modificar a maneira como um comando se comporta.</p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary); margin-bottom: 0.5rem">Exemplo: opção -l (long listing)</h3>
+          <p>
+            Usando a opção <code>-l</code> do comando <code>ls</code>, obtemos uma listagem longa, fornecendo informações adicionais sobre
+            os arquivos listados, como permissões, tamanho do arquivo e outras informações:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls -l
+total 0
+drwxr-xr-x 1 sysadmin sysadmin 0 Jan 29 20:13 Desktop
+drwxr-xr-x 1 sysadmin sysadmin 0 Jan 29 20:13 Documents
+drwxr-xr-x 1 sysadmin sysadmin 0 Jan 29 20:13 Downloads
+drwxr-xr-x 1 sysadmin sysadmin 0 Jan 29 20:13 Music
+drwxr-xr-x 1 sysadmin sysadmin 0 Jan 29 20:13 Pictures
+drwxr-xr-x 1 sysadmin sysadmin 0 Jan 29 20:13 Public
+drwxr-xr-x 1 sysadmin sysadmin 0 Jan 29 20:13 Templates
+drwxr-xr-x 1 sysadmin sysadmin 0 Jan 29 20:13 Videos</pre
+            >
+          </div>
+
+          <div class="alert alert-info" style="margin-top: 0.75rem">
+            <i class="fas fa-info-circle"></i>
+            <strong>Nota:</strong> No comando acima, <code>-l</code> é uma letra minúscula "L". Uma maneira fácil de lembrar é que
+            <code>-l</code> é um mnemônico para <strong>l</strong>ong listing (listagem longa).
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary); margin-bottom: 0.5rem">Exemplo: opção -r (reverse)</h3>
+          <p>
+            Por padrão, o comando <code>ls</code> imprime os resultados em ordem alfabética. Adicionando a opção <code>-r</code>, ele
+            imprime os resultados em ordem alfabética reversa:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls -r
+Videos  Templates  Public  Pictures  Music  Downloads  Documents  Desktop</pre
+            >
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary); margin-bottom: 0.5rem">Combinando opções</h3>
+          <p>
+            Na maioria dos casos, opções podem ser usadas em conjunto com outras opções. Podem ser fornecidas como opções separadas, como em
+            <code>-l -r</code>, ou combinadas, como em <code>-lr</code>. A combinação dessas duas opções resultaria em uma listagem longa em
+            ordem alfabética reversa:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls -lr
+total 32
+drwxr-xr-x 2 sysadmin sysadmin 4096 Oct 31 20:13 Videos
+drwxr-xr-x 2 sysadmin sysadmin 4096 Oct 31 20:13 Templates
+drwxr-xr-x 2 sysadmin sysadmin 4096 Oct 31 20:13 Public
+drwxr-xr-x 2 sysadmin sysadmin 4096 Oct 31 20:13 Pictures
+drwxr-xr-x 2 sysadmin sysadmin 4096 Oct 31 20:13 Music
+drwxr-xr-x 2 sysadmin sysadmin 4096 Oct 31 20:13 Downloads
+drwxr-xr-x 4 sysadmin sysadmin 4096 Oct 31 20:13 Documents
+drwxr-xr-x 2 sysadmin sysadmin 4096 Oct 31 20:13 Desktop</pre
+            >
+          </div>
+
+          <p>A ordem das opções combinadas não é importante. A saída de todos esses exemplos seria a mesma:</p>
+          <div class="terminal">
+            <pre>
+ls -l -r
+ls -rl
+ls -lr</pre
+            >
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary); margin-bottom: 0.5rem">Exemplo: opção -h (human-readable)</h3>
+          <p>Por padrão, a opção <code>-l</code> do comando <code>ls</code> exibe tamanhos de arquivos em bytes:</p>
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls -l /usr/bin/perl
+-rwxr-xr-x 2 root root 10376 Feb 4 2018 /usr/bin/perl</pre
+            >
+          </div>
+
+          <p>Se a opção <code>-h</code> for adicionada, os tamanhos dos arquivos serão exibidos em formato legível por humanos:</p>
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls -lh /usr/bin/perl
+-rwxr-xr-x 2 root root 11K Feb 4 2018 /usr/bin/perl</pre
+            >
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary); margin-bottom: 0.5rem">Opções curtas vs longas</h3>
+          <p>
+            Opções são frequentemente letras únicas; no entanto, às vezes também são palavras ou frases. Tipicamente, comandos mais antigos
+            usam letras únicas, enquanto comandos mais novos usam palavras completas para opções.
+          </p>
+          <ul style="margin-top: 0.75rem; margin-left: 1.5rem">
+            <li>
+              <strong>Opções curtas:</strong> Precedidas por um único traço <code>-</code> (ex: <code>-h</code>, <code>-l</code>,
+              <code>-r</code>)
+            </li>
+            <li>
+              <strong>Opções longas:</strong> Precedidas por dois traços <code>--</code> (ex: <code>--help</code>,
+              <code>--human-readable</code>)
+            </li>
+          </ul>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls -l --human-readable /usr/bin/perl
+-rwxr-xr-x 2 root root 11K Feb 4 2018 /usr/bin/perl</pre
+            >
+          </div>
+        </div>
+
+        <div class="table-custom">
+          <table class="table-custom">
+            <thead>
+              <tr>
+                <th>Comando</th>
+                <th>Opção Curta</th>
+                <th>Opção Longa</th>
+                <th>Efeito</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>ls</code></td>
+                <td><code>-l</code></td>
+                <td><code>--format=long</code></td>
+                <td>Listagem longa (detalhada)</td>
+              </tr>
+              <tr>
+                <td><code>ls</code></td>
+                <td><code>-a</code></td>
+                <td><code>--all</code></td>
+                <td>Mostra arquivos ocultos</td>
+              </tr>
+              <tr>
+                <td><code>ls</code></td>
+                <td><code>-h</code></td>
+                <td><code>--human-readable</code></td>
+                <td>Tamanhos legíveis (K, M, G)</td>
+              </tr>
+              <tr>
+                <td><code>ls</code></td>
+                <td><code>-r</code></td>
+                <td><code>--reverse</code></td>
+                <td>Ordem reversa</td>
+              </tr>
+              <tr>
+                <td><code>ls</code></td>
+                <td><code>-t</code></td>
+                <td><code>--sort=time</code></td>
+                <td>Ordena por data/hora</td>
+              </tr>
+              <tr>
+                <td><code>ls</code></td>
+                <td><code>-R</code></td>
+                <td><code>--recursive</code></td>
+                <td>Lista subdiretórios recursivamente</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="terminal">
+          <pre>
+# Exemplos de opções comuns
+
+# Listagem longa
+ls -l
+
+# Listagem com arquivos ocultos
+ls -a
+ls -la    # combinação: longo + ocultos
+
+# Listagem com tamanho legível
+ls -lh
+
+# Listagem ordenada por data (mais recente primeiro)
+ls -lt
+
+# Listagem recursiva
+ls -R
+
+# Múltiplas opções combinadas
+ls -lahr
+ls -la --human-readable --reverse
+
+# Opções com argumentos
+ls -l --sort=time
+grep -i "erro" arquivo.txt   # -i ignora maiúsculas/minúsculas
+cp -v arquivo1.txt arquivo2.txt  # -v modo verboso (mostra o que está fazendo)
+
+# Ajuda sobre opções
+ls --help
+man ls</pre
+          >
+        </div>
+
+        <div class="alert alert-success">
+          <i class="fas fa-check-circle"></i>
+          <strong>Regras importantes sobre opções:</strong>
+          <ul style="margin-top: 0.5rem; margin-left: 1.5rem">
+            <li>🔧 Opções <strong>modificam</strong> o comportamento padrão do comando</li>
+            <li>📝 Opções curtas usam <code>-letra</code> (ex: <code>-l</code>, <code>-a</code>, <code>-h</code>)</li>
+            <li>📄 Opções longas usam <code>--palavra</code> (ex: <code>--all</code>, <code>--help</code>)</li>
+            <li>
+              🔗 Múltiplas opções curtas podem ser combinadas:
+              <code>-la</code> é igual a <code>-l -a</code>
+            </li>
+            <li>⚡ A ordem das opções combinadas geralmente não importa</li>
+            <li>❓ Use <code>--help</code> ou <code>man</code> para descobrir opções disponíveis</li>
+          </ul>
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 5.3.3 - HISTORY                      -->
+      <!-- ============================================ -->
+      <section id="secao5-3-3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-history"></i>
+          <span class="section-number">5.3.3</span> Histórico de Comandos
+        </h2>
+
+        <div class="card">
+          <p>
+            Quando um comando é executado no terminal, ele é armazenado em uma lista de <strong>histórico</strong>. Isso foi projetado para
+            facilitar a execução do mesmo comando posteriormente, eliminando a necessidade de redigitar o comando inteiro.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-arrow-up"></i>
+          <h3>Navegando pelo Histórico com Teclas</h3>
+          <p>
+            Pressionar a <strong>Seta para Cima ↑</strong> exibe o comando anterior na linha de prompt. Todo o histórico de comandos
+            executados na sessão atual pode ser exibido pressionando ↑ repetidamente para retroceder no histórico de comandos que foram
+            executados. Pressionar a tecla <strong>Enter</strong> executa o comando exibido novamente.
+          </p>
+          <br />
+          <p>
+            Quando o comando desejado é localizado, as <strong>Setas para Esquerda ← e Direita →</strong> podem posicionar o cursor para
+            edição. Outras teclas úteis para edição incluem <strong>Home, End, Backspace e Delete</strong>.
+          </p>
+        </div>
+
+        <!-- Terminal - Comando history -->
+        <div class="terminal">
+          <pre>$ <span style="color: var(--primary);">date</span>
+Wed Dec 12 04:28:12 UTC 2018
+
+$ <span style="color: var(--primary);">ls</span>
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
+
+$ <span style="color: var(--primary);">cal 5 2030</span>
+     May 2030
+Su Mo Tu We Th Fr Sa
+          1  2  3  4
+ 5  6  7  8  9 10 11
+12 13 14 15 16 17 18
+19 20 21 22 23 24 25
+26 27 28 29 30 31
+
+$ <span style="color: var(--primary);">history</span>
+    1  date
+    2  ls
+    3  cal 5 2030
+    4  history</pre>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-hashtag"></i>
+          <h3>Executando pelo Número do Comando (!n)</h3>
+          <p>
+            Se o comando desejado estiver na lista gerada pelo comando <code>history</code>, ele pode ser executado digitando um
+            <strong>ponto de exclamação !</strong> e depois o número ao lado do comando.
+          </p>
+        </div>
+
+        <!-- Terminal - Executando !3 -->
+        <div class="terminal">
+          <pre>$ <span style="color: var(--primary);">history</span>
+    1  date
+    2  ls
+    3  cal 5 2030
+    4  history
+
+$ <span style="color: var(--primary);">!3</span>
+cal 5 2030
+     May 2030
+Su Mo Tu We Th Fr Sa
+          1  2  3  4
+ 5  6  7  8  9 10 11
+12 13 14 15 16 17 18
+19 20 21 22 23 24 25
+26 27 28 29 30 31</pre>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <i class="fas fa-chart-line"></i>
+            <h3>history [número]</h3>
+            <p>
+              Se o comando <code>history</code> receber um número como argumento, ele exibe esse número de comandos anteriores da lista de
+              histórico.
+            </p>
+            <br />
+            <p>Exemplo: Para mostrar os últimos 3 comandos:</p>
+            <div class="terminal" style="margin-top: 0.5rem">
+              <pre>
+$ history 3
+    6  date
+    7  ls /home
+    8  history 3</pre
+              >
+            </div>
+          </div>
+          <div class="card">
+            <i class="fas fa-minus-circle"></i>
+            <h3>!-n (comando a partir do final)</h3>
+            <p>Para executar o enésimo comando a partir do final da lista de histórico, digite <code>!-n</code> e pressione Enter.</p>
+            <br />
+            <p>Exemplo: Para executar o terceiro comando a partir do final:</p>
+            <div class="terminal" style="margin-top: 0.5rem">
+              <pre>
+$ !-3
+date
+Wed Dec 12 04:31:55 UTC 2018</pre
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <i class="fas fa-redo-alt"></i>
+            <h3>!! (último comando)</h3>
+            <p>Para executar o comando mais recente, digite <code>!!</code> e pressione Enter.</p>
+            <br />
+            <div class="terminal" style="margin-top: 0.5rem">
+              <pre>
+$ date
+Wed Dec 12 04:32:36 UTC 2018
+
+$ !!
+date
+Wed Dec 12 04:32:38 UTC 2018</pre
+              >
+            </div>
+          </div>
+          <div class="card">
+            <i class="fas fa-search"></i>
+            <h3>!comando (última ocorrência)</h3>
+            <p>
+              Para executar a iteração mais recente de um comando específico, digite <code>!</code> seguido pelo nome do comando e pressione
+              Enter.
+            </p>
+            <br />
+            <p>Exemplo: Para executar o comando <code>ls</code> mais recente:</p>
+            <div class="terminal" style="margin-top: 0.5rem">
+              <pre>
+$ !ls
+ls /home
+sysadmin</pre
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabela resumo - SEM NENHUMA TAG strong -->
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Comando/Atalho</th>
+              <th>Descrição</th>
+              <th>Exemplo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Seta ↑</td>
+              <td>Exibe comando anterior</td>
+              <td>Pressione repetidamente para navegar</td>
+            </tr>
+            <tr>
+              <td>history</td>
+              <td>Lista todo o histórico de comandos</td>
+              <td>Mostra comandos numerados</td>
+            </tr>
+            <tr>
+              <td>!n</td>
+              <td>Executa o comando número n</td>
+              <td>!3 → executa o comando #3</td>
+            </tr>
+            <tr>
+              <td>!-n</td>
+              <td>Executa o comando n a partir do final</td>
+              <td>!-3 → 3º comando do final</td>
+            </tr>
+            <tr>
+              <td>!!</td>
+              <td>Executa o último comando</td>
+              <td>Repete o comando anterior</td>
+            </tr>
+            <tr>
+              <td>!comando</td>
+              <td>Executa o comando específico mais recente</td>
+              <td>!ls → último ls executado</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i>
+          <strong>📌 Dicas Rápidas:</strong>
+          <br /><br />
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem">
+            <li><code>Ctrl + R</code> - Busca reversa no histórico (digite parte do comando)</li>
+            <li><code>history -c</code> - Limpa o histórico da sessão atual</li>
+            <li><code>history -w</code> - Salva o histórico atual no arquivo (~/.bash_history)</li>
+            <li><code>echo $HISTSIZE</code> - Verifica quantos comandos são armazenados no histórico</li>
+          </ul>
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 5.4 - VARIABLES                      -->
+      <!-- ============================================ -->
+      <section id="secao5-4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-code-branch"></i>
+          <span class="section-number">5.4</span> Variáveis
+        </h2>
+
+        <div class="card">
+          <p>
+            Uma <strong>variável</strong> é um recurso que permite ao usuário ou ao shell armazenar dados. Esses dados podem ser usados para
+            fornecer informações críticas do sistema ou para alterar o comportamento de como o <strong>Bash shell</strong> (ou outros
+            comandos) funciona. As variáveis recebem nomes e são armazenadas temporariamente na memória. Existem dois tipos de variáveis
+            usadas no Bash shell: <strong>local</strong> e <strong>ambiente</strong>.
+          </p>
+        </div>
+
+        <!-- Grid 2 - Local vs Environment -->
+        <div class="grid-2">
+          <div class="card">
+            <i class="fas fa-laptop-code"></i>
+            <h3>📁 Variáveis Locais</h3>
+            <p>
+              Variáveis <strong>locais</strong> estão disponíveis apenas no shell atual. Quando você abre um novo terminal ou uma nova
+              sessão, as variáveis locais não estão disponíveis. Elas são úteis para armazenar dados temporários durante uma sessão
+              específica.
+            </p>
+            <br />
+            <div class="terminal" style="margin-top: 0.5rem">
+              <pre>
+$ nome="João"
+$ echo $nome
+João</pre
+              >
+            </div>
+          </div>
+          <div class="card">
+            <i class="fas fa-globe"></i>
+            <h3>🌍 Variáveis de Ambiente</h3>
+            <p>
+              Variáveis de <strong>ambiente</strong> estão disponíveis para o shell atual e para qualquer processo filho iniciado a partir
+              dele. Elas são usadas para configurar o comportamento do sistema e de programas.
+            </p>
+            <br />
+            <div class="terminal" style="margin-top: 0.5rem">
+              <pre>
+$ export NOME="João"
+$ bash
+$ echo $NOME
+João</pre
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Terminal - Exemplos de variáveis -->
+        <div class="terminal">
+          <pre>$ <span style="color: var(--primary);"># Criando uma variável local</span>
+$ minha_var="Olá Linux"
+$ echo $minha_var
+Olá Linux
+
+$ <span style="color: var(--primary);"># Criando uma variável de ambiente</span>
+$ export PATH="$PATH:/meu/novo/caminho"
+$ env | grep PATH
+PATH=/usr/local/bin:/usr/bin:/bin:/meu/novo/caminho
+
+$ <span style="color: var(--primary);"># Removendo uma variável</span>
+$ unset minha_var
+$ echo $minha_var
+
+$</pre>
+        </div>
+
+        <!-- Tabela - Variáveis de ambiente comuns -->
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Variável</th>
+              <th>Descrição</th>
+              <th>Exemplo de valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>PATH</td>
+              <td>Diretórios onde o shell procura por executáveis</td>
+              <td>/usr/local/bin:/usr/bin:/bin</td>
+            </tr>
+            <tr>
+              <td>HOME</td>
+              <td>Diretório pessoal do usuário</td>
+              <td>/home/usuario</td>
+            </tr>
+            <tr>
+              <td>USER</td>
+              <td>Nome do usuário atual</td>
+              <td>joao</td>
+            </tr>
+            <tr>
+              <td>SHELL</td>
+              <td>Caminho do shell atual</td>
+              <td>/bin/bash</td>
+            </tr>
+            <tr>
+              <td>PWD</td>
+              <td>Diretório de trabalho atual</td>
+              <td>/home/usuario/Documentos</td>
+            </tr>
+            <tr>
+              <td>OLDPWD</td>
+              <td>Diretório anterior antes do último cd</td>
+              <td>/home/usuario</td>
+            </tr>
+            <tr>
+              <td>LANG</td>
+              <td>Idioma e localização do sistema</td>
+              <td>pt_BR.UTF-8</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Comandos úteis -->
+        <div class="card">
+          <i class="fas fa-terminal"></i>
+          <h3>Comandos para Trabalhar com Variáveis</h3>
+          <ul class="icon-list" style="list-style: none; padding-left: 1rem">
+            <li><i class="fas fa-eye"></i> <code>echo $VARIAVEL</code> - Exibe o valor de uma variável</li>
+            <li><i class="fas fa-list"></i> <code>env</code> ou <code>printenv</code> - Lista todas as variáveis de ambiente</li>
+            <li><i class="fas fa-plus-circle"></i> <code>export VAR="valor"</code> - Cria uma variável de ambiente</li>
+            <li><i class="fas fa-minus-circle"></i> <code>unset VAR</code> - Remove uma variável</li>
+            <li><i class="fas fa-database"></i> <code>set</code> - Lista todas as variáveis (locais e de ambiente)</li>
+          </ul>
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i>
+          <strong>📌 Diferenças importantes:</strong>
+          <br /><br />
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem">
+            <li><strong>Variáveis locais</strong> = Disponíveis apenas no shell atual (criadas com <code>VAR="valor"</code>)</li>
+            <li>
+              <strong>Variáveis de ambiente</strong> = Disponíveis no shell atual e em processos filhos (criadas com
+              <code>export VAR="valor"</code>)
+            </li>
+            <li>Para tornar uma variável local em ambiente, use <code>export VAR</code></li>
+            <li>Variáveis são case-sensitive: <code>NOME</code> é diferente de <code>nome</code></li>
+          </ul>
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 5.4.1 - LOCAL VARIABLES              -->
+      <!-- ============================================ -->
+      <section id="secao5-4-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-laptop-code"></i>
+          <span class="section-number">5.4.1</span> Variáveis Locais
+        </h2>
+
+        <div class="card">
+          <p>
+            Variáveis <strong>locais</strong> ou do <strong>shell</strong> existem apenas no shell atual e não podem afetar outros comandos
+            ou aplicações. Quando o usuário fecha uma janela de terminal ou shell, todas as variáveis são perdidas. Elas são frequentemente
+            associadas a tarefas do usuário e, por convenção, usam letras <strong>minúsculas</strong>.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-code"></i>
+          <h3>Sintaxe de Atribuição</h3>
+          <p>Para definir o valor de uma variável, use a seguinte expressão de atribuição:</p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>variavel=valor</pre>
+          </div>
+          <br />
+          <p>
+            Se a variável já existir, o valor da variável é <strong>modificado</strong>. Se o nome da variável não existir, o shell cria uma
+            <strong>nova variável local</strong> e define o valor.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-plus-circle"></i>
+          <h3>Criando uma Variável Local</h3>
+          <p>O exemplo a seguir cria uma variável local chamada <code>variavel1</code> e atribui a ela o valor <code>AlgumaCoisa</code>:</p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>$ <span style="color: var(--primary);">variavel1='AlgumaCoisa'</span></pre>
+          </div>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-eye"></i>
+          <h3>Exibindo o Valor de uma Variável</h3>
+          <p>
+            O comando <code>echo</code> é usado para exibir saída no terminal. Para exibir o valor de uma variável, use o
+            <strong>cifrão $</strong> seguido pelo nome da variável como argumento do comando <code>echo</code>:
+          </p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>$ <span style="color: var(--primary);">echo $variavel1</span>
+AlgumaCoisa</pre>
+          </div>
+        </div>
+
+        <!-- Tabela - Exemplos de variáveis locais -->
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Comando</th>
+              <th>Descrição</th>
+              <th>Resultado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>nome="João"</td>
+              <td>Cria variável local com valor "João"</td>
+              <td>Variável nome armazenada</td>
+            </tr>
+            <tr>
+              <td>idade=25</td>
+              <td>Cria variável local com valor numérico</td>
+              <td>Variável idade armazenada</td>
+            </tr>
+            <tr>
+              <td>caminho="/home/user/docs"</td>
+              <td>Cria variável com caminho</td>
+              <td>Variável caminho armazenada</td>
+            </tr>
+            <tr>
+              <td>echo $nome</td>
+              <td>Exibe o valor da variável nome</td>
+              <td>João</td>
+            </tr>
+            <tr>
+              <td>unset nome</td>
+              <td>Remove a variável nome</td>
+              <td>Variável nome removida \n</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Terminal - Exemplos completos -->
+        <div class="terminal">
+          <pre>$ <span style="color: var(--primary);"># Exemplos de variáveis locais</span>
+$
+$ <span style="color: var(--primary);">curso="NDG Linux Essentials"</span>
+$ <span style="color: var(--primary);">echo $curso</span>
+NDG Linux Essentials
+$
+$ <span style="color: var(--primary);">versao=3.2</span>
+$ <span style="color: var(--primary);">echo "Módulo $versao do $curso"</span>
+Módulo 3.2 do NDG Linux Essentials
+$
+$ <span style="color: var(--primary);"># Variáveis com espaços precisam de aspas</span>
+$ <span style="color: var(--primary);">frase="Aprendendo variáveis no Linux"</span>
+$ <span style="color: var(--primary);">echo $frase</span>
+Aprendendo variáveis no Linux
+$
+$ <span style="color: var(--primary);"># Removendo uma variável</span>
+$ <span style="color: var(--primary);">unset frase</span>
+$ <span style="color: var(--primary);">echo $frase</span>
+
+$</pre>
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i>
+          <strong>📌 Regras para Variáveis Locais:</strong>
+          <br /><br />
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem">
+            <li>
+              <strong>Não pode ter espaços</strong> ao redor do sinal de igual: <code>var=valor</code> (certo),
+              <code>var = valor</code> (errado)
+            </li>
+            <li><strong>Case-sensitive</strong>: <code>NOME</code> e <code>nome</code> são variáveis diferentes</li>
+            <li><strong>Por convenção</strong>, variáveis locais usam letras minúsculas</li>
+            <li><strong>Valores com espaços</strong> precisam de aspas: <code>frase="Olá Mundo"</code></li>
+            <li><strong>Para exibir</strong> o valor use <code>$VARIAVEL</code></li>
+            <li><strong>Variáveis locais</strong> são perdidas ao fechar o terminal</li>
+          </ul>
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 5.4.2 - ENVIRONMENT VARIABLES        -->
+      <!-- ============================================ -->
+      <section id="secao5-4-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-globe"></i>
+          <span class="section-number">5.4.2</span> Variáveis de Ambiente
+        </h2>
+
+        <div class="card">
+          <p>
+            Variáveis de ambiente, também chamadas de variáveis globais, estão disponíveis em todo o sistema, em todos os shells usados pelo
+            Bash ao interpretar comandos e executar tarefas. O sistema recria automaticamente as variáveis de ambiente quando um novo shell
+            é aberto. Exemplos incluem as variáveis PATH, HOME e HISTSIZE.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-history"></i>
+          <h3>HISTSIZE</h3>
+          <p>
+            A variável HISTSIZE define quantos comandos anteriores armazenar na lista de histórico. O comando no exemplo abaixo exibe o
+            valor da variável HISTSIZE:
+          </p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ echo $HISTSIZE
+1000</pre
+            >
+          </div>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-edit"></i>
+          <h3>Modificando Variáveis Existentes</h3>
+          <p>Para modificar o valor de uma variável existente, use a expressão de atribuição:</p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ HISTSIZE=500
+$ echo $HISTSIZE
+500</pre
+            >
+          </div>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-list"></i>
+          <h3>Visualizando Variáveis de Ambiente</h3>
+          <p>
+            Quando executado sem argumentos, o comando <code>env</code> exibe uma lista das variáveis de ambiente. Como a saída do comando
+            <code>env</code> pode ser bastante longa, os exemplos a seguir usam uma pesquisa de texto para filtrar essa saída.
+          </p>
+          <br />
+          <p>
+            Em um exemplo anterior, <code>variavel1</code> foi criada como uma variável local, então a seguinte pesquisa nas variáveis de
+            ambiente resulta em nenhuma saída:
+          </p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>$ env | grep variavel1</pre>
+          </div>
+          <br />
+          <p>
+            O caractere pipe <code>|</code> passa a saída do comando <code>env</code> para o comando <code>grep</code>, que pesquisa na
+            saída.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-arrow-up"></i>
+          <h3>Export: Local → Ambiente</h3>
+          <p>O comando <code>export</code> é usado para transformar uma variável local em uma variável de ambiente:</p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ export variavel1
+$ env | grep variavel1
+variavel1=AlgumaCoisa</pre
+            >
+          </div>
+          <br />
+          <p>
+            O comando <code>export</code> também pode ser usado para tornar uma variável uma variável de ambiente no momento de sua criação,
+            usando a expressão de atribuição como argumento:
+          </p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ export variavel2='OutraCoisa'
+$ env | grep variavel2
+variavel2=OutraCoisa</pre
+            >
+          </div>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-plus-circle"></i>
+          <h3>Concatenando Variáveis</h3>
+          <p>Para alterar o valor de uma variável de ambiente, use a expressão de atribuição:</p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ variavel1=$variavel1' '$variavel2
+$ echo $variavel1
+AlgumaCoisa OutraCoisa</pre
+            >
+          </div>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-trash-alt"></i>
+          <h3>Removendo Variáveis</h3>
+          <p>Variáveis exportadas podem ser removidas usando o comando <code>unset</code>:</p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>$ unset variavel2</pre>
+          </div>
+        </div>
+
+        <!-- Tabela - SEM strong -->
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Variável</th>
+              <th>Descrição</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>PATH</td>
+              <td>Diretórios onde o shell procura por executáveis</td>
+            </tr>
+            <tr>
+              <td>HOME</td>
+              <td>Diretório pessoal do usuário</td>
+            </tr>
+            <tr>
+              <td>USER</td>
+              <td>Nome do usuário atual</td>
+            </tr>
+            <tr>
+              <td>SHELL</td>
+              <td>Caminho do shell atual</td>
+            </tr>
+            <tr>
+              <td>PWD</td>
+              <td>Diretório de trabalho atual</td>
+            </tr>
+            <tr>
+              <td>HISTSIZE</td>
+              <td>Número de comandos no histórico</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i>
+          <strong>📌 Comandos Resumo:</strong>
+          <br /><br />
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem">
+            <li><code>env</code> - Lista todas as variáveis de ambiente</li>
+            <li><code>echo $VAR</code> - Exibe o valor de uma variável</li>
+            <li><code>export VAR="valor"</code> - Cria uma variável de ambiente</li>
+            <li><code>VAR="valor"</code> - Cria uma variável local</li>
+            <li><code>unset VAR</code> - Remove uma variável</li>
+          </ul>
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 5.4.3 - PATH VARIABLE                -->
+      <!-- ============================================ -->
+      <section id="secao5-4-3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-road"></i>
+          <span class="section-number">5.4.3</span> Variável PATH
+        </h2>
+
+        <div class="card">
+          <p>
+            Uma das variáveis mais importantes do Bash shell para entender é a variável PATH. Ela contém uma lista que define quais
+            diretórios o shell verifica para encontrar comandos. Se um comando válido é inserido e o shell retorna um erro "comando não
+            encontrado", é porque o Bash shell não conseguiu localizar um comando com esse nome em nenhum dos diretórios incluídos no path.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-eye"></i>
+          <h3>Exibindo o PATH</h3>
+          <p>O seguinte comando exibe o path do shell atual:</p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ echo $PATH
+/home/sysadmin/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games</pre
+            >
+          </div>
+          <br />
+          <p>
+            Cada diretório na lista é separado por dois pontos <code>:</code>. Com base na saída anterior, o path contém os seguintes
+            diretórios. O shell verificará os diretórios na ordem em que são listados.
+          </p>
+        </div>
+
+        <!-- Diagrama da árvore de diretórios (substituindo a imagem) -->
+        <div class="terminal" style="text-align: center">
+          <pre style="color: var(--text)">
+┌─────────────────────────────────────────────────────────────────────────────────────┐
+│                           📁 ESTRUTURA DO PATH                                      │
+│                                                                                     │
+│   O caminho /home/sysadmin representa o diretório home do usuário:                  │
+│                                                                                     │
+│                                   ┌─────┐                                           │
+│                                   │  /  │  (raiz)                                   │
+│                                   └──┬──┘                                           │
+│                                      │                                              │
+│         ┌─────────────┬──────────────┼───────────────┬───────────────┐              │
+│         │             │              │               │               │              │
+│       ┌─┴─┐         ┌─┴─┐          ┌─┴──┐          ┌─┴─┐          ┌──┴─┐            │
+│       │bin│         │etc│          │home│          │usr│          │sbin│            │
+│       └───┘         └───┘          └─┬──┘          └─┬─┘          └────┘            │
+│                                      │               │                              │
+│                                   ┌──┴──────┐      ┌─┴───┐                          │
+│                                   │sysadmin │      │local│                          │
+│                                   └──────── ┘      └──┬──┘                          │
+│                                                       │                             │
+│                                              ┌────────┼────────┬──────┐             │
+│                                            ┌─┴─┐    ┌─┴──┐   ┌─┴─┐  ┌─┴───┐         │
+│                                            │bin│    │sbin│   │lib│  │share│         │
+│                                            └───┘    └────┘   └───┘  └─────┘         │
+│                                                                                     │
+│   /home/sysadmin  →  caminho para o diretório home do usuário sysadmin              │
+│   /usr/local/bin  →  caminho para binários locais do usuário                        │
+│                                                                                     │
+└─────────────────────────────────────────────────────────────────────────────────────┘
+<span style="color: var(--primary);">📌 Caminhos (paths) são endereços de diretórios separados por /</span></pre>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-exclamation-triangle"></i>
+          <h3>Comando Não Encontrado</h3>
+          <p>Se o comando não for encontrado em nenhum diretório listado na variável PATH, então o shell retorna um erro:</p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ zed
+-bash: zed: command not found</pre
+            >
+          </div>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-plus-circle"></i>
+          <h3>Modificando o PATH</h3>
+          <p>
+            Se um software personalizado for instalado no sistema, pode ser necessário modificar o PATH para facilitar a execução desses
+            comandos. Por exemplo, o seguinte comando adicionará e verificará o diretório <code>/usr/bin/custom</code> à variável PATH:
+          </p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ PATH=/usr/bin/custom:$PATH
+$ echo $PATH
+/usr/bin/custom:/home/sysadmin/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games</pre
+            >
+          </div>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-lightbulb"></i>
+          <h3>Dica Importante</h3>
+          <p>
+            Ao atualizar a variável PATH, sempre inclua o path atual, para não perder o acesso aos comandos localizados nesses diretórios.
+            Isso pode ser feito adicionando <code>$PATH</code> ao valor na expressão de atribuição. Lembre-se que um nome de variável
+            precedido por um cifrão representa o valor da variável.
+          </p>
+        </div>
+
+        <!-- Tabela com diretórios do PATH -->
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Ordem</th>
+              <th>Diretório</th>
+              <th>Descrição</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>/home/sysadmin/bin</td>
+              <td>Binários pessoais do usuário sysadmin</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>/usr/local/sbin</td>
+              <td>Binários de sistema local</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>/usr/local/bin</td>
+              <td>Binários locais de usuário</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>/usr/sbin</td>
+              <td>Binários de sistema</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>/usr/bin</td>
+              <td>Binários principais do sistema</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>/sbin</td>
+              <td>Binários de sistema essenciais</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>/bin</td>
+              <td>Binários essenciais</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>/usr/games</td>
+              <td>Jogos do sistema</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i>
+          <strong>📌 Resumo:</strong>
+          <br /><br />
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem">
+            <li><code>echo $PATH</code> - Exibe os diretórios atuais do PATH</li>
+            <li><code>PATH=/novo/dir:$PATH</code> - Adiciona um diretório ao início do PATH</li>
+            <li><code>PATH=$PATH:/novo/dir</code> - Adiciona um diretório ao final do PATH</li>
+            <li><strong>Sempre inclua $PATH</strong> para não perder os diretórios existentes</li>
+            <li>Diretórios são verificados na ordem em que aparecem</li>
+          </ul>
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 5.5 - COMMAND TYPES                  -->
+      <!-- ============================================ -->
+      <section id="secao5-5" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-terminal"></i>
+          <span class="section-number">5.5</span> Tipos de Comandos
+        </h2>
+
+        <div class="card">
+          <p>
+            Uma maneira de aprender mais sobre um comando é observar de onde ele vem. O comando <code>type</code> pode ser usado para
+            determinar informações sobre o tipo de comando.
+          </p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>type comando</pre>
+          </div>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-info-circle"></i>
+          <h3>Fontes de Comandos</h3>
+          <p>Existem várias fontes diferentes de comandos dentro do shell da sua CLI, incluindo:</p>
+          <br />
+          <ul class="icon-list" style="list-style: none; padding-left: 1rem">
+            <li><i class="fas fa-microchip"></i> Comandos internos (built-ins)</li>
+            <li><i class="fas fa-file-code"></i> Comandos externos (executáveis)</li>
+            <li><i class="fas fa-tag"></i> Aliases</li>
+            <li><i class="fas fa-cogs"></i> Funções</li>
+          </ul>
+        </div>
+
+        <!-- Grid 2 - Tipos de comandos -->
+        <div class="grid-2">
+          <div class="card">
+            <i class="fas fa-microchip"></i>
+            <h3>Comandos Internos (Built-ins)</h3>
+            <p>
+              São comandos que fazem parte do próprio shell. Eles são carregados na memória junto com o shell e executados diretamente, sem
+              precisar buscar um arquivo externo.
+            </p>
+            <br />
+            <div class="terminal" style="margin-top: 0.5rem">
+              <pre>
+$ type cd
+cd is a shell builtin
+
+$ type echo
+echo is a shell builtin</pre
+              >
+            </div>
+          </div>
+          <div class="card">
+            <i class="fas fa-file-code"></i>
+            <h3>Comandos Externos</h3>
+            <p>
+              São programas armazenados em arquivos no sistema de arquivos. O shell os localiza através da variável PATH e os executa como
+              processos separados.
+            </p>
+            <br />
+            <div class="terminal" style="margin-top: 0.5rem">
+              <pre>
+$ type ls
+ls is /usr/bin/ls
+
+$ type grep
+grep is /usr/bin/grep</pre
+              >
+            </div>
+          </div>
+          <div class="card">
+            <i class="fas fa-tag"></i>
+            <h3>Aliases</h3>
+            <p>
+              São atalhos ou apelidos para comandos. Eles permitem criar nomes mais curtos ou personalizados para comandos frequentemente
+              usados.
+            </p>
+            <br />
+            <div class="terminal" style="margin-top: 0.5rem">
+              <pre>
+$ alias ll='ls -la'
+$ type ll
+ll is aliased to `ls -la'</pre
+              >
+            </div>
+          </div>
+          <div class="card">
+            <i class="fas fa-cogs"></i>
+            <h3>Funções</h3>
+            <p>
+              São blocos de código que agrupam uma sequência de comandos. Podem ser definidas no shell e reutilizadas quantas vezes forem
+              necessárias.
+            </p>
+            <br />
+            <div class="terminal" style="margin-top: 0.5rem">
+              <pre>
+$ minha_funcao() { echo "Olá Mundo"; }
+$ type minha_funcao
+minha_funcao is a function</pre
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Exemplos adicionais -->
+        <div class="card">
+          <i class="fas fa-search"></i>
+          <h3>Exemplos do Comando type</h3>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>$ <span style="color: var(--primary);"># Comando interno (built-in)</span>
+$ type alias
+alias is a shell builtin
+
+$ <span style="color: var(--primary);"># Comando externo</span>
+$ type cat
+cat is /usr/bin/cat
+
+$ <span style="color: var(--primary);"># Alias</span>
+$ type ll
+ll is aliased to `ls -alF'
+
+$ <span style="color: var(--primary);"># Função</span>
+$ type minha_funcao
+minha_funcao is a function
+minha_funcao () 
+{ 
+    echo "Olá Mundo"
+}</pre>
+          </div>
+        </div>
+
+        <!-- Tabela de tipos de comando -->
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Tipo</th>
+              <th>Descrição</th>
+              <th>Exemplo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Built-in></td>
+              <td>Comando interno do shell></td>
+              <td>cd, echo, alias, type></td>
+            </tr>
+            <tr>
+              <td>Externo></td>
+              <td>Programa armazenado em arquivo></td>
+              <td>ls, grep, cat, cp></td>
+            </tr>
+            <tr>
+              <td>Alias></td>
+              <td>Apelido/atalho para comando></td>
+              <td>ll, la, g></td>
+            </tr>
+            <tr>
+              <td>Função</td>
+              <td>Bloco de código reutilizável</td>
+              <td>minha_funcao() { ... }</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Opções do comando type -->
+        <div class="card">
+          <i class="fas fa-cog"></i>
+          <h3>Opções do Comando type</h3>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>$ <span style="color: var(--primary);"># -t: retorna apenas o tipo (alias, builtin, file, function)</span>
+$ type -t ls
+file
+
+$ <span style="color: var(--primary);"># -p: retorna o caminho do comando externo</span>
+$ type -p ls
+/usr/bin/ls
+
+$ <span style="color: var(--primary);"># -a: mostra todas as ocorrências (incluindo aliases)</span>
+$ type -a ls
+ls is aliased to `ls --color=auto'
+ls is /usr/bin/ls</pre>
+          </div>
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i>
+          <strong>📌 Resumo:</strong>
+          <br /><br />
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem">
+            <li><code>type comando</code> - Mostra o tipo do comando</li>
+            <li><code>type -t comando</code> - Retorna apenas o tipo (builtin, file, alias, function)</li>
+            <li><code>type -a comando</code> - Mostra todas as ocorrências do comando</li>
+            <li><code>type -p comando</code> - Mostra o caminho do executável (comandos externos)</li>
+          </ul>
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 5.5.1 - INTERNAL COMMANDS            -->
+      <!-- ============================================ -->
+      <section id="secao5-5-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-microchip"></i>
+          <span class="section-number">5.5.1</span> Comandos Internos
+        </h2>
+
+        <div class="card">
+          <p>
+            Também chamados de <strong>comandos internos</strong> (built-in commands), os comandos internos são incorporados ao próprio
+            shell. Um bom exemplo é o comando <code>cd</code> (change directory), pois ele faz parte do Bash shell. Quando um usuário digita
+            o comando <code>cd</code>, o Bash shell já está em execução e sabe como interpretá-lo, sem necessidade de iniciar programas
+            adicionais.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-search"></i>
+          <h3>Identificando Comandos Internos</h3>
+          <p>O comando <code>type</code> identifica o comando <code>cd</code> como um comando interno:</p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ type cd
+cd is a shell builtin</pre
+            >
+          </div>
+        </div>
+
+        <!-- Grid 2 - Exemplos de comandos internos -->
+        <div class="grid-2">
+          <div class="card">
+            <i class="fas fa-list"></i>
+            <h3>Comandos Internos Comuns</h3>
+            <ul class="icon-list" style="list-style: none; padding-left: 0">
+              <li><code>cd</code> - Mudar de diretório</li>
+              <li><code>echo</code> - Exibir texto</li>
+              <li><code>alias</code> - Criar apelidos para comandos</li>
+              <li><code>type</code> - Mostrar tipo do comando</li>
+              <li><code>export</code> - Criar variáveis de ambiente</li>
+              <li><code>unset</code> - Remover variáveis</li>
+              <li><code>history</code> - Mostrar histórico de comandos</li>
+              <li><code>exit</code> - Sair do shell</li>
+            </ul>
+          </div>
+          <div class="card">
+            <i class="fas fa-tachometer-alt"></i>
+            <h3>Vantagens dos Comandos Internos</h3>
+            <ul class="icon-list" style="list-style: none; padding-left: 0">
+              <li><i class="fas fa-check-circle"></i> Mais rápidos (não precisam carregar um programa externo)</li>
+              <li><i class="fas fa-check-circle"></i> Sempre disponíveis (independente do PATH)</li>
+              <li><i class="fas fa-check-circle"></i> Podem modificar o ambiente do shell</li>
+              <li><i class="fas fa-check-circle"></i> Não criam processos filhos separados</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Terminal - Mais exemplos -->
+        <div class="terminal">
+          <pre>$ <span style="color: var(--primary);"># Verificando outros comandos internos</span>
+$ type alias
+alias is a shell builtin
+
+$ type echo
+echo is a shell builtin
+
+$ type export
+export is a shell builtin
+
+$ type history
+history is a shell builtin
+
+$ type exit
+exit is a shell builtin</pre>
+        </div>
+
+        <!-- Tabela de comandos internos -->
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Comando</th>
+              <th>Descrição</th>
+              <th>Exemplo de uso</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>cd</td>
+              <td>Muda o diretório atual</td>
+              <td>cd /home/usuario</td>
+            </tr>
+            <tr>
+              <td>echo</td>
+              <td>Exibe texto no terminal</td>
+              <td>echo "Olá Mundo"</td>
+            </tr>
+            <tr>
+              <td>alias</td>
+              <td>Cria atalhos para comandos</td>
+              <td>alias ll='ls -la'</td>
+            </tr>
+            <tr>
+              <td>export</td>
+              <td>Define variável de ambiente</td>
+              <td>export PATH=$PATH:/novo</td>
+            </tr>
+            <tr>
+              <td>unset</td>
+              <td>Remove variáveis ou funções</td>
+              <td>unset VARIAVEL</td>
+            </tr>
+            <tr>
+              <td>history</td>
+              <td>Lista comandos executados</td>
+              <td>history 10</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i>
+          <strong>📌 Resumo:</strong>
+          <br /><br />
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem">
+            <li>Comandos internos fazem parte do próprio shell Bash</li>
+            <li>São mais rápidos porque não precisam carregar programas externos</li>
+            <li>Estão sempre disponíveis, independentemente do PATH</li>
+            <li>Podem modificar o ambiente do shell atual</li>
+            <li>Use <code>type comando</code> para verificar se um comando é interno</li>
+          </ul>
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 5.5.2 - EXTERNAL COMMANDS            -->
+      <!-- ============================================ -->
+      <section id="secao5-5-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-file-code"></i>
+          <span class="section-number">5.5.2</span> Comandos Externos
+        </h2>
+
+        <div class="card">
+          <p>
+            Comandos externos são executáveis binários armazenados em diretórios que são pesquisados pelo shell. Se um usuário digita o
+            comando <code>ls</code>, o shell pesquisa nos diretórios listados na variável PATH para tentar encontrar um arquivo chamado
+            <code>ls</code> que ele possa executar.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-search-location"></i>
+          <h3>O Comando which</h3>
+          <p>
+            Se um comando não se comporta como esperado ou se um comando não está acessível quando deveria estar, pode ser útil saber onde o
+            shell está encontrando o comando ou qual versão ele está usando. Seria tedioso ter que verificar manualmente cada diretório
+            listado na variável PATH. Em vez disso, use o comando <code>which</code> para exibir o caminho completo para o comando em
+            questão:
+          </p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>which comando</pre>
+          </div>
+          <br />
+          <p>O comando <code>which</code> procura a localização de um comando pesquisando na variável PATH.</p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ which ls
+/bin/ls
+
+$ which cal
+/usr/bin/cal</pre
+            >
+          </div>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-road"></i>
+          <h3>Executando pelo Caminho Completo</h3>
+          <p>
+            Comandos externos também podem ser executados digitando o caminho completo para o comando. Por exemplo, para executar o comando
+            <code>ls</code>:
+          </p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ /bin/ls
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos</pre
+            >
+          </div>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-info-circle"></i>
+          <h3>type vs which</h3>
+          <p>Para comandos externos, o comando <code>type</code> exibe a localização do comando:</p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ type cal
+cal is /usr/bin/cal</pre
+            >
+          </div>
+          <br />
+          <p>
+            Em alguns casos, a saída do comando <code>type</code> pode diferir significativamente da saída do comando <code>which</code>:
+          </p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ type echo
+echo is a shell builtin
+
+$ which echo
+/bin/echo</pre
+            >
+          </div>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-list-alt"></i>
+          <h3>Opção -a do type</h3>
+          <p>Usando a opção <code>-a</code> do comando <code>type</code>, exibe todas as localizações que contêm o comando nomeado:</p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ type -a echo
+echo is a shell builtin
+echo is /bin/echo</pre
+            >
+          </div>
+        </div>
+
+        <!-- Grid 2 - Comparação -->
+        <div class="grid-2">
+          <div class="card">
+            <i class="fas fa-chart-line"></i>
+            <h3>which</h3>
+            <ul class="icon-list" style="list-style: none; padding-left: 0">
+              <li>Procura apenas na variável PATH</li>
+              <li>Mostra apenas o primeiro encontrado</li>
+              <li>Não mostra aliases ou built-ins</li>
+              <li>Exemplo: <code>which ls</code> → /bin/ls</li>
+            </ul>
+          </div>
+          <div class="card">
+            <i class="fas fa-chart-line"></i>
+            <h3>type -a</h3>
+            <ul class="icon-list" style="list-style: none; padding-left: 0">
+              <li>Mostra todos os tipos (built-in, alias, externo)</li>
+              <li>Mostra todas as ocorrências</li>
+              <li>Mais completo e informativo</li>
+              <li>Exemplo: <code>type -a echo</code> → builtin + /bin/echo</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Tabela de comandos externos comuns -->
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Comando</th>
+              <th>Localização típica</th>
+              <th>Descrição</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ls</td>
+              <td>/bin/ls</td>
+              <td>Lista arquivos e diretórios</td>
+            </tr>
+            <tr>
+              <td>cat</td>
+              <td>/bin/cat</td>
+              <td>Exibe conteúdo de arquivos</td>
+            </tr>
+            <tr>
+              <td>grep</td>
+              <td>/bin/grep</td>
+              <td>Busca padrões em texto</td>
+            </tr>
+            <tr>
+              <td>cp</td>
+              <td>/bin/cp</td>
+              <td>Copia arquivos e diretórios</td>
+            </tr>
+            <tr>
+              <td>mv</td>
+              <td>/bin/mv</td>
+              <td>Move ou renomeia arquivos</td>
+            </tr>
+            <tr>
+              <td>rm</td>
+              <td>/bin/rm</td>
+              <td>Remove arquivos e diretórios</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i>
+          <strong>📌 Resumo:</strong>
+          <br /><br />
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem">
+            <li><code>which comando</code> - Mostra o caminho do executável (apenas externos)</li>
+            <li><code>type comando</code> - Mostra o tipo do comando (built-in, alias, externo)</li>
+            <li><code>type -a comando</code> - Mostra todas as ocorrências do comando</li>
+            <li><code>/caminho/completo/comando</code> - Executa diretamente pelo caminho</li>
+            <li>Comandos externos são programas armazenados no disco</li>
+          </ul>
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 5.5.3 - ALIASES                      -->
+      <!-- ============================================ -->
+      <section id="secao5-5-3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-tag"></i>
+          <span class="section-number">5.5.3</span> Aliases
+        </h2>
+
+        <div class="card">
+          <p>
+            Um alias pode ser usado para mapear comandos mais longos para sequências de teclas mais curtas. Quando o shell vê um alias sendo
+            executado, ele substitui a sequência mais longa antes de prosseguir para interpretar os comandos.
+          </p>
+        </div>
+
+        <div class="card">
+          <p>
+            Por exemplo, o comando <code>ls -l</code> é comumente apelidado para <code>l</code> ou <code>ll</code>. Como esses comandos
+            menores são mais fáceis de digitar, fica mais rápido executar a linha de comando <code>ls -l</code>.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-list"></i>
+          <h3>Listando Aliases</h3>
+          <p>Para determinar quais aliases estão definidos no shell atual, use o comando <code>alias</code>:</p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ alias
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
+alias l='ls -CF'
+alias la='ls -A'
+alias ll='ls -alF'
+alias ls='ls --color=auto'</pre
+            >
+          </div>
+          <br />
+          <p>
+            Os aliases dos exemplos anteriores foram criados por arquivos de inicialização. Esses arquivos são projetados para tornar o
+            processo de criação de aliases automático.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-plus-circle"></i>
+          <h3>Criando Aliases</h3>
+          <p>
+            Novos aliases podem ser criados usando o seguinte formato, onde <code>nome</code> é o nome a ser dado ao alias e
+            <code>comando</code> é o comando a ser executado quando o alias for executado:
+          </p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>alias nome=comando</pre>
+          </div>
+          <br />
+          <p>
+            Por exemplo, o comando <code>cal 2019</code> exibe o calendário para o ano de 2019. Suponha que você execute esse comando com
+            frequência. Em vez de executar o comando completo toda vez, você pode criar um alias chamado <code>mycal</code> e executar o
+            alias:
+          </p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ alias mycal="cal 2019"
+$ mycal
+                            2019
+      January               February               March
+Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
+       1  2  3  4  5                  1  2                  1  2
+ 6  7  8  9 10 11 12   3  4  5  6  7  8  9   3  4  5  6  7  8  9
+13 14 15 16 17 18 19  10 11 12 13 14 15 16  10 11 12 13 14 15 16
+20 21 22 23 24 25 26  17 18 19 20 21 22 23  17 18 19 20 21 22 23
+27 28 29 30 31        24 25 26 27 28        24 25 26 27 28 29 30
+                                            31</pre
+            >
+          </div>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-exclamation-triangle"></i>
+          <h3>Persistência dos Aliases</h3>
+          <p>
+            Aliases criados desta forma persistem apenas enquanto o shell está aberto. Uma vez que o shell é fechado, os novos aliases são
+            perdidos. Além disso, cada shell tem seus próprios aliases, então aliases criados em um shell não estarão disponíveis em um novo
+            shell que seja aberto.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-search"></i>
+          <h3>type com Aliases</h3>
+          <p>O comando <code>type</code> pode identificar aliases para outros comandos:</p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ type ll
+ll is aliased to `ls -alF'
+
+$ type -a ls
+ls is aliased to `ls --color=auto'
+ls is /bin/ls</pre
+            >
+          </div>
+          <br />
+          <p>
+            A saída desses comandos indica que <code>ll</code> é um alias para <code>ls -alF</code>, e até mesmo <code>ls</code> é um alias
+            para <code>ls --color=auto</code>.
+          </p>
+        </div>
+
+        <!-- Tabela de aliases comuns -->
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Alias</th>
+              <th>Comando Original</th>
+              <th>Descrição</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ll</td>
+              <td>ls -alF</td>
+              <td>Lista todos os arquivos com detalhes</td>
+            </tr>
+            <tr>
+              <td>la</td>
+              <td>ls -A</td>
+              <td>Lista quase todos os arquivos (inclui ocultos)</td>
+            </tr>
+            <tr>
+              <td>l</td>
+              <td>ls -CF</td>
+              <td>Lista com classificação por tipo</td>
+            </tr>
+            <tr>
+              <td>grep</td>
+              <td>grep --color=auto</td>
+              <td>Busca com cores no resultado</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Comandos úteis -->
+        <div class="card">
+          <i class="fas fa-cog"></i>
+          <h3>Gerenciando Aliases</h3>
+          <ul class="icon-list" style="list-style: none; padding-left: 1rem">
+            <li><code>alias</code> - Lista todos os aliases</li>
+            <li><code>alias nome='comando'</code> - Cria um novo alias</li>
+            <li><code>unalias nome</code> - Remove um alias</li>
+            <li><code>unalias -a</code> - Remove todos os aliases</li>
+            <li><code>type nome</code> - Verifica se nome é um alias</li>
+          </ul>
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i>
+          <strong>📌 Dicas:</strong>
+          <br /><br />
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem">
+            <li>Aliases são temporários (duram apenas na sessão atual)</li>
+            <li>Para aliases permanentes, adicione ao arquivo <code>~/.bashrc</code></li>
+            <li>Use <code>alias nome='comando'</code> com aspas se o comando tiver espaços</li>
+            <li>Para evitar usar um alias, preceda com <code>\</code> (ex: <code>\ls</code>)</li>
+          </ul>
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 5.5.4 - FUNCTIONS                    -->
+      <!-- ============================================ -->
+      <section id="secao5-5-4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-cogs"></i>
+          <span class="section-number">5.5.4</span> Funções
+        </h2>
+
+        <div class="card">
+          <p>
+            Funções também podem ser construídas usando comandos existentes para criar novos comandos ou para substituir comandos internos
+            do shell ou comandos armazenados em arquivos. Aliases e funções são normalmente carregados a partir dos arquivos de
+            inicialização quando o shell é iniciado pela primeira vez.
+          </p>
+        </div>
+
+        <div class="card">
+          <p>
+            Funções são mais avançadas que aliases e normalmente são usadas em scripts Bash shell. Tipicamente, funções são usadas para
+            executar múltiplos comandos. Para criar uma função, a seguinte sintaxe é usada:
+          </p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+function_name () 
+{
+   commands
+}</pre
+            >
+          </div>
+          <br />
+          <p>
+            No formato acima, function_name pode ser qualquer nome que o administrador queira dar à função. Os comandos que o administrador
+            deseja executar podem substituir o placeholder commands. Observe a formatação, em particular, a localização dos parênteses () e
+            chases {}, bem como a convenção de usar tabs para tornar a função mais facilmente legível.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-chart-line"></i>
+          <h3>Utilidade das Funções</h3>
+          <p>
+            Funções são úteis pois permitem que um conjunto de comandos seja executado um de cada vez em vez de digitar cada comando
+            repetidamente. No exemplo abaixo, uma função chamada my_report é criada para executar os comandos ls, date e echo.
+          </p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ my_report () {
+> ls Documents
+> date
+> echo "Relatório do diretório de documentos"
+> }</pre
+            >
+          </div>
+          <br />
+          <p>
+            Ao criar uma função, um caractere > aparecerá como um prompt para inserir os comandos da função. As chaves {} são usadas para
+            informar ao shell quando uma função começa e termina, para sair do prompt >.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-play-circle"></i>
+          <h3>Executando uma Função</h3>
+          <p>Uma vez que uma função é criada, o nome da função pode ser invocado a partir do prompt BASH para executar a função:</p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ my_report
+School            alpha-third.txt  hidden.txt    numbers.txt  spelling.txt
+Work              alpha.txt        letters.txt   os.csv       words
+adjectives.txt    animals.txt      linux.txt     people.csv
+alpha-first.txt   food.txt         longfile.txt  profile.txt
+alpha-second.txt  hello.sh         newhome.txt   red.txt
+Qua Out 13 06:54:04 UTC 2021
+Relatório do diretório de documentos</pre
+            >
+          </div>
+        </div>
+
+        <!-- Grid 2 - Funções vs Aliases -->
+        <div class="grid-2">
+          <div class="card">
+            <i class="fas fa-tag"></i>
+            <h3>Aliases</h3>
+            <ul class="icon-list" style="list-style: none; padding-left: 0">
+              <li>Simples e diretos</li>
+              <li>Apenas um comando</li>
+              <li>Sem argumentos complexos</li>
+              <li>Exemplo: alias ll='ls -la'</li>
+            </ul>
+          </div>
+          <div class="card">
+            <i class="fas fa-cogs"></i>
+            <h3>Funções</h3>
+            <ul class="icon-list" style="list-style: none; padding-left: 0">
+              <li>Mais avançadas e poderosas</li>
+              <li>Múltiplos comandos</li>
+              <li>Aceitam argumentos e parâmetros</li>
+              <li>Exemplo: my_report () { ls; date; }</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sintaxe da função -->
+        <div class="card">
+          <i class="fas fa-code"></i>
+          <h3>Sintaxe Alternativa</h3>
+          <p>Existem duas sintaxes válidas para criar funções no Bash:</p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre><span style="color: var(--primary);"># Forma 1: Com a palavra reservada function</span>
+function nome_da_funcao {
+    comandos
+}
+
+<span style="color: var(--primary);"># Forma 2: Sem a palavra reservada (mais comum)</span>
+nome_da_funcao () {
+    comandos
+}</pre>
+          </div>
+        </div>
+
+        <!-- Tabela de exemplos - SEM strong -->
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Função</th>
+              <th>Comandos</th>
+              <th>Descrição</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>my_report</td>
+              <td>ls Documents; date; echo "texto"</td>
+              <td>Exibe arquivos, data e uma mensagem</td>
+            </tr>
+            <tr>
+              <td>clean</td>
+              <td>rm -f *.tmp; echo "Limpando temporários"</td>
+              <td>Remove arquivos temporários</td>
+            </tr>
+            <tr>
+              <td>backup</td>
+              <td>cp -r documentos backup/; date</td>
+              <td>Faz backup e mostra data</td>
+            </tr>
+            <tr>
+              <td>info</td>
+              <td>uname -a; whoami; pwd</td>
+              <td>Mostra informações do sistema</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Comandos úteis -->
+        <div class="card">
+          <i class="fas fa-cog"></i>
+          <h3>Gerenciando Funções</h3>
+          <ul class="icon-list" style="list-style: none; padding-left: 1rem">
+            <li>declare -f - Lista todas as funções definidas</li>
+            <li>declare -f nome_funcao - Mostra o conteúdo de uma função específica</li>
+            <li>unset -f nome_funcao - Remove uma função</li>
+            <li>type nome_funcao - Verifica se o nome é uma função</li>
+          </ul>
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i>
+          <strong>📌 Dicas:</strong>
+          <br /><br />
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem">
+            <li>Funções podem ser adicionadas ao ~/.bashrc para persistência</li>
+            <li>Funções aceitam argumentos: $1, $2, etc.</li>
+            <li>Use local para criar variáveis locais dentro de funções</li>
+            <li>Funções são executadas no shell atual, não em um subprocesso</li>
+            <li>Funções podem chamar outras funções</li>
+          </ul>
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 5.6 - QUOTING                        -->
+      <!-- ============================================ -->
+      <section id="secao5-6" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-quote-left"></i>
+          <span class="section-number">5.6</span> Aspas
+        </h2>
+
+        <div class="card">
+          <p>
+            As aspas são usadas em toda a administração Linux e na maioria das linguagens de programação para informar ao sistema que as
+            informações contidas dentro das aspas devem ser ignoradas ou tratadas de uma maneira muito diferente do que seriam normalmente
+            tratadas. Existem três tipos de aspas que têm significado especial para o shell Bash: aspas duplas ", aspas simples ', e aspas
+            invertidas ` (back quotes). Cada conjunto de aspas alerta o shell para não tratar o texto dentro das aspas da maneira normal.
+          </p>
+        </div>
+
+        <!-- Grid 3 - Tipos de aspas -->
+        <div class="grid-2" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))">
+          <div class="card">
+            <i class="fas fa-quote-right"></i>
+            <h3>Aspas Duplas (" ")</h3>
+            <p>Permitem a expansão de variáveis e caracteres especiais. O shell interpreta $, `, e \ dentro das aspas duplas.</p>
+            <br />
+            <div class="terminal" style="margin-top: 0.5rem">
+              <pre>
+$ nome="João"
+$ echo "Olá $nome"
+Olá João</pre
+              >
+            </div>
+          </div>
+          <div class="card">
+            <i class="fas fa-quote-left"></i>
+            <h3>Aspas Simples (' ')</h3>
+            <p>Impedem TODA a expansão. O texto é tratado literalmente, sem interpretar variáveis ou caracteres especiais.</p>
+            <br />
+            <div class="terminal" style="margin-top: 0.5rem">
+              <pre>
+$ nome="João"
+$ echo 'Olá $nome'
+Olá $nome</pre
+              >
+            </div>
+          </div>
+          <div class="card">
+            <i class="fas fa-terminal"></i>
+            <h3>Aspas Invertidas (` `)</h3>
+            <p>Executam o comando dentro e substituem pela saída. Também podem ser escritas como $().</p>
+            <br />
+            <div class="terminal" style="margin-top: 0.5rem">
+              <pre>
+$ echo "Hoje é `date`"
+Hoje é Qua Out 13 06:54:04 UTC 2021</pre
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i>
+          <strong>📌 Resumo rápido:</strong>
+          <br /><br />
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem">
+            <li>Aspas duplas - Permitem variáveis ($)</li>
+            <li>Aspas simples - Tudo é literal</li>
+            <li>Aspas invertidas - Executa comando ($() é preferível)</li>
+          </ul>
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 5.6.1 - DOUBLE QUOTES                -->
+      <!-- ============================================ -->
+      <section id="secao5-6-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-quote-right"></i>
+          <span class="section-number">5.6.1</span> Aspas Duplas
+        </h2>
+
+        <div class="card">
+          <p>Aspas duplas impedem o shell de interpretar alguns metacaracteres (caracteres especiais), incluindo caracteres glob.</p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-asterisk"></i>
+          <h3>Glob Characters (Curingas)</h3>
+          <p>
+            Caracteres glob, também chamados de curingas, são símbolos que têm significado especial para o shell; eles são interpretados
+            pelo próprio shell antes de tentar executar qualquer comando. Caracteres glob incluem o asterisco *, o ponto de interrogação ? e
+            os colchetes [ ], entre outros.
+          </p>
+          <br />
+          <p>
+            Dentro de aspas duplas, um asterisco é apenas um asterisco, um ponto de interrogação é apenas um ponto de interrogação, e assim
+            por diante. Isso é útil quando você quer exibir algo na tela que normalmente é um caractere especial para o shell.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-terminal"></i>
+          <h3>Exemplo com Glob</h3>
+          <p>No comando echo abaixo, o shell Bash não converte o padrão glob em nomes de arquivos que correspondem ao padrão:</p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ echo "Os caracteres glob são *, ? e [ ]"
+Os caracteres glob são *, ? e [ ]</pre
+            >
+          </div>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-dollar-sign"></i>
+          <h3>Expansão de Variáveis</h3>
+          <p>
+            Aspas duplas ainda permitem substituição de comando, substituição de variáveis e permitem alguns outros metacaracteres do shell.
+            A demonstração a seguir mostra que o valor da variável PATH ainda é exibido:
+          </p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ echo "O caminho é $PATH"
+O caminho é /usr/bin/custom:/home/sysadmin/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games</pre
+            >
+          </div>
+        </div>
+
+        <!-- Tabela de metacaracteres -->
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Caractere</th>
+              <th>Nome</th>
+              <th>Significado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>*</td>
+              <td>Asterisco</td>
+              <td>Corresponde a qualquer sequência de caracteres</td>
+            </tr>
+            <tr>
+              <td>?</td>
+              <td>Interrogação</td>
+              <td>Corresponde a exatamente um caractere</td>
+            </tr>
+            <tr>
+              <td>[ ]</td>
+              <td>Colchetes</td>
+              <td>Corresponde a um caractere do conjunto</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i>
+          <strong>📌 Resumo:</strong>
+          <br /><br />
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem">
+            <li>Aspas duplas protegem caracteres glob (*, ?, [])</li>
+            <li>Não protegem variáveis ($) - elas são expandidas</li>
+            <li>Não protegem substituição de comando (` ` ou $())</li>
+            <li>Úteis para exibir textos com asteriscos literalmente</li>
+          </ul>
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 5.6.2 - SINGLE QUOTES                -->
+      <!-- ============================================ -->
+      <section id="secao5-6-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-quote-left"></i>
+          <span class="section-number">5.6.2</span> Aspas Simples
+        </h2>
+
+        <div class="card">
+          <p>
+            Aspas simples impedem o shell de fazer qualquer interpretação de caracteres especiais, incluindo globs, variáveis, substituição
+            de comando e outros metacaracteres.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-dollar-sign"></i>
+          <h3>Protegendo o Cifrão</h3>
+          <p>
+            Por exemplo, para fazer o caractere $ significar simplesmente um $, em vez de atuar como um indicador para o shell procurar o
+            valor de uma variável, execute o segundo comando exibido abaixo:
+          </p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ echo The car costs $100
+The car costs 00
+
+$ echo 'The car costs $100'
+The car costs $100</pre
+            >
+          </div>
+          <br />
+          <p>
+            Sem as aspas simples, o shell interpretou $1 como uma variável (vazia), resultando em "00". Com aspas simples, o $ é tratado
+            como um caractere literal.
+          </p>
+        </div>
+
+        <!-- Grid 2 - Comparação -->
+        <div class="grid-2">
+          <div class="card">
+            <i class="fas fa-quote-right"></i>
+            <h3>Aspas Duplas</h3>
+            <ul class="icon-list" style="list-style: none; padding-left: 0">
+              <li>Expandem variáveis ($)</li>
+              <li>Expandem substituição de comando</li>
+              <li>Protegem globs (*, ?, [])</li>
+              <li>Exemplo: "$VAR" → valor da variável</li>
+            </ul>
+          </div>
+          <div class="card">
+            <i class="fas fa-quote-left"></i>
+            <h3>Aspas Simples</h3>
+            <ul class="icon-list" style="list-style: none; padding-left: 0">
+              <li>NÃO expandem variáveis</li>
+              <li>NÃO expandem substituição de comando</li>
+              <li>Protegem TUDO (literal)</li>
+              <li>Exemplo: '$VAR' → texto $VAR literal</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Tabela comparativa -->
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Comando</th>
+              <th>Saída</th>
+              <th>Explicação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>echo $100></td>
+              <td>00></td>
+              <td>$1 interpretado como variável vazia></td>
+            </tr>
+            <tr>
+              <td>echo '$100'></td>
+              <td>$100></td>
+              <td>Aspas simples protegem o $></td>
+            </tr>
+            <tr>
+              <td>echo "O diretório é $PWD"></td>
+              <td>O diretório é /home/user></td>
+              <td>Aspas duplas expandem $PWD></td>
+            </tr>
+            <tr>
+              <td>echo 'O diretório é $PWD'></td>
+              <td>O diretório é $PWD></td>
+              <td>Aspas simples NÃO expandem></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Outros exemplos -->
+        <div class="card">
+          <i class="fas fa-code"></i>
+          <h3>Exemplos Adicionais</h3>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>$ <span style="color: var(--primary);"># Aspas simples protegem asterisco</span>
+$ echo *
+Desktop Documents Downloads Music Pictures
+
+$ echo '*'
+*
+
+$ <span style="color: var(--primary);"># Aspas simples protegem substituição de comando</span>
+$ echo "Hoje é $(date)"
+Hoje é Qua Out 13 06:54:04 UTC 2021
+
+$ echo 'Hoje é $(date)'
+Hoje é $(date)</pre>
+          </div>
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i>
+          <strong>📌 Resumo:</strong>
+          <br /><br />
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem">
+            <li>Aspas simples = TUDO é literal</li>
+            <li>Não expande variáveis ($ permanece $)</li>
+            <li>Não expande comandos (` ` ou $())</li>
+            <li>Não expande globs (*, ?, [])</li>
+            <li>Use quando quiser exibir o texto exato como digitado</li>
+          </ul>
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 5.6.3 - BACKSLASH CHARACTER          -->
+      <!-- ============================================ -->
+      <section id="secao5-6-3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-backward"></i>
+          <span class="section-number">5.6.3</span> Caractere de Escape (Backslash)
+        </h2>
+
+        <div class="card">
+          <p>
+            Existe também uma técnica alternativa para essencialmente "escapar" um único caractere, funcionando como uma aspas simples para
+            um caractere individual.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-dollar-sign"></i>
+          <h3>O Problema</h3>
+          <p>Considere a seguinte mensagem:</p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>The service costs $1 and the path is $PATH</pre>
+          </div>
+          <br />
+          <p>Se esta frase for colocada em aspas duplas, <code>$1</code> e <code>$PATH</code> são considerados variáveis:</p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ echo "The service costs $1 and the path is $PATH"
+The service costs  and the path is /usr/bin/custom:/home/sysadmin/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games</pre
+            >
+          </div>
+          <br />
+          <p>Se for colocada em aspas simples, <code>$1</code> e <code>$PATH</code> não são considerados variáveis:</p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ echo 'The service costs $1 and the path is $PATH'
+The service costs $1 and the path is $PATH</pre
+            >
+          </div>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-question-circle"></i>
+          <h3>E se quisermos misturar?</h3>
+          <p>Mas e se você quiser que <code>$PATH</code> seja tratado como variável e <code>$1</code> não?</p>
+          <br />
+          <p>
+            Neste caso, use um caractere <strong>backslash \</strong> na frente do cifrão $ para evitar que o shell o interprete. O comando
+            abaixo demonstra o uso do caractere <code>\</code>:
+          </p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ echo The service costs \$1 and the path is $PATH
+The service costs $1 and the path is /usr/bin/custom:/home/sysadmin/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games</pre
+            >
+          </div>
+        </div>
+
+        <!-- Tabela comparativa -->
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Sintaxe</th>
+              <th>Resultado</th>
+              <th>Comportamento de $1</th>
+              <th>Comportamento de $PATH</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>echo "texto $1 $PATH"</td>
+              <td>texto (valor do PATH)</td>
+              <td>Expande (vazio)</td>
+              <td>Expande</td>
+            </tr>
+            <tr>
+              <td>echo 'texto $1 $PATH'</td>
+              <td>texto $1 $PATH</td>
+              <td>Literal ($1)</td>
+              <td>Literal ($PATH)</td>
+            </tr>
+            <tr>
+              <td>echo texto \$1 $PATH</td>
+              <td>texto $1 (valor do PATH)</td>
+              <td>Literal ($1)</td>
+              <td>Expande</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Caracteres que precisam de escape -->
+        <div class="card">
+          <i class="fas fa-shield-alt"></i>
+          <h3>Caracteres que Comumente Precisam de Escape</h3>
+          <ul class="icon-list" style="list-style: none; padding-left: 1rem">
+            <li><code>\$</code> - Cifrão (evita expansão de variável)</li>
+            <li><code>\*</code> - Asterisco (evita globbing)</li>
+            <li><code>\?</code> - Interrogação (evita globbing)</li>
+            <li><code>\[</code> e <code>\]</code> - Colchetes (evita globbing)</li>
+            <li><code>\`</code> - Aspas invertidas (evita substituição de comando)</li>
+            <li><code>\\</code> - Próprio backslash</li>
+            <li><code>\"</code> - Aspas duplas</li>
+            <li><code>\'</code> - Aspas simples</li>
+          </ul>
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i>
+          <strong>📌 Resumo:</strong>
+          <br /><br />
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem">
+            <li>Backslash \ escapa (desativa) o caractere seguinte</li>
+            <li>Funciona como "aspas simples para um único caractere"</li>
+            <li>Útil quando se quer misturar expansão e literal no mesmo texto</li>
+            <li>Exemplo: \$1 → literal $1, $PATH → expande</li>
+          </ul>
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 5.6.4 - BACKQUOTES                   -->
+      <!-- ============================================ -->
+      <section id="secao5-6-4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-terminal"></i>
+          <span class="section-number">5.6.4</span> Aspas Invertidas (Backquotes)
+        </h2>
+
+        <div class="card">
+          <p>
+            Aspas invertidas, ou backticks, são usadas para especificar um comando dentro de outro comando, um processo chamado de
+            <strong>substituição de comando</strong>. Isso permite o uso poderoso e sofisticado de comandos.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-question-circle"></i>
+          <h3>Entendendo com um Exemplo</h3>
+          <p>
+            Embora possa parecer confuso, um exemplo deve tornar as coisas mais claras. Para começar, observe a saída do comando
+            <code>date</code>:
+          </p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ date
+Mon Nov  4 03:35:50 UTC 2018</pre
+            >
+          </div>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-comment"></i>
+          <h3>Texto Normal vs Comando</h3>
+          <p>Agora, observe a saída do comando <code>echo</code>:</p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ echo Today is date
+Today is date</pre
+            >
+          </div>
+          <br />
+          <p>
+            No comando anterior, a palavra <code>date</code> é tratada como texto normal, e o shell passa <code>date</code> como string para
+            o comando <code>echo</code>.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-sync-alt"></i>
+          <h3>Substituição de Comando</h3>
+          <p>
+            Para executar o comando <code>date</code> e ter a saída desse comando enviada para o comando <code>echo</code>, coloque o
+            comando <code>date</code> entre dois caracteres de aspas invertidas:
+          </p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ echo Today is `date`
+Today is Mon Nov 4 03:40:04 UTC 2018</pre
+            >
+          </div>
+        </div>
+
+        <!-- Grid 2 - Sintaxes -->
+        <div class="grid-2">
+          <div class="card">
+            <i class="fas fa-code"></i>
+            <h3>Sintaxe Antiga (Backticks)</h3>
+            <p><code>`comando`</code></p>
+            <br />
+            <div class="terminal" style="margin-top: 0.5rem">
+              <pre>
+$ echo `date`
+Mon Nov 4 03:40:04 UTC 2018</pre
+              >
+            </div>
+          </div>
+          <div class="card">
+            <i class="fas fa-code"></i>
+            <h3>Sintaxe Moderna (Recomendada)</h3>
+            <p><code>$(comando)</code></p>
+            <br />
+            <div class="terminal" style="margin-top: 0.5rem">
+              <pre>
+$ echo $(date)
+Mon Nov 4 03:40:04 UTC 2018</pre
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabela de exemplos -->
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Comando</th>
+              <th>Saída</th>
+              <th>Explicação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>echo date</td>
+              <td>dateHamilton</td>
+              <td>"date" é texto literalHamilton</td>
+            </tr>
+            <tr>
+              <td>echo `date`Hamilton</td>
+              <td>Mon Nov 4 03:40:04 UTC 2018Hamilton</td>
+              <td>Executa date e exibe a saídaHamilton</td>
+            </tr>
+            <tr>
+              <td>echo $(date)Hamilton</td>
+              <td>Mon Nov 4 03:40:04 UTC 2018Hamilton</td>
+              <td>Forma moderna (recomendada)Hamilton</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Exemplos avançados -->
+        <div class="card">
+          <i class="fas fa-chart-line"></i>
+          <h3>Exemplos Avançados</h3>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>$ <span style="color: var(--primary);"># Número de arquivos no diretório atual</span>
+$ echo "Existem `ls | wc -l` arquivos neste diretório"
+Existem 15 arquivos neste diretório
+
+$ <span style="color: var(--primary);"># Data e hora atual</span>
+$ echo "Hoje é `date +%d/%m/%Y` e agora são `date +%H:%M`"
+Hoje é 28/05/2024 e agora são 14:30
+
+$ <span style="color: var(--primary);"># Usando $( ) - forma moderna</span>
+$ echo "Diretório atual: $(pwd)"
+Diretório atual: /home/sysadmin
+
+$ <span style="color: var(--primary);"># Múltiplos comandos aninhados</span>
+$ echo "Arquivo: $(basename $(find . -name "*.txt" | head -1))"
+Arquivo: exemplo.txt</pre>
+          </div>
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i>
+          <strong>📌 Resumo:</strong>
+          <br /><br />
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem">
+            <li><code>`comando`</code> - Sintaxe antiga (backticks)</li>
+            <li><code>$(comando)</code> - Sintaxe moderna (recomendada)</li>
+            <li>Substituição de comando: executa comando e usa a saída</li>
+            <li>Pode ser aninhado e combinado com outras expansões</li>
+            <li>Útil para criar comandos dinâmicos e poderosos</li>
+          </ul>
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 5.7 - CONTROL STATEMENTS             -->
+      <!-- ============================================ -->
+      <section id="secao5-7" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-code-branch"></i>
+          <span class="section-number">5.7</span> Declarações de Controle
+        </h2>
+
+        <div class="card">
+          <p>
+            Declarações de controle permitem usar múltiplos comandos de uma só vez ou executar comandos adicionais, dependendo do sucesso de
+            um comando anterior. Normalmente, essas declarações de controle são usadas em scripts, mas também podem ser usadas na linha de
+            comando.
+          </p>
+        </div>
+
+        <!-- Grid 3 - Operadores de controle -->
+        <div class="grid-2" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))">
+          <div class="card">
+            <i class="fas fa-link"></i>
+            <h3>Ponto e Vírgula (;)</h3>
+            <p>Executa comandos em sequência, independentemente do sucesso ou falha de cada um. Todos os comandos são executados.</p>
+            <br />
+            <div class="terminal" style="margin-top: 0.5rem">
+              <pre>$ date; ls; pwd</pre>
+            </div>
+          </div>
+          <div class="card">
+            <i class="fas fa-check-circle"></i>
+            <h3>E Comercial (&&)</h3>
+            <p>Executa o próximo comando SOMENTE SE o comando anterior for bem-sucedido (código de saída 0).</p>
+            <br />
+            <div class="terminal" style="margin-top: 0.5rem">
+              <pre>$ mkdir pasta && cd pasta</pre>
+            </div>
+          </div>
+          <div class="card">
+            <i class="fas fa-times-circle"></i>
+            <h3>Pipe Duplo (||)</h3>
+            <p>Executa o próximo comando SOMENTE SE o comando anterior falhar (código de saída diferente de 0).</p>
+            <br />
+            <div class="terminal" style="margin-top: 0.5rem">
+              <pre>$ cd /inexistente || echo "Falhou"</pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exemplos detalhados -->
+        <div class="card">
+          <i class="fas fa-chalkboard"></i>
+          <h3>Exemplos Práticos</h3>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>$ <span style="color: var(--primary);"># Ponto e vírgula - executa todos</span>
+$ echo "Primeiro" ; echo "Segundo" ; echo "Terceiro"
+Primeiro
+Segundo
+Terceiro
+
+$ <span style="color: var(--primary);"># && - executa apenas se o anterior funcionar</span>
+$ cd /home && ls -la
+(mostra o conteúdo do diretório)
+
+$ <span style="color: var(--primary);"># || - executa apenas se o anterior falhar</span>
+$ cd /pasta_inexistente || echo "Diretório não encontrado"
+Diretório não encontrado
+
+$ <span style="color: var(--primary);"># Combinando && e ||</span>
+$ ping -c 1 google.com && echo "Online" || echo "Offline"
+Online</pre>
+          </div>
+        </div>
+
+        <!-- Tabela resumo -->
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Operador</th>
+              <th>Nome</th>
+              <th>Comportamento</th>
+              <th>Exemplo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>;</td>
+              <td>Ponto e vírgulaHamilton</td>
+              <td>Executa todos os</td>
+              <td>cmd1 ; cmd2 ; cmd3Hamilton</td>
+            </tr>
+            <tr>
+              <td>&&Hamilton</td>
+              <td>E comercial (AND)Hamilton</td>
+              <td>Executa próximo se anterior for bem-sucedidoHamilton</td>
+              <td>cmd1 && cmd2Hamilton</td>
+            </tr>
+            <tr>
+              <td>||Hamilton</td>
+              <td>Pipe duplo (OR)Hamilton</td>
+              <td>Executa próximo se anterior falharHamilton</td>
+              <td>cmd1 || cmd2Hamilton</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Códigos de saída -->
+        <div class="card">
+          <i class="fas fa-code"></i>
+          <h3>Códigos de Saída</h3>
+          <p>
+            Todo comando no Linux retorna um código de saída. O código 0 indica sucesso. Qualquer código diferente de 0 indica falha ou
+            erro.
+          </p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>$ <span style="color: var(--primary);"># Verificar código de saída do último comando</span>
+$ ls /home
+Desktop  Documents  Downloads
+$ echo $?
+0
+
+$ ls /pasta_inexistente
+ls: cannot access '/pasta_inexistente': No such file or directory
+$ echo $?
+2</pre>
+          </div>
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i>
+          <strong>📌 Resumo:</strong>
+          <br /><br />
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem">
+            <li><code>;</code> - Executa todos os comandos (ignora erros)</li>
+            <li><code>&&</code> - Executa próximo APENAS se o anterior foi bem-sucedido</li>
+            <li><code>||</code> - Executa próximo APENAS se o anterior falhou</li>
+            <li><code>$?</code> - Mostra o código de saída do último comando (0 = sucesso)</li>
+            <li>Útil para scripts e linha de comando para controle de fluxo</li>
+          </ul>
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 5.7.1 - SEMICOLON                    -->
+      <!-- ============================================ -->
+      <section id="secao5-7-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-semicolon"></i>
+          <span class="section-number">5.7.1</span> Ponto e Vírgula
+        </h2>
+
+        <div class="card">
+          <p>
+            O caractere ponto e vírgula ; pode ser usado para executar múltiplos comandos, um após o outro. Cada comando executa de forma
+            independente e consecutiva; independentemente do resultado do primeiro comando, o segundo comando executa assim que o primeiro
+            for concluído, depois o terceiro e assim por diante.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-code"></i>
+          <h3>Sintaxe</h3>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>comando1; comando2; comando3</pre>
+          </div>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-calendar-alt"></i>
+          <h3>Exemplo Prático</h3>
+          <p>Por exemplo, para imprimir os meses de janeiro, fevereiro e março de 2030, execute o seguinte comando:</p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ cal 1 2030; cal 2 2030; cal 3 2030
+    January 2030
+Su Mo Tu We Th Fr Sa
+       1  2  3  4  5
+ 6  7  8  9 10 11 12
+13 14 15 16 17 18 19
+20 21 22 23 24 25 26
+27 28 29 30 31
+
+   February 2030
+Su Mo Tu We Th Fr Sa
+                1  2
+ 3  4  5  6  7  8  9
+10 11 12 13 14 15 16
+17 18 19 20 21 22 23
+24 25 26 27 28
+
+     March 2030
+Su Mo Tu We Th Fr Sa
+                1  2
+ 3  4  5  6  7  8  9
+10 11 12 13 14 15 16
+17 18 19 20 21 22 23
+24 25 26 27 28 29 30
+31</pre
+            >
+          </div>
+        </div>
+
+        <!-- Grid 2 - Características -->
+        <div class="grid-2">
+          <div class="card">
+            <i class="fas fa-check-circle"></i>
+            <h3>Características</h3>
+            <ul class="icon-list" style="list-style: none; padding-left: 0">
+              <li>Executa comandos em sequência</li>
+              <li>Não importa se o anterior falhou</li>
+              <li>Todos os comandos são executados</li>
+              <li>Útil para agrupar tarefas relacionadas</li>
+            </ul>
+          </div>
+          <div class="card">
+            <i class="fas fa-chart-line"></i>
+            <h3>Comportamento</h3>
+            <ul class="icon-list" style="list-style: none; padding-left: 0">
+              <li>Comando1 executa primeiro</li>
+              <li>Quando termina, Comando2 executa</li>
+              <li>Quando termina, Comando3 executa</li>
+              <li>Independente de erros intermediários</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Tabela comparativa -->
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Comando</th>
+              <th>Descrição</th>
+              <th>Todos executam?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>date; pwd; lsHamilton</td>
+              <td>Executa date, depois pwd, depois lsHamilton</td>
+              <td>SimHamilton</td>
+            </tr>
+            <tr>
+              <td>cal 2030; cal 2031Hamilton</td>
+              <td>Mostra calendário de 2030 e 2031Hamilton</td>
+              <td>SimHamilton</td>
+            </tr>
+            <tr>
+              <td>echo "Início"; cp arquivo destino; echo "Fim"Hamilton</td>
+              <td>Mensagem, cópia, mensagem (mesmo se cópia falhar)Hamilton</td>
+              <td>SimHamilton</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i>
+          <strong>📌 Resumo:</strong>
+          <br /><br />
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem">
+            <li>Ponto e vírgula ; separa comandos em sequência</li>
+            <li>Todos os comandos são executados, independente de erros</li>
+            <li>Útil para agrupar comandos relacionados na mesma linha</li>
+            <li>Exemplo: <code>cd /tmp; ls; pwd</code></li>
+          </ul>
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 5.7.2 - DOUBLE AMPERSAND             -->
+      <!-- ============================================ -->
+      <section id="secao5-7-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-code-branch"></i>
+          <span class="section-number">5.7.2</span> Duplo E Comercial (&&)
+        </h2>
+
+        <div class="card">
+          <p>
+            O duplo ampersand && atua como um "E" lógico; se o primeiro comando for bem-sucedido, então o segundo comando também será
+            executado. Se o primeiro comando falhar, então o segundo comando não será executado.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-code"></i>
+          <h3>Sintaxe</h3>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>comando1 && comando2</pre>
+          </div>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-times-circle"></i>
+          <h3>Sucesso vs Falha</h3>
+          <p>
+            Para entender melhor como isso funciona, considere primeiro o conceito de falha e sucesso para comandos. Comandos têm sucesso
+            quando funcionam corretamente e falham quando algo dá errado. Por exemplo, considere o comando <code>ls</code>. O comando tem
+            sucesso se o diretório fornecido for acessível e falha se não for.
+          </p>
+          <br />
+          <p>
+            No exemplo a seguir, o primeiro comando tem sucesso porque o diretório <code>/etc/ppp</code> existe e é acessível, enquanto o
+            segundo comando falha porque não há diretório <code>/junk</code>:
+          </p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ ls /etc/ppp
+ip-down.d  ip-up.d
+
+$ ls /etc/junk
+ls: cannot access /etc/junk: No such file or directory</pre
+            >
+          </div>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-chalkboard"></i>
+          <h3>Exemplos com &&</h3>
+          <p>
+            Para usar o sucesso ou falha do comando <code>ls</code> em conjunto com &&, execute comandos como os seguintes. No primeiro
+            exemplo, o comando <code>echo</code> é executado porque o comando <code>ls</code> tem sucesso:
+          </p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ ls /etc/ppp && echo "sucesso"
+ip-down.d  ip-up.d
+sucesso</pre
+            >
+          </div>
+          <br />
+          <p>No segundo exemplo, o comando <code>echo</code> não é executado porque o comando <code>ls</code> falha:</p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ ls /etc/junk && echo "sucesso"
+ls: cannot access /etc/junk: No such file or directory</pre
+            >
+          </div>
+        </div>
+
+        <!-- Grid 2 - Tabela verdade -->
+        <div class="grid-2">
+          <div class="card">
+            <i class="fas fa-table"></i>
+            <h3>Tabela Verdade do &&</h3>
+            <table class="table-custom" style="margin: 0">
+              <thead>
+                <tr>
+                  <th>Comando1</th>
+                  <th>Comando2</th>
+                  <th>Resultado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Sucesso</td>
+                  <td>Executa</td>
+                  <td>✅ Sucesso</td>
+                </tr>
+                <tr>
+                  <td>Falha</td>
+                  <td>Não executa</td>
+                  <td>❌ Falha</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card">
+            <i class="fas fa-code"></i>
+            <h3>Casos de Uso Comuns</h3>
+            <ul class="icon-list" style="list-style: none; padding-left: 0">
+              <li><code>mkdir pasta && cd pasta</code></li>
+              <li><code>gcc programa.c && ./a.out</code></li>
+              <li><code>ping -c 1 google.com && echo "Online"</code></li>
+              <li><code>cd /home && ls -la</code></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Tabela de exemplos -->
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Comando</th>
+              <th>Resultado</th>
+              <th>Segundo comando executa?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ls /etc/ppp && echo "OK"Hamilton</td>
+              <td>ls sucesso → echo executaHamilton</td>
+              <td>SimHamilton</td>
+            </tr>
+            <tr>
+              <td>ls /etc/junk && echo "OK"Hamilton</td>
+              <td>ls falha → echo NÃO executaHamilton</td>
+              <td>NãoHamilton</td>
+            </tr>
+            <tr>
+              <td>cd /home && lsHamilton</td>
+              <td>cd sucesso → ls executaHamilton</td>
+              <td>SimHamilton</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i>
+          <strong>📌 Resumo:</strong>
+          <br /><br />
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem">
+            <li><code>&&</code> = "E" lógico</li>
+            <li>Comando2 só executa se Comando1 for bem-sucedido (código 0)</li>
+            <li>Comando2 NÃO executa se Comando1 falhar</li>
+            <li>Útil para encadear comandos dependentes</li>
+            <li>Exemplo: <code>mkdir novo && cd novo</code> (só entra se criou a pasta)</li>
+          </ul>
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 5.7.3 - DOUBLE PIPE                  -->
+      <!-- ============================================ -->
+      <section id="secao5-7-3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-code-branch"></i>
+          <span class="section-number">5.7.3</span> Duplo Pipe (||)
+        </h2>
+
+        <div class="card">
+          <p>
+            O duplo pipe || é um "OU" lógico. Dependendo do resultado do primeiro comando, o segundo comando será executado ou ignorado.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-code"></i>
+          <h3>Sintaxe</h3>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>comando1 || comando2</pre>
+          </div>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-chalkboard"></i>
+          <h3>Funcionamento</h3>
+          <p>
+            Com o duplo pipe, se o primeiro comando for executado com sucesso, o segundo comando é ignorado; se o primeiro comando falhar,
+            então o segundo comando é executado. Em outras palavras, você está essencialmente dizendo ao shell: "Execute este primeiro
+            comando OU o segundo".
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-times-circle"></i>
+          <h3>Exemplo Prático</h3>
+          <p>No exemplo a seguir, o comando <code>echo</code> só executa se o comando <code>ls</code> falhar:</p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+$ ls /etc/ppp || echo "falhou"
+ip-down.d  ip-up.d
+
+$ ls /etc/junk || echo "falhou"
+ls: cannot access /etc/junk: No such file or directory
+falhou</pre
+            >
+          </div>
+        </div>
+
+        <!-- Grid 2 - Tabela verdade -->
+        <div class="grid-2">
+          <div class="card">
+            <i class="fas fa-table"></i>
+            <h3>Tabela Verdade do ||</h3>
+            <table class="table-custom" style="margin: 0">
+              <thead>
+                <tr>
+                  <th>Comando1</th>
+                  <th>Comando2</th>
+                  <th>Resultado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Sucesso</td>
+                  <td>Não executa</td>
+                  <td>✅ Sucesso (para no primeiro)</td>
+                </tr>
+                <tr>
+                  <td>Falha</td>
+                  <td>Executa</td>
+                  <td>✅ Sucesso (executa o segundo)Hamilton</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card">
+            <i class="fas fa-code"></i>
+            <h3>Casos de Uso Comuns</h3>
+            <ul class="icon-list" style="list-style: none; padding-left: 0">
+              <li><code>cd /pasta || echo "Falhou"</code></li>
+              <li><code>grep texto arquivo || echo "Não encontrado"</code></li>
+              <li><code>ping -c 1 site || echo "Offline"</code></li>
+              <li><code>mkdir pasta || echo "Já existe"</code></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Tabela de exemplos -->
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Comando</th>
+              <th>Resultado</th>
+              <th>Segundo comando executa?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ls /etc/ppp || echo "falhou"Hamilton</td>
+              <td>ls sucesso → echo NÃO executaHamilton</td>
+              <td>NãoHamilton</td>
+            </tr>
+            <tr>
+              <td>ls /etc/junk || echo "falhou"Hamilton</td>
+              <td>ls falha → echo executaHamilton</td>
+              <td>SimHamilton</td>
+            </tr>
+            <tr>
+              <td>cd /inexistente || echo "Diretório não encontrado"Hamilton</td>
+              <td>cd falha → echo executaHamilton</td>
+              <td>SimHamilton</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Comparação && vs || -->
+        <div class="card">
+          <i class="fas fa-chart-line"></i>
+          <h3>Comparação: && vs ||</h3>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>$ <span style="color: var(--primary);"># && (AND) - segundo executa apenas se primeiro for sucesso</span>
+$ ls /etc/ppp && echo "sucesso"
+ip-down.d  ip-up.d
+sucesso
+
+$ <span style="color: var(--primary);"># || (OR) - segundo executa apenas se primeiro falhar</span>
+$ ls /etc/junk || echo "falhou"
+ls: cannot access /etc/junk: No such file or directory
+falhou</pre>
+          </div>
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i>
+          <strong>📌 Resumo:</strong>
+          <br /><br />
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem">
+            <li><code>||</code> = "OU" lógico</li>
+            <li>Comando2 só executa se Comando1 falhar (código diferente de 0)</li>
+            <li>Comando2 NÃO executa se Comando1 for bem-sucedido</li>
+            <li>Útil para exibir mensagens de erro ou executar ação alternativa</li>
+            <li>Exemplo: <code>cd /pasta || mkdir pasta</code> (cria pasta se não existir)</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <p><i class="fab fa-linux"></i> NDG Linux Essentials – Módulo 5: Command Line Skills</p>
+      <p style="font-size: 0.8rem; margin-top: 0.5rem">Habilidades de Linha de Comando</p>
+    </footer>
+
+    <script src="../js/menu.js"></script>
+    <script>
+      // Menu Sidebar
+      class SidebarMenu {
+        constructor() {
+          this.sidebar = document.getElementById('sidebar')
+          this.overlay = document.getElementById('sidebarOverlay')
+          this.openBtn = document.getElementById('openMenu')
+          this.closeBtn = document.getElementById('closeMenu')
+          this.init()
+        }
+
+        init() {
+          if (!this.sidebar) return
+
+          if (this.openBtn) {
+            this.openBtn.addEventListener('click', () => this.open())
+          }
+          if (this.closeBtn) {
+            this.closeBtn.addEventListener('click', () => this.close())
+          }
+          if (this.overlay) {
+            this.overlay.addEventListener('click', () => this.close())
+          }
+
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.sidebar.classList.contains('open')) {
+              this.close()
+            }
+          })
+
+          const links = document.querySelectorAll('.sidebar .nav-modules a')
+          links.forEach((link) => {
+            link.addEventListener('click', () => this.close())
+          })
+        }
+
+        open() {
+          this.sidebar.classList.add('open')
+          this.overlay.classList.add('active')
+          document.body.style.overflow = 'hidden'
+        }
+
+        close() {
+          this.sidebar.classList.remove('open')
+          this.overlay.classList.remove('active')
+          document.body.style.overflow = ''
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        new SidebarMenu()
+      })
+    </script>
+  </body>
+</html>
