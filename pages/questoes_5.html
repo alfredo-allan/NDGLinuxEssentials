@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NDG Linux Essentials | Módulo 5 - Simulado Interativo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/questoes.css" />
+  </head>
+  <body>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i> <span>Módulos</span></button>
+      <a href="../index.html" class="top-bar-brand"> <i class="fab fa-linux"></i> NDG Linux Essentials </a>
+      <button class="btn-outline" id="resetQuizBtn"><i class="fas fa-sync-alt"></i> Reiniciar</button>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fab fa-linux"></i> Navegação</h3>
+        <button class="close-sidebar" id="closeSidebar">&times;</button>
+      </div>
+      <ul class="nav-modules">
+        <li>
+          <a href="#simulado"><i class="fas fa-question-circle"></i> Simulado M5</a>
+        </li>
+        <li>
+          <a href="#revisao"><i class="fas fa-book"></i> Revisão Rápida</a>
+        </li>
+        <li>
+          <a href="#gabarito"><i class="fas fa-check-double"></i> Gabarito Comentado</a>
+        </li>
+      </ul>
+    </div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="container">
+        <div class="badge-lab"><i class="fas fa-graduation-cap"></i> NDG Linux Essentials | Módulo 5</div>
+        <h1>Simulado Interativo</h1>
+        <p>
+          Teste seus conhecimentos sobre shell, variáveis, operadores e comandos Linux. Cada resposta traz explicação completa — certa ou
+          errada.
+        </p>
+        <div style="margin-top: 1.5rem">
+          <i class="fab fa-linux" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-terminal" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-chalkboard-teacher" style="color: var(--secondary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- SIMULADO -->
+      <section id="simulado" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">5</span> Simulado: 10 Questões Essenciais
+        </h2>
+
+        <div
+          class="quiz-container"
+          style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 1.8rem; margin-bottom: 2rem"
+        >
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              flex-wrap: wrap;
+              margin-bottom: 2rem;
+              padding-bottom: 1rem;
+              border-bottom: 1px solid var(--border);
+            "
+          >
+            <div
+              style="
+                display: flex;
+                gap: 1.5rem;
+                background: var(--bg-dark);
+                padding: 0.5rem 1.2rem;
+                border-radius: 40px;
+                border: 1px solid var(--border);
+              "
+            >
+              <i class="fas fa-list"></i>
+              <span id="answeredCount">0</span>/<span id="totalQuestions">10</span> respondidas
+            </div>
+            <div style="background: var(--border); border-radius: 10px; height: 8px; flex: 1; max-width: 300px; overflow: hidden">
+              <div id="progressBar" style="background: var(--primary); height: 100%; width: 0%; transition: width 0.3s"></div>
+            </div>
+            <button
+              id="checkAllBtn"
+              style="
+                background: transparent;
+                border: 1px solid var(--primary);
+                color: var(--primary);
+                padding: 0.7rem 1.5rem;
+                border-radius: 40px;
+                font-weight: 600;
+                cursor: pointer;
+              "
+            >
+              <i class="fas fa-check-double"></i> Corrigir tudo
+            </button>
+          </div>
+          <div id="questionsList"></div>
+          <div
+            id="resultArea"
+            style="
+              display: none;
+              margin-top: 2rem;
+              padding: 1.5rem;
+              background: var(--bg-dark);
+              border-radius: 20px;
+              text-align: center;
+              border: 1px solid var(--border);
+            "
+          >
+            <i class="fas fa-chart-line" style="font-size: 2rem; color: var(--primary)"></i>
+            <div id="scorePercent" style="font-size: 2.5rem; font-weight: 800; color: var(--primary)">0%</div>
+            <p id="resultMessage"></p>
+            <button
+              id="restartSimulado"
+              style="
+                background: var(--primary);
+                border: none;
+                padding: 0.7rem 1.5rem;
+                border-radius: 40px;
+                font-weight: 700;
+                color: var(--bg-dark);
+                cursor: pointer;
+              "
+            >
+              <i class="fas fa-redo-alt"></i> Refazer Simulado
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- REVISÃO RÁPIDA -->
+      <section id="revisao" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-book-open"></i>
+          <span class="section-number">Revisão</span> Comandos e Conceitos
+        </h2>
+        <div class="card">
+          <p>
+            <i class="fas fa-terminal" style="color: var(--primary)"></i> <strong>Lembre-se:</strong> <code>PATH</code> diretórios de busca,
+            <code>which</code> localiza comando, <code>echo</code> exibe texto, <code>&&</code> executa se anterior for sucesso,
+            <code>!</code> histórico, aspas duplas permitem variáveis e crases (` `) executam subcomando.
+          </p>
+        </div>
+        <div class="terminal">
+          <pre>
+$ echo $PATH
+/usr/local/bin:/usr/bin:/bin
+$ which ls
+/bin/ls
+$ mkdir test && cd test   # só entra se mkdir funcionar
+$ echo "Usuário: $USER, data: $(date +%Y)"</pre
+          >
+        </div>
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i>
+          <strong>Dica:</strong> No simulado, clique sobre a opção desejada. Após responder, aparecerá explicação automática.
+        </div>
+      </section>
+
+      <!-- GABARITO -->
+      <section id="gabarito" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-check-double"></i>
+          <span class="section-number">Gabarito</span> Respostas e Explicações
+        </h2>
+        <details class="answer-key">
+          <summary><i class="fas fa-eye"></i> Clique para ver o gabarito completo</summary>
+          <div style="margin-top: 1rem">
+            <ol style="padding-left: 1.5rem">
+              <li><strong>PATH</strong> - Contém os diretórios onde o shell procura por executáveis.</li>
+              <li><strong>which</strong> - Localiza o caminho completo de um comando.</li>
+              <li><strong>Falso</strong> - Aspas duplas permitem expansão de variáveis e comandos.</li>
+              <li><strong>Verdadeiro</strong> - Crases executam o comando interno e substituem pela saída.</li>
+              <li><strong>Falso</strong> - && executa o da direita APENAS se o da esquerda for bem-sucedido.</li>
+              <li><strong>echo</strong> - Comando padrão para exibir mensagens no terminal.</li>
+              <li><strong>!5</strong> - Reexecuta o quinto comando do histórico.</li>
+              <li><strong>Command Line Interface</strong> - Interface de linha de comando.</li>
+              <li><strong>Barra invertida (\)</strong> - Caractere de escape.</li>
+              <li><strong>Bash</strong> - Shell padrão na maioria das distribuições Linux.</li>
+            </ol>
+          </div>
+        </details>
+      </section>
+    </div>
+
+    <footer>
+      <p><i class="fab fa-linux"></i> NDG Linux Essentials | Módulo 5 - Simulado com feedback inteligente</p>
+    </footer>
+
+    <script>
+      const questionsData = [
+        {
+          text: 'Qual variável de ambiente contém a lista de diretórios pesquisados para execução de comandos?',
+          options: ['EXEC', 'PS1', 'PATH', 'PS2'],
+          correct: 2,
+          explanationCorrect: '✅ Correto! A variável PATH armazena os diretórios onde o shell procura por executáveis.',
+          explanationWrong: '❌ A variável correta é PATH. Ela define os caminhos de busca para comandos.'
+        },
+        {
+          text: 'Selecione o comando que informa a localização de um comando no sistema.',
+          options: ['where', 'which', 'what'],
+          correct: 1,
+          explanationCorrect: '✅ Isso mesmo! `which` retorna o caminho absoluto do executável.',
+          explanationWrong: '❌ O comando correto é `which`. Ele procura no PATH e mostra onde está o binário.'
+        },
+        {
+          text: 'Um par de aspas duplas (" ") impede o shell de interpretar qualquer metacaractere. Verdadeiro ou Falso?',
+          options: ['Verdadeiro', 'Falso'],
+          correct: 1,
+          explanationCorrect: '✅ Correto! É falso: aspas duplas permitem expansão de variáveis.',
+          explanationWrong: '❌ Falso. Aspas duplas NÃO impedem todas as interpretações.'
+        },
+        {
+          text: 'Usar um par de crases ( ` ` ) faz o shell executar o texto entre crases como comando e substituir a saída no comando original. Verdadeiro ou Falso?',
+          options: ['Verdadeiro', 'Falso'],
+          correct: 0,
+          explanationCorrect: '✅ Verdadeiro! As crases realizam command substitution.',
+          explanationWrong: '❌ É verdadeiro. As crases executam o conteúdo e substituem pela saída.'
+        },
+        {
+          text: 'O duplo e comercial ( && ) separa comandos condicionais onde se o comando à esquerda falhar, o da direita será executado. Verdadeiro ou Falso?',
+          options: ['Verdadeiro', 'Falso'],
+          correct: 1,
+          explanationCorrect: '✅ Falso! `&&` executa o da direita apenas se o da esquerda for bem-sucedido.',
+          explanationWrong: '❌ A afirmação está errada. `&&` só executa se o esquerdo der certo.'
+        },
+        {
+          text: 'Para exibir mensagens na tela, utiliza-se o comando:',
+          options: ['print', 'echo', 'type', 'display'],
+          correct: 1,
+          explanationCorrect: '✅ Exato! `echo` é o comando padrão para imprimir texto.',
+          explanationWrong: '❌ O comando correto é `echo`.'
+        },
+        {
+          text: 'Para executar o mesmo comando que foi executado há cinco comandos atrás, digita-se:',
+          options: ['! -5', '&5', '!5', '@ -5'],
+          correct: 2,
+          explanationCorrect: '✅ Correto! `!5` executa o quinto comando do histórico.',
+          explanationWrong: '❌ A sintaxe padrão é `!5`.'
+        },
+        {
+          text: 'A sigla CLI significa:',
+          options: ['Command Line Interface', 'Command Line Interpreter', 'Computer Line Interface', 'Computer Link Interpreter'],
+          correct: 0,
+          explanationCorrect: '✅ CLI = Command Line Interface.',
+          explanationWrong: '❌ O correto é Command Line Interface.'
+        },
+        {
+          text: 'Qual caractere trata o caractere seguinte como se estivesse entre aspas simples? (escape)',
+          options: ['# (hash)', '/ (barra)', '% (porcentagem)', '! (exclamação)'],
+          correct: -1,
+          explanationCorrect: "⚠️ O caractere de escape é a barra invertida '\\', não listada nas opções.",
+          explanationWrong: "❌ O caractere correto é a barra invertida '\\'."
+        },
+        {
+          text: 'O shell mais comum usado nas distribuições Linux é o shell ______.',
+          options: ['Zsh', 'Tsch', 'Fish', 'Bash'],
+          correct: 3,
+          explanationCorrect: '✅ Bash é o shell padrão na maioria das distribuições Linux.',
+          explanationWrong: '❌ O shell predominante é o Bash.'
+        }
+      ]
+
+      let userAnswers = new Array(questionsData.length).fill(null)
+
+      function renderQuestions() {
+        const container = document.getElementById('questionsList')
+        if (!container) return
+        let html = ''
+        questionsData.forEach((q, idx) => {
+          const selectedIdx = userAnswers[idx]
+          const isCorrect = selectedIdx !== null && selectedIdx === q.correct
+          let highlightClass = selectedIdx !== null ? (isCorrect ? 'correct-highlight' : 'wrong-highlight') : ''
+          html += `<div class="question-item" data-qidx="${idx}" style="background: var(--bg-dark); border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 3px solid ${selectedIdx !== null ? (isCorrect ? 'var(--success)' : 'var(--danger)') : 'var(--border)'};">`
+          html += `<div class="question-text"><i class="fas fa-question-circle" style="color: var(--primary);"></i> <strong>${idx + 1}. ${q.text}</strong></div>`
+          html += `<ul class="options-list" data-qidx="${idx}" style="list-style: none; margin: 1rem 0;">`
+          q.options.forEach((opt, optIdx) => {
+            let selectedClass = selectedIdx === optIdx ? 'selected' : ''
+            html += `<li data-optidx="${optIdx}" style="padding: 0.7rem; margin: 0.5rem 0; background: rgba(255,255,255,0.02); border-radius: 12px; cursor: pointer; display: flex; align-items: center; gap: 0.8rem; border: 1px solid var(--border); ${selectedClass ? 'background: rgba(0,255,136,0.15); border-color: var(--primary);' : ''}"><i class="far fa-circle"></i> ${opt}</li>`
+          })
+          html += `</ul><div class="feedback" id="fb-${idx}" style="margin-top: 1rem; padding: 0.8rem; border-radius: 12px; display: none;"></div></div>`
+        })
+        container.innerHTML = html
+        attachEvents()
+        updateStats()
+      }
+
+      function attachEvents() {
+        document.querySelectorAll('.options-list li').forEach((li) => {
+          li.onclick = function () {
+            const qIdx = parseInt(this.closest('.options-list').dataset.qidx)
+            const optIdx = parseInt(this.dataset.optidx)
+            userAnswers[qIdx] = optIdx
+            renderQuestions()
+            showFeedback(qIdx)
+          }
+        })
+      }
+
+      function showFeedback(qIdx) {
+        const q = questionsData[qIdx]
+        const selected = userAnswers[qIdx]
+        const fb = document.getElementById(`fb-${qIdx}`)
+        if (selected === null) return
+        const isCorrect = selected === q.correct
+        fb.style.display = 'block'
+        fb.style.background = isCorrect ? 'rgba(0,255,136,0.1)' : 'rgba(255,68,68,0.1)'
+        fb.style.borderLeft = `3px solid ${isCorrect ? 'var(--success)' : 'var(--danger)'}`
+        fb.innerHTML = isCorrect
+          ? `<i class="fas fa-check-circle"></i> ${q.explanationCorrect}`
+          : `<i class="fas fa-times-circle"></i> ${q.explanationWrong}`
+        updateStats()
+      }
+
+      function updateStats() {
+        const answered = userAnswers.filter((a) => a !== null).length
+        document.getElementById('answeredCount').innerText = answered
+        const progress = (answered / questionsData.length) * 100
+        const progressBar = document.getElementById('progressBar')
+        if (progressBar) progressBar.style.width = `${progress}%`
+
+        let correct = 0
+        for (let i = 0; i < questionsData.length; i++) {
+          if (userAnswers[i] !== null && userAnswers[i] === questionsData[i].correct) correct++
+        }
+        const percent = Math.round((correct / questionsData.length) * 100)
+        document.getElementById('scorePercent').innerHTML = `${percent}%`
+
+        const resultArea = document.getElementById('resultArea')
+        if (answered === questionsData.length) {
+          resultArea.style.display = 'block'
+          document.getElementById('resultMessage').innerHTML =
+            percent >= 70
+              ? `<i class="fas fa-trophy"></i> Você acertou ${correct} de ${questionsData.length}!`
+              : `Você acertou ${correct} de ${questionsData.length}. Estude os feedbacks!`
+        } else if (answered > 0) {
+          resultArea.style.display = 'block'
+          document.getElementById('resultMessage').innerHTML =
+            `${answered} de ${questionsData.length} respondidas. Complete todas para ver a pontuação.`
+        } else {
+          resultArea.style.display = 'none'
+        }
+      }
+
+      function checkAll() {
+        if (userAnswers.filter((a) => a !== null).length !== questionsData.length) {
+          alert('Responda todas as questões primeiro!')
+          return
+        }
+        for (let i = 0; i < questionsData.length; i++) showFeedback(i)
+      }
+
+      function resetQuiz() {
+        userAnswers = new Array(questionsData.length).fill(null)
+        renderQuestions()
+        document.getElementById('resultArea').style.display = 'none'
+      }
+
+      // Sidebar
+      function openSidebar() {
+        document.getElementById('sidebar').classList.add('open')
+        document.getElementById('sidebarOverlay').classList.add('active')
+      }
+      function closeSidebar() {
+        document.getElementById('sidebar').classList.remove('open')
+        document.getElementById('sidebarOverlay').classList.remove('active')
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        renderQuestions()
+        document.getElementById('checkAllBtn').onclick = checkAll
+        document.getElementById('resetQuizBtn').onclick = resetQuiz
+        document.getElementById('restartSimulado').onclick = resetQuiz
+        document.getElementById('menuToggle').onclick = openSidebar
+        document.getElementById('closeSidebar').onclick = closeSidebar
+        document.getElementById('sidebarOverlay').onclick = closeSidebar
+      })
+    </script>
+  </body>
+</html>

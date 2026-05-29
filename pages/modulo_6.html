@@ -1,0 +1,1561 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NDG Linux Essentials | Módulo 6 - Obtendo Ajuda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <button class="menu-toggle" id="openMenu">
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+      </button>
+      <a href="#" class="top-bar-brand"> <i class="fab fa-linux"></i> NDG Linux Essentials </a>
+      <a href="#" class="btn-outline"> <i class="fas fa-home"></i> Voltar </a>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-compass"></i> Navegação</h3>
+        <button class="close-sidebar" id="closeMenu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="nav-modules">
+        <li>
+          <a href="#secao6-1"><i class="fas fa-book-open"></i> 6.1 Introdução</a>
+        </li>
+        <li>
+          <a href="#secao6-2"><i class="fas fa-file-alt"></i> 6.2 Man Pages</a>
+        </li>
+        <li>
+          <a href="#secao6-2-1"><i class="fas fa-file-alt"></i> 6.2.1 Visualizando Páginas de Manual</a>
+        </li>
+        <li>
+          <a href="#secao6-2-2"><i class="fas fa-layer-group"></i> 6.2.2 Seções Dentro das Páginas de Manual</a>
+        </li>
+        <li>
+          <a href="#secao6-2-3"><i class="fas fa-search"></i> 6.2.3 Pesquisando em Páginas de Manual</a>
+        </li>
+        <li>
+          <a href="#secao6-2-4"><i class="fas fa-layer-group"></i> 6.2.4 Páginas de Manual Categorizadas por Seções</a>
+        </li>
+        <li>
+          <a href="#secao6-3"><i class="fas fa-search"></i> 6.3 Encontrando Comandos e Documentação</a>
+        </li>
+        <li>
+          <a href="#secao6-3-1"><i class="fas fa-folder-tree"></i> 6.3.1 Onde Esses Comandos Estão Localizados?</a>
+        </li>
+        <li>
+          <a href="#secao6-3-2"><i class="fas fa-file-alt"></i> 6.3.2 Encontrando Qualquer Arquivo ou Diretório</a>
+        </li>
+        <li>
+          <a href="#secao6-4"><i class="fas fa-info-circle"></i> 6.4 Documentação Info</a>
+        </li>
+        <li>
+          <a href="#secao6-4-1"><i class="fas fa-info-circle"></i> 6.4.1 Exibindo Documentação Info</a>
+        </li>
+        <li>
+          <a href="#secao6-4-2"><i class="fas fa-arrows-alt"></i> 6.4.2 Navegando em Documentos Info</a>
+        </li>
+        <li>
+          <a href="#secao6-4-3"><i class="fas fa-compass"></i> 6.4.3 Explorando a Documentação Info</a>
+        </li>
+        <li>
+          <a href="#secao6-5"><i class="fas fa-external-link-alt"></i> 6.5 Fontes Adicionais de Ajuda</a>
+        </li>
+        <li>
+          <a href="#secao6-5-1"><i class="fas fa-question-circle"></i> 6.5.1 Usando a Opção de Ajuda</a>
+        </li>
+        <li>
+          <a href="#secao6-5-2"><i class="fas fa-folder-open"></i> 6.5.2 Documentação Adicional do Sistema</a>
+        </li>
+        <li>
+          <a href="../pages/questoes_6.html"><i class="fas fa-question-circle"></i> Questões</a>
+        </li>
+      </ul>
+    </div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-icon"></div>
+        <div class="badge-lab"><i class="fas fa-graduation-cap"></i> Módulo 6</div>
+        <h1>Obtendo Ajuda no Linux</h1>
+        <p style="font-size: 1.2rem; color: var(--text-dim); max-width: 700px; margin: 0 auto">
+          Aprenda a encontrar ajuda e documentação diretamente no terminal
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTAINER PRINCIPAL -->
+    <div class="container">
+      <!-- SEÇÃO 6.1 - INTRODUÇÃO -->
+      <section id="secao6-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-book-open"></i>
+          <span class="section-number">6.1</span> Introdução
+        </h2>
+        <div class="card">
+          <i class="fas fa-terminal"></i>
+          <p>
+            Existem milhares de comandos disponíveis com muitas opções, tornando a linha de comando uma ferramenta poderosa. No entanto, com
+            esse poder vem a complexidade. A complexidade, por sua vez, pode criar confusão.
+          </p>
+          <p>
+            Como resultado, saber como encontrar ajuda enquanto trabalha no <strong>Linux</strong> é uma habilidade essencial para qualquer
+            usuário. Consultar a ajuda fornece uma rápida lembrança de como um comando funciona, além de ser um recurso de informação ao
+            aprender novos comandos.
+          </p>
+
+          <div class="alert alert-info">
+            <i class="fas fa-lightbulb"></i>
+            <span
+              ><strong>Dica:</strong> Mesmo usuários avançados consultam as páginas de ajuda regularmente. Ninguém decora todas as opções de
+              todos os comandos!</span
+            >
+          </div>
+
+          <h3><i class="fas fa-microchip"></i> Por que a ajuda é importante?</h3>
+          <p>
+            O terminal do Linux oferece um controle granular sobre o sistema, mas essa flexibilidade significa que existem centenas de flags
+            (opções) e parâmetros para cada comando. As fontes de ajuda embutidas no próprio sistema operacional são:
+          </p>
+          <ul>
+            <li>
+              <i class="fas fa-check-circle" style="color: var(--primary)"></i> <strong>Rápidas</strong> - disponíveis sem sair do terminal
+            </li>
+            <li>
+              <i class="fas fa-check-circle" style="color: var(--primary)"></i> <strong>Precisas</strong> - sempre atualizadas com a versão
+              instalada
+            </li>
+            <li>
+              <i class="fas fa-check-circle" style="color: var(--primary)"></i> <strong>Offline</strong> - funcionam sem conexão com a
+              internet
+            </li>
+          </ul>
+
+          <div class="alert alert-success">
+            <i class="fas fa-check-circle"></i>
+            <span
+              ><strong>Benefício:</strong> Dominar as ferramentas de ajuda (como <code>man</code>, <code>info</code> e <code>--help</code>)
+              dobra sua produtividade no terminal.</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 6.2 - MAN PAGES -->
+      <section id="secao6-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-file-alt"></i>
+          <span class="section-number">6.2</span> Man Pages (Páginas do Manual)
+        </h2>
+        <div class="card">
+          <i class="fas fa-scroll"></i>
+          <p>
+            <strong>UNIX</strong> é o sistema operacional no qual o Linux foi modelado. Os desenvolvedores do UNIX criaram documentos de
+            ajuda chamados <strong>man pages</strong> (abreviação de <em>manual pages</em> - páginas do manual).
+          </p>
+
+          <p>
+            As <strong>man pages</strong> são usadas para descrever as funcionalidades dos comandos. Elas fornecem uma descrição básica do
+            propósito do comando, bem como detalhes sobre as opções disponíveis.
+          </p>
+
+          <h3><i class="fas fa-search"></i> Como usar o comando <code>man</code></h3>
+          <p>A sintaxe básica para acessar uma página de manual é:</p>
+          <div class="terminal">
+            <pre>man [comando]</pre>
+          </div>
+          <p>Por exemplo, para ver o manual do comando <code>ls</code>:</p>
+          <div class="terminal">
+            <pre>man ls</pre>
+          </div>
+
+          <h3><i class="fas fa-folder-tree"></i> Estrutura de uma Man Page</h3>
+          <p>Toda man page segue uma estrutura padronizada que inclui as seguintes seções principais:</p>
+
+          <table class="table-custom">
+            <thead>
+              <tr>
+                <th>Seção</th>
+                <th>Descrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>NAME</strong></td>
+                <td>Nome do comando e uma breve descrição</td>
+              </tr>
+              <tr>
+                <td><strong>SYNOPSIS</strong></td>
+                <td>Sintaxe de uso do comando (como digitá-lo)</td>
+              </tr>
+              <tr>
+                <td><strong>DESCRIPTION</strong></td>
+                <td>Explicação detalhada do funcionamento</td>
+              </tr>
+              <tr>
+                <td><strong>OPTIONS</strong></td>
+                <td>Lista completa de flags e opções disponíveis</td>
+              </tr>
+              <tr>
+                <td><strong>EXAMPLES</strong></td>
+                <td>Exemplos práticos de uso (em muitas páginas)</td>
+              </tr>
+              <tr>
+                <td><strong>SEE ALSO</strong></td>
+                <td>Referências para outros comandos relacionados</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              >As man pages são numeradas em seções: 1 (comandos do usuário), 2 (chamadas de sistema), 3 (bibliotecas), 5 (formatos de
+              arquivo), 8 (comandos administrativos), etc.</span
+            >
+          </div>
+
+          <h3><i class="fas fa-keyboard"></i> Navegação dentro do <code>man</code></h3>
+          <p>
+            Quando você abre uma man page, o terminal entra em um visualizador chamado <strong>less</strong>. Use estas teclas para navegar:
+          </p>
+
+          <table class="table-custom">
+            <thead>
+              <tr>
+                <th>Tecla</th>
+                <th>Ação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>↑ / ↓</code></td>
+                <td>Rolar linha por linha</td>
+              </tr>
+              <tr>
+                <td><code>Page Up / Page Down</code></td>
+                <td>Rolar página por página</td>
+              </tr>
+              <tr>
+                <td><code>/palavra</code></td>
+                <td>Buscar por "palavra" no documento</td>
+              </tr>
+              <tr>
+                <td><code>n</code></td>
+                <td>Próxima ocorrência da busca</td>
+              </tr>
+              <tr>
+                <td><code>q</code></td>
+                <td>Sair do visualizador e voltar ao terminal</td>
+              </tr>
+              <tr>
+                <td><code>h</code></td>
+                <td>Ajuda do visualizador less</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3><i class="fas fa-cog"></i> Alternativas às Man Pages</h3>
+          <p>Além do comando <code>man</code>, existem outras formas rápidas de obter ajuda:</p>
+
+          <div class="terminal">
+            <pre>
+comando --help
+comando -h</pre
+            >
+          </div>
+          <p>
+            A opção <code>--help</code> (ou <code>-h</code>) geralmente exibe um resumo mais curto e direto das opções principais, ideal
+            para consultas rápidas.
+          </p>
+
+          <div class="alert alert-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span
+              ><strong>Importante:</strong> Nem todos os comandos suportam <code>--help</code> da mesma forma. O padrão POSIX recomenda
+              <code>--help</code>, mas programas mais antigos podem usar apenas <code>-h</code> ou não suportar nenhum dos dois. Nesses
+              casos, use <code>man</code>.</span
+            >
+          </div>
+
+          <h3><i class="fas fa-folder-open"></i> Comandos sem man pages: built-in do shell</h3>
+          <p>
+            Alguns comandos são <strong>built-in</strong> (embutidos) no próprio shell (como <code>cd</code>, <code>echo</code>,
+            <code>exit</code>). Para eles, use o comando <code>help</code>:
+          </p>
+          <div class="terminal">
+            <pre>
+help cd
+help echo</pre
+            >
+          </div>
+
+          <div class="alert alert-success">
+            <i class="fas fa-graduation-cap"></i>
+            <span
+              ><strong>Exercício sugerido:</strong> Execute <code>man man</code> para ler o manual do próprio comando <code>man</code>! É um
+              ótimo ponto de partida.</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 6.2.1 - VIEWING MAN PAGES -->
+      <section id="secao6-2-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-file-alt"></i>
+          <span class="section-number">6.2.1</span> Visualizando Páginas de Manual
+        </h2>
+        <div class="card">
+          <p>Para visualizar uma página de manual (man page) de um comando, use o comando <code>man</code>:</p>
+
+          <div class="terminal">
+            <pre>man comando</pre>
+          </div>
+
+          <p>Por exemplo, o seguinte comando exibe a página de manual para o comando <code>ls</code>:</p>
+
+          <div class="terminal">
+            <pre>sysadmin@localhost:~$ man ls</pre>
+          </div>
+
+          <p>Navegue pelo documento usando as teclas de seta:</p>
+
+          <div class="terminal">
+            <pre>
+LS(1)                            User Commands                           LS(1)  
+                                                                                
+NAME                                                                            
+       ls - list directory contents                                             
+                                                                                
+SYNOPSIS                                                                        
+       ls [OPTION]... [FILE]...                                                 
+                                                                                
+DESCRIPTION                                                                     
+       List  information  about  the FILEs (the current directory by default).  
+       Sort entries alphabetically if none of -cftuvSUX nor --sort  is  speci-  
+       fied.                                                                    
+                                                                                
+       Mandatory  arguments  to  long  options are mandatory for short options  
+       too.                                                                     
+                                                                                
+       -a, --all                                                                
+              do not ignore entries starting with .                             </pre
+            >
+          </div>
+
+          <p>Para sair da visualização de uma página de manual, use a tecla <code>Q</code>.</p>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Considere isto:</strong> O comando <code>man</code> usa um paginador para exibir documentos. Normalmente, este
+              paginador é o comando <code>less</code>, mas em algumas distribuições, pode ser o comando <code>more</code>. Ambos são muito
+              semelhantes em seu funcionamento.</span
+            >
+          </div>
+
+          <p>
+            Para visualizar os vários comandos de movimento disponíveis, use a tecla <code>H</code> enquanto visualiza uma página de manual.
+            Isso exibe uma página de ajuda.
+          </p>
+
+          <div class="alert alert-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>Paginadores serão discutidos em mais detalhes posteriormente no curso.</span>
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 6.2.2 - SECTIONS WITHIN MAN PAGES -->
+      <section id="secao6-2-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-layer-group"></i>
+          <span class="section-number">6.2.2</span> Seções Dentro das Páginas de Manual
+        </h2>
+        <div class="card">
+          <p>
+            As páginas de manual (man pages) são divididas em seções. Cada seção é projetada para fornecer informações específicas sobre um
+            comando. Embora existam seções comuns vistas na maioria das páginas de manual, alguns desenvolvedores também criam seções
+            disponíveis apenas em páginas de manual específicas.
+          </p>
+
+          <p>O seguinte descreve algumas das seções mais comuns encontradas nas páginas de manual:</p>
+
+          <h3>NAME</h3>
+          <p>Fornece o nome do comando e uma descrição muito breve.</p>
+          <div class="terminal">
+            <pre>
+NAME                                                                            
+       ls - list directory contents</pre
+            >
+          </div>
+
+          <h3>SYNOPSIS</h3>
+          <p>Fornece exemplos de como o comando é executado.</p>
+          <div class="terminal">
+            <pre>
+SYNOPSIS                                                                        
+       ls [OPTION]... [FILE]...</pre
+            >
+          </div>
+
+          <p>
+            A seção SYNOPSIS de uma página de manual pode ser difícil de entender, mas é muito importante porque fornece um exemplo conciso
+            de como usar o comando. Por exemplo, considere o SYNOPSIS da página de manual para o comando <code>cal</code>:
+          </p>
+
+          <div class="terminal">
+            <pre>
+SYNOPSIS 
+     cal [-31jy] [-A number] [-B number] [-d yyyy-mm] [[month] year]</pre
+            >
+          </div>
+
+          <p>
+            Os colchetes <code>[ ]</code> são usados para indicar que este recurso não é necessário para executar o comando. Por exemplo,
+            <code>[-31jy]</code> significa que as opções -3, -1, -j ou -y estão disponíveis, mas não são necessárias para que o comando
+            <code>cal</code> funcione corretamente.
+          </p>
+
+          <p>
+            O último conjunto de colchetes <code>[[month] year]</code> demonstra outro recurso; significa que um ano pode ser especificado
+            por si só, mas para especificar um mês, o ano também deve ser especificado.
+          </p>
+
+          <p>
+            Outro componente do SYNOPSIS que pode causar alguma confusão pode ser visto na página de manual do comando <code>date</code>:
+          </p>
+
+          <div class="terminal">
+            <pre>
+SYNOPSIS                                                              
+       date [OPTION]... [+FORMAT]                                      
+       date [-u|--utc|--universal] [MMDDhhmm[[CC]YY][.ss]]</pre
+            >
+          </div>
+
+          <p>
+            Neste SYNOPSIS existem duas sintaxes para o comando <code>date</code>. A primeira é usada para exibir a data no sistema,
+            enquanto a segunda é usada para definir a data.
+          </p>
+
+          <p>
+            As reticências <code>...</code> seguindo <code>[OPTION]</code> indicam que um ou mais dos itens antes dela podem ser usados.
+          </p>
+
+          <p>
+            Além disso, a notação <code>[-u|--utc|--universal]</code> significa que a opção <code>-u</code> ou a opção <code>--utc</code> ou
+            a opção <code>--universal</code> pode ser usada. Tipicamente, isso significa que todas as três opções realmente fazem a mesma
+            coisa, mas às vezes o uso do caractere <code>|</code> é usado para indicar que as opções não podem ser usadas em combinação,
+            como um "ou" lógico.
+          </p>
+
+          <h3>DESCRIPTION</h3>
+          <p>Fornece uma descrição mais detalhada do comando.</p>
+          <div class="terminal">
+            <pre>
+DESCRIPTION  
+       List  information  about  the FILEs (the current directory by default).  
+       Sort entries alphabetically if none of -cftuvSUX nor --sort  is  speci-  
+       fied.</pre
+            >
+          </div>
+
+          <h3>OPTIONS</h3>
+          <p>
+            Lista as opções para o comando, bem como uma descrição de como elas são usadas. Frequentemente, essa informação é encontrada na
+            seção DESCRIPTION e não em uma seção OPTIONS separada.
+          </p>
+          <div class="terminal">
+            <pre>
+       -a, --all                                                                
+              do not ignore entries starting with .  
+ 
+       -A, --almost-all                                                         
+              do not list implied . and ..                                      
+                                                                                
+       --author                                                                 
+              with -l, print the author of each file                            
+                                                                                
+       -b, --escape                                                             
+              print C-style escapes for nongraphic characters                   
+                                                                                
+       --block-size=SIZE                                                        
+              scale sizes by SIZE before printing them; e.g., '--block-size=M'  
+              prints sizes in units of 1,048,576 bytes; see SIZE format below</pre
+            >
+          </div>
+
+          <h3>FILES</h3>
+          <p>
+            Lista os arquivos que estão associados ao comando, bem como uma descrição de como eles são usados. Esses arquivos podem ser
+            usados para configurar os recursos mais avançados do comando. Frequentemente, essa informação é encontrada na seção DESCRIPTION
+            e não em uma seção FILES separada.
+          </p>
+
+          <h3>AUTHOR</h3>
+          <p>Fornece o nome da pessoa que criou a página de manual e (às vezes) como contatar a pessoa.</p>
+          <div class="terminal">
+            <pre>
+AUTHOR                                                                          
+       Written by Richard M. Stallman and David MacKenzie.</pre
+            >
+          </div>
+
+          <h3>REPORTING BUGS</h3>
+          <p>Fornece detalhes sobre como relatar problemas com o comando.</p>
+          <div class="terminal">
+            <pre>
+REPORTING BUGS                                                                  
+       GNU coreutils online help: &lt;http://www.gnu.org/software/coreutils/&gt;      
+       Report ls translation bugs to &lt;http://translationproject.org/team/&gt;</pre
+            >
+          </div>
+
+          <h3>COPYRIGHT</h3>
+          <p>Fornece informações básicas de direitos autorais.</p>
+          <div class="terminal">
+            <pre>
+COPYRIGHT                                                                       
+       Copyright (C) 2017 Free Software Foundation, Inc.  License GPLv3+:  GNU  
+       GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;.               
+       This  is  free  software:  you  are free to change and redistribute it.  
+       There is NO WARRANTY, to the extent permitted by law.</pre
+            >
+          </div>
+
+          <h3>SEE ALSO</h3>
+          <p>
+            Fornece uma ideia de onde você pode encontrar informações adicionais. Isso frequentemente inclui outros comandos relacionados a
+            este comando.
+          </p>
+          <div class="terminal">
+            <pre>
+SEE ALSO                                                                        
+       Full documentation at: &lt;http://www.gnu.org/software/coreutils/ls&gt;        
+       or available locally via: info '(coreutils) ls invocation'</pre
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 6.2.3 - SEARCHING MAN PAGES -->
+      <section id="secao6-2-3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-search"></i>
+          <span class="section-number">6.2.3</span> Pesquisando em Páginas de Manual
+        </h2>
+        <div class="card">
+          <p>
+            Para pesquisar em uma página de manual por um termo, digite o caractere <code>/</code> seguido por um termo de pesquisa, então
+            pressione a tecla <kbd>Enter</kbd>. O programa pesquisa a partir da localização atual em direção à parte inferior da página para
+            tentar localizar e destacar o termo.
+          </p>
+
+          <p>
+            Se uma correspondência for encontrada, ela será destacada. Para mover para a próxima correspondência do termo, pressione
+            <kbd>n</kbd>. Para retornar a uma correspondência anterior do termo, pressione <kbd>Shift+N</kbd>. Se o termo não for
+            encontrado, ou ao atingir o final das correspondências, o programa reportará <code>Pattern not found</code> (pressione Return).
+          </p>
+
+          <h3><i class="fas fa-terminal"></i> Exemplo: Buscando por "option" no <code>man man</code></h3>
+
+          <div class="terminal">
+            <pre>
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ MAN(1)                     Manual pager utils                     MAN(1) │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│ NAME                                                         (termo /option)│
+│        man - uma interface para os manuais de referência do sistema         │
+│                                                                             │
+│ SYNOPSIS                                                                    │
+│        man [opções] [seção] comando ...                                     │
+│                                                                             │
+│ DESCRIPTION                                       ╔═══════════════════════╗ │
+│        man é o front-end do sistema de documentação. É usado para         ║ │
+│        visualizar páginas de manual.                                      ║ │
+│                                                                           ║ │
+│ OPÇÕES                                                                    ║ │
+│        -C, --config-file=ARQUIVO   ═══════════&gt; ║ [DESTAQUE]              ║ │
+│              usa este arquivo de configuração em vez do padrão            ║ │
+│                                                                           ║ │
+│        -d, --debug                 ═══════════&gt; ║ [DESTAQUE]              ║ │
+│              mostra informações de depuração                              ║ │
+│                                                                           ║ │
+│        -D, --default               ═══════════&gt; ║ [DESTAQUE]              ║ │
+│              redefine as opções para seus valores padrão                  ║ │
+│                                                                           ║ │
+│        -h, --help                  ═══════════&gt; ║ [DESTAQUE]              ║ │
+│              mostra esta mensagem de ajuda e sai                          ║ │
+│                                                                           ║ │
+│        -k, --apropos              ═══════════&gt; ║ [DESTAQUE]               ║ │
+│              pesquisa palavras-chave em todas as páginas de manual        ║ │
+│                                                                           ║ │
+│        -K, --global-apropos       ═══════════&gt; ║ [DESTAQUE]               ║ │
+│              pesquisa texto em todas as páginas de manual                 ║ │
+│                                                                           ╚═╝ 
+│        -l, --local-file                                                     │
+│              interpreta argumentos como nomes de arquivos locais            │
+│                                                                             │
+│ COMANDOS DE NAVEGAÇÃO (enquanto visualiza)                                  │
+│        /palavra   - busca "palavra" para frente                             │
+│        n          - próximo resultado                                       │
+│        N          - resultado anterior                                      │
+│        q          - sair                                                    │
+│                                                                             │
+│ Pattern not found (press Return)  ← quando o termo não existe               │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘</pre
+            >
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Funcionamento da busca:</strong> Ao digitar <code>/option</code>, o paginador destaca todas as ocorrências do termo
+              "option" (como mostrado no diagrama acima). Pressione <kbd>n</kbd> para ir para a próxima ocorrência ou
+              <kbd>Shift+N</kbd> para voltar.</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 6.2.4 - MAN PAGES CATEGORIZED BY SECTIONS -->
+      <section id="secao6-2-4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-layer-group"></i>
+          <span class="section-number">6.2.4</span> Páginas de Manual Categorizadas por Seções
+        </h2>
+        <div class="card">
+          <p>
+            Até agora, temos exibido páginas de manual para comandos. No entanto, existem vários tipos diferentes de comandos (comandos de
+            usuário, comandos de sistema e comandos de administração), arquivos de configuração e outros recursos, como bibliotecas e
+            componentes do kernel, que exigem documentação.
+          </p>
+
+          <p>
+            Como resultado, existem milhares de páginas de manual em uma distribuição Linux típica. Para organizar todas essas páginas de
+            manual, elas são categorizadas por seções.
+          </p>
+
+          <p>Por padrão, existem nove seções de páginas de manual:</p>
+
+          <ul>
+            <li><strong>1</strong> - Comandos Gerais</li>
+            <li><strong>2</strong> - Chamadas de Sistema</li>
+            <li><strong>3</strong> - Chamadas de Biblioteca</li>
+            <li><strong>4</strong> - Arquivos Especiais</li>
+            <li><strong>5</strong> - Formatos de Arquivo e Convenções</li>
+            <li><strong>6</strong> - Jogos</li>
+            <li><strong>7</strong> - Diversos</li>
+            <li><strong>8</strong> - Comandos de Administração do Sistema</li>
+            <li><strong>9</strong> - Rotinas do Kernel</li>
+          </ul>
+
+          <p>
+            O comando <code>man</code> pesquisa cada uma dessas seções em ordem até encontrar a primeira correspondência. Por exemplo, se
+            você executar o comando <code>man cal</code>, a primeira seção (Comandos Gerais) é pesquisada por uma página de manual chamada
+            <code>cal</code>. Se não for encontrada, então a segunda seção é pesquisada. Se nenhuma página de manual for encontrada após
+            pesquisar todas as seções, uma mensagem de erro é retornada:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ man zed                                          
+No manual entry for zed</pre
+            >
+          </div>
+
+          <p>
+            Para determinar a qual seção uma página de manual específica pertence, olhe para o valor numérico na primeira linha da saída da
+            página de manual. Por exemplo, o comando <code>cal</code> pertence à primeira seção das páginas de manual:
+          </p>
+
+          <div class="terminal">
+            <pre>CAL(1)                    BSD General Commands Manual             CAL(1)</pre>
+          </div>
+
+          <p>
+            Às vezes, existem páginas de manual com o mesmo nome em diferentes seções. Nestes casos, pode ser necessário especificar a seção
+            da página de manual correta.
+          </p>
+
+          <p>
+            Por exemplo, existe um comando chamado <code>passwd</code> que permite que você altere sua senha. Existe também um arquivo
+            chamado <code>passwd</code> que armazena informações de conta. Tanto o comando quanto o arquivo têm uma página de manual.
+          </p>
+
+          <p>
+            O comando <code>passwd</code> é um comando de usuário, então a página de manual associada está na primeira seção. O comando
+            <code>man</code> exibe a página de manual para o comando <code>passwd</code> por padrão:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ man passwd
+
+PASSWD(1)                        User Commands                 PASSWD(1)</pre
+            >
+          </div>
+
+          <p>
+            Então, como você exibe a página de manual para o arquivo <code>passwd</code>? Primeiro, determine em qual seção a página de
+            manual está localizada. Para pesquisar páginas de manual por nome, use a opção <code>-f</code> no comando <code>man</code>. Ela
+            exibe páginas de manual que correspondem, ou correspondem parcialmente, a um nome específico e fornece o número da seção e uma
+            breve descrição de cada página de manual:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ man -f passwd                                    
+passwd (5)           - the password file                              
+passwd (1)           - change user password                           
+passwd (1ssl)        - compute password hashes</pre
+            >
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Nota:</strong> Na maioria das distribuições Linux, o comando <code>whatis</code> faz a mesma coisa que
+              <code>man -f</code>. Nessas distribuições, ambos produzirão a mesma saída.</span
+            >
+          </div>
+
+          <p>
+            Para especificar uma seção diferente, forneça o número da seção como o primeiro argumento do comando <code>man</code>. O
+            seguinte comando exibe a página de manual <code>passwd</code> localizada na seção 5, que está associada ao arquivo
+            <code>passwd</code>:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ man 5 passwd
+
+PASSWD(5)                File Formats and Conversions          PASSWD(5)</pre
+            >
+          </div>
+
+          <p>
+            Infelizmente, você nem sempre vai se lembrar do nome exato da página de manual que deseja visualizar. Felizmente, cada página de
+            manual tem uma breve descrição associada a ela. A opção <code>-k</code> no comando <code>man</code> pesquisa tanto os nomes
+            quanto as descrições das páginas de manual por uma palavra-chave.
+          </p>
+
+          <p>
+            Por exemplo, para encontrar uma página de manual que exibe como copiar diretórios, pesquise pela palavra-chave
+            <code>copy</code>:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ man -k copy                                               
+cp (1)               - copy files and directories                               
+cpgr (8)             - copy with locking the given file to the password or gr...
+cpio (1)             - copy files to and from archives                          
+cppw (8)             - copy with locking the given file to the password or gr...
+dd (1)               - convert and copy a file                                  
+debconf-copydb (1)   - copy a debconf database                                  
+install (1)          - copy files and set attributes                            
+scp (1)              - secure copy (remote file copy program)                   
+ssh-copy-id (1)      - use locally available keys to authorize logins on a re...</pre
+            >
+          </div>
+
+          <p>
+            Lembre-se de que existem milhares de páginas de manual, então, ao pesquisar por uma palavra-chave, seja o mais específico
+            possível. Usar uma palavra genérica, como "the", poderia resultar em centenas ou até milhares de resultados.
+          </p>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Nota:</strong> Na maioria das distribuições Linux, o comando <code>apropos</code> faz a mesma coisa que
+              <code>man -k</code>. Nessas distribuições, ambos produzem a mesma saída.</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 6.2.4 - MAN PAGES CATEGORIZED BY SECTIONS -->
+      <section id="secao6-2-4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-table-list"></i>
+          <span class="section-number">6.2.4</span> Páginas de Manual Categorizadas por Seções
+        </h2>
+        <div class="card">
+          <p>
+            Até agora, temos exibido páginas de manual para comandos. No entanto, existem vários tipos diferentes de comandos (comandos de
+            usuário, comandos de sistema e comandos de administração), arquivos de configuração e outros recursos, como bibliotecas e
+            componentes do kernel, que exigem documentação.
+          </p>
+
+          <p>
+            Como resultado, existem milhares de páginas de manual em uma distribuição Linux típica. Para organizar todas essas páginas de
+            manual, elas são categorizadas por seções.
+          </p>
+
+          <p>Por padrão, existem nove seções de páginas de manual:</p>
+
+          <ul>
+            <li>Comandos Gerais</li>
+            <li>Chamadas de Sistema</li>
+            <li>Chamadas de Biblioteca</li>
+            <li>Arquivos Especiais</li>
+            <li>Formatos de Arquivo e Convenções</li>
+            <li>Jogos</li>
+            <li>Diversos</li>
+            <li>Comandos de Administração do Sistema</li>
+            <li>Rotinas do Kernel</li>
+          </ul>
+
+          <p>
+            O comando <code>man</code> pesquisa cada uma dessas seções em ordem até encontrar a primeira correspondência. Por exemplo, se
+            você executar o comando <code>man cal</code>, a primeira seção (Comandos Gerais) é pesquisada por uma página de manual chamada
+            <code>cal</code>. Se não for encontrada, então a segunda seção é pesquisada. Se nenhuma página de manual for encontrada após
+            pesquisar todas as seções, uma mensagem de erro é retornada:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ man zed                                          
+No manual entry for zed</pre
+            >
+          </div>
+
+          <p>
+            Para determinar a qual seção uma página de manual específica pertence, olhe para o valor numérico na primeira linha da saída da
+            página de manual. Por exemplo, o comando <code>cal</code> pertence à primeira seção das páginas de manual:
+          </p>
+
+          <div class="terminal">
+            <pre>CAL(1)                    BSD General Commands Manual             CAL(1)</pre>
+          </div>
+
+          <p>
+            Às vezes, existem páginas de manual com o mesmo nome em diferentes seções. Nestes casos, pode ser necessário especificar a seção
+            da página de manual correta.
+          </p>
+
+          <p>
+            Por exemplo, existe um comando chamado <code>passwd</code> que permite que você altere sua senha. Existe também um arquivo
+            chamado <code>passwd</code> que armazena informações de conta. Tanto o comando quanto o arquivo têm uma página de manual.
+          </p>
+
+          <p>
+            O comando <code>passwd</code> é um comando de usuário, então a página de manual associada está na primeira seção. O comando
+            <code>man</code> exibe a página de manual para o comando <code>passwd</code> por padrão:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ man passwd
+
+PASSWD(1)                        User Commands                 PASSWD(1)</pre
+            >
+          </div>
+
+          <p>
+            Então, como você exibe a página de manual para o arquivo <code>passwd</code>? Primeiro, determine em qual seção a página de
+            manual está localizada. Para pesquisar páginas de manual por nome, use a opção <code>-f</code> no comando <code>man</code>. Ela
+            exibe páginas de manual que correspondem, ou correspondem parcialmente, a um nome específico e fornece o número da seção e uma
+            breve descrição de cada página de manual:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ man -f passwd                                    
+passwd (5)           - the password file                              
+passwd (1)           - change user password                           
+passwd (1ssl)        - compute password hashes</pre
+            >
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Nota:</strong> Na maioria das distribuições Linux, o comando <code>whatis</code> faz a mesma coisa que
+              <code>man -f</code>. Nessas distribuições, ambos produzirão a mesma saída.</span
+            >
+          </div>
+
+          <p>
+            Para especificar uma seção diferente, forneça o número da seção como o primeiro argumento do comando <code>man</code>. O
+            seguinte comando exibe a página de manual <code>passwd</code> localizada na seção 5, que está associada ao arquivo
+            <code>passwd</code>:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ man 5 passwd
+
+PASSWD(5)                File Formats and Conversions          PASSWD(5)</pre
+            >
+          </div>
+
+          <p>
+            Infelizmente, você nem sempre vai se lembrar do nome exato da página de manual que deseja visualizar. Felizmente, cada página de
+            manual tem uma breve descrição associada a ela. A opção <code>-k</code> no comando <code>man</code> pesquisa tanto os nomes
+            quanto as descrições das páginas de manual por uma palavra-chave.
+          </p>
+
+          <p>
+            Por exemplo, para encontrar uma página de manual que exibe como copiar diretórios, pesquise pela palavra-chave
+            <code>copy</code>:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ man -k copy                                               
+cp (1)               - copy files and directories                               
+cpgr (8)             - copy with locking the given file to the password or gr...
+cpio (1)             - copy files to and from archives                          
+cppw (8)             - copy with locking the given file to the password or gr...
+dd (1)               - convert and copy a file                                  
+debconf-copydb (1)   - copy a debconf database                                  
+install (1)          - copy files and set attributes                            
+scp (1)              - secure copy (remote file copy program)                   
+ssh-copy-id (1)      - use locally available keys to authorize logins on a re...</pre
+            >
+          </div>
+
+          <p>
+            Lembre-se de que existem milhares de páginas de manual, então, ao pesquisar por uma palavra-chave, seja o mais específico
+            possível. Usar uma palavra genérica, como "the", poderia resultar em centenas ou até milhares de resultados.
+          </p>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Nota:</strong> Na maioria das distribuições Linux, o comando <code>apropos</code> faz a mesma coisa que
+              <code>man -k</code>. Nessas distribuições, ambos produzem a mesma saída.</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 6.3 - FINDING COMMANDS AND DOCUMENTATION -->
+      <section id="secao6-3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-search"></i>
+          <span class="section-number">6.3</span> Encontrando Comandos e Documentação
+        </h2>
+        <div class="card">
+          <p>
+            O comando <code>whatis</code> (ou <code>man -f</code>) retorna em qual seção uma página de manual está armazenada. Este comando
+            ocasionalmente retorna uma saída incomum, como a seguinte:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ whatis ls                                              
+ls (1)               - list directory contents 
+ls (lp)              - list directory contents</pre
+            >
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Nota:</strong> O exemplo acima é projetado para demonstrar um cenário onde dois comandos listam o conteúdo de
+              diretórios. A saída no exemplo do terminal acima pode não corresponder à saída na VM.</span
+            >
+          </div>
+
+          <p>
+            Com base nesta saída, existem dois comandos <code>ls</code> que listam o conteúdo de diretórios. A razão simples para isso é que
+            o UNIX tinha duas variantes principais, o que resultou em alguns comandos sendo desenvolvidos "em paralelo" e, portanto,
+            comportando-se de maneira diferente em diferentes variantes do UNIX. Muitas distribuições modernas do Linux incluem comandos de
+            ambas as variantes do UNIX.
+          </p>
+
+          <p>Isso, no entanto, representa um pequeno problema: quando o comando <code>ls</code> é digitado, qual comando é executado?</p>
+        </div>
+      </section>
+      <!-- SEÇÃO 6.3.1 - WHERE ARE THESE COMMANDS LOCATED? -->
+      <section id="secao6-3-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-folder-tree"></i>
+          <span class="section-number">6.3.1</span> Onde Esses Comandos Estão Localizados?
+        </h2>
+        <div class="card">
+          <p>
+            Para pesquisar a localização de um comando ou das páginas de manual para um comando, use o comando <code>whereis</code>. Este
+            comando pesquisa por comandos, arquivos fonte e páginas de manual em locais específicos onde esses arquivos são tipicamente
+            armazenados:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ whereis ls 
+ls: /bin/ls /usr/share/man/man1p/ls.1.gz /usr/share/man/man1/ls.1.gz</pre
+            >
+          </div>
+
+          <p>
+            As páginas de manual são facilmente distinguidas dos comandos, pois são tipicamente compactadas com um programa chamado
+            <code>gzip</code>, resultando em um nome de arquivo que termina em <code>.gz</code>. Observe que há duas páginas de manual
+            listadas acima, mas apenas um comando: <code>/bin/ls</code>. Isso ocorre porque o comando <code>ls</code> pode ser usado com as
+            opções/recursos que são descritos por qualquer uma das páginas de manual. Então, ao aprender o que pode ser feito com o comando
+            <code>ls</code>, pode ser interessante explorar ambas as páginas de manual. Felizmente, isso é mais uma exceção, pois a maioria
+            dos comandos tem apenas uma página de manual.
+          </p>
+        </div>
+      </section>
+      <!-- SEÇÃO 6.3.2 - FIND ANY FILE OR DIRECTORY -->
+      <section id="secao6-3-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-file-alt"></i>
+          <span class="section-number">6.3.2</span> Encontrando Qualquer Arquivo ou Diretório
+        </h2>
+        <div class="card">
+          <p>
+            O comando <code>whereis</code> é especificamente projetado para encontrar comandos e páginas de manual. Embora isso seja útil,
+            muitas vezes é necessário encontrar um arquivo ou diretório, não apenas arquivos que são comandos ou páginas de manual.
+          </p>
+
+          <p>
+            Para encontrar qualquer arquivo ou diretório, use o comando <code>locate</code>. Este comando pesquisa um banco de dados de
+            todos os arquivos e diretórios que estavam no sistema quando o banco de dados foi criado. Tipicamente, o comando para gerar este
+            banco de dados é executado todas as noites.
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ locate gshadow                                   
+/etc/gshadow                                                           
+/etc/gshadow-                                                          
+/usr/include/gshadow.h                                                
+/usr/share/man/cs/man5/gshadow.5.gz                                   
+/usr/share/man/da/man5/gshadow.5.gz                                    
+/usr/share/man/de/man5/gshadow.5.gz                                    
+/usr/share/man/fr/man5/gshadow.5.gz                                    
+/usr/share/man/it/man5/gshadow.5.gz                                    
+/usr/share/man/man5/gshadow.5.gz                                       
+/usr/share/man/ru/man5/gshadow.5.gz                                   
+/usr/share/man/sv/man5/gshadow.5.gz                                    
+/usr/share/man/zh_CN/man5/gshadow.5.gz</pre
+            >
+          </div>
+
+          <p>
+            Quaisquer arquivos criados hoje não serão pesquisáveis com o comando <code>locate</code>. Se o acesso root estiver disponível, é
+            possível atualizar o banco de dados do <code>locate</code> manualmente executando o comando <code>updatedb</code>. Usuários
+            comuns não podem atualizar o arquivo de banco de dados.
+          </p>
+
+          <p>
+            Observe também que ao usar o comando <code>locate</code> como um usuário comum, a saída pode ser limitada devido às permissões
+            de arquivo. Se o usuário que está logado não tem acesso a um arquivo ou diretório no sistema de arquivos devido a permissões, o
+            comando <code>locate</code> não retornará esses nomes. Este recurso de segurança é projetado para impedir que usuários
+            "explorem" o sistema de arquivos usando o banco de dados do <code>locate</code>. O usuário root pode pesquisar qualquer arquivo
+            no banco de dados do <code>locate</code>.
+          </p>
+
+          <p>
+            A saída do comando <code>locate</code> pode ser bastante grande. Ao pesquisar por um nome de arquivo, como <code>passwd</code>,
+            o comando <code>locate</code> produz cada arquivo que contém a string <code>passwd</code>, não apenas arquivos nomeados
+            <code>passwd</code>.
+          </p>
+
+          <p>
+            Em muitos casos, é útil começar descobrindo quantos arquivos correspondem. Faça isso usando a opção <code>-c</code> no comando
+            <code>locate</code>:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ locate -c passwd                                 
+98</pre
+            >
+          </div>
+
+          <p>
+            Para limitar a saída produzida pelo comando <code>locate</code>, use a opção <code>-b</code>. Esta opção inclui apenas listagens
+            que têm o termo de busca no <strong>basename</strong> do nome do arquivo. O basename é a porção do nome do arquivo que não
+            inclui os nomes dos diretórios.
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ locate -c -b passwd                              
+83</pre
+            >
+          </div>
+
+          <p>
+            Como você pode ver na saída anterior, ainda haverá muitos resultados quando a opção <code>-b</code> for usada. Para limitar
+            ainda mais a saída, coloque um caractere <code>\</code> na frente do termo de busca. Este caractere limita a saída a nomes de
+            arquivo que correspondem exatamente ao termo:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ locate -b "\passwd"                              
+/etc/passwd                                                                     
+/etc/pam.d/passwd                                                               
+/usr/bin/passwd                                                                 
+/usr/share/doc/passwd                                                           
+/usr/share/lintian/overrides/passwd</pre
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 6.4 - INFO DOCUMENTATION -->
+      <section id="secao6-4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-info-circle"></i>
+          <span class="section-number">6.4</span> Documentação Info
+        </h2>
+        <div class="card">
+          <p>
+            As páginas de manual (man pages) são fontes excelentes de informação, mas elas tendem a ter algumas desvantagens. Um exemplo é
+            que cada página de manual é um documento separado, não relacionado a nenhuma outra página de manual. Embora algumas páginas de
+            manual tenham uma seção SEE ALSO que pode se referir a outras páginas de manual, elas tendem a ser fontes de documentação
+            independentes.
+          </p>
+
+          <p>
+            O comando <code>info</code> também fornece documentação sobre comandos e recursos do sistema operacional. O objetivo é
+            ligeiramente diferente das páginas de manual: fornecer um recurso de documentação que dá uma estrutura organizacional lógica,
+            tornando a leitura da documentação mais fácil.
+          </p>
+
+          <p>
+            Toda a documentação é mesclada em um único "livro" representando toda a documentação disponível. Dentro dos documentos info, a
+            informação é dividida em categorias que funcionam muito como um sumário em um livro. Hiperlinks são fornecidos para páginas com
+            informações sobre tópicos individuais para um comando ou recurso específico.
+          </p>
+
+          <p>
+            Outra vantagem do <code>info</code> sobre as páginas de manual é que o estilo de escrita dos documentos info é tipicamente mais
+            propício para aprender um tópico. Considere as páginas de manual como sendo mais um recurso de referência e os documentos info
+            como sendo mais um guia de aprendizado.
+          </p>
+        </div>
+      </section>
+      <!-- SEÇÃO 6.4.1 - DISPLAYING INFO DOCUMENTATION -->
+      <section id="secao6-4-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-info-circle"></i>
+          <span class="section-number">6.4.1</span> Exibindo Documentação Info
+        </h2>
+        <div class="card">
+          <p>Para exibir a documentação info para um comando, use o comando <code>info</code>.</p>
+
+          <div class="terminal">
+            <pre>info comando</pre>
+          </div>
+
+          <p>Por exemplo, para exibir a página info do comando <code>ls</code>:</p>
+
+          <div class="terminal">
+            <pre>sysadmin@localhost:~$ info ls</pre>
+          </div>
+
+          <p>Navegue pelo documento usando as teclas de seta:</p>
+
+          <div class="terminal">
+            <pre>
+Next: dir invocation,  Up: Directory listing
+
+10.1 `ls': List directory contents                                     
+==================================  
+
+    The `ls' program lists information about files (of any type, including directories).  Options and file arguments can be intermixed arbitrarily, as usual. 
+
+    For non-option command-line arguments that are directories, by    
+default `ls' lists the contents of directories, not recursively, and   
+omitting files with names beginning with `.'.  For other non-option    
+arguments, by default `ls' lists just the file name.  If no non-option 
+argument is specified, `ls' operates on the current directory, acting  
+as if it had been invoked with a single argument of `.'.                        
+                                                                       
+    By default, the output is sorted alphabetically, according to the  
+locale settings in effect.(1) If standard output is a terminal, the    
+output is in columns (sorted vertically) and control characters are    
+output as question marks; otherwise, the output is listed one per line 
+and control characters are output as-is.
+
+-----Info: (coreutils)ls invocation, 57 lines --Top-----------------------------
+Welcome to Info version 6.5.  Type H for help, h for tutorial.</pre
+            >
+          </div>
+
+          <p>
+            Esta documentação é dividida em <strong>nós</strong> (nodes), e no exemplo acima a linha destacada mostra que está atualmente no
+            nó <code>ls invocation</code>. A primeira linha fornece informações de índice sobre a localização atual dentro do documento. O
+            próximo nó, como o próximo capítulo em um livro, seria o nó <code>dir invocation</code>. Subindo um nível está o nó
+            <code>Directory listing</code>.
+          </p>
+
+          <p>Rolando pelo documento, observe o menu para o comando <code>ls</code>:</p>
+
+          <div class="terminal">
+            <pre>
+* Menu:                                                                         
+                           
+* Which files are listed::                     
+* What information is listed::                 
+* Sorting the output::                          
+* Details about version sort::                   
+* General output formatting::                    
+* Formatting file timestamps::                    
+* Formatting the file names::                                                   
+                                         
+   ---------- Footnotes ----------                                              
+          
+ (1) If you use a non-POSIX locale (e.g., by setting `LC_ALL' to 
+`en_US'), then `ls' may produce output that is sorted differently than
+you're accustomed to.  In that case, set the `LC_ALL' environment     
+variable to `C'.                     
+                                           
+-----Info: (coreutils)ls invocation, 57 lines --Bot-----------------------------</pre
+            >
+          </div>
+
+          <p>
+            Os itens sob o menu são hiperlinks que ligam para nós que descrevem mais sobre o comando <code>ls</code>. Por exemplo, colocando
+            o cursor na linha <code>* Sorting the output::</code> e pressionando a tecla <kbd>Enter</kbd>, leva a um nó que descreve como
+            ordenar a saída do comando <code>ls</code>:
+          </p>
+
+          <div class="terminal">
+            <pre>
+Next: Details about version sort,  Prev: What information is listed,  Up: ls in\
+vocation                                                                        
+                                                                                
+10.1.3 Sorting the output                                                       
+-------------------------                                                       
+                                                                                
+These options change the order in which 'ls' sorts the information it           
+outputs.  By default, sorting is done by character code (e.g., ASCII            
+order).                                                                         
+                                                                                
+'-c'                                                                            
+'--time=ctime'                                                                  
+'--time=status'                                                                 
+     If the long listing format (e.g., '-l', '-o') is being used, print         
+     the status change timestamp (the ctime) instead of the mtime.  When        
+     explicitly sorting by time ('--sort=time' or '-t') or when not             
+     using a long listing format, sort according to the ctime.  *Note           
+     File timestamps::.                                                         
+                                                                                
+'-f'                                                                            
+     Primarily, like '-U'--do not sort; list the files in whatever order        
+     they are stored in the directory.  But also enable '-a' (list all          
+-----Info: (coreutils)Sorting the output, 69 lines --Top------------------------</pre
+            >
+          </div>
+
+          <h3><i class="fas fa-diagram-project"></i> Diagrama de Navegação do Info</h3>
+
+          <div class="terminal">
+            <pre>
+┌─────────────────────────────────────────────────────────────────────────────────────┐
+│                         ESTRUTURA DE NÓS DO INFO LS                                 │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                     │
+│   ┌─────────────────────────────────────────────────────────────────────────────┐   │
+│   │                    Directory listing (nível superior)                       │   │
+│   │                           (Up: diretório pai)                               │   │
+│   └─────────────────────────────────┬───────────────────────────────────────────┘   │
+│                                     │                                               │
+│                                     ↓                                               │
+│   ┌─────────────────────────────────────────────────────────────────────────────┐   │
+│   │                      ls invocation (nó atual)                               │   │
+│   │                                                                             │   │
+│   │   Next: dir invocation ───────────────────────────────────────────────→     │   │
+│   │                                                                             │   │
+│   │   ┌─────────────────────────────────────────────────────────────────────┐   │   │
+│   │   │  * Menu:                                                            │   │   │
+│   │   │    • Which files are listed                                         │   │   │
+│   │   │    • What information is listed                                     │   │   │
+│   │   │    • Sorting the output  ──────────────────────────────┐            │   │   │
+│   │   │    • Details about version sort                        │            │   │   │
+│   │   │    • General output formatting                         │            │   │   │
+│   │   │    • Formatting file timestamps                        │            │   │   │
+│   │   │    • Formatting the file names                         │            │   │   │
+│   │   └────────────────────────────────────────────────────────│────────────┘   │   │
+│   │                                                            │                │   │
+│   └────────────────────────────────────────────────────────────┼────────────────┘   │
+│                                                                ↓                    │
+│   ┌─────────────────────────────────────────────────────────────────────────────┐   │
+│   │                    Sorting the output (sub-nó)                              │   │
+│   │                                                                             │   │
+│   │   Prev: What information is listed                                          │   │
+│   │   Next: Details about version sort                                          │   │
+│   │   Up: ls invocation ←──────────────────────────────────────────────┐        │   │
+│   │                                                                    │        │   │
+│   └────────────────────────────────────────────────────────────────────┘        │   │
+│                                                                                 │   │
+├─────────────────────────────────────────────────────────────────────────────────┤   │
+│  TECLAS DE NAVEGAÇÃO:                                                               │
+│                                                                                     │
+│    [↑/↓]  - mover entre linhas / links                                              │
+│    [Enter] - seguir link (entrar no nó)                                             │  
+│    [U]     - subir um nível (Up) - volta para o nó pai                              │
+│    [L]     - voltar para o nó anterior (Last) - como "voltar" do navegador          │
+│    [N]     - próximo nó (Next)                                                      │
+│    [P]     - nó anterior (Prev)                                                     │
+│    [Q]     - sair do info                                                           │
+│    [H]     - ajuda                                                                  │
+└─────────────────────────────────────────────────────────────────────────────────────┘</pre
+            >
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              >Note que entrar no nó sobre ordenação ("Sorting the output") leva a um sub-nó do original. Para voltar ao nó anterior, use a
+              tecla <kbd>U</kbd>. Enquanto <kbd>U</kbd> leva ao início do nó um nível acima, a tecla <kbd>L</kbd> retorna ao mesmo local de
+              antes de entrar no nó de ordenação.</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 6.4.2 - NAVIGATING INFO DOCUMENTS -->
+      <section id="secao6-4-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-arrows-alt"></i>
+          <span class="section-number">6.4.2</span> Navegando em Documentos Info
+        </h2>
+        <div class="card">
+          <p>
+            Assim como no comando <code>man</code>, uma lista de comandos de movimento está disponível pressionando a tecla
+            <kbd>Shift+H</kbd> enquanto lê a documentação info:
+          </p>
+
+          <div class="terminal">
+            <pre>
+Basic Info command keys                                                         
+                                                                                
+l           Close this help window.                                             
+q           Quit Info altogether.                                               
+h           Invoke the Info tutorial.                                           
+                                                                                
+Up          Move up one line.                                                   
+Down        Move down one line.                                                 
+PgUp        Scroll backward one screenful.                                      
+PgDn        Scroll forward one screenful.                                       
+Home        Go to the beginning of this node.                                   
+End         Go to the end of this node.                                         
+                                                                                
+TAB         Skip to the next hypertext link.                                    
+RET         Follow the hypertext link under the cursor.                         
+l           Go back to the last node seen in this window.                       
+                                                                                
+[           Go to the previous node in the document.                            
+]           Go to the next node in the document.                                
+p           Go to the previous node on this level.                              
+n           Go to the next node on this level.                                  
+u           Go up one level.                                                    
+-----Info: *Info Help*, 302 lines -- Top--------------------------------------</pre
+            >
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              >Note que para fechar a tela de ajuda, digite a tecla <kbd>L</kbd>, que traz de volta o documento atual. Para sair
+              completamente, use a tecla <kbd>Q</kbd>.</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 6.4.3 - EXPLORING INFO DOCUMENTATION -->
+      <section id="secao6-4-3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-compass"></i>
+          <span class="section-number">6.4.3</span> Explorando a Documentação Info
+        </h2>
+        <div class="card">
+          <p>
+            Em vez de usar a documentação info para procurar informações sobre um comando ou recurso específico, considere explorar as
+            capacidades do Linux lendo a documentação info. Execute o comando <code>info</code> sem argumentos para ser levado ao nível
+            superior da documentação. Este é um bom ponto de partida para explorar muitos dos recursos oferecidos:
+          </p>
+
+          <div class="terminal">
+            <pre>
+File: dir,      Node: Top,      This is the top of the INFO tree.               
+                                                                                
+This is the Info main menu (aka directory node).                                
+A few useful Info commands:                                                     
+                                                                                
+  'q' quits;                                                                    
+  'H' lists all Info commands;                                                  
+  'h' starts the Info tutorial;                                                 
+  'mTexinfo RET' visits the Texinfo manual, etc.                                
+                                                                                
+* Menu:                                                                         
+                                                                                
+Basics                                                                          
+* Common options: (coreutils)Common options.                                    
+* Coreutils: (coreutils).       Core GNU (file, text, shell) utilities.         
+* Date input formats: (coreutils)Date input formats.                            
+* File permissions: (coreutils)File permissions.                                
+                                Access modes.                                   
+* Finding files: (find).        Operating on files matching certain criteria.   
+                                                                                
+C++ libraries                                                                   
+* autosprintf: (autosprintf).   Support for printf format strings in C++.       
+-----Info: (dir)Top, 211 lines --Top--------------------------------------------
+Welcome to Info version 6.5.  Type H for help, h for tutorial.</pre
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 6.5 - ADDITIONAL SOURCES OF HELP -->
+      <section id="secao6-5" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-external-link-alt"></i>
+          <span class="section-number">6.5</span> Fontes Adicionais de Ajuda
+        </h2>
+        <div class="card">
+          <p>
+            Em muitos casos, as páginas de manual ou a documentação info fornecem as informações necessárias de maneira eficiente. No
+            entanto, existem outras fontes de ajuda que devemos conhecer.
+          </p>
+        </div>
+      </section>
+      <!-- SEÇÃO 6.5.1 - USING THE HELP OPTION -->
+      <section id="secao6-5-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">6.5.1</span> Usando a Opção de Ajuda
+        </h2>
+        <div class="card">
+          <p>
+            Muitos comandos fornecem informações básicas, muito semelhantes ao SYNOPSIS encontrado nas páginas de manual, simplesmente
+            usando a opção <code>--help</code> no comando. Esta opção é útil para aprender o uso básico de um comando rapidamente, sem sair
+            da linha de comando:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ cat --help                                                
+Usage: cat [OPTION]... [FILE]...                                                
+Concatenate FILE(s) to standard output.                                         
+                                                                                
+With no FILE, or when FILE is -, read standard input.                           
+                                                                                
+  -A, --show-all           equivalent to -vET                                   
+  -b, --number-nonblank    number nonempty output lines, overrides -n           
+  -e                       equivalent to -vE                                    
+  -E, --show-ends          display $ at end of each line                        
+  -n, --number             number all output lines                              
+  -s, --squeeze-blank      suppress repeated empty output lines                 
+  -t                       equivalent to -vT                                    
+  -T, --show-tabs          display TAB characters as ^I                         
+  -u                       (ignored)                                            
+  -v, --show-nonprinting   use ^ and M- notation, except for LFD and TAB        
+      --help     display this help and exit                                     
+      --version  output version information and exit                            
+                                                                                
+Examples:                                                                       
+  cat f - g  Output f's contents, then standard input, then g's contents.       
+  cat        Copy standard input to standard output.                            
+                                                                                
+GNU coreutils online help: &lt;http://www.gnu.org/software/coreutils/&gt;             
+Report cat translation bugs to &lt;http://translationproject.org/team/&gt;            
+Full documentation at: &lt;http://www.gnu.org/software/coreutils/cat&gt;              
+or available locally via: info '(coreutils) cat invocation'</pre
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 6.5.2 - ADDITIONAL SYSTEM DOCUMENTATION -->
+      <section id="secao6-5-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-folder-open"></i>
+          <span class="section-number">6.5.2</span> Documentação Adicional do Sistema
+        </h2>
+        <div class="card">
+          <p>
+            Na maioria dos sistemas, existe um diretório onde documentação adicional (como arquivos de documentação armazenados por
+            fornecedores de software de terceiros) é encontrada.
+          </p>
+
+          <p>
+            Esses arquivos de documentação são frequentemente chamados de <strong>arquivos readme</strong>, pois os arquivos tipicamente têm
+            nomes como <code>README</code> ou <code>readme.txt</code>. A localização desses arquivos pode variar dependendo da distribuição
+            que você está usando. Localizações típicas incluem <code>/usr/share/doc</code> e <code>/usr/doc</code>.
+          </p>
+
+          <p>
+            Tipicamente, este diretório é onde os administradores de sistema vão para aprender como configurar serviços de software mais
+            complexos. No entanto, às vezes usuários comuns também acham esta documentação útil.
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p><i class="fab fa-linux"></i> NDG Linux Essentials - Módulo 6: Obtendo Ajuda</p>
+      <p>Conteúdo traduzido e adaptado seguindo os padrões de documentação Linux</p>
+    </footer>
+
+    <script>
+      // menu.js - Controle do Menu Lateral
+      class SidebarMenu {
+        constructor() {
+          this.sidebar = document.getElementById('sidebar')
+          this.overlay = document.getElementById('sidebarOverlay')
+          this.openBtn = document.getElementById('openMenu')
+          this.closeBtn = document.getElementById('closeMenu')
+          this.init()
+        }
+
+        init() {
+          if (!this.sidebar) return
+
+          if (this.openBtn) {
+            this.openBtn.addEventListener('click', () => this.open())
+          }
+          if (this.closeBtn) {
+            this.closeBtn.addEventListener('click', () => this.close())
+          }
+          if (this.overlay) {
+            this.overlay.addEventListener('click', () => this.close())
+          }
+
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.sidebar.classList.contains('open')) {
+              this.close()
+            }
+          })
+
+          const links = document.querySelectorAll('.sidebar .nav-modules a')
+          links.forEach((link) => {
+            link.addEventListener('click', () => this.close())
+          })
+        }
+
+        open() {
+          this.sidebar.classList.add('open')
+          this.overlay.classList.add('active')
+          document.body.style.overflow = 'hidden'
+        }
+
+        close() {
+          this.sidebar.classList.remove('open')
+          this.overlay.classList.remove('active')
+          document.body.style.overflow = ''
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        new SidebarMenu()
+      })
+    </script>
+  </body>
+</html>
