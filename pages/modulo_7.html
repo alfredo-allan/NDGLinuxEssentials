@@ -1,0 +1,1482 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>NDG Linux Essentials | Módulo 7 - Navegando pelo Sistema de Arquivos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <button class="menu-toggle" id="openMenu">
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+      </button>
+      <a href="#" class="top-bar-brand"> <i class="fab fa-linux"></i> NDG Linux Essentials </a>
+      <a href="#" class="btn-outline"> <i class="fas fa-home"></i> Voltar </a>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-compass"></i> Navegação</h3>
+        <button class="close-sidebar" id="closeMenu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="nav-modules">
+        <ul class="nav-modules">
+          <li>
+            <a href="#secao7-1"><i class="fas fa-life-ring"></i> 7.1 Introdução</a>
+          </li>
+          <li>
+            <a href="#secao7-2"><i class="fas fa-folder-tree"></i> 7.2 Estrutura de Diretórios</a>
+          </li>
+          <li>
+            <a href="#secao7-2-1"><i class="fas fa-home"></i> 7.2.1 Diretório Home</a>
+          </li>
+          <li>
+            <a href="#secao7-2-2"><i class="fas fa-location-dot"></i> 7.2.2 Diretório Atual</a>
+          </li>
+          <li>
+            <a href="#secao7-2-3"><i class="fas fa-arrow-right"></i> 7.2.3 Mudando de Diretório</a>
+          </li>
+          <li>
+            <a href="#secao7-3"><i class="fas fa-map"></i> 7.3 Caminhos (Paths)</a>
+          </li>
+          <li>
+            <a href="#secao7-3-1"><i class="fas fa-map-pin"></i> 7.3.1 Caminhos Absolutos</a>
+          </li>
+          <li>
+            <a href="#secao7-3-2"><i class="fas fa-share"></i> 7.3.2 Caminhos Relativos</a>
+          </li>
+          <li>
+            <a href="#secao7-3-3"><i class="fas fa-bolt"></i> 7.3.3 Atalhos</a>
+          </li>
+          <li>
+            <a href="#secao7-4"><i class="fas fa-list"></i> 7.4 Listando Arquivos em um Diretório</a>
+          </li>
+          <li>
+            <a href="#secao7-4-1"><i class="fas fa-eye-slash"></i> 7.4.1 Listando Arquivos Ocultos</a>
+          </li>
+          <li>
+            <a href="#secao7-4-2"><i class="fas fa-table-list"></i> 7.4.2 Listagem Detalhada</a>
+          </li>
+          <li>
+            <a href="#secao7-4-3"><i class="fas fa-chart-simple"></i> 7.4.3 Tamanhos Legíveis para Humanos</a>
+          </li>
+          <li>
+            <a href="#secao7-4-4"><i class="fas fa-folder"></i> 7.4.4 Listando Diretórios</a>
+          </li>
+          <li>
+            <a href="#secao7-4-5"><i class="fas fa-folder-open"></i> 7.4.5 Listagem Recursiva</a>
+          </li>
+          <li>
+            <a href="#secao7-4-6"><i class="fas fa-arrow-down-wide-short"></i> 7.4.6 Ordenando uma Listagem</a>
+          </li>
+          <li>
+            <a href="../pages/questoes_7.html"><i class="fas fa-question-circle"></i> Questões</a>
+          </li>
+        </ul>
+        <!-- Novas seções serão adicionadas aqui -->
+      </ul>
+    </div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-icon">
+          <i class="fab fa-linux"></i>
+        </div>
+        <div class="badge-lab"><i class="fas fa-graduation-cap"></i> Módulo 7</div>
+        <h1>Navegando pelo Sistema de Arquivos</h1>
+        <p style="font-size: 1.2rem; color: var(--text-dim); max-width: 700px; margin: 0 auto"></p>
+
+        <!-- Empresas que usam Linux - Substituindo imagens por ícones -->
+        <div class="companies-grid">
+          <div class="company-item"><i class="fab fa-cisco"></i><span> CISCO</span></div>
+          <div class="company-item"><i class="fab fa-amazon"></i><span> amazon</span></div>
+          <div class="company-item"><i class="fab fa-netflix"></i><span> NETFLIX</span></div>
+          <div class="company-item"><i class="fab fa-google"></i><span> Google</span></div>
+          <div class="company-item"><i class="fab fa-microsoft"></i><span> Microsoft</span></div>
+          <div class="company-item"><i class="fab fa-facebook"></i><span> facebook</span></div>
+          <div class="company-item"><i class="fas fa-rocket"></i><span> NASA</span></div>
+          <div class="company-item"><i class="fab fa-ibm"></i><span> IBM</span></div>
+          <div class="company-item"><i class="fas fa-microchip"></i><span> TESLA</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTAINER PRINCIPAL -->
+    <div class="container">
+      <!-- SEÇÃO 7.1 - INTRODUÇÃO -->
+      <section id="secao7-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-folder-open"></i>
+          <span class="section-number">7.1</span> Introdução
+        </h2>
+        <div class="card">
+          <i class="fas fa-file-alt"></i>
+          <p>
+            No Linux, tudo é considerado um arquivo. Arquivos são usados para armazenar dados, como texto, gráficos e programas. Diretórios
+            são um tipo de arquivo usado para armazenar outros arquivos; usuários do Windows e Mac OS X geralmente se referem a eles como
+            <strong>pastas</strong>. Em qualquer caso, os diretórios são usados para fornecer uma estrutura de organização hierárquica. No
+            entanto, essa estrutura pode ser um pouco diferente dependendo do tipo de sistema em uso.
+          </p>
+
+          <p>
+            Ao trabalhar em um sistema operacional Linux, é importante saber como manipular arquivos e diretórios. Algumas distribuições
+            Linux possuem aplicações baseadas em interface gráfica (GUI) que permitem gerenciar arquivos, mas é vantajoso saber como
+            realizar essas operações via linha de comando.
+          </p>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Sabia?</strong> No Linux, até mesmo dispositivos como discos rígidos, teclados e impressoras são representados como
+              arquivos no sistema de arquivos.</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 7.2 - DIRECTORY STRUCTURE -->
+      <section id="secao7-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-folder-tree"></i>
+          <span class="section-number">7.2</span> Estrutura de Diretórios
+        </h2>
+        <div class="card">
+          <p>
+            Em um sistema Windows, o nível superior da estrutura de diretórios é chamado de <strong>Meu Computador</strong>. Dispositivos
+            físicos, como discos rígidos, unidades USB, unidades de rede, aparecem em Meu Computador e cada um recebe uma letra de unidade,
+            como <code>C:</code> ou <code>D:</code>.
+          </p>
+
+          <p>
+            As estruturas de diretórios mostradas abaixo são fornecidas apenas como exemplos. Esses diretórios podem não estar presentes no
+            ambiente de máquina virtual deste curso.
+          </p>
+
+          <h3><i class="fab fa-windows"></i> Estrutura de Diretórios do Windows</h3>
+
+          <div class="terminal">
+            <pre>
+Meu Computador
+├── DVD Drive (D:)
+│   └── Data
+├── Hard Drive (C:)
+│   ├── Program Files
+│   ├── Users
+│   └── Windows
+└── USB Disk (E:)
+    └── Data</pre
+            >
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              >Assim como o Windows, a estrutura de diretórios do Linux, tipicamente chamada de
+              <strong>sistema de arquivos (filesystem)</strong>, também possui um nível superior. No entanto, em vez de "Meu Computador", é
+              chamado de <strong>diretório raiz (root directory)</strong>, e é simbolizado pelo caractere barra <code>/</code>. Além disso,
+              não há unidades no Linux; cada dispositivo físico é acessível sob um diretório, ao contrário de uma letra de unidade.</span
+            >
+          </div>
+
+          <h3><i class="fab fa-linux"></i> Estrutura de Diretórios do Linux</h3>
+
+          <div class="terminal">
+            <pre>
+/
+├── bin/     → Comandos essenciais do sistema
+├── boot/    → Arquivos de inicialização
+├── dev/     → Dispositivos (hardware)
+├── etc/     → Arquivos de configuração
+├── home/    → Diretórios dos usuários
+├── lib/     → Bibliotecas compartilhadas
+├── media/   → Pontos de montagem (CD, USB)
+├── mnt/     → Montagem temporária
+├── opt/     → Softwares opcionais
+├── proc/    → Informações de processos
+├── root/    → Diretório do usuário root
+├── sbin/    → Comandos administrativos
+├── srv/     → Dados de serviços
+├── sys/     → Informações do kernel
+├── tmp/     → Arquivos temporários
+├── usr/     → Programas dos usuários
+└── var/     → Dados variáveis (logs, spool)</pre
+            >
+          </div>
+
+          <p>Para visualizar o conteúdo do diretório raiz, use o comando <code>ls</code> com o caractere <code>/</code> como argumento:</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls /
+bin    etc    lib    mnt    root    sbin    tmp
+boot   home   lib64  opt    run     srv     usr
+dev    init   media  proc   sbin    sys     var</pre
+            >
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              >Observe que existem muitos diretórios com nomes descritivos, incluindo <code>/boot</code>, que contém os arquivos para
+              inicializar o computador.</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 7.2.1 - HOME DIRECTORY -->
+      <section id="secao7-2-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-home"></i>
+          <span class="section-number">7.2.1</span> Diretório Home
+        </h2>
+        <div class="card">
+          <p>
+            O termo <strong>diretório home</strong> frequentemente confunde novos usuários Linux. Para começar, na maioria das distribuições
+            Linux existe um diretório chamado <code>home</code> sob o diretório raiz <code>/</code>.
+          </p>
+
+          <div class="terminal">
+            <pre>
+/
+├── bin/
+├── boot/
+├── dev/
+├── etc/
+├── home/          ← Diretório que contém os homes dos usuários
+├── lib/
+├── media/
+├── mnt/
+└── opt/</pre
+            >
+          </div>
+
+          <p>
+            Sob este diretório <code>/home</code> existe um diretório para cada usuário no sistema. O nome do diretório é o mesmo que o nome
+            do usuário, então um usuário chamado <code>sysadmin</code> teria um diretório home chamado <code>/home/sysadmin</code>.
+          </p>
+
+          <div class="terminal">
+            <pre>
+/home/
+├── sysadmin/      ← Diretório home do usuário sysadmin
+├── bob/           ← Diretório home do usuário bob
+└── alice/         ← Diretório home do usuário alice</pre
+            >
+          </div>
+
+          <p>
+            O diretório home é um diretório importante. Para começar, quando um usuário abre um shell, ele deve ser automaticamente colocado
+            em seu diretório home, pois normalmente é onde ele faz a maior parte do seu trabalho.
+          </p>
+
+          <p>
+            Além disso, o diretório home é um dos poucos diretórios onde o usuário tem controle total para criar e excluir arquivos e
+            diretórios adicionais. Na maioria das distribuições Linux, os únicos usuários que podem acessar os arquivos em um diretório home
+            são o proprietário e o administrador do sistema. A maioria dos outros diretórios em um sistema de arquivos Linux é protegida com
+            <strong>permissões de arquivo</strong>.
+          </p>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span>Permissões de arquivo e propriedade serão abordadas em detalhes posteriormente no curso.</span>
+          </div>
+
+          <p>
+            O diretório home tem um símbolo especial usado para representá-lo: o caractere tilde <code>~</code>. Assim, se o usuário
+            sysadmin está logado, o caractere tilde <code>~</code> pode ser usado no lugar do diretório <code>/home/sysadmin</code>.
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ cd ~
+sysadmin@localhost:~$ pwd
+/home/sysadmin</pre
+            >
+          </div>
+
+          <p>
+            Também é possível referir-se ao diretório home de outro usuário usando o caractere tilde <code>~</code> seguido pelo nome da
+            conta do usuário. Por exemplo, <code>~bob</code> seria o equivalente a <code>/home/bob</code>.
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls ~bob
+Documentos  Downloads  Música  Desktop</pre
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 7.2.2 - CURRENT DIRECTORY -->
+      <section id="secao7-2-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-location-dot"></i>
+          <span class="section-number">7.2.2</span> Diretório Atual
+        </h2>
+        <div class="card">
+          <p>
+            Para determinar onde o usuário está localizado atualmente dentro do sistema de arquivos, o comando <code>pwd</code> (print
+            working directory) pode ser usado:
+          </p>
+
+          <div class="terminal">
+            <pre>pwd [OPTIONS]</pre>
+          </div>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ pwd
+/home/sysadmin</pre
+            >
+          </div>
+
+          <p>
+            O comando <code>pwd</code> imprime o diretório de trabalho, que é a localização atual do usuário dentro do sistema de arquivos.
+            A saída do comando acima indica que o usuário <code>sysadmin</code> está atualmente em seu diretório home, mostrado no sistema
+            de arquivos abaixo:
+          </p>
+
+          <div class="terminal">
+            <pre>
+/
+├── bin/
+├── boot/
+├── dev/
+├── etc/
+├── home/
+│   └── sysadmin/     ← Você está aqui!
+│       ├── Desktop/
+│       ├── Documents/
+│       ├── Downloads/
+│       ├── Music/
+│       ├── Pictures/
+│       ├── Public/
+│       ├── Templates/
+│       └── Videos/
+├── lib/
+├── media/
+├── mnt/
+└── opt/</pre
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 7.2.3 - CHANGING DIRECTORIES -->
+      <section id="secao7-2-3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-arrow-right"></i>
+          <span class="section-number">7.2.3</span> Mudando de Diretório
+        </h2>
+        <div class="card">
+          <p>
+            Quando um usuário abre um shell, ele tipicamente começa em seu diretório home. Quando você inicia uma máquina virtual neste
+            curso, seja abrindo o curso ou após usar o botão de reset, você está logado como o usuário <code>sysadmin</code> e começa no
+            diretório home desse usuário, destacado na imagem abaixo:
+          </p>
+
+          <div class="terminal">
+            <pre>
+/
+├── bin/
+├── boot/
+├── dev/
+├── etc/
+├── home/
+│   └── sysadmin/     ← Você começa aqui (home)
+│       ├── Desktop/
+│       ├── Documents/
+│       ├── Downloads/
+│       ├── Music/
+│       ├── Pictures/
+│       ├── Public/
+│       ├── Templates/
+│       └── Videos/
+├── lib/
+├── media/
+├── mnt/
+└── opt/</pre
+            >
+          </div>
+
+          <p>Para navegar pelo sistema de arquivos, use o comando <code>cd</code> (change directory).</p>
+
+          <div class="terminal">
+            <pre>cd [opções] [caminho]</pre>
+          </div>
+
+          <p>
+            Existe um diretório chamado <code>Documents</code> localizado no diretório home do usuário <code>sysadmin</code>. Para sair do
+            diretório home e entrar no diretório <code>Documents</code>, use o nome do diretório como argumento para o comando
+            <code>cd</code>:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ cd Documents
+sysadmin@localhost:~/Documents$</pre
+            >
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Considere isto:</strong> Para alguns comandos, nenhuma notícia é boa notícia; não há saída se o comando
+              <code>cd</code> for bem-sucedido. Se o usuário tentar mudar para um diretório que não existe, o comando retorna uma mensagem
+              de erro:</span
+            >
+          </div>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ cd Junk
+-bash: cd: Junk: No such file or directory</pre
+            >
+          </div>
+
+          <p>Quando usado sem argumentos, o comando <code>cd</code> leva o usuário de volta ao seu diretório home.</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Documents$ cd
+sysadmin@localhost:~$</pre
+            >
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              >Observe que nossas máquinas virtuais empregam um prompt que exibe o diretório de trabalho atual, enfatizado com a cor azul.
+              No primeiro prompt, o caractere tilde <code>~</code> é equivalente a <code>/home/sysadmin</code>, representando o diretório
+              home do usuário.</span
+            >
+          </div>
+
+          <p>
+            Após mudar de diretório, a nova localização <code>~/Documents</code> também pode ser confirmada no novo prompt, novamente
+            mostrada em azul.
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ cd Documents
+sysadmin@localhost:~/Documents$</pre
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 7.3 - PATHS -->
+      <section id="secao7-3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-map"></i>
+          <span class="section-number">7.3</span> Caminhos (Paths)
+        </h2>
+        <div class="card">
+          <p>
+            O argumento para o comando <code>cd</code> é mais do que apenas o nome de um diretório; é na verdade um
+            <strong>caminho (path)</strong>. Um caminho é uma lista de diretórios separados pelo caractere <code>/</code>. Se você pensar no
+            sistema de arquivos como um mapa, os caminhos são os endereços dos diretórios, que incluem instruções de navegação passo a
+            passo; eles podem ser usados para indicar a localização de qualquer arquivo dentro do sistema de arquivos.
+          </p>
+
+          <p>Por exemplo, <code>/home/sysadmin</code> é um caminho para o diretório home:</p>
+
+          <div class="terminal">
+            <pre>
+/
+├── bin/
+├── boot/
+├── dev/
+├── etc/
+├── home/
+│   └── sysadmin/     ← /home/sysadmin
+│       ├── Desktop/
+│       ├── Documents/
+│       ├── Downloads/
+│       ├── Music/
+│       ├── Pictures/
+│       ├── Public/
+│       ├── Templates/
+│       └── Videos/
+├── lib/
+├── media/
+├── mnt/
+└── opt/</pre
+            >
+          </div>
+
+          <p>Existem dois tipos de caminhos: <strong>absoluto</strong> e <strong>relativo</strong>.</p>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Resumo:</strong> Caminhos (paths) são como endereços no sistema de arquivos. Eles podem ser absolutos (começando da
+              raiz <code>/</code>) ou relativos (a partir do diretório atual).</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 7.3.1 - ABSOLUTE PATHS -->
+      <section id="secao7-3-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-map-pin"></i>
+          <span class="section-number">7.3.1</span> Caminhos Absolutos
+        </h2>
+        <div class="card">
+          <p>
+            Caminhos absolutos permitem que o usuário especifique a localização exata de um diretório. Ele sempre começa no diretório raiz
+            e, portanto, sempre começa com o caractere <code>/</code>. O caminho <code>/home/sysadmin</code> é um caminho absoluto; ele
+            instrui o sistema a começar no diretório raiz <code>/</code>, entrar no diretório <code>home</code> e depois no diretório
+            <code>sysadmin</code>.
+          </p>
+
+          <div class="terminal">
+            <pre>
+/
+└── home/
+    └── sysadmin/     ← /home/sysadmin (caminho absoluto)
+        ├── Desktop/
+        ├── Documents/
+        ├── Downloads/
+        ├── Music/
+        ├── Pictures/
+        ├── Public/
+        ├── Templates/
+        └── Videos/</pre
+            >
+          </div>
+
+          <p>
+            Se o caminho <code>/home/sysadmin</code> for usado como argumento para o comando <code>cd</code>, ele move o usuário para o
+            diretório home do usuário sysadmin.
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Documents$ cd /home/sysadmin
+sysadmin@localhost:~$</pre
+            >
+          </div>
+
+          <p>
+            Novamente, nenhuma saída significa que o comando foi bem-sucedido. Isso pode ser confirmado olhando para o prompt ou usando o
+            comando <code>pwd</code>:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ pwd
+/home/sysadmin</pre
+            >
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Dica:</strong> Caminhos absolutos funcionam de qualquer lugar do sistema, pois sempre começam da raiz <code>/</code>.
+              Eles são como um "endereço completo" no sistema de arquivos.</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 7.3.2 - RELATIVE PATHS -->
+      <section id="secao7-3-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-share"></i>
+          <span class="section-number">7.3.2</span> Caminhos Relativos
+        </h2>
+        <div class="card">
+          <p>
+            <strong>Caminhos relativos</strong> começam a partir do diretório atual. Um caminho relativo fornece direções para um arquivo
+            relativo à localização atual no sistema de arquivos. Eles não começam com o caractere <code>/</code>. Em vez disso, começam com
+            o nome de um diretório. Mais especificamente, caminhos relativos começam com o nome de um diretório contido dentro do diretório
+            atual.
+          </p>
+
+          <p>
+            Dê outra olhada no primeiro exemplo do comando <code>cd</code>. O argumento é um exemplo do caminho relativo mais simples: o
+            nome de um diretório dentro do diretório de trabalho atual.
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ cd Documents
+sysadmin@localhost:~/Documents$</pre
+            >
+          </div>
+
+          <p>
+            Se o usuário está localizado no diretório <code>Documents</code>, mover para o diretório <code>Art</code> pode ser feito de
+            várias maneiras.
+          </p>
+
+          <h3><i class="fas fa-diagram-project"></i> Estrutura do diretório Documents</h3>
+
+          <div class="terminal">
+            <pre>
+/home/sysadmin/Documents/
+├── School/
+│   ├── Art/
+│   ├── Engineering/
+│   └── Math/
+├── Work/
+├── Adjectives.txt
+├── alpha-first.txt
+├── alpha-second.txt
+├── Desktop/
+├── Downloads/
+├── Music/
+├── Pictures/
+├── Public/
+├── Templates/
+└── Videos/</pre
+            >
+          </div>
+
+          <p>O caminho absoluto para o diretório <code>Art</code> pode ser usado:</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Documents$ cd /home/sysadmin/Documents/School/Art
+sysadmin@localhost:~/Documents/School/Art$</pre
+            >
+          </div>
+
+          <p>Múltiplos caminhos relativos podem ser usados:</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Documents$ cd School
+sysadmin@localhost:~/Documents/School$ cd Art
+sysadmin@localhost:~/Documents/School/Art$</pre
+            >
+          </div>
+
+          <p>
+            No entanto, o método mais simples é usar um único caminho relativo que cubra a jornada do diretório de origem até o diretório de
+            destino:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Documents$ cd School/Art
+sysadmin@localhost:~/Documents/School/Art$</pre
+            >
+          </div>
+
+          <h3><i class="fas fa-diagram-project"></i> Visualização do caminho percorrido</h3>
+
+          <div class="terminal">
+            <pre>
+Documents/               (Você está aqui)
+    └── School/
+        └── Art/          (Destino: School/Art)</pre
+            >
+          </div>
+
+          <p>Use o comando <code>pwd</code> para confirmar a mudança:</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Documents/School/Art$ pwd
+/home/sysadmin/Documents/School/Art</pre
+            >
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Resumo:</strong> Caminhos relativos são como "endereços locais" - eles partem de onde você está. Caminhos absolutos
+              são como "endereços completos" - eles partem da raiz <code>/</code>.</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 7.3.3 - SHORTCUTS -->
+      <section id="secao7-3-3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-bolt"></i>
+          <span class="section-number">7.3.3</span> Atalhos
+        </h2>
+        <div class="card">
+          <h3><i class="fas fa-ellipsis-h"></i> Os caracteres <code>..</code> (dois pontos)</h3>
+
+          <p>
+            Independentemente de qual diretório o usuário está, dois caracteres ponto <code>..</code> sempre representam um diretório acima
+            do diretório atual, às vezes chamado de <strong>diretório pai (parent directory)</strong>. Para sair do diretório
+            <code>Art</code> e voltar para o diretório <code>School</code>:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Documents/School/Art$ cd ..
+sysadmin@localhost:~/Documents/School$</pre
+            >
+          </div>
+
+          <div class="terminal">
+            <pre>
+Documents/
+└── School/
+    ├── Art/        ← Você está aqui
+    ├── Engineering/
+    └── Math/
+
+Depois de cd .. :
+Documents/
+└── School/        ← Agora você está aqui
+    ├── Art/
+    ├── Engineering/
+    └── Math/</pre
+            >
+          </div>
+
+          <p>
+            O ponto duplo também pode ser usado em caminhos mais longos. O seguinte caminho relativo pode ser usado para sair do diretório
+            <code>School</code> para o diretório <code>Downloads</code>:
+          </p>
+
+          <div class="terminal">
+            <pre>
+/home/sysadmin/
+├── Desktop/
+├── Documents/
+│   └── School/     ← Você está aqui
+├── Downloads/      ← Destino
+├── Music/
+├── Pictures/
+├── Public/
+├── Templates/
+└── Videos/</pre
+            >
+          </div>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Documents/School$ cd ../Downloads
+sysadmin@localhost:~/Downloads$</pre
+            >
+          </div>
+
+          <p><code>../Downloads</code> significa: "vá um diretório acima (para Documents) e depois entre no diretório Downloads".</p>
+
+          <h3><i class="fas fa-circle"></i> O caractere <code>.</code> (ponto simples)</h3>
+
+          <p>
+            Independentemente de qual diretório o usuário está, o ponto simples <code>.</code> sempre representa o
+            <strong>diretório atual</strong>. Para o comando <code>cd</code>, este atalho não é muito útil, mas é útil para comandos
+            cobertos em seções subsequentes.
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ cd .
+sysadmin@localhost:~$</pre
+            >
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Resumo dos atalhos:</strong><br />
+              • <code>.</code> (ponto simples) = diretório atual<br />
+              • <code>..</code> (dois pontos) = diretório pai (um nível acima)</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 7.4 - LISTING FILES IN A DIRECTORY -->
+      <section id="secao7-4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-list"></i>
+          <span class="section-number">7.4</span> Listando Arquivos em um Diretório
+        </h2>
+        <div class="card">
+          <p>
+            Para os exemplos anteriores, imagens foram fornecidas para mostrar a estrutura do sistema de arquivos. Na prática, mapas como
+            esses não são fornecidos, e os usuários devem confiar no que está disponível na linha de comando, tornando o comando
+            <code>ls</code> (list) um dos mais poderosos para navegar pelo sistema de arquivos.
+          </p>
+
+          <div class="terminal">
+            <pre>ls [OPÇÃO] ... [ARQUIVO] ...</pre>
+          </div>
+
+          <p>
+            O comando <code>ls</code> é usado para exibir o conteúdo de um diretório e pode fornecer informações detalhadas sobre os
+            arquivos. Por padrão, quando usado sem opções ou argumentos, ele lista os arquivos no diretório atual:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos</pre
+            >
+          </div>
+
+          <p>
+            O comando <code>ls</code> também pode ser usado para listar o conteúdo de qualquer diretório no sistema de arquivos. Forneça o
+            caminho para o diretório como um argumento:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls /var
+backups  cache  lib  local  lock  log  mail  opt  run  spool  tmp</pre
+            >
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Considere isto:</strong> Em muitas distribuições Linux, incluindo a usada em nossas máquinas virtuais, o comando
+              <code>ls</code> usa cores para distinguir por tipo de arquivo. Por exemplo, diretórios podem ser exibidos em azul, arquivos
+              executáveis em verde e links simbólicos em ciano.</span
+            >
+          </div>
+
+          <p>
+            A saída colorida não é o comportamento padrão para o comando <code>ls</code>, mas sim o efeito da opção <code>--color</code>. O
+            <code>ls</code> parece executar essa coloração automaticamente porque existe um <strong>alias</strong> para o comando
+            <code>ls</code>, então ele é executado com a opção <code>--color</code>.
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ type ls
+ls is aliased to `ls --color=auto'</pre
+            >
+          </div>
+
+          <p>Para evitar usar o alias, coloque um caractere de barra invertida <code>\</code> na frente do seu comando:</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ \ls
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos</pre
+            >
+          </div>
+
+          <div class="alert alert-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span
+              ><strong>Dica:</strong> Usar <code>\ls</code> executa o comando original sem o alias, útil se você precisar de uma saída sem
+              cores ou comportamentos personalizados.</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 7.4.1 - LISTING HIDDEN FILES -->
+      <section id="secao7-4-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-eye-slash"></i>
+          <span class="section-number">7.4.1</span> Listando Arquivos Ocultos
+        </h2>
+        <div class="card">
+          <p>
+            Quando o comando <code>ls</code> é usado para exibir o conteúdo de um diretório, nem todos os arquivos são mostrados
+            automaticamente. O comando <code>ls</code> omite arquivos ocultos por padrão. Um arquivo oculto é qualquer arquivo (ou
+            diretório) que começa com um caractere ponto <code>.</code>.
+          </p>
+
+          <p>Para exibir todos os arquivos, incluindo arquivos ocultos, use a opção <code>-a</code> no comando <code>ls</code>:</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls -a
+.    .bashrc    .selected_editor    Downloads    Public
+..   .cache     Desktop              Music        Templates
+.bash_logout    .profile    Documents    Pictures    Videos</pre
+            >
+          </div>
+
+          <p>
+            Por que os arquivos são ocultos em primeiro lugar? A maioria dos arquivos ocultos são
+            <strong>arquivos de personalização (customization files)</strong>, projetados para personalizar como o Linux, seu shell ou
+            programas funcionam. Por exemplo, o arquivo <code>.bashrc</code> no diretório home personaliza recursos do shell, como criar ou
+            modificar variáveis e aliases.
+          </p>
+
+          <p>
+            Esses arquivos de personalização não são aqueles com os quais você trabalha regularmente, e tê-los exibidos dificulta encontrar
+            outros arquivos.
+          </p>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Dica:</strong> Arquivos ocultos começam com <code>.</code> (ponto). Use <code>ls -a</code> para visualizá-los.</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 7.4.2 - LONG DISPLAY LISTING -->
+      <section id="secao7-4-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-table-list"></i>
+          <span class="section-number">7.4.2</span> Listagem Detalhada (Long Display)
+        </h2>
+        <div class="card">
+          <p>
+            Cada arquivo tem detalhes associados a ele chamados <strong>metadados</strong>. Isso pode incluir informações como tamanho,
+            propriedade ou timestamps. Para visualizar essas informações, use a opção <code>-l</code> no comando <code>ls</code>. Abaixo,
+            uma listagem do diretório <code>/var/log</code> é usada como exemplo, pois fornece uma variedade de saída:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls -l /var/log/
+total 900                                                                       
+-rw-r--r-- 1 root   root  15322 Dec 10 21:33 alternatives.log
+drwxr-xr-x 1 root   root   4096 Jul 19 06:52 apt
+-rw-r----- 1 syslog adm     371 Dec 15 16:38 auth.log
+-rw-r--r-- 1 root   root  35330 May 26  2018 bootstrap.log
+-rw-rw---- 1 root   utmp      0 May 26  2018 btmp
+-rw-r----- 1 syslog adm     197 Dec 15 16:38 cron.log
+-rw-r--r-- 1 root   adm   85083 Dec 10 21:33 dmesg
+-rw-r--r-- 1 root   root 351960 Jul 19 06:52 dpkg.log
+-rw-r--r-- 1 root   root  32064 Dec 10 21:33 faillog
+drwxr-xr-x 2 root   root   4096 Jul 19 06:51 journal
+-rw-rw-r-- 1 root   utmp 292584 Dec 15 16:38 lastlog
+-rw-r----- 1 syslog adm   14185 Dec 15 16:38 syslog
+-rw------- 1 root   root  64128 Dec 10 21:33 tallylog
+-rw-rw-r-- 1 root   utmp    384 Dec 15 16:38 wtmp</pre
+            >
+          </div>
+
+          <p>
+            Na saída acima, cada linha exibe metadados sobre um único arquivo. O seguinte descreve cada um dos campos de dados na saída do
+            comando <code>ls -l</code>:
+          </p>
+
+          <h3><i class="fas fa-file"></i> Tipo de Arquivo (File Type)</h3>
+          <p>O primeiro caractere de cada linha indica o tipo de arquivo.</p>
+
+          <table class="table-custom">
+            <thead>
+              <tr>
+                <th>Símbolo</th>
+                <th>Tipo de Arquivo</th>
+                <th>Descrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>d</code></td>
+                <td>directory</td>
+                <td>Um arquivo usado para armazenar outros arquivos.</td>
+              </tr>
+              <tr>
+                <td><code>-</code></td>
+                <td>regular file</td>
+                <td>Inclui arquivos legíveis, imagens, binários e compactados.</td>
+              </tr>
+              <tr>
+                <td><code>l</code></td>
+                <td>symbolic link</td>
+                <td>Aponta para outro arquivo.</td>
+              </tr>
+              <tr>
+                <td><code>s</code></td>
+                <td>socket</td>
+                <td>Permite comunicação entre processos.</td>
+              </tr>
+              <tr>
+                <td><code>p</code></td>
+                <td>pipe</td>
+                <td>Permite comunicação entre processos.</td>
+              </tr>
+              <tr>
+                <td><code>b</code></td>
+                <td>block file</td>
+                <td>Usado para comunicar com hardware.</td>
+              </tr>
+              <tr>
+                <td><code>c</code></td>
+                <td>character file</td>
+                <td>Usado para comunicar com hardware.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>
+            O primeiro arquivo <code>alternatives.log</code> é um arquivo regular (<code>-</code>), enquanto o segundo arquivo
+            <code>apt</code> é um diretório (<code>d</code>).
+          </p>
+
+          <h3><i class="fas fa-lock"></i> Permissões (Permissions)</h3>
+          <div class="terminal"><pre>drwxr-xr-x 2 root   root   4096 Jul 19 06:51 journal</pre></div>
+          <p>
+            Os próximos nove caracteres demonstram as permissões do arquivo. Permissões indicam como certos usuários podem acessar um
+            arquivo.
+          </p>
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i><span>Permissões serão abordadas em detalhes posteriormente no curso.</span>
+          </div>
+
+          <h3><i class="fas fa-link"></i> Contagem de Hard Links (Hard Link Count)</h3>
+          <div class="terminal">
+            <pre>
+-rw-r----- 1 syslog adm     371 Dec 15 16:38 auth.log
+drwxr-xr-x 2 root   root   4096 Jul 19 06:51 journal</pre
+            >
+          </div>
+          <p>Este número indica quantos hard links apontam para este arquivo.</p>
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i><span>Links serão abordados em detalhes posteriormente no curso.</span>
+          </div>
+
+          <h3><i class="fas fa-user"></i> Usuário Proprietário (User Owner)</h3>
+          <div class="terminal"><pre>-rw-r----- 1 syslog adm     197 Dec 15 16:38 cron.log</pre></div>
+          <p>
+            Cada arquivo é propriedade de uma conta de usuário. Isso é importante porque o proprietário tem o direito de definir permissões
+            em um arquivo.
+          </p>
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i><span>Propriedade de arquivos será abordada em detalhes posteriormente no curso.</span>
+          </div>
+
+          <h3><i class="fas fa-users"></i> Grupo Proprietário (Group Owner)</h3>
+          <div class="terminal"><pre>-rw-rw-r-- 1 root  utmp  292584 Dec 15 16:38 lastlog</pre></div>
+          <p>
+            Indica qual grupo é proprietário deste arquivo. Isso é importante porque qualquer membro deste grupo tem um conjunto de
+            permissões sobre o arquivo.
+          </p>
+
+          <h3><i class="fas fa-weight-hanging"></i> Tamanho do Arquivo (File Size)</h3>
+          <div class="terminal"><pre>-rw-r----- 1 syslog adm   14185 Dec 15 16:38 syslog</pre></div>
+          <p>Exibe o tamanho do arquivo em bytes.</p>
+          <p>
+            Para diretórios, este valor não descreve o tamanho total do diretório, mas sim quantos bytes são reservados para manter o
+            controle dos nomes de arquivos no diretório. Em outras palavras, ignore este campo para diretórios.
+          </p>
+
+          <h3><i class="fas fa-clock"></i> Timestamp</h3>
+          <div class="terminal"><pre>-rw-rw---- 1 root   utmp      0 May 26  2018 btmp</pre></div>
+          <p>
+            Indica o momento em que o conteúdo do arquivo foi modificado pela última vez. Para diretórios, este timestamp indica a última
+            vez que um arquivo foi adicionado ou removido do diretório.
+          </p>
+
+          <h3><i class="fas fa-tag"></i> Nome do Arquivo (File Name)</h3>
+          <div class="terminal"><pre>-rw-r--r-- 1 root   root  35330 May 26  2018 bootstrap.log</pre></div>
+          <p>O campo final contém o nome do arquivo ou diretório.</p>
+
+          <p>No caso de links simbólicos, o nome do link é exibido junto com uma seta e o caminho do arquivo original.</p>
+          <div class="terminal"><pre>lrwxrwxrwx. 1 root root 22 Nov 6 2018 /etc/grub.conf -> ../boot/grub/grub.conf</pre></div>
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i><span>Links simbólicos serão abordados em detalhes posteriormente no curso.</span>
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 7.4.3 - HUMAN-READABLE SIZES -->
+      <section id="secao7-4-3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-chart-simple"></i>
+          <span class="section-number">7.4.3</span> Tamanhos Legíveis para Humanos
+        </h2>
+        <div class="card">
+          <p>
+            A opção <code>-l</code> no comando <code>ls</code> exibe tamanhos de arquivos em bytes. Para arquivos de texto, um byte é 1
+            caractere. Para arquivos menores, tamanhos em bytes são adequados. No entanto, para arquivos maiores, é difícil compreender o
+            tamanho do arquivo. Por exemplo, considere a saída do seguinte comando:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls -l /var/log/lastlog                                    
+-rw-rw-r-- 1 root utmp 292584 Dec 15 16:38 /var/log/lastlog</pre
+            >
+          </div>
+
+          <p>
+            O tamanho do arquivo é difícil de determinar em bytes. 292584 é um arquivo grande ou pequeno? Parece relativamente grande, mas é
+            difícil determinar usando bytes.
+          </p>
+
+          <p>
+            Pense desta forma: se alguém desse a distância entre Boston e Nova York usando polegadas, esse valor seria sem sentido. A
+            maioria das pessoas pensa em termos de milhas ou quilômetros.
+          </p>
+
+          <p>
+            Às vezes é preferível apresentar o tamanho do arquivo em um formato mais legível para humanos, como megabytes ou gigabytes. Para
+            conseguir isso, adicione a opção <code>-h</code> ao comando <code>ls</code>:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls -lh /var/log/lastlog                                   
+-rw-rw-r-- 1 root utmp 286K Dec 15 16:38 /var/log/lastlog</pre
+            >
+          </div>
+
+          <div class="alert alert-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span><strong>Importante:</strong> A opção <code>-h</code> deve ser usada com a opção <code>-l</code>.</span>
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Resumo:</strong> <code>ls -lh</code> exibe tamanhos de arquivo em formato legível (K, M, G) em vez de bytes.</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 7.4.4 - LISTING DIRECTORIES -->
+      <section id="secao7-4-4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-folder"></i>
+          <span class="section-number">7.4.4</span> Listando Diretórios
+        </h2>
+        <div class="card">
+          <p>
+            Quando a opção <code>-d</code> é usada, ela se refere ao diretório atual, e não ao conteúdo dentro dele. Sem outras opções, é um
+            tanto sem significado. Lembre-se de que o diretório atual é sempre referenciado com um único caractere ponto <code>.</code>:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls -d
+.</pre
+            >
+          </div>
+
+          <p>
+            Para usar a opção <code>-d</code> de maneira significativa, é necessária a adição da opção <code>-l</code>. Neste caso, note que
+            o seguinte comando lista os detalhes do conteúdo no diretório <code>/home/sysadmin</code>:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls -l
+total 32
+drwxr-xr-x 2 sysadmin sysadmin 4096 Dec 10 21:33 Desktop
+drwxr-xr-x 4 sysadmin sysadmin 4096 Dec 10 21:33 Documents
+drwxr-xr-x 2 sysadmin sysadmin 4096 Dec 10 21:33 Downloads
+drwxr-xr-x 2 sysadmin sysadmin 4096 Dec 10 21:33 Music
+drwxr-xr-x 2 sysadmin sysadmin 4096 Dec 10 21:33 Pictures
+drwxr-xr-x 2 sysadmin sysadmin 4096 Dec 10 21:33 Public
+drwxr-xr-x 2 sysadmin sysadmin 4096 Dec 10 21:33 Templates
+drwxr-xr-x 2 sysadmin sysadmin 4096 Dec 10 21:33 Videos</pre
+            >
+          </div>
+
+          <p>Em comparação, o próximo comando lista o diretório <code>/home/sysadmin</code> em si:</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls -ld
+drwxr-xr-x 1 sysadmin sysadmin 224 Nov  7 17:07 .</pre
+            >
+          </div>
+
+          <p>Note o único ponto no final da listagem longa. Isso indica que o diretório atual está sendo listado, e não o seu conteúdo.</p>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Resumo:</strong> <code>ls -l</code> lista o conteúdo do diretório. <code>ls -ld</code> lista o próprio
+              diretório.</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 7.4.5 - RECURSIVE LISTING -->
+      <section id="secao7-4-5" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-folder-open"></i>
+          <span class="section-number">7.4.5</span> Listagem Recursiva
+        </h2>
+        <div class="card">
+          <p>
+            Há momentos em que você deseja exibir todos os arquivos em um diretório, bem como todos os arquivos em todos os subdiretórios
+            sob esse diretório. Isso é chamado de <strong>listagem recursiva</strong>.
+          </p>
+
+          <p>Para realizar uma listagem recursiva, use a opção <code>-R</code> no comando <code>ls</code>:</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls -R /etc/ppp
+/etc/ppp:
+ip-down.d  ip-up.d         
+
+/etc/ppp/ip-down.d:
+bind9
+
+/etc/ppp/ip-up.d:
+bind9</pre
+            >
+          </div>
+
+          <p>
+            Note que no exemplo anterior, os arquivos no diretório <code>/etc/ppp</code> foram listados primeiro. Depois disso, o conteúdo
+            de seus subdiretórios <code>/etc/ppp/ip-down.d</code> e <code>/etc/ppp/ip-up.d</code> foram listados.
+          </p>
+
+          <div class="alert alert-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span
+              ><strong>Cuidado com esta opção:</strong> por exemplo, executar o comando no diretório raiz listaria todos os arquivos no
+              sistema de arquivos, incluindo todos os arquivos em qualquer dispositivo USB conectado e DVD no sistema. Limite o uso de
+              listagens recursivas a estruturas de diretórios menores.</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 7.4.6 - SORT A LISTING -->
+      <section id="secao7-4-6" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-arrow-down-wide-short"></i>
+          <span class="section-number">7.4.6</span> Ordenando uma Listagem
+        </h2>
+        <div class="card">
+          <p>
+            Por padrão, o comando <code>ls</code> ordena arquivos alfabeticamente pelo nome do arquivo. Às vezes, pode ser útil ordenar
+            arquivos usando critérios diferentes.
+          </p>
+
+          <p>
+            Para ordenar arquivos por tamanho, podemos usar a opção <code>-S</code>. Note a diferença na saída dos dois comandos a seguir.
+            Os mesmos arquivos e diretórios são listados, mas em uma ordem diferente:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls /etc/ssh
+moduli              ssh_host_ecdsa_key.pub    ssh_host_rsa_key      sshd_config
+ssh_config          ssh_host_ed25519_key      ssh_host_rsa_key.pub
+ssh_host_ecdsa_key  ssh_host_ed25519_key.pub  ssh_import_id
+
+sysadmin@localhost:~$ ls -S /etc/ssh
+moduli            ssh_host_ed25519_key  ssh_host_ecdsa_key.pub
+sshd_config       ssh_host_rsa_key.pub  ssh_host_ed25519_key.pub
+ssh_host_rsa_key  ssh_import_id
+ssh_config        ssh_host_ecdsa_key</pre
+            >
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span><strong>Nota:</strong> A opção acima usa a letra S maiúscula.</span>
+          </div>
+
+          <p>
+            Embora a opção <code>-S</code> funcione sozinha, é mais útil quando usada com a opção <code>-l</code> para que os tamanhos dos
+            arquivos fiquem visíveis. O seguinte comando lista arquivos do maior para o menor e exibe o tamanho real do arquivo.
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls -lS /etc/ssh
+total 580
+-rw-r--r-- 1 root root 553122 Feb 10  2018 moduli
+-rw-r--r-- 1 root root   3264 Feb 10  2018 sshd_config
+-rw------- 1 root root   1679 Jul 19 06:52 ssh_host_rsa_key
+-rw-r--r-- 1 root root   1580 Feb 10  2018 ssh_config
+-rw------- 1 root root    411 Jul 19 06:52 ssh_host_ed25519_key
+-rw-r--r-- 1 root root    399 Jul 19 06:52 ssh_host_rsa_key.pub
+-rw-r--r-- 1 root root    338 Jul 19 06:52 ssh_import_id
+-rw------- 1 root root    227 Jul 19 06:52 ssh_host_ecdsa_key
+-rw-r--r-- 1 root root    179 Jul 19 06:52 ssh_host_ecdsa_key.pub
+-rw-r--r-- 1 root root     99 Jul 19 06:52 ssh_host_ed25519_key.pub</pre
+            >
+          </div>
+
+          <p>Também pode ser útil usar a opção <code>-h</code> para exibir tamanhos de arquivo legíveis para humanos:</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls -lSh /etc/ssh                                
+total 580K                                                                      
+-rw-r--r-- 1 root root 541K Feb 10  2018 moduli
+-rw-r--r-- 1 root root 3.2K Feb 10  2018 sshd_config
+-rw------- 1 root root 1.7K Jul 19 06:52 ssh_host_rsa_key
+-rw-r--r-- 1 root root 1.6K Feb 10  2018 ssh_config
+-rw------- 1 root root  411 Jul 19 06:52 ssh_host_ed25519_key
+-rw-r--r-- 1 root root  399 Jul 19 06:52 ssh_host_rsa_key.pub
+-rw-r--r-- 1 root root  338 Jul 19 06:52 ssh_import_id
+-rw------- 1 root root  227 Jul 19 06:52 ssh_host_ecdsa_key
+-rw-r--r-- 1 root root  179 Jul 19 06:52 ssh_host_ecdsa_key.pub
+-rw-r--r-- 1 root root   99 Jul 19 06:52 ssh_host_ed25519_key.pub</pre
+            >
+          </div>
+
+          <p>
+            A opção <code>-t</code> ordena arquivos com base no horário em que foram modificados. Ela lista os arquivos modificados mais
+            recentemente primeiro. Esta opção pode ser usada sozinha, mas, novamente, geralmente é mais útil quando combinada com a opção
+            <code>-l</code>:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls -tl /etc/ssh                                 
+total 580
+-rw------- 1 root root    227 Jul 19 06:52 ssh_host_ecdsa_key
+-rw-r--r-- 1 root root    179 Jul 19 06:52 ssh_host_ecdsa_key.pub
+-rw------- 1 root root    411 Jul 19 06:52 ssh_host_ed25519_key
+-rw-r--r-- 1 root root     99 Jul 19 06:52 ssh_host_ed25519_key.pub
+-rw------- 1 root root   1679 Jul 19 06:52 ssh_host_rsa_key
+-rw-r--r-- 1 root root    399 Jul 19 06:52 ssh_host_rsa_key.pub
+-rw-r--r-- 1 root root    338 Jul 19 06:52 ssh_import_id
+-rw-r--r-- 1 root root 553122 Feb 10  2018 moduli
+-rw-r--r-- 1 root root   1580 Feb 10  2018 ssh_config
+-rw-r--r-- 1 root root   3264 Feb 10  2018 sshd_config</pre
+            >
+          </div>
+
+          <p>
+            É importante lembrar que a data de modificação em diretórios representa a última vez que um arquivo foi adicionado ou removido
+            do diretório.
+          </p>
+
+          <p>
+            Se os arquivos em um diretório foram modificados há muitos dias ou meses, pode ser mais difícil saber exatamente quando foram
+            modificados, pois apenas a data é fornecida para arquivos mais antigos. Para informações de horário de modificação mais
+            detalhadas, você pode usar a opção <code>--full-time</code> para exibir o timestamp completo (incluindo horas, minutos,
+            segundos). Ela assumirá a opção <code>-l</code> automaticamente:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls -t --full-time /etc/ssh
+total 580
+-rw------- 1 root root    227 2018-07-19 06:52:16.000000000 +0000 ssh_host_ecdsa_key
+-rw-r--r-- 1 root root    179 2018-07-19 06:52:16.000000000 +0000 ssh_host_ecdsa_key.pub
+-rw------- 1 root root    411 2018-07-19 06:52:16.000000000 +0000 ssh_host_ed25519_key
+-rw-r--r-- 1 root root     99 2018-07-19 06:52:16.000000000 +0000 ssh_host_ed25519_key.pub
+-rw------- 1 root root   1679 2018-07-19 06:52:16.000000000 +0000 ssh_host_rsa_key
+-rw-r--r-- 1 root root    399 2018-07-19 06:52:16.000000000 +0000 ssh_host_rsa_key.pub
+-rw-r--r-- 1 root root    338 2018-07-19 06:52:16.000000000 +0000 ssh_import_id
+-rw-r--r-- 1 root root 553122 2018-02-10 02:31:46.000000000 +0000 moduli
+-rw-r--r-- 1 root root   1580 2018-02-10 02:31:46.000000000 +0000 ssh_config
+-rw-r--r-- 1 root root   3264 2018-02-10 02:31:46.000000000 +0000 sshd_config</pre
+            >
+          </div>
+
+          <p>
+            É possível realizar uma ordenação reversa usando a opção <code>-r</code>. Ela pode ser usada sozinha ou combinada com as opções
+            <code>-S</code> ou <code>-t</code>. O seguinte comando ordenará arquivos por tamanho, do menor para o maior:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls -lrS /etc/ssh
+total 580
+-rw-r--r-- 1 root root     99 Jul 19 06:52 ssh_host_ed25519_key.pub
+-rw-r--r-- 1 root root    179 Jul 19 06:52 ssh_host_ecdsa_key.pub
+-rw------- 1 root root    227 Jul 19 06:52 ssh_host_ecdsa_key
+-rw-r--r-- 1 root root    338 Jul 19 06:52 ssh_import_id
+-rw-r--r-- 1 root root    399 Jul 19 06:52 ssh_host_rsa_key.pub
+-rw------- 1 root root    411 Jul 19 06:52 ssh_host_ed25519_key
+-rw-r--r-- 1 root root   1580 Feb 10  2018 ssh_config
+-rw------- 1 root root   1679 Jul 19 06:52 ssh_host_rsa_key
+-rw-r--r-- 1 root root   3264 Feb 10  2018 sshd_config
+-rw-r--r-- 1 root root 553122 Feb 10  2018 moduli</pre
+            >
+          </div>
+
+          <p>O seguinte comando listará arquivos por data de modificação, do mais antigo para o mais novo:</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls -lrt /etc/ssh                                 
+total 580
+-rw-r--r-- 1 root root   3264 Feb 10  2018 sshd_config
+-rw-r--r-- 1 root root   1580 Feb 10  2018 ssh_config
+-rw-r--r-- 1 root root 553122 Feb 10  2018 moduli
+-rw-r--r-- 1 root root    338 Jul 19 06:52 ssh_import_id
+-rw-r--r-- 1 root root    399 Jul 19 06:52 ssh_host_rsa_key.pub
+-rw------- 1 root root   1679 Jul 19 06:52 ssh_host_rsa_key
+-rw-r--r-- 1 root root     99 Jul 19 06:52 ssh_host_ed25519_key.pub
+-rw------- 1 root root    411 Jul 19 06:52 ssh_host_ed25519_key
+-rw-r--r-- 1 root root    179 Jul 19 06:52 ssh_host_ecdsa_key.pub
+-rw------- 1 root root    227 Jul 19 06:52 ssh_host_ecdsa_key</pre
+            >
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Resumo das opções de ordenação:</strong><br />
+              • <code>-S</code> - ordena por tamanho (maior primeiro)<br />
+              • <code>-t</code> - ordena por data/hora (mais recente primeiro)<br />
+              • <code>-r</code> - ordenação reversa<br />
+              • <code>--full-time</code> - mostra timestamp completo</span
+            >
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p><i class="fab fa-linux"></i> NDG Linux Essentials - Módulo 7: Navegando pelo Sistema de Arquivos</p>
+      <p>Conteúdo traduzido e adaptado seguindo os padrões de documentação Linux</p>
+    </footer>
+
+    <script>
+      // menu.js - Controle do Menu Lateral
+      class SidebarMenu {
+        constructor() {
+          this.sidebar = document.getElementById('sidebar')
+          this.overlay = document.getElementById('sidebarOverlay')
+          this.openBtn = document.getElementById('openMenu')
+          this.closeBtn = document.getElementById('closeMenu')
+          this.init()
+        }
+
+        init() {
+          if (!this.sidebar) return
+
+          if (this.openBtn) {
+            this.openBtn.addEventListener('click', () => this.open())
+          }
+          if (this.closeBtn) {
+            this.closeBtn.addEventListener('click', () => this.close())
+          }
+          if (this.overlay) {
+            this.overlay.addEventListener('click', () => this.close())
+          }
+
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.sidebar.classList.contains('open')) {
+              this.close()
+            }
+          })
+
+          const links = document.querySelectorAll('.sidebar .nav-modules a')
+          links.forEach((link) => {
+            link.addEventListener('click', () => this.close())
+          })
+        }
+
+        open() {
+          this.sidebar.classList.add('open')
+          this.overlay.classList.add('active')
+          document.body.style.overflow = 'hidden'
+        }
+
+        close() {
+          this.sidebar.classList.remove('open')
+          this.overlay.classList.remove('active')
+          document.body.style.overflow = ''
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        new SidebarMenu()
+      })
+    </script>
+  </body>
+</html>

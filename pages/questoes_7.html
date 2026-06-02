@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>NDG Linux Essentials | Módulo 7 - Navegando pelo Sistema de Arquivos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/questoes.css" />
+  </head>
+  <body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <button class="menu-toggle" id="openMenu">
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+      </button>
+      <a href="#" class="top-bar-brand"> <i class="fab fa-linux"></i> NDG Linux Essentials </a>
+      <a href="#" class="btn-outline"> <i class="fas fa-home"></i> Voltar </a>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-compass"></i> Navegação - Questões</h3>
+        <button class="close-sidebar" id="closeMenu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="nav-modules">
+        <li>
+          <a href="#questao1"><i class="fas fa-question-circle"></i> Questão 1 - Arquivos ocultos</a>
+        </li>
+        <li>
+          <a href="#questao2"><i class="fas fa-question-circle"></i> Questão 2 - Opção ls para ocultos</a>
+        </li>
+        <li>
+          <a href="#questao3"><i class="fas fa-question-circle"></i> Questão 3 - Caminho relativo/absoluto 1</a>
+        </li>
+        <li>
+          <a href="#questao4"><i class="fas fa-question-circle"></i> Questão 4 - Caminho relativo/absoluto 2</a>
+        </li>
+        <li>
+          <a href="#questao5"><i class="fas fa-question-circle"></i> Questão 5 - Acessar home de bob</a>
+        </li>
+        <li>
+          <a href="#questao6"><i class="fas fa-question-circle"></i> Questão 6 - Mudar diretório atual</a>
+        </li>
+        <li>
+          <a href="#questao7"><i class="fas fa-question-circle"></i> Questão 7 - Significado do ..</a>
+        </li>
+        <li>
+          <a href="#questao8"><i class="fas fa-question-circle"></i> Questão 8 - ls sem opções</a>
+        </li>
+        <li>
+          <a href="#questao9"><i class="fas fa-question-circle"></i> Questão 9 - Tamanho legível (-h)</a>
+        </li>
+        <li>
+          <a href="#questao10"><i class="fas fa-question-circle"></i> Questão 10 - Cores no ls</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="badge-lab"><i class="fas fa-graduation-cap"></i> NDG Linux Essentials | Banco de Questões</div>
+        <h1>Exame do Módulo 7</h1>
+        <p>Navigating the Filesystem - Teste seus conhecimentos sobre navegação no sistema de arquivos</p>
+        <div style="margin-top: 1.5rem">
+          <i class="fab fa-linux" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-folder-tree" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-terminal" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- QUESTÃO 1 -->
+      <section id="questao1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q1</span> Arquivos ocultos
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-eye-slash"></i> Arquivos ocultos são arquivos que começam com qual caractere?</div>
+          <div class="options" id="q1-options">
+            <li><input type="radio" name="q1" value="a" /> Um traço (-)</li>
+            <li><input type="radio" name="q1" value="b" /> Um ponto (.)</li>
+            <li><input type="radio" name="q1" value="c" /> Um sinal de mais (+)</li>
+            <li><input type="radio" name="q1" value="d" /> Um asterisco (*)</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="checkAnswer('q1', 'b', 'Um arquivo oculto é qualquer arquivo (ou diretório) que começa com um caractere ponto `.`.')"
+          >
+            Verificar Resposta
+          </button>
+          <div id="q1-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 2 -->
+      <section id="questao2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q2</span> Opção para listar ocultos
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-list"></i> Qual opção do comando `ls` exibirá todos os arquivos, incluindo arquivos ocultos?
+          </div>
+          <div class="options" id="q2-options">
+            <li><input type="radio" name="q2" value="a" /> -H</li>
+            <li><input type="radio" name="q2" value="b" /> -w</li>
+            <li><input type="radio" name="q2" value="c" /> -a</li>
+            <li><input type="radio" name="q2" value="d" /> -L</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="checkAnswer('q2', 'c', 'Para exibir todos os arquivos, incluindo arquivos ocultos, use a opção `-a` no comando `ls`.')"
+          >
+            Verificar Resposta
+          </button>
+          <div id="q2-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 3 -->
+      <section id="questao3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q3</span> Caminho relativo ou absoluto?
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-map"></i> O seguinte caminho é absoluto ou relativo?<br />
+            <code>sysadmin/Documents</code>
+          </div>
+          <div class="options" id="q3-options">
+            <li><input type="radio" name="q3" value="absolute" /> Absoluto</li>
+            <li><input type="radio" name="q3" value="relative" /> Relativo</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q3',
+                'relative',
+                'Caminhos relativos não começam com o caractere `/`. Eles começam com o nome de um diretório contido dentro do diretório atual.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q3-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 4 -->
+      <section id="questao4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q4</span> Caminho relativo ou absoluto?
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-map"></i> O seguinte caminho é absoluto ou relativo?<br />
+            <code>../../home/sysadmin</code>
+          </div>
+          <div class="options" id="q4-options">
+            <li><input type="radio" name="q4" value="absolute" /> Absoluto</li>
+            <li><input type="radio" name="q4" value="relative" /> Relativo</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q4',
+                'relative',
+                'Caminhos relativos não começam com o caractere `/`. O `..` representa o diretório pai, então este caminho é relativo à posição atual.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q4-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 5 -->
+      <section id="questao5" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q5</span> Acessar home de bob
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-home"></i> Quais dos seguintes comandos podem ser usados para acessar o diretório home do usuário "bob"
+            enquanto logado como root? (escolha duas)
+          </div>
+          <div class="options" id="q5-options">
+            <li><input type="checkbox" name="q5" value="a" /> ~bob</li>
+            <li><input type="checkbox" name="q5" value="b" /> cd /home/bob</li>
+            <li><input type="checkbox" name="q5" value="c" /> cd ~bob</li>
+            <li><input type="checkbox" name="q5" value="d" /> cd &&</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q5',
+                ['b', 'c'],
+                'Para acessar o home de bob: `cd /home/bob` (caminho absoluto) ou `cd ~bob` (tilde seguido do nome do usuário). O tilde `~` representa o home do usuário atual; `~bob` representa o home do usuário bob.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q5-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 6 -->
+      <section id="questao6" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q6</span> Mudar diretório atual
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-arrow-right"></i> Qual comando permite que você mude seu diretório de trabalho atual?
+          </div>
+          <div class="options" id="q6-options">
+            <li><input type="radio" name="q6" value="a" /> list</li>
+            <li><input type="radio" name="q6" value="b" /> chdir</li>
+            <li><input type="radio" name="q6" value="c" /> cd</li>
+            <li><input type="radio" name="q6" value="d" /> ls</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q6',
+                'c',
+                'O comando `cd` (change directory) é usado para navegar pelo sistema de arquivos e mudar o diretório de trabalho atual.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q6-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 7 -->
+      <section id="questao7" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q7</span> Significado do ..
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-level-up-alt"></i> O ponto duplo (..) pode ser usado para representar o diretório...
+          </div>
+          <div class="options" id="q7-options">
+            <li><input type="radio" name="q7" value="a" /> ...com quaisquer dois números.</li>
+            <li><input type="radio" name="q7" value="b" /> ...acima do diretório atual apenas quando se usa o comando cd.</li>
+            <li><input type="radio" name="q7" value="c" /> ...acima do diretório atual.</li>
+            <li><input type="radio" name="q7" value="d" /> ...abaixo do diretório atual.</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q7',
+                'c',
+                'Independentemente de qual diretório o usuário está, dois caracteres ponto `..` sempre representam um diretório acima do diretório atual (diretório pai).'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q7-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 8 -->
+      <section id="questao8" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q8</span> ls sem opções
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-list"></i> O comando `ls` sem opções ou argumentos...</div>
+          <div class="options" id="q8-options">
+            <li><input type="radio" name="q8" value="a" /> ...gera um erro, pois este comando requer argumentos.</li>
+            <li><input type="radio" name="q8" value="b" /> ...lista o conteúdo do diretório atual.</li>
+            <li><input type="radio" name="q8" value="c" /> ...lista o conteúdo do diretório home do usuário.</li>
+            <li><input type="radio" name="q8" value="d" /> ...solicita um diretório para listar.</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q8',
+                'b',
+                'Por padrão, quando usado sem opções ou argumentos, o comando `ls` lista os arquivos no diretório atual.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q8-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 9 -->
+      <section id="questao9" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q9</span> Tamanho legível
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-chart-simple"></i> Qual opção do comando `ls`, quando usada em conjunto com a opção `-l`, exibirá tamanhos de
+            arquivo legíveis para humanos?
+          </div>
+          <div class="options" id="q9-options">
+            <li><input type="radio" name="q9" value="a" /> -S</li>
+            <li><input type="radio" name="q9" value="b" /> -M</li>
+            <li><input type="radio" name="q9" value="c" /> -H</li>
+            <li><input type="radio" name="q9" value="d" /> -h</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q9',
+                'd',
+                'A opção `-h` (human-readable) exibe tamanhos de arquivo em formato legível (K, M, G). Deve ser usada com `-l`: `ls -lh`.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q9-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 10 -->
+      <section id="questao10" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q10</span> Cores no ls
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-palette"></i> O comando `ls` exibe resultados com código de cores por padrão.</div>
+          <div class="options" id="q10-options">
+            <li><input type="radio" name="q10" value="true" /> Verdadeiro</li>
+            <li><input type="radio" name="q10" value="false" /> Falso</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q10',
+                'true',
+                'Em muitas distribuições Linux, incluindo a usada nas máquinas virtuais do curso, o `ls` usa cores para distinguir tipos de arquivo (diretórios em azul, executáveis em verde, etc.) devido a um alias `ls --color=auto`.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q10-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- Gabarito -->
+      <details class="answer-key">
+        <summary><i class="fas fa-key"></i> 📋 Gabarito - Módulo 7</summary>
+        <div style="margin-top: 1rem">
+          <p><strong>Q1:</strong> Um ponto (.)</p>
+          <p><strong>Q2:</strong> -a</p>
+          <p><strong>Q3:</strong> Relativo</p>
+          <p><strong>Q4:</strong> Relativo</p>
+          <p><strong>Q5:</strong> cd /home/bob e cd ~bob</p>
+          <p><strong>Q6:</strong> cd</p>
+          <p><strong>Q7:</strong> acima do diretório atual</p>
+          <p><strong>Q8:</strong> lista o conteúdo do diretório atual</p>
+          <p><strong>Q9:</strong> -h</p>
+          <p><strong>Q10:</strong> Verdadeiro</p>
+        </div>
+      </details>
+    </div>
+
+    <footer>
+      <p><i class="fab fa-linux"></i> NDG Linux Essentials – Banco de Questões com Justificativas</p>
+      <p style="font-size: 0.8rem; margin-top: 0.5rem">Módulo 7: Navigating the Filesystem</p>
+    </footer>
+
+    <script>
+      function checkAnswer(questionId, correctValue, justification) {
+        const selected = document.querySelector(`input[name="${questionId}"]:checked`)
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`)
+
+        if (!selected) {
+          feedbackDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Selecione uma resposta primeiro!'
+          feedbackDiv.className = 'feedback incorrect'
+          return
+        }
+
+        if (selected.value === correctValue) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback correct'
+        } else {
+          const correctText = correctValue === 'true' ? 'Verdadeiro' : correctValue === 'false' ? 'Falso' : correctValue
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-book-open"></i> A resposta correta é: <strong>${correctText}</strong><br><br><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback incorrect'
+        }
+      }
+
+      function checkMultipleAnswer(questionId, correctValues, justification) {
+        const selected = document.querySelectorAll(`input[name="${questionId}"]:checked`)
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`)
+
+        if (selected.length === 0) {
+          feedbackDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Selecione pelo menos uma resposta!'
+          feedbackDiv.className = 'feedback incorrect'
+          return
+        }
+
+        const selectedValues = Array.from(selected).map((cb) => cb.value)
+        const isCorrect = correctValues.length === selectedValues.length && correctValues.every((val) => selectedValues.includes(val))
+
+        if (isCorrect) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback correct'
+        } else {
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-book-open"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback incorrect'
+        }
+      }
+
+      // Sidebar Menu
+      class SidebarMenu {
+        constructor() {
+          this.sidebar = document.getElementById('sidebar')
+          this.overlay = document.getElementById('sidebarOverlay')
+          this.openBtn = document.getElementById('openMenu')
+          this.closeBtn = document.getElementById('closeMenu')
+          this.init()
+        }
+
+        init() {
+          if (!this.sidebar) return
+          if (this.openBtn) this.openBtn.addEventListener('click', () => this.open())
+          if (this.closeBtn) this.closeBtn.addEventListener('click', () => this.close())
+          if (this.overlay) this.overlay.addEventListener('click', () => this.close())
+
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.sidebar.classList.contains('open')) this.close()
+          })
+
+          document.querySelectorAll('.sidebar .nav-modules a').forEach((link) => {
+            link.addEventListener('click', () => this.close())
+          })
+        }
+
+        open() {
+          this.sidebar.classList.add('open')
+          this.overlay.classList.add('active')
+          document.body.style.overflow = 'hidden'
+        }
+
+        close() {
+          this.sidebar.classList.remove('open')
+          this.overlay.classList.remove('active')
+          document.body.style.overflow = ''
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => new SidebarMenu())
+    </script>
+  </body>
+</html>
