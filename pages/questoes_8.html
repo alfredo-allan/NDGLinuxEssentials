@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>NDG Linux Essentials | Módulo 8 - Manipulando Arquivos e Diretórios</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body style="background: #0a0a0a; color: #e0e0e0; font-family: 'Inter', sans-serif; padding-top: 65px; line-height: 1.6; margin: 0">
+    <link rel="stylesheet" href="../css/questoes.css" />
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <button class="menu-toggle" id="openMenu"><i class="fas fa-bars"></i><span>Menu</span></button>
+      <a href="#" class="top-bar-brand"><i class="fab fa-linux"></i> NDG Linux Essentials</a>
+      <a href="../pages/modulo_8.html" class="btn-outline"><i class="fas fa-home"></i> Voltar</a>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-compass"></i> Navegação - Questões</h3>
+        <button class="close-sidebar" id="closeMenu"><i class="fas fa-times"></i></button>
+      </div>
+      <ul class="nav-modules">
+        <li>
+          <a href="#questao1"><i class="fas fa-question-circle"></i> Questão 1 - cp source e destination</a>
+        </li>
+        <li>
+          <a href="#questao2"><i class="fas fa-question-circle"></i> Questão 2 - Evitar overwrite cp</a>
+        </li>
+        <li>
+          <a href="#questao3"><i class="fas fa-question-circle"></i> Questão 3 - rm prompt</a>
+        </li>
+        <li>
+          <a href="#questao4"><i class="fas fa-question-circle"></i> Questão 4 - Renomear arquivos</a>
+        </li>
+        <li>
+          <a href="#questao5"><i class="fas fa-question-circle"></i> Questão 5 - Comando touch</a>
+        </li>
+        <li>
+          <a href="#questao6"><i class="fas fa-question-circle"></i> Questão 6 - Glob characters</a>
+        </li>
+        <li>
+          <a href="#questao7"><i class="fas fa-question-circle"></i> Questão 7 - Propósito do globbing</a>
+        </li>
+        <li>
+          <a href="#questao8"><i class="fas fa-question-circle"></i> Questão 8 - Asterisco *</a>
+        </li>
+        <li>
+          <a href="#questao9"><i class="fas fa-question-circle"></i> Questão 9 - Colchetes para intervalo</a>
+        </li>
+        <li>
+          <a href="#questao10"><i class="fas fa-question-circle"></i> Questão 10 - Listar arquivos que não começam com T ou W</a>
+        </li>
+      </ul>
+    </div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="badge-lab"><i class="fas fa-graduation-cap"></i> NDG Linux Essentials | Banco de Questões</div>
+        <h1>Exame do Módulo 8</h1>
+        <p>Manipulando Arquivos e Diretórios - Teste seus conhecimentos sobre cp, mv, rm, globbing e mais</p>
+        <div style="margin-top: 1.5rem">
+          <i class="fas fa-copy" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-arrows-alt" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-trash-alt" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-asterisk" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- QUESTÃO 1 -->
+      <section id="questao1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i><span class="section-number">Q1</span> cp com source e destination
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-copy"></i> When using the cp command, you must provide both a source and a destination.
+          </div>
+          <div class="options" id="q1-options">
+            <li><input type="radio" name="q1" value="true" /> True</li>
+            <li><input type="radio" name="q1" value="false" /> False</li>
+          </div>
+          <button class="btn-check" onclick="checkAnswer('q1', 'true', 'CORRECT - See Section 8.3')">Verificar Resposta</button>
+          <div id="q1-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 2 -->
+      <section id="questao2" class="section">
+        <h2 class="section-title"><i class="fas fa-question-circle"></i><span class="section-number">Q2</span> Evitar sobrescrita no cp</h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-shield-alt"></i> Which option(s) can be used to prevent cp from overwriting an existing file? (choose two)
+          </div>
+          <div class="options" id="q2-options">
+            <li><input type="checkbox" name="q2" value="-i" /> -i</li>
+            <li><input type="checkbox" name="q2" value="-n" /> -n</li>
+            <li><input type="checkbox" name="q2" value="-N" /> -N</li>
+            <li><input type="checkbox" name="q2" value="-z" /> -z</li>
+          </div>
+          <button class="btn-check" onclick="checkMultipleAnswer('q2', ['-i', '-n'], 'CORRECT - See Section 8.3.2')">
+            Verificar Resposta
+          </button>
+          <div id="q2-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 3 -->
+      <section id="questao3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i><span class="section-number">Q3</span> rm com prompt antes de deletar
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-trash-alt"></i> Which option can be used with the rm command to prompt before deleting?
+          </div>
+          <div class="options" id="q3-options">
+            <li><input type="radio" name="q3" value="A" /> A</li>
+            <li><input type="radio" name="q3" value="-i" /> -i</li>
+            <li><input type="radio" name="q3" value="l" /> l</li>
+            <li><input type="radio" name="q3" value="-P" /> -P</li>
+          </div>
+          <button class="btn-check" onclick="checkAnswer('q3', '-i', 'CORRECT - See Section 8.6')">Verificar Resposta</button>
+          <div id="q3-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 4 -->
+      <section id="questao4" class="section">
+        <h2 class="section-title"><i class="fas fa-question-circle"></i><span class="section-number">Q4</span> Renomear arquivos</h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-i-cursor"></i> Which of the following commands can be used to rename a file?</div>
+          <div class="options" id="q4-options">
+            <li><input type="radio" name="q4" value="rm" /> rm</li>
+            <li><input type="radio" name="q4" value="mv" /> mv</li>
+            <li><input type="radio" name="q4" value="cp" /> cp</li>
+            <li><input type="radio" name="q4" value="name" /> name</li>
+          </div>
+          <button class="btn-check" onclick="checkAnswer('q4', 'mv', 'CORRECT - See Section 8.4.1')">Verificar Resposta</button>
+          <div id="q4-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 5 -->
+      <section id="questao5" class="section">
+        <h2 class="section-title"><i class="fas fa-question-circle"></i><span class="section-number">Q5</span> Comando touch</h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-hand-pointer"></i> The touch command can be used to: (choose two)</div>
+          <div class="options" id="q5-options">
+            <li><input type="checkbox" name="q5" value="change_name" /> Change a file's name</li>
+            <li><input type="checkbox" name="q5" value="update_timestamp" /> Update the timestamp of existing files</li>
+            <li><input type="checkbox" name="q5" value="create_files" /> Create new files</li>
+            <li><input type="checkbox" name="q5" value="change_ownership" /> Change ownership of a file</li>
+          </div>
+          <button class="btn-check" onclick="checkMultipleAnswer('q5', ['update_timestamp', 'create_files'], 'CORRECT - See Section 8.5')">
+            Verificar Resposta
+          </button>
+          <div id="q5-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 6 -->
+      <section id="questao6" class="section">
+        <h2 class="section-title"><i class="fas fa-question-circle"></i><span class="section-number">Q6</span> Glob characters</h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-asterisk"></i> Which of the following are glob characters? (choose three)</div>
+          <div class="options" id="q6-options">
+            <li><input type="checkbox" name="q6" value="brackets" /> The square brackets [ and ]</li>
+            <li><input type="checkbox" name="q6" value="dash" /> The dash character -</li>
+            <li><input type="checkbox" name="q6" value="question" /> The question mark ?</li>
+            <li><input type="checkbox" name="q6" value="asterisk" /> The asterisk *</li>
+          </div>
+          <button class="btn-check" onclick="checkMultipleAnswer('q6', ['brackets', 'question', 'asterisk'], 'CORRECT - See Section 8.2')">
+            Verificar Resposta
+          </button>
+          <div id="q6-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 7 -->
+      <section id="questao7" class="section">
+        <h2 class="section-title"><i class="fas fa-question-circle"></i><span class="section-number">Q7</span> Propósito do globbing</h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-filter"></i> The main purpose of using glob characters is to be able to provide a list of filenames to a
+            command.
+          </div>
+          <div class="options" id="q7-options">
+            <li><input type="radio" name="q7" value="true" /> True</li>
+            <li><input type="radio" name="q7" value="false" /> False</li>
+          </div>
+          <button class="btn-check" onclick="checkAnswer('q7', 'true', 'CORRECT - See Section 8.2')">Verificar Resposta</button>
+          <div id="q7-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 8 -->
+      <section id="questao8" class="section">
+        <h2 class="section-title"><i class="fas fa-question-circle"></i><span class="section-number">Q8</span> Asterisco *</h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-asterisk"></i> The asterisk character is used to represent zero or more of any character in a filename.
+          </div>
+          <div class="options" id="q8-options">
+            <li><input type="radio" name="q8" value="true" /> True</li>
+            <li><input type="radio" name="q8" value="false" /> False</li>
+          </div>
+          <button class="btn-check" onclick="checkAnswer('q8', 'true', 'CORRECT - See Section 8.2.1')">Verificar Resposta</button>
+          <div id="q8-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 9 -->
+      <section id="questao9" class="section">
+        <h2 class="section-title"><i class="fas fa-question-circle"></i><span class="section-number">Q9</span> Colchetes para intervalo</h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-brackets-curly"></i> Brackets cannot be used to represent a range of characters.</div>
+          <div class="options" id="q9-options">
+            <li><input type="radio" name="q9" value="true" /> True</li>
+            <li><input type="radio" name="q9" value="false" /> False</li>
+          </div>
+          <button class="btn-check" onclick="checkAnswer('q9', 'false', 'CORRECT - See Section 8.2.3')">Verificar Resposta</button>
+          <div id="q9-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 10 -->
+      <section id="questao10" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i><span class="section-number">Q10</span> Listar arquivos que não começam com T ou W
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-terminal"></i> Which command would list files that do not begin with a T or a W?</div>
+          <div class="options" id="q10-options">
+            <li><input type="radio" name="q10" value="a" /> echo /etc/[TW]*</li>
+            <li><input type="radio" name="q10" value="b" /> echo /etc/[!TW]*</li>
+            <li><input type="radio" name="q10" value="c" /> echo /etc/[!T-W]*</li>
+            <li><input type="radio" name="q10" value="d" /> echo /etc/[T-W]*</li>
+          </div>
+          <button class="btn-check" onclick="checkAnswer('q10', 'b', 'CORRECT - See Section 8.2.4')">Verificar Resposta</button>
+          <div id="q10-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- Gabarito -->
+      <details class="answer-key">
+        <summary><i class="fas fa-key"></i> 📋 Gabarito - Módulo 8</summary>
+        <div style="margin-top: 1rem">
+          <p><strong>Q1:</strong> True - See Section 8.3</p>
+          <p><strong>Q2:</strong> -i and -n - See Section 8.3.2</p>
+          <p><strong>Q3:</strong> -i - See Section 8.6</p>
+          <p><strong>Q4:</strong> mv - See Section 8.4.1</p>
+          <p><strong>Q5:</strong> Update the timestamp of existing files; Create new files - See Section 8.5</p>
+          <p><strong>Q6:</strong> The square brackets [ and ]; The question mark ?; The asterisk * - See Section 8.2</p>
+          <p><strong>Q7:</strong> True - See Section 8.2</p>
+          <p><strong>Q8:</strong> True - See Section 8.2.1</p>
+          <p><strong>Q9:</strong> False - See Section 8.2.3</p>
+          <p><strong>Q10:</strong> echo /etc/[!TW]* - See Section 8.2.4</p>
+        </div>
+      </details>
+    </div>
+
+    <footer>
+      <p><i class="fab fa-linux"></i> NDG Linux Essentials – Banco de Questões com Justificativas</p>
+      <p style="font-size: 0.8rem; margin-top: 0.5rem">Módulo 8: Manipulando Arquivos e Diretórios</p>
+    </footer>
+
+    <script>
+      function checkAnswer(questionId, correctValue, justification) {
+        const selected = document.querySelector(`input[name="${questionId}"]:checked`)
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`)
+
+        if (!selected) {
+          feedbackDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Selecione uma resposta primeiro!'
+          feedbackDiv.className = 'feedback incorrect'
+          return
+        }
+
+        if (selected.value === correctValue) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback correct'
+        } else {
+          let correctText = correctValue
+          if (correctValue === 'true') correctText = 'True'
+          else if (correctValue === 'false') correctText = 'False'
+          else if (correctValue === '-i') correctText = '-i'
+          else if (correctValue === 'mv') correctText = 'mv'
+          else if (correctValue === 'b') correctText = 'echo /etc/[!TW]*'
+
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-book-open"></i> A resposta correta é: <strong>${correctText}</strong><br><br><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback incorrect'
+        }
+      }
+
+      function checkMultipleAnswer(questionId, correctValues, justification) {
+        const selected = document.querySelectorAll(`input[name="${questionId}"]:checked`)
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`)
+
+        if (selected.length === 0) {
+          feedbackDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Selecione pelo menos uma resposta!'
+          feedbackDiv.className = 'feedback incorrect'
+          return
+        }
+
+        const selectedValues = Array.from(selected).map((cb) => cb.value)
+        const isCorrect = correctValues.length === selectedValues.length && correctValues.every((val) => selectedValues.includes(val))
+
+        if (isCorrect) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback correct'
+        } else {
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-book-open"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback incorrect'
+        }
+      }
+
+      // Sidebar Menu
+      class SidebarMenu {
+        constructor() {
+          this.sidebar = document.getElementById('sidebar')
+          this.overlay = document.getElementById('sidebarOverlay')
+          this.openBtn = document.getElementById('openMenu')
+          this.closeBtn = document.getElementById('closeMenu')
+          this.init()
+        }
+        init() {
+          if (!this.sidebar) return
+          if (this.openBtn) this.openBtn.addEventListener('click', () => this.open())
+          if (this.closeBtn) this.closeBtn.addEventListener('click', () => this.close())
+          if (this.overlay) this.overlay.addEventListener('click', () => this.close())
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.sidebar.classList.contains('open')) this.close()
+          })
+          document.querySelectorAll('.sidebar .nav-modules a').forEach((link) => {
+            link.addEventListener('click', () => this.close())
+          })
+        }
+        open() {
+          this.sidebar.classList.add('open')
+          this.overlay.classList.add('active')
+          document.body.style.overflow = 'hidden'
+        }
+        close() {
+          this.sidebar.classList.remove('open')
+          this.overlay.classList.remove('active')
+          document.body.style.overflow = ''
+        }
+      }
+      document.addEventListener('DOMContentLoaded', () => new SidebarMenu())
+    </script>
+  </body>
+</html>

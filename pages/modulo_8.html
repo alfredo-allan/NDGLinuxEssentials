@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>NDG Linux Essentials | Módulo 8 - Manipulando Arquivos e Diretórios</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <button class="menu-toggle" id="openMenu">
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+      </button>
+      <a href="#" class="top-bar-brand"> <i class="fab fa-linux"></i> NDG Linux Essentials </a>
+      <a href="#" class="btn-outline"> <i class="fas fa-home"></i> Voltar </a>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-compass"></i> Navegação</h3>
+        <button class="close-sidebar" id="closeMenu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="nav-modules">
+        <li>
+          <a href="#secao8-1"><i class="fas fa-file-alt"></i> 8.1 Introdução</a>
+        </li>
+        <li>
+          <a href="#secao8-2"><i class="fas fa-asterisk"></i> 8.2 Globbing</a>
+        </li>
+        <li>
+          <a href="#secao8-2-1"><i class="fas fa-asterisk"></i> 8.2.1 Caractere Asterisco *</a>
+        </li>
+        <li>
+          <a href="#secao8-2-2"><i class="fas fa-question-circle"></i> 8.2.2 Caractere Ponto de Interrogação ?</a>
+        </li>
+        <li>
+          <a href="#secao8-2-3"><i class="fas fa-brackets-curly"></i> 8.2.3 Caracteres de Colchetes [ ]</a>
+        </li>
+        <li>
+          <a href="#secao8-2-5"><i class="fas fa-list"></i> 8.2.5 Listando com Globs</a>
+        </li>
+        <li>
+          <a href="#secao8-3"><i class="fas fa-copy"></i> 8.3 Copiando Arquivos</a>
+        </li>
+        <li>
+          <a href="#secao8-3-1"><i class="fas fa-volume-up"></i> 8.3.1 Modo Verboso</a>
+        </li>
+        <li>
+          <a href="#secao8-3-2"><i class="fas fa-shield-alt"></i> 8.3.2 Evitando Sobrescrita de Dados</a>
+        </li>
+        <li>
+          <a href="#secao8-3-3"><i class="fas fa-folder-plus"></i> 8.3.3 Copiando Diretórios</a>
+        </li>
+        <li>
+          <a href="#secao8-4"><i class="fas fa-arrows-alt"></i> 8.4 Movendo Arquivos</a>
+        </li>
+        <li>
+          <a href="#secao8-4-1"><i class="fas fa-i-cursor"></i> 8.4.1 Renomeando Arquivos</a>
+        </li>
+        <li>
+          <a href="#secao8-4-2"><i class="fas fa-sliders-h"></i> 8.4.2 Opções Adicionais do Move</a>
+        </li>
+        <li>
+          <a href="#secao8-5"><i class="fas fa-file"></i> 8.5 Criando Arquivos</a>
+        </li>
+        <li>
+          <a href="#secao8-6"><i class="fas fa-trash-alt"></i> 8.6 Removendo Arquivos</a>
+        </li>
+        <li>
+          <a href="#secao8-7"><i class="fas fa-folder-plus"></i> 8.7 Criando Diretórios</a>
+        </li>
+        <li>
+          <a href="../pages/questoes_8.html"><i class="fas fa-question-circle"></i> Questões</a>
+        </li>
+        <!-- Novas seções serão adicionadas aqui -->
+      </ul>
+    </div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-icon">
+          <i class="fab fa-linux"></i>
+        </div>
+        <div class="badge-lab"><i class="fas fa-graduation-cap"></i> Módulo 8</div>
+        <h1>Manipulando Arquivos e Diretórios</h1>
+        <p style="font-size: 1.2rem; color: var(--text-dim); max-width: 700px; margin: 0 auto">
+          Aprenda a criar, mover, copiar e remover arquivos e diretórios no Linux
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTAINER PRINCIPAL -->
+    <div class="container">
+      <!-- SEÇÃO 8.1 - INTRODUÇÃO -->
+      <section id="secao8-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-life-ring"></i>
+          <span class="section-number">8.1</span> Introdução
+        </h2>
+        <div class="card">
+          <i class="fas fa-folder-open"></i>
+          <p>
+            Ao trabalhar em um sistema operacional Linux, é importante saber como manipular arquivos e diretórios. Algumas distribuições
+            Linux possuem aplicações baseadas em interface gráfica (GUI) que permitem gerenciar arquivos, mas é vantajoso saber como
+            realizar essas operações via linha de comando.
+          </p>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Nota:</strong> É importante notar que tudo no Linux é sensível a maiúsculas e minúsculas (case-sensitive), uma
+              característica herdada do Unix. Isso significa que o shell reconhece um caractere minúsculo a-z como completamente diferente
+              de um caractere maiúsculo A-Z. Ao manipular arquivos, preste atenção às suas maiúsculas: um arquivo <code>hello.txt</code> é
+              diferente dos arquivos <code>HELLO.txt</code> e <code>Hello.txt</code>.</span
+            >
+          </div>
+
+          <p>
+            O padrão de caracteres usado para Linux é o padrão UTF-8, que é baseado no ASCII (<em
+              >American Standard Code for Information Interchange</em
+            >
+            - Código Padrão Americano para Intercâmbio de Informações). Para aprender mais sobre ASCII, execute o comando
+            <code>man -s 7 ascii</code>.
+          </p>
+
+          <div class="terminal">
+            <pre>sysadmin@localhost:~$ man -s 7 ascii</pre>
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 8.2 - GLOBBING -->
+      <section id="secao8-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-asterisk"></i>
+          <span class="section-number">8.2</span> Globbing
+        </h2>
+        <div class="card">
+          <i class="fas fa-filter"></i>
+          <p>
+            Os caracteres glob são frequentemente chamados de <strong>curingas</strong> (wild cards). Estes são caracteres simbólicos que
+            têm significado especial para o shell.
+          </p>
+
+          <p>
+            Os globs são poderosos porque permitem que você especifique padrões que correspondem a nomes de arquivos em um diretório. Então,
+            em vez de manipular um único arquivo por vez, você pode facilmente executar comandos que afetam muitos arquivos. Por exemplo,
+            usando caracteres glob, é possível manipular todos os arquivos com uma extensão específica ou com um comprimento de nome de
+            arquivo particular.
+          </p>
+
+          <p>
+            Ao contrário dos comandos que o shell executa, ou opções e argumentos que o shell passa para os comandos, os caracteres glob são
+            interpretados pelo próprio shell antes que ele tente executar qualquer comando. Como resultado, os caracteres glob podem ser
+            usados com qualquer comando.
+          </p>
+
+          <p>Os exemplos fornecidos neste capítulo usam o comando <code>echo</code> para demonstração.</p>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Importante:</strong> O globbing é feito pelo <strong>shell</strong>, não pelo comando. Isso significa que os
+              caracteres curinga são expandidos antes do comando ser executado.</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 8.2.1 - ASTERISK * CHARACTER -->
+      <section id="secao8-2-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-asterisk"></i>
+          <span class="section-number">8.2.1</span> Caractere Asterisco *
+        </h2>
+        <div class="card">
+          <i class="fas fa-filter"></i>
+          <p>
+            O caractere asterisco <code>*</code> é usado para representar <strong>zero ou mais</strong> de qualquer caractere em um nome de
+            arquivo. Por exemplo, para exibir todos os arquivos no diretório <code>/etc</code> que começam com a letra t:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ echo /etc/t*                              
+/etc/terminfo /etc/timezone /etc/tmpfiles.d</pre
+            >
+          </div>
+
+          <p>
+            O padrão <code>t*</code> corresponde a qualquer arquivo no diretório <code>/etc</code> que começa com o caractere t seguido por
+            zero ou mais de qualquer caractere. Em outras palavras, quaisquer arquivos que começam com a letra t.
+          </p>
+
+          <p>
+            Você pode usar o caractere asterisco em qualquer lugar dentro do padrão do nome do arquivo. Por exemplo, o seguinte corresponde
+            a qualquer nome de arquivo no diretório <code>/etc</code> que termina com <code>.d</code>:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ echo /etc/*.d                                 
+/etc/apparmor.d /etc/binfmt.d /etc/cron.d /etc/depmod.d /etc/init.d /etc/insserv.conf.d /etc/ld.so.conf.d /etc/logrotate.d /etc/modprobe.d /etc/modules-load.d /etc/pam.d /etc/profile.d /etc/rc0.d /etc/rc1.d /etc/rc2.d /etc/rc3.d /etc/rc4.d /etc/rc5.d /etc/rc6.d /etc/rcS.d /etc/rsyslog.d /etc/sudoers.d /etc/sysctl.d /etc/tmpfiles.d /etc/update-motd.d</pre
+            >
+          </div>
+
+          <p>
+            No próximo exemplo, todos os arquivos no diretório <code>/etc</code> que começam com a letra r e terminam com
+            <code>.conf</code> são exibidos:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ echo /etc/r*.conf                             
+/etc/resolv.conf /etc/rsyslog.conf</pre
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 8.2.2 - QUESTION MARK ? CHARACTER -->
+      <section id="secao8-2-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">8.2.2</span> Caractere Ponto de Interrogação ?
+        </h2>
+        <div class="card">
+          <i class="fas fa-filter"></i>
+          <p>
+            O caractere ponto de interrogação <code>?</code> representa qualquer caractere único. Cada caractere de ponto de interrogação
+            corresponde a exatamente um caractere, nem mais nem menos.
+          </p>
+
+          <p>
+            Suponha que você queira exibir todos os arquivos no diretório <code>/etc</code> que começam com a letra t e têm exatamente 7
+            caracteres após o caractere t:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ echo /etc/t???????      
+/etc/terminfo /etc/timezone</pre
+            >
+          </div>
+
+          <p>
+            Os caracteres glob podem ser usados em conjunto para encontrar padrões ainda mais complexos. O padrão
+            <code>/etc/*????????????????????</code> corresponde apenas a arquivos no diretório <code>/etc</code> com vinte ou mais
+            caracteres no nome do arquivo:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ echo /etc/*????????????????????            
+/etc/bindresvport.blacklist /etc/ca-certificates.conf</pre
+            >
+          </div>
+
+          <p>
+            O asterisco e o ponto de interrogação também podem ser usados juntos para procurar arquivos com extensões de três letras usando
+            o padrão <code>/etc/*.???</code>:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ echo /etc/*.???                
+/etc/issue.net /etc/locale.gen</pre
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 8.2.5 - LISTING WITH GLOBS -->
+      <section id="secao8-2-5" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-list"></i>
+          <span class="section-number">8.2.5</span> Listando com Globs
+        </h2>
+        <div class="card">
+          <i class="fas fa-filter"></i>
+          <p>
+            O comando <code>ls</code> é normalmente usado para listar arquivos em um diretório; como resultado, usar o comando
+            <code>echo</code> pode parecer ter sido uma escolha estranha. No entanto, há algo sobre o comando <code>ls</code> que causa
+            problemas ao listar arquivos usando padrões glob.
+          </p>
+
+          <p>
+            Tenha em mente que é o <strong>shell</strong>, não o comando <code>echo</code> ou <code>ls</code>, que expande o padrão glob em
+            nomes de arquivos correspondentes. Em outras palavras, se o comando <code>echo /etc/a*</code> for executado, o que o shell fez
+            antes de executar o comando <code>echo</code> foi substituir <code>a*</code> por todos os arquivos e diretórios dentro do
+            diretório <code>/etc</code> que correspondem ao padrão.
+          </p>
+
+          <p>Então, se o comando <code>ls /etc/a*</code> for executado, o que o shell realmente executaria seria isto:</p>
+
+          <div class="terminal">
+            <pre>ls /etc/adduser.conf  /etc/alternatives  /etc/apparmor  /etc/apparmor.d  /etc/apt</pre>
+          </div>
+
+          <p>
+            Quando o comando <code>ls</code> vê múltiplos argumentos, ele executa uma operação de lista em cada item separadamente. Em
+            outras palavras, <code>ls /etc/a*</code> é o mesmo que executar os seguintes comandos consecutivamente:
+          </p>
+
+          <div class="terminal">
+            <pre>
+ls /etc/adduser.conf  
+ls /etc/alternatives  
+ls /etc/apparmor  
+ls /etc/apparmor.d  
+ls /etc/apt</pre
+            >
+          </div>
+
+          <p>Agora considere o que acontece se o comando <code>ls</code> receber um arquivo, como <code>/etc/adduser.conf</code>:</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls /etc/adduser.conf
+/etc/adduser.conf</pre
+            >
+          </div>
+
+          <p>
+            Executar o comando <code>ls</code> em um único arquivo resulta na impressão do nome do arquivo; tipicamente isso é útil se a
+            opção <code>-l</code> for usada para ver detalhes sobre um arquivo específico:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls -l /etc/adduser.conf                                   
+-rw-r--r-- 1 root root 3028 May 26  2018 /etc/adduser.conf</pre
+            >
+          </div>
+
+          <p>
+            No entanto, e se o comando <code>ls</code> receber um nome de diretório como argumento? Neste caso, a saída do comando é
+            diferente do que se o argumento fosse um arquivo regular:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls /etc/apparmor                                          
+init  parser.conf  subdomain.conf</pre
+            >
+          </div>
+
+          <p>
+            Se o comando <code>ls</code> receber um nome de diretório, o comando exibe o conteúdo do diretório (os nomes dos arquivos no
+            diretório), não apenas o nome do diretório. Os nomes de arquivos no exemplo anterior são os nomes dos arquivos no diretório
+            <code>/etc/apparmor</code>.
+          </p>
+
+          <p>Por que isso é um problema ao usar globs? Considere a seguinte saída:</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls /etc/ap*                                               
+/etc/apparmor:                                                                  
+init  parser.conf  subdomain.conf                                               
+                                                                                
+/etc/apparmor.d:                                                                
+abstractions  disable         local          tunables     usr.sbin.named        
+cache         force-complain  sbin.dhclient  usr.bin.man  usr.sbin.rsyslogd     
+                                                                                
+/etc/apt:                                                                       
+apt.conf.d  preferences.d  sources.list  sources.list.d  trusted.gpg.d</pre
+            >
+          </div>
+
+          <p>
+            Quando o comando <code>ls</code> vê um nome de arquivo como argumento, ele apenas exibe o nome do arquivo. No entanto, para
+            qualquer diretório, ele exibe o conteúdo do diretório, não apenas o nome do diretório.
+          </p>
+
+          <p>Isso se torna ainda mais confuso em uma situação como a seguinte:</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls /etc/x*                                                
+autostart  systemd  user-dirs.conf  user-dirs.defaults</pre
+            >
+          </div>
+
+          <p>
+            No exemplo anterior, parece que o comando <code>ls</code> está simplesmente errado. No entanto, o que realmente aconteceu é que
+            a única coisa que corresponde ao glob <code>/etc/x*</code> é o diretório <code>/etc/xdg</code>.
+          </p>
+
+          <p>Então, o comando <code>ls</code> apenas exibiu os arquivos naquele diretório!</p>
+
+          <p>
+            Há uma solução simples para este problema: sempre use a opção <code>-d</code> com globs, que instrui o comando <code>ls</code> a
+            exibir o nome dos diretórios, em vez de seu conteúdo:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls -d /etc/x*                                             
+/etc/xdg</pre
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 8.3 - COPYING FILES -->
+      <section id="secao8-3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-copy"></i>
+          <span class="section-number">8.3</span> Copiando Arquivos
+        </h2>
+        <div class="card">
+          <i class="fas fa-files"></i>
+          <p>
+            O comando <code>cp</code> é usado para copiar arquivos. Ele requer uma origem e um destino. A estrutura do comando é a seguinte:
+          </p>
+
+          <div class="terminal">
+            <pre>cp source destination</pre>
+          </div>
+
+          <p>
+            A <strong>origem</strong> é o arquivo a ser copiado. O <strong>destino</strong> é onde a cópia será localizada. Quando
+            bem-sucedido, o comando <code>cp</code> não tem nenhuma saída (sem notícias é boa notícia). O seguinte comando copia o arquivo
+            <code>/etc/hosts</code> para o seu diretório home:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ cp /etc/hosts ~                                     
+sysadmin@localhost:~$ ls
+Desktop    Downloads  Pictures  Templates  hosts                          
+Documents  Music      Public    Videos</pre
+            >
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span><strong>Dica:</strong> O símbolo <code>~</code> (til) é um atalho que representa o diretório home do usuário atual.</span>
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 8.3.1 - VERBOSE MODE -->
+      <section id="secao8-3-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-volume-up"></i>
+          <span class="section-number">8.3.1</span> Modo Verboso
+        </h2>
+        <div class="card">
+          <i class="fas fa-files"></i>
+          <p>
+            A opção <code>-v</code> faz com que o comando <code>cp</code> produza saída se for bem-sucedido. A opção
+            <code>-v</code> significa <strong>verboso</strong> (verbose):
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ cp -v /etc/hosts ~                              
+`/etc/hosts' -> `/home/sysadmin/hosts'</pre
+            >
+          </div>
+
+          <p>
+            Quando o destino é um diretório, o novo arquivo resultante mantém o mesmo nome que o arquivo original. Para dar ao novo arquivo
+            um nome diferente, forneça o novo nome como parte do destino:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ cp /etc/hosts ~/hosts.copy                      
+sysadmin@localhost:~$ ls                                               
+Desktop    Downloads  Pictures  Templates  hosts                       
+Documents  Music      Public    Videos     hosts.copy</pre
+            >
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Dica:</strong> A opção <code>-v</code> é útil para verificar se a operação foi realizada com sucesso, especialmente
+              ao copiar muitos arquivos de uma só vez.</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 8.3.2 - AVOID OVERWRITING DATA -->
+      <section id="secao8-3-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-shield-alt"></i>
+          <span class="section-number">8.3.2</span> Evitando Sobrescrita de Dados
+        </h2>
+        <div class="card">
+          <i class="fas fa-exclamation-triangle"></i>
+          <p>
+            O comando <code>cp</code> pode ser destrutivo para dados existentes se o arquivo de destino já existir. No caso em que o arquivo
+            de destino existe, o comando <code>cp</code> sobrescreve o conteúdo do arquivo existente com o conteúdo do arquivo de origem.
+          </p>
+
+          <p>Para ilustrar este problema potencial, primeiro um novo arquivo é criado no diretório home copiando um arquivo existente:</p>
+
+          <div class="terminal">
+            <pre>sysadmin@localhost:~$ cp /etc/hostname example.txt</pre>
+          </div>
+
+          <p>Visualize as informações sobre o arquivo com o comando <code>ls</code>:</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls -l example.txt                                         
+-rw-r--r-- 1 sysadmin sysadmin 10 Dec 15 22:55 example.txt</pre
+            >
+          </div>
+
+          <p>Visualize o conteúdo do arquivo usando o comando <code>cat</code>:</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ cat example.txt                                           
+localhost</pre
+            >
+          </div>
+
+          <p>No próximo exemplo, o comando <code>cp</code> destrói o conteúdo original do arquivo <code>example.txt</code>:</p>
+
+          <div class="terminal">
+            <pre>sysadmin@localhost:~$ cp /etc/timezone example.txt</pre>
+          </div>
+
+          <p>Observe que após o comando <code>cp</code> ser concluído, o tamanho do arquivo mudou e o conteúdo é diferente:</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls -l example.txt                                         
+-rw-r--r-- 1 sysadmin sysadmin 8 Dec 15 22:58 example.txt
+sysadmin@localhost:~$ cat example.txt
+Etc/UTC</pre
+            >
+          </div>
+
+          <p>
+            Duas opções podem ser usadas para proteger contra sobrescritas acidentais. Com a opção interativa <code>-i</code>, o comando
+            <code>cp</code> solicita ao usuário antes de sobrescrever um arquivo. O exemplo a seguir demonstra esta opção, primeiro
+            restaurando o conteúdo do arquivo original:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ cp -i /etc/hosts example.txt                   
+cp: overwrite `/home/sysadmin/example.txt'? n</pre
+            >
+          </div>
+
+          <p>
+            Se um valor <code>y</code> (yes/sim) fosse dado, então o processo de cópia teria ocorrido. No entanto, o valor
+            <code>n</code> (no/não) foi dado quando solicitado a sobrescrever o arquivo, então nenhuma mudança foi feita no arquivo.
+          </p>
+
+          <p>
+            A opção <code>-i</code> exige que você responda <code>y</code> ou <code>n</code> para cada cópia que possa acabar sobrescrevendo
+            o conteúdo de um arquivo existente. Isso pode ser tedioso quando muitas sobrescritas ocorrem, como no exemplo demonstrado
+            abaixo:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ cp -i /etc/skel/.* ~                             
+cp: -r not specified; omitting directory '/etc/skel/.'                          
+cp: -r not specified; omitting directory '/etc/skel/..'                                   
+cp: overwrite `/home/sysadmin/.bash_logout'? n                         
+cp: overwrite `/home/sysadmin/.bashrc'? n                              
+cp: overwrite `/home/sysadmin/.profile'? n                            
+cp: overwrite `/home/sysadmin/.selected_editor'? n</pre
+            >
+          </div>
+
+          <p>
+            Como você pode ver no exemplo acima, o comando <code>cp</code> tentou sobrescrever quatro arquivos existentes, forçando o
+            usuário a responder a quatro prompts. Se esta situação acontecesse para 100 arquivos, poderia se tornar muito irritante, muito
+            rapidamente.
+          </p>
+
+          <p>
+            Para responder <code>n</code> a cada prompt automaticamente, use a opção <code>-n</code>. Ela significa
+            <strong>no clobber</strong> (sem sobrescrita).
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ cp -n /etc/skel/.* ~                                      
+cp: -r not specified; omitting directory '/etc/skel/.'                          
+cp: -r not specified; omitting directory '/etc/skel/..'</pre
+            >
+          </div>
+
+          <div class="alert alert-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span
+              ><strong>Cuidado:</strong> Sempre tenha atenção ao usar o comando <code>cp</code>, pois ele substitui arquivos sem aviso
+              prévio a menos que você use as opções <code>-i</code> ou <code>-n</code>.</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 8.3.3 - COPYING DIRECTORIES -->
+      <section id="secao8-3-3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-folder-plus"></i>
+          <span class="section-number">8.3.3</span> Copiando Diretórios
+        </h2>
+        <div class="card">
+          <i class="fas fa-folder"></i>
+          <p>Por padrão, o comando <code>cp</code> não copia diretórios; qualquer tentativa de fazê-lo resulta em uma mensagem de erro:</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ cp -n /etc/skel/.* ~                                      
+cp: -r not specified; omitting directory '/etc/skel/.'                          
+cp: -r not specified; omitting directory '/etc/skel/..'</pre
+            >
+          </div>
+
+          <p>No entanto, a opção recursiva <code>-r</code> permite que o comando <code>cp</code> copie tanto arquivos quanto diretórios.</p>
+
+          <div class="terminal">
+            <pre>cp -r source_directory destination_directory</pre>
+          </div>
+
+          <p>
+            Tenha cuidado com esta opção. Toda a estrutura de diretórios será copiada, o que pode resultar na cópia de muitos arquivos e
+            diretórios!
+          </p>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Considere Isto:</strong> As opções <code>-r</code> e <code>-R</code> servem ao mesmo propósito. No entanto,
+              <code>-R</code> pode ser usada com a maioria dos comandos, enquanto <code>-r</code> pode ter significados diferentes com
+              alguns comandos. Por exemplo, enquanto <code>cp -r</code> significa copiar recursivamente (ambos arquivos e diretórios),
+              <code>ls -r</code> significa ordenação reversa (reverse sort).</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 8.4 - MOVING FILES -->
+      <section id="secao8-4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-arrows-alt"></i>
+          <span class="section-number">8.4</span> Movendo Arquivos
+        </h2>
+        <div class="card">
+          <i class="fas fa-exchange-alt"></i>
+          <p>
+            Para mover um arquivo, use o comando <code>mv</code>. A sintaxe para o comando <code>mv</code> é muito parecida com o comando
+            <code>cp</code>:
+          </p>
+
+          <div class="terminal">
+            <pre>mv source destination</pre>
+          </div>
+
+          <p>
+            No exemplo a seguir, o arquivo <code>hosts</code> que foi gerado anteriormente é movido do diretório atual para o diretório
+            <code>Videos</code>:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls                                               
+Desktop    Downloads  Pictures  Templates  example.txt  hosts.copy     
+Documents  Music      Public    Videos     hosts                       
+sysadmin@localhost:~$ mv hosts Videos                                  
+sysadmin@localhost:~$ ls                                               
+Desktop    Downloads  Pictures  Templates  example.txt                 
+Documents  Music      Public    Videos     hosts.copy                 
+sysadmin@localhost:~$ ls Videos                                        
+hosts</pre
+            >
+          </div>
+
+          <p>
+            Quando um arquivo é movido, o arquivo é removido da localização original e colocado em uma nova localização. Mover arquivos pode
+            ser um pouco complicado no Linux porque os usuários precisam de permissões específicas para remover arquivos de um diretório.
+            Sem as permissões corretas, uma mensagem de erro <code>Permission denied</code> é retornada:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ mv /etc/hosts .
+mv: cannot move `/etc/hosts' to `./hosts': Permission denied</pre
+            >
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span><strong>Nota:</strong> Permissões serão abordadas em detalhes mais adiante no curso.</span>
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 8.4.1 - RENAMING FILES -->
+      <section id="secao8-4-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-i-cursor"></i>
+          <span class="section-number">8.4.1</span> Renomeando Arquivos
+        </h2>
+        <div class="card">
+          <i class="fas fa-edit"></i>
+          <p>
+            O comando <code>mv</code> não é usado apenas para mover um arquivo, mas também para renomear um arquivo. Se o destino do comando
+            <code>mv</code> for um diretório, o arquivo é movido para o diretório especificado. O nome do arquivo só muda se um nome de
+            arquivo de destino também for especificado.
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls                                               
+Desktop    Downloads  Pictures  Templates  example.txt                          
+Documents  Music      Public    Videos     hosts.copy                 
+sysadmin@localhost:~$ mv example.txt Videos/newexample.txt             
+sysadmin@localhost:~$ ls
+Desktop    Downloads  Pictures  Templates  hosts.copy                           
+Documents  Music      Public    Videos                               
+sysadmin@localhost:~$ ls Videos                                       
+hosts  newexample.txt</pre
+            >
+          </div>
+
+          <p>
+            Se um diretório de destino não for especificado, o arquivo é renomeado usando o nome do arquivo de destino e permanece no
+            diretório de origem. Por exemplo, os seguintes comandos renomeiam o arquivo <code>newexample.txt</code> para
+            <code>myfile.txt</code>:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ cd Videos                                        
+sysadmin@localhost:~/Videos$ ls                                        
+hosts  newexample.txt                                                  
+sysadmin@localhost:~/Videos$ mv newexample.txt myfile.txt           
+sysadmin@localhost:~/Videos$ ls
+hosts  myfile.txt</pre
+            >
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Dica:</strong> Pense no exemplo anterior como: mova o arquivo <code>newexample.txt</code> do diretório atual para o
+              diretório atual e dê ao novo arquivo o nome <code>myfile.txt</code>.</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 8.4.2 - ADDITIONAL MOVE OPTIONS -->
+      <section id="secao8-4-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-sliders-h"></i>
+          <span class="section-number">8.4.2</span> Opções Adicionais do Move
+        </h2>
+        <div class="card">
+          <i class="fas fa-cog"></i>
+          <p>Assim como o comando <code>cp</code>, o comando <code>mv</code> fornece as seguintes opções:</p>
+
+          <table class="table-custom">
+            <thead>
+              <tr>
+                <th>Opção</th>
+                <th>Significado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>-i</code></td>
+                <td>Interativo: Pergunta se um arquivo deve ser sobrescrito.</td>
+              </tr>
+              <tr>
+                <td><code>-n</code></td>
+                <td>No Clobber: Não sobrescreve o conteúdo de um arquivo de destino.</td>
+              </tr>
+              <tr>
+                <td><code>-v</code></td>
+                <td>Verbosos: Mostra a movimentação resultante.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="alert alert-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span
+              ><strong>Importante:</strong> Não há opção <code>-r</code> pois o comando <code>mv</code> move diretórios por padrão.</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 8.5 - CREATING FILES -->
+      <section id="secao8-5" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-file"></i>
+          <span class="section-number">8.5</span> Criando Arquivos
+        </h2>
+        <div class="card">
+          <i class="fas fa-plus-circle"></i>
+          <p>
+            Existem várias maneiras de criar um novo arquivo, incluindo o uso de um programa projetado para editar um arquivo (um editor de
+            texto).
+          </p>
+
+          <p>
+            Também há uma maneira de criar um arquivo vazio que pode ser preenchido com dados posteriormente. Este recurso é útil para
+            alguns sistemas operacionais, pois a própria existência de um arquivo pode alterar como um comando ou serviço funciona. Também é
+            útil criar um arquivo como um "placeholder" para lembrá-lo de criar o conteúdo do arquivo em um momento posterior.
+          </p>
+
+          <p>Para criar um arquivo vazio, use o comando <code>touch</code> conforme demonstrado abaixo:</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ touch sample                                     
+sysadmin@localhost:~$ ls -l sample                                     
+-rw-rw-r-- 1 sysadmin sysadmin 0 Nov  9 16:48 sample</pre
+            >
+          </div>
+
+          <p>
+            Observe que o tamanho do novo arquivo é 0 bytes. Como mencionado anteriormente, o comando <code>touch</code> não coloca nenhum
+            dado dentro do novo arquivo.
+          </p>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span><strong>Nota:</strong> Editores de texto serão abordados em detalhes mais adiante no curso.</span>
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 8.6 - REMOVING FILES -->
+      <section id="secao8-6" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-trash-alt"></i>
+          <span class="section-number">8.6</span> Removendo Arquivos
+        </h2>
+        <div class="card">
+          <i class="fas fa-eraser"></i>
+          <p>Para deletar um arquivo, use o comando <code>rm</code>:</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls                                               
+Desktop    Downloads  Pictures  Templates  hosts.copy                           
+Documents  Music      Public    Videos     sample                         
+sysadmin@localhost:~$ rm sample    
+sysadmin@localhost:~$ rm hosts.copy                                    
+sysadmin@localhost:~$ ls
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos</pre
+            >
+          </div>
+
+          <p>
+            Observe que os arquivos foram deletados sem nenhuma pergunta. Isso pode causar problemas ao deletar múltiplos arquivos usando
+            caracteres glob. Como esses arquivos são deletados sem questionamento, um usuário pode acabar deletando arquivos que não
+            pretendia deletar.
+          </p>
+
+          <div class="alert alert-danger">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span
+              ><strong>Atenção:</strong> Os arquivos são permanentemente deletados. Não há comando para desfazer a exclusão (undelete) e não
+              há lixeira de onde recuperar arquivos deletados.</span
+            >
+          </div>
+
+          <p>Como precaução, os usuários devem usar a opção <code>-i</code> ao deletar múltiplos arquivos:</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ touch sample.txt example.txt test.txt            
+sysadmin@localhost:~$ ls                                               
+Desktop    Downloads  Pictures  Templates  example.txt  test.txt       
+Documents  Music      Public    Videos     sample.txt                 
+sysadmin@localhost:~$ rm -i *.txt                                     
+rm: remove regular empty file `example.txt'? y                         
+rm: remove regular empty file `sample.txt'? n                          
+rm: remove regular empty file `test.txt'? y                            
+sysadmin@localhost:~$ ls                                               
+Desktop    Downloads  Pictures  Templates  sample.txt                  
+Documents  Music      Public    Videos</pre
+            >
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Dica:</strong> Use sempre <code>rm -i</code> ao trabalhar com globs para evitar exclusões acidentais. A opção
+              <code>-i</code> torna o comando interativo, perguntando antes de cada exclusão.</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 8.7 - CREATING DIRECTORIES -->
+      <section id="secao8-7" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-folder-plus"></i>
+          <span class="section-number">8.7</span> Criando Diretórios
+        </h2>
+        <div class="card">
+          <i class="fas fa-folder"></i>
+          <p>Para criar um diretório, use o comando <code>mkdir</code>:</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ ls                                               
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  sample.txt
+sysadmin@localhost:~$ mkdir test                                       
+sysadmin@localhost:~$ ls                                               
+Desktop    Downloads  Pictures  Templates   test                       
+Documents  Music      Public    sample.txt</pre
+            >
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Dica:</strong> <code>mkdir</code> vem de <strong>m</strong>a<strong>k</strong>e <strong>dir</strong>ectory (criar
+              diretório).</span
+            >
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p><i class="fab fa-linux"></i> NDG Linux Essentials - Módulo 8: Manipulando Arquivos e Diretórios</p>
+      <p>Conteúdo traduzido e adaptado seguindo os padrões de documentação Linux</p>
+    </footer>
+
+    <script>
+      // menu.js - Controle do Menu Lateral
+      class SidebarMenu {
+        constructor() {
+          this.sidebar = document.getElementById('sidebar')
+          this.overlay = document.getElementById('sidebarOverlay')
+          this.openBtn = document.getElementById('openMenu')
+          this.closeBtn = document.getElementById('closeMenu')
+          this.init()
+        }
+
+        init() {
+          if (!this.sidebar) return
+
+          if (this.openBtn) {
+            this.openBtn.addEventListener('click', () => this.open())
+          }
+          if (this.closeBtn) {
+            this.closeBtn.addEventListener('click', () => this.close())
+          }
+          if (this.overlay) {
+            this.overlay.addEventListener('click', () => this.close())
+          }
+
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.sidebar.classList.contains('open')) {
+              this.close()
+            }
+          })
+
+          const links = document.querySelectorAll('.sidebar .nav-modules a')
+          links.forEach((link) => {
+            link.addEventListener('click', () => this.close())
+          })
+        }
+
+        open() {
+          this.sidebar.classList.add('open')
+          this.overlay.classList.add('active')
+          document.body.style.overflow = 'hidden'
+        }
+
+        close() {
+          this.sidebar.classList.remove('open')
+          this.overlay.classList.remove('active')
+          document.body.style.overflow = ''
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        new SidebarMenu()
+      })
+    </script>
+  </body>
+</html>
