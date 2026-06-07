@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>NDG Linux Essentials | Módulo 9 - Archiving and Compression</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/questoes.css" />
+  </head>
+  <body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <button class="menu-toggle" id="openMenu">
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+      </button>
+      <a href="../index.html" class="top-bar-brand"> <i class="fab fa-linux"></i> NDG Linux Essentials </a>
+      <a href="../index.html" class="btn-outline"> <i class="fas fa-home"></i> Voltar </a>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-compass"></i> Navegação - Questões</h3>
+        <button class="close-sidebar" id="closeMenu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="nav-modules">
+        <li>
+          <a href="#questao1"><i class="fas fa-question-circle"></i> Questão 1 - Como a compactação funciona</a>
+        </li>
+        <li>
+          <a href="#questao2"><i class="fas fa-question-circle"></i> Questão 2 - Compactação sem perda</a>
+        </li>
+        <li>
+          <a href="#questao3"><i class="fas fa-question-circle"></i> Questão 3 - Compactação com perda</a>
+        </li>
+        <li>
+          <a href="#questao4"><i class="fas fa-question-circle"></i> Questão 4 - Comando tar</a>
+        </li>
+        <li>
+          <a href="#questao5"><i class="fas fa-question-circle"></i> Questão 5 - Extrair arquivos com tar</a>
+        </li>
+        <li>
+          <a href="#questao6"><i class="fas fa-question-circle"></i> Questão 6 - Criar arquivo zip</a>
+        </li>
+        <li>
+          <a href="#questao7"><i class="fas fa-question-circle"></i> Questão 7 - Extrair zip específico</a>
+        </li>
+        <li>
+          <a href="#questao8"><i class="fas fa-question-circle"></i> Questão 8 - Opção -f do tar</a>
+        </li>
+        <li>
+          <a href="#questao9"><i class="fas fa-question-circle"></i> Questão 9 - Comandos equivalentes</a>
+        </li>
+        <li>
+          <a href="#questao10"><i class="fas fa-question-circle"></i> Questão 10 - zip substitui arquivos</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="badge-lab"><i class="fas fa-graduation-cap"></i> NDG Linux Essentials | Banco de Questões</div>
+        <h1>Exame do Módulo 9</h1>
+        <p>Archiving and Compression - Teste seus conhecimentos sobre tar, gzip, bzip2, zip e compactação</p>
+        <div style="margin-top: 1.5rem">
+          <i class="fas fa-archive" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-compress-alt" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-file-archive" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- QUESTÃO 1 -->
+      <section id="questao1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q1</span> Como funciona a compactação
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-compress"></i> A compactação de um arquivo funciona:</div>
+          <div class="options" id="q1-options">
+            <li><input type="radio" name="q1" value="a" /> Eliminando lacunas dentro do arquivo</li>
+            <li>
+              <input type="radio" name="q1" value="b" /> Armazenando a maioria dos dados em mídia removível e deixando apenas um ponteiro
+            </li>
+            <li><input type="radio" name="q1" value="c" /> Consolidando múltiplos arquivos em um</li>
+            <li><input type="radio" name="q1" value="d" /> Removendo informações redundantes</li>
+            <li><input type="radio" name="q1" value="e" /> Removendo o bit de ordem alta de cada byte</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q1',
+                'd',
+                'A compactação funciona removendo informações redundantes e substituindo padrões repetidos por representações menores.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q1-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 2 -->
+      <section id="questao2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q2</span> Compactação sem perda
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-check-circle"></i> Em geral, para qual dos seguintes você usaria compactação sem perda (lossless)?
+          </div>
+          <div class="options" id="q2-options">
+            <li><input type="radio" name="q2" value="a" /> Um arquivo de log (log file)</li>
+            <li><input type="radio" name="q2" value="b" /> Um filme</li>
+            <li><input type="radio" name="q2" value="c" /> Um e-mail criptografado</li>
+            <li><input type="radio" name="q2" value="d" /> Uma imagem JPEG</li>
+            <li><input type="radio" name="q2" value="e" /> Um arquivo de áudio mp3</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q2',
+                'a',
+                'Logs, documentos e software precisam ser idênticos ao original após descompactação. Arquivos de log contêm informações críticas que não podem ser alteradas.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q2-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 3 -->
+      <section id="questao3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q3</span> Compactação com perda
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-chart-line"></i> A compactação com perda (lossy): (escolha três)</div>
+          <div class="options" id="q3-options">
+            <li><input type="checkbox" name="q3" value="a" /> Descompacta para uma versão idêntica ao original</li>
+            <li><input type="checkbox" name="q3" value="b" /> Geralmente resulta em melhor compactação do que a sem perda</li>
+            <li><input type="checkbox" name="q3" value="c" /> É frequentemente usada com documentos</li>
+            <li><input type="checkbox" name="q3" value="d" /> É frequentemente usada com imagens</li>
+            <li><input type="checkbox" name="q3" value="e" /> Sacrifica alguma qualidade</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q3',
+                ['b', 'd', 'e'],
+                'Compactação com perda (lossy) sacrifica qualidade para obter maior taxa de compactação, é comumente usada em imagens (JPEG), áudio (MP3) e vídeo.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q3-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 4 -->
+      <section id="questao4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q4</span> Comando tar
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-terminal"></i> Dado o comando <code>tar –cvjf homedirs.tbz /home</code>, quais das seguintes afirmações são
+            verdadeiras? (escolha duas)
+          </div>
+          <div class="options" id="q4-options">
+            <li><input type="checkbox" name="q4" value="a" /> O diretório /home será restaurado com o conteúdo de homedirs.tbz</li>
+            <li><input type="checkbox" name="q4" value="b" /> Apenas arquivos começando com /home serão extraídos do arquivo</li>
+            <li><input type="checkbox" name="q4" value="c" /> Arquivos presentes no arquivo podem sobrescrever arquivos em /home</li>
+            <li><input type="checkbox" name="q4" value="d" /> O comando imprimirá cada nome de arquivo conforme for processado</li>
+            <li><input type="checkbox" name="q4" value="e" /> O arquivo de saída será compactado</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q4',
+                ['d', 'e'],
+                '`-v` = verbose (mostra nomes dos arquivos), `-j` = compressão bzip2, então o arquivo será compactado.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q4-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 5 -->
+      <section id="questao5" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q5</span> Extrair arquivos com tar
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-folder-open"></i> Você arquivou os diretórios dos seus usuários em um arquivo chamado
+            <code>backup.tar.gz</code>. Ao visualizar o arquivo, os nomes seguem esta convenção: <code>home/username/somefile</code>. Como
+            você extrairá apenas os arquivos do usuário chamado fred?
+          </div>
+          <div class="options" id="q5-options">
+            <li><input type="radio" name="q5" value="a" /> tar –xzf backup.tar.gz fred</li>
+            <li><input type="radio" name="q5" value="b" /> tar –tjf backup.tar.gz /home/fred</li>
+            <li><input type="radio" name="q5" value="c" /> tar –xzf backup.tar.gz home/fred/</li>
+            <li><input type="radio" name="q5" value="d" /> tar –xjf backup.tar.gz home/fred/</li>
+            <li><input type="radio" name="q5" value="e" /> tar –tzf /home/fred < backup.tar.gz</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q5',
+                'c',
+                '`-x` = extract, `-z` = gzip compression, `-f` = filename, seguido do caminho específico home/fred/ a ser extraído.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q5-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 6 -->
+      <section id="questao6" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q6</span> Criar arquivo zip
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-file-archive"></i> Qual dos seguintes comandos criará um arquivo zip com o conteúdo do diretório Documents?
+          </div>
+          <div class="options" id="q6-options">
+            <li><input type="radio" name="q6" value="a" /> zip -cf mydocs.zip Documents</li>
+            <li><input type="radio" name="q6" value="b" /> zip –c mydocs.zip Documents</li>
+            <li><input type="radio" name="q6" value="c" /> zip -r mydocs.zip Documents</li>
+            <li><input type="radio" name="q6" value="d" /> zip –f mydocs.zip Documents</li>
+            <li><input type="radio" name="q6" value="e" /> zip mydocs.zip Documents</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q6',
+                'c',
+                '`-r` (recursive) é necessário para incluir subdiretórios e todos os arquivos dentro do diretório Documents.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q6-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 7 -->
+      <section id="questao7" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q7</span> Extrair zip específico
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-folder-open"></i> Dado um arquivo chamado <code>documents.zip</code>, como você pode extrair apenas os arquivos
+            dentro de ProjectX?
+          </div>
+          <div class="options" id="q7-options">
+            <li><input type="radio" name="q7" value="a" /> unzip documents.zip | grep ProjectX</li>
+            <li><input type="radio" name="q7" value="b" /> unzip documents.zip ProjectX</li>
+            <li><input type="radio" name="q7" value="c" /> unzip -t documents.zip ProjectX</li>
+            <li><input type="radio" name="q7" value="d" /> zip -x documents.zip ProjectX</li>
+            <li><input type="radio" name="q7" value="e" /> unzip documents.zip ProjectX/*</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="checkAnswer('q7', 'e', 'O padrão ProjectX/* extrai todos os arquivos dentro do diretório ProjectX.')"
+          >
+            Verificar Resposta
+          </button>
+          <div id="q7-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 8 -->
+      <section id="questao8" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q8</span> Opção -f do tar
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-terminal"></i> No comando <code>tar -czf foo.tar.gz bar</code>, qual é o propósito da opção <code>f</code>?
+          </div>
+          <div class="options" id="q8-options">
+            <li><input type="radio" name="q8" value="a" /> Especifica que compressão extra deve ser usada</li>
+            <li><input type="radio" name="q8" value="b" /> Diz ao tar para imprimir o nome de cada arquivo conforme processado</li>
+            <li><input type="radio" name="q8" value="c" /> Diz ao tar para copiar apenas arquivos, e não diretórios</li>
+            <li><input type="radio" name="q8" value="d" /> Diz ao tar para ler do arquivo que segue a opção</li>
+            <li><input type="radio" name="q8" value="e" /> Diz ao tar para escrever no arquivo que segue a opção</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="checkAnswer('q8', 'e', 'A opção `-f` indica que o próximo argumento é o nome do arquivo a ser escrito/criado.')"
+          >
+            Verificar Resposta
+          </button>
+          <div id="q8-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 9 -->
+      <section id="questao9" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q9</span> Comandos equivalentes
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-code-branch"></i> Quais dois comandos fazem a mesma coisa? (escolha duas)</div>
+          <div class="options" id="q9-options">
+            <li><input type="checkbox" name="q9" value="a" /> tar -tzf foo.tar.gz</li>
+            <li><input type="checkbox" name="q9" value="b" /> tar -xzf foo.tar.gz</li>
+            <li><input type="checkbox" name="q9" value="c" /> tar -czf foo.tar.gz foo</li>
+            <li><input type="checkbox" name="q9" value="d" /> tar -c foo | gzip > foo.tar.gz</li>
+            <li><input type="checkbox" name="q9" value="e" /> tar -x foo | gzip</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q9',
+                ['c', 'd'],
+                'Ambos criam um archive tar compactado com gzip do diretório/arquivo foo. O primeiro usa a opção `-z` integrada do tar, o segundo usa um pipeline com gzip.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q9-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 10 -->
+      <section id="questao10" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q10</span> zip substitui arquivos?
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-file-archive"></i> Por padrão, o comando zip substitui arquivos descompactados por arquivos compactados.
+          </div>
+          <div class="options" id="q10-options">
+            <li><input type="radio" name="q10" value="true" /> Verdadeiro</li>
+            <li><input type="radio" name="q10" value="false" /> Falso</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q10',
+                'false',
+                'O comando `zip` cria um arquivo .zip separado e NÃO substitui os arquivos originais. Os arquivos originais permanecem intactos no disco.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q10-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- Gabarito -->
+      <details class="answer-key">
+        <summary><i class="fas fa-key"></i> 📋 Gabarito - Módulo 9</summary>
+        <div style="margin-top: 1rem">
+          <p><strong>Q1:</strong> Removendo informações redundantes</p>
+          <p><strong>Q2:</strong> Um arquivo de log (log file)</p>
+          <p>
+            <strong>Q3:</strong> Geralmente resulta em melhor compactação do que a sem perda; É frequentemente usada com imagens; Sacrifica
+            alguma qualidade
+          </p>
+          <p><strong>Q4:</strong> O comando imprimirá cada nome de arquivo conforme for processado; O arquivo de saída será compactado</p>
+          <p><strong>Q5:</strong> tar –xzf backup.tar.gz home/fred/</p>
+          <p><strong>Q6:</strong> zip -r mydocs.zip Documents</p>
+          <p><strong>Q7:</strong> unzip documents.zip ProjectX/*</p>
+          <p><strong>Q8:</strong> Diz ao tar para escrever no arquivo que segue a opção</p>
+          <p><strong>Q9:</strong> tar -czf foo.tar.gz foo e tar -c foo | gzip > foo.tar.gz</p>
+          <p><strong>Q10:</strong> Falso</p>
+        </div>
+      </details>
+    </div>
+
+    <footer>
+      <p><i class="fab fa-linux"></i> NDG Linux Essentials – Banco de Questões com Justificativas</p>
+      <p style="font-size: 0.8rem; margin-top: 0.5rem">Módulo 9: Archiving and Compression</p>
+    </footer>
+
+    <script>
+      function checkAnswer(questionId, correctValue, justification) {
+        const selected = document.querySelector(`input[name="${questionId}"]:checked`)
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`)
+
+        if (!selected) {
+          feedbackDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Selecione uma resposta primeiro!'
+          feedbackDiv.className = 'feedback incorrect'
+          return
+        }
+
+        if (selected.value === correctValue) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback correct'
+        } else {
+          const correctElement = document.querySelector(`input[name="${questionId}"][value="${correctValue}"]`)
+          const correctText = correctElement
+            ? correctElement.closest('li').innerText
+            : correctValue === 'true'
+              ? 'Verdadeiro'
+              : correctValue === 'false'
+                ? 'Falso'
+                : correctValue
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-book-open"></i> A resposta correta é: <strong>${correctText}</strong><br><br><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback incorrect'
+        }
+      }
+
+      function checkMultipleAnswer(questionId, correctValues, justification) {
+        const selected = document.querySelectorAll(`input[name="${questionId}"]:checked`)
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`)
+
+        if (selected.length === 0) {
+          feedbackDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Selecione pelo menos uma resposta!'
+          feedbackDiv.className = 'feedback incorrect'
+          return
+        }
+
+        const selectedValues = Array.from(selected).map((cb) => cb.value)
+        const isCorrect = correctValues.length === selectedValues.length && correctValues.every((val) => selectedValues.includes(val))
+
+        if (isCorrect) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback correct'
+        } else {
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-book-open"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback incorrect'
+        }
+      }
+    </script>
+
+    <script src="../js/menu.js"></script>
+  </body>
+</html>

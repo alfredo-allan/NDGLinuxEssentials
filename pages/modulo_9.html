@@ -1,0 +1,1488 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>NDG Linux Essentials | Módulo 9 - Arquivos e Compactação</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg-dark: #0a0a0a;
+        --bg-card: #111111;
+        --bg-card-hover: #1a1a1a;
+        --text: #e0e0e0;
+        --text-dim: #888888;
+        --primary: #00ff88;
+        --primary-dark: #00cc6a;
+        --secondary: #0078d4;
+        --success: #00ff88;
+        --warning: #ffcc00;
+        --danger: #ff4444;
+        --info: #00aaff;
+        --border: #222222;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: var(--bg-dark);
+        color: var(--text);
+        font-family: 'Inter', sans-serif;
+        padding-top: 65px;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .section {
+        padding: 60px 0;
+        border-bottom: 1px solid var(--border);
+        scroll-margin-top: 80px;
+      }
+
+      h1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+
+      .section-title i {
+        color: var(--primary);
+        font-size: 2rem;
+      }
+
+      .section-number {
+        color: var(--primary);
+        font-family: 'Courier New', monospace;
+        font-size: 1.8rem;
+      }
+
+      .card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 1.5rem;
+        transition: all 0.3s;
+        margin-bottom: 1.5rem;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary);
+        background: var(--bg-card-hover);
+      }
+
+      .card i {
+        font-size: 2rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
+      }
+
+      .terminal {
+        background: #0d1117;
+        border-radius: 12px;
+        padding: 1rem;
+        border: 1px solid var(--border);
+        font-family: 'Courier New', monospace;
+        overflow-x: auto;
+        margin: 1.5rem 0;
+      }
+
+      .terminal pre {
+        margin: 0;
+        color: var(--primary);
+        font-size: 0.85rem;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        font-family: 'Courier New', monospace;
+      }
+
+      .hero {
+        padding: 80px 0;
+        text-align: center;
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .badge-lab {
+        display: inline-block;
+        background: rgba(0, 255, 136, 0.1);
+        color: var(--primary);
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        margin-bottom: 1.5rem;
+        border: 1px solid rgba(0, 255, 136, 0.3);
+      }
+
+      .hero-icon {
+        font-size: 4rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
+      }
+
+      .alert {
+        padding: 1rem;
+        border-radius: 12px;
+        margin: 1rem 0;
+        border-left: 4px solid;
+        background: rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .alert-info {
+        border-left-color: var(--info);
+      }
+
+      /* Space/NASA Grid */
+      .space-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 2rem;
+        padding: 1rem;
+      }
+
+      .space-item {
+        background: rgba(0, 255, 136, 0.05);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1rem 1.5rem;
+        transition: all 0.3s;
+        text-align: center;
+      }
+
+      .space-item:hover {
+        border-color: var(--primary);
+        transform: translateY(-3px);
+      }
+
+      .space-item i {
+        font-size: 2rem;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .space-item .title {
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .space-item .subtitle {
+        font-size: 0.8rem;
+        color: var(--text-dim);
+      }
+
+      /* Top Bar */
+      .top-bar {
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+        padding: 0.8rem 1rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1001;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .menu-toggle {
+        background: transparent;
+        border: 1px solid var(--primary);
+        color: var(--primary);
+        padding: 0.4rem 0.8rem;
+        border-radius: 8px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s;
+        font-family: 'Inter', sans-serif;
+      }
+
+      .menu-toggle:hover {
+        background: var(--primary);
+        color: var(--bg-dark);
+      }
+
+      .top-bar-brand {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--primary);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .btn-outline {
+        background: transparent;
+        border: 1px solid var(--secondary);
+        color: var(--secondary);
+        padding: 0.4rem 0.8rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 0.85rem;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .btn-outline:hover {
+        background: var(--secondary);
+        color: var(--bg-dark);
+      }
+
+      /* Sidebar */
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 280px;
+        background: rgba(17, 17, 17, 0.98);
+        backdrop-filter: blur(15px);
+        border-right: 1px solid var(--border);
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 1002;
+        overflow-y: auto;
+        padding: 1.5rem;
+      }
+
+      .sidebar.open {
+        transform: translateX(0);
+      }
+
+      .sidebar-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .sidebar-header h3 {
+        color: var(--primary);
+        margin: 0;
+      }
+
+      .close-sidebar {
+        background: transparent;
+        border: none;
+        color: var(--text-dim);
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      .close-sidebar:hover {
+        color: var(--danger);
+      }
+
+      .sidebar .nav-modules {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .sidebar .nav-modules li a {
+        display: block;
+        padding: 0.7rem 1rem;
+        color: var(--text-dim);
+        text-decoration: none;
+        border-radius: 8px;
+        transition: all 0.2s;
+        font-size: 0.85rem;
+      }
+
+      .sidebar .nav-modules li a i {
+        margin-right: 0.75rem;
+        width: 20px;
+        color: var(--primary);
+      }
+
+      .sidebar .nav-modules li a:hover {
+        color: var(--primary);
+        background: rgba(0, 255, 136, 0.1);
+        transform: translateX(5px);
+      }
+
+      .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 1001;
+        display: none;
+      }
+
+      .sidebar-overlay.active {
+        display: block;
+      }
+
+      footer {
+        text-align: center;
+        padding: 2rem;
+        color: var(--text-dim);
+        border-top: 1px solid var(--border);
+        font-size: 0.85rem;
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2rem;
+        }
+        .container {
+          padding: 0 1rem;
+        }
+        .section {
+          padding: 40px 0;
+        }
+        .section-title {
+          font-size: 1.5rem;
+        }
+        .top-bar {
+          padding: 0.5rem 1rem;
+        }
+        body {
+          padding-top: 55px;
+        }
+        .sidebar {
+          width: 85%;
+          max-width: 300px;
+        }
+        .space-grid {
+          gap: 1rem;
+        }
+        .space-item {
+          padding: 0.75rem 1rem;
+        }
+        .space-item i {
+          font-size: 1.5rem;
+        }
+        .space-item .title {
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <button class="menu-toggle" id="openMenu">
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+      </button>
+      <a href="#" class="top-bar-brand"> <i class="fab fa-linux"></i> NDG Linux Essentials </a>
+      <a href="#" class="btn-outline"> <i class="fas fa-home"></i> Voltar </a>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-compass"></i> Navegação</h3>
+        <button class="close-sidebar" id="closeMenu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="nav-modules">
+        <li>
+          <a href="#secao9-1"><i class="fas fa-archive"></i> 9.1 Introdução</a>
+        </li>
+        <li>
+          <a href="#secao9-2"><i class="fas fa-compress-alt"></i> 9.2 Compactando Arquivos</a>
+        </li>
+        <li>
+          <a href="#secao9-3"><i class="fas fa-archive"></i> 9.3 Arquivando Arquivos</a>
+        </li>
+        <li>
+          <a href="#secao9-3-1"><i class="fas fa-plus-circle"></i> 9.3.1 Modo Create (Criar)</a>
+        </li>
+        <li>
+          <a href="#secao9-3-2"><i class="fas fa-list"></i> 9.3.2 Modo List (Listar)</a>
+        </li>
+        <li>
+          <a href="#secao9-3-2"><i class="fas fa-list"></i> 9.3.2 Modo List (Listar)</a>
+        </li>
+        <li>
+          <a href="#secao9-3-3"><i class="fas fa-folder-open"></i> 9.3.3 Modo Extract (Extrair)</a>
+        </li>
+        <li>
+          <a href="#secao9-4"><i class="fas fa-file-archive"></i> 9.4 Arquivos ZIP</a>
+        </li>
+        <li>
+          <a href="../pages/questoes_9.html"><i class="fas fa-question-circle"></i> Questões</a>
+        </li>
+        <!-- Novas seções serão adicionadas aqui -->
+      </ul>
+    </div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-icon">
+          <i class="fas fa-archive"></i>
+        </div>
+        <div class="badge-lab"><i class="fas fa-graduation-cap"></i> Módulo 9</div>
+        <h1>Archiving and Compression</h1>
+        <p style="font-size: 1.2rem; color: var(--text-dim); max-width: 700px; margin: 0 auto">
+          Aprenda a arquivar e compactar arquivos no Linux
+        </p>
+
+        <!-- NASA/SpaceX Section - substituindo imagens por ícones -->
+        <div class="space-grid">
+          <div class="space-item">
+            <i class="fas fa-rocket"></i>
+            <div class="title">32 space missions</div>
+            <div class="subtitle">completed with Linux</div>
+          </div>
+          <div class="space-item">
+            <i class="fas fa-robot"></i>
+            <div class="title">NASA's Curiosity Rover</div>
+            <div class="subtitle">exploring Mars with Linux</div>
+          </div>
+          <div class="space-item">
+            <i class="fas fa-space-shuttle"></i>
+            <div class="title">SpaceX</div>
+            <div class="subtitle">Dragon & Falcon 9 use Linux</div>
+          </div>
+        </div>
+        <p style="font-size: 0.7rem; color: var(--text-dim); margin-top: 1.5rem">
+          <i class="far fa-copyright"></i> Copyright © 2009 Network Development Group Inc.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTAINER PRINCIPAL -->
+    <div class="container">
+      <!-- SEÇÃO 9.1 - INTRODUÇÃO -->
+      <section id="secao9-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-archive"></i>
+          <span class="section-number">9.1</span> Introdução
+        </h2>
+        <div class="card">
+          <i class="fas fa-file-archive"></i>
+          <p>
+            Neste capítulo, discutimos como gerenciar arquivos de arquivamento na linha de comando. O arquivamento de arquivos é usado
+            quando um ou mais arquivos precisam ser transmitidos ou armazenados da forma mais eficiente possível. Há dois aspectos
+            fundamentais que este capítulo explora:
+          </p>
+
+          <ul style="margin: 1rem 0 1rem 2rem">
+            <li>
+              <strong>Archiving (Arquivamento):</strong> Combina múltiplos arquivos em um só, o que elimina a sobrecarga de arquivos
+              individuais e torna os arquivos mais fáceis de transmitir.
+            </li>
+            <li><strong>Compression (Compactação):</strong> Torna os arquivos menores removendo informações redundantes.</li>
+          </ul>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Considere Isto:</strong> Arquivos podem ser compactados individualmente, ou múltiplos arquivos podem ser combinados
+              em um único arquivo e então subsequentemente compactados. Este último ainda é referido como arquivamento. Quando um arquivo é
+              descompactado, e um ou mais arquivos são extraídos, isso é chamado de <strong>desarquivamento</strong> (un-archiving).</span
+            >
+          </div>
+
+          <p>Mesmo que o espaço em disco seja relativamente barato, o arquivamento e a compactação ainda têm valor:</p>
+
+          <ul style="margin: 1rem 0 1rem 2rem">
+            <li>
+              Quando se disponibiliza um grande número de arquivos, como o código fonte de uma aplicação ou uma coleção de documentos, é
+              mais fácil para as pessoas baixar um arquivo compactado do que baixar arquivos individualmente.
+            </li>
+            <li>Arquivos de log têm o hábito de encher discos, então é útil dividi-los por data e compactar as versões mais antigas.</li>
+            <li>
+              Ao fazer backup de diretórios, é mais fácil mantê-los todos em um único arquivo do que versionar (atualizar) cada arquivo.
+            </li>
+            <li>
+              Alguns dispositivos de streaming, como fitas magnéticas, têm melhor desempenho se você enviar um fluxo de dados em vez de
+              arquivos individuais.
+            </li>
+            <li>
+              Muitas vezes pode ser mais rápido compactar um arquivo antes de enviá-lo para uma unidade de fita ou através de uma rede mais
+              lenta e descompactá-lo na outra ponta do que enviá-lo descompactado.
+            </li>
+          </ul>
+
+          <p>É essencial que os administradores Linux se familiarizem com as ferramentas para arquivar e compactar arquivos.</p>
+        </div>
+      </section>
+      <!-- SEÇÃO 9.2 - COMPRESSING FILES -->
+      <section id="secao9-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-compress-alt"></i>
+          <span class="section-number">9.2</span> Compactando Arquivos
+        </h2>
+        <div class="card">
+          <i class="fas fa-compress"></i>
+          <p>
+            A compactação reduz a quantidade de dados necessária para armazenar ou transmitir um arquivo, armazenando-o de forma que o
+            arquivo possa ser restaurado. Um arquivo com texto legível por humanos pode ter palavras frequentemente usadas substituídas por
+            algo menor, ou uma imagem com um fundo sólido pode representar patches dessa cor por um código. A versão compactada do arquivo
+            normalmente não é visualizada ou utilizada; em vez disso, ela é descompactada antes do uso.
+          </p>
+
+          <p>
+            O <strong>algoritmo de compactação</strong> é um procedimento que o computador usa para codificar o arquivo original e, como
+            resultado, torná-lo menor. Os cientistas da computação pesquisam esses algoritmos e criam melhores que podem trabalhar mais
+            rápido ou tornar o arquivo de entrada menor.
+          </p>
+
+          <p>Ao falar sobre compactação, existem dois tipos:</p>
+
+          <ul style="margin: 1rem 0 1rem 2rem">
+            <li>
+              <strong>Lossless (Sem perda):</strong> Nenhuma informação é removida do arquivo. Compactar um arquivo e descompactá-lo deixa
+              algo idêntico ao original.
+            </li>
+            <li>
+              <strong>Lossy (Com perda):</strong> Informações podem ser removidas do arquivo. É compactado de tal forma que descompactar um
+              arquivo resultará em um arquivo ligeiramente diferente do original. Por exemplo, uma imagem com dois tons de verde sutilmente
+              diferentes pode ser tornada menor tratando esses dois tons como iguais. Frequentemente, o olho não percebe a diferença de
+              qualquer maneira.
+            </li>
+          </ul>
+
+          <p>
+            Geralmente, os olhos e ouvidos humanos não percebem pequenas imperfeições em imagens e áudio, especialmente quando exibidos em
+            um monitor ou reproduzidos em alto-falantes. A compactação com perda (lossy) frequentemente beneficia mídias porque resulta em
+            tamanhos de arquivo menores e as pessoas não percebem a diferença entre o original e a versão com os dados alterados. Para
+            coisas que devem permanecer intactas, como documentos, logs e software, você precisa de compactação sem perda (lossless).
+          </p>
+
+          <p>
+            A maioria dos formatos de imagem, como GIF, PNG e JPEG, implementam alguma forma de compactação. JPEGs usam compactação com
+            perda, enquanto GIFs e PNGs são compactados, mas sem perda. Você geralmente pode decidir quanta qualidade deseja preservar. Uma
+            qualidade menor resulta em um arquivo menor, mas após a descompactação, você pode notar artefatos como bordas ásperas ou
+            descolorações. Alta qualidade parecerá muito com a imagem original, mas o tamanho do arquivo será mais próximo do original.
+          </p>
+
+          <p>
+            Compactar um arquivo já compactado não o tornará menor. Este fato é frequentemente esquecido quando se trata de imagens, pois
+            elas já estão armazenadas em um formato compactado. Com compactação sem perda, essa múltipla compactação não é um problema, mas
+            se você compactar e descompactar um arquivo várias vezes usando um algoritmo com perda, eventualmente terá algo irreconhecível.
+          </p>
+
+          <p>
+            O Linux fornece várias ferramentas para compactar arquivos; a mais comum é o <code>gzip</code>. Aqui mostramos um arquivo antes
+            e depois da compactação:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ cd Documents
+sysadmin@localhost:~/Documents$ ls -l longfile*
+-rw-r--r-- 1 sysadmin sysadmin 66540 Dec 20  2017 longfile.txt
+sysadmin@localhost:~/Documents$ gzip longfile.txt
+sysadmin@localhost:~/Documents$ ls -l longfile*
+-rw-r--r-- 1 sysadmin sysadmin 341 Dec 20  2017 longfile.txt.gz</pre
+            >
+          </div>
+
+          <p>
+            No exemplo anterior, há um arquivo chamado <code>longfile.txt</code> que tem 66540 bytes. O arquivo é compactado invocando o
+            comando <code>gzip</code> com o nome do arquivo como o único argumento. Após esse comando ser concluído, o arquivo original
+            desaparece e uma versão compactada com a extensão de arquivo <code>.gz</code> é deixada em seu lugar. O tamanho do arquivo agora
+            é de 341 bytes.
+          </p>
+
+          <p>O comando <code>gzip</code> fornecerá esta informação, usando a opção <code>-l</code>, conforme mostrado aqui:</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Documents$ gzip -l longfile.txt.gz
+         compressed        uncompressed  ratio uncompressed_name
+                341               66540  99.5% longfile.txt</pre
+            >
+          </div>
+
+          <p>
+            A taxa de compactação é dada como 99,5%, uma redução impressionante ajudada pela informação repetitiva no arquivo original. Além
+            disso, quando o arquivo é descompactado, ele será chamado <code>longfile.txt</code> novamente.
+          </p>
+
+          <p>
+            Arquivos compactados podem ser restaurados à sua forma original usando o comando <code>gunzip</code> ou <code>gzip -d</code>.
+            Este processo é chamado de <strong>descompactação</strong>. Após o <code>gunzip</code> fazer seu trabalho, o arquivo
+            <code>longfile.txt</code> é restaurado ao seu tamanho e nome de arquivo originais.
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Documents$ gunzip longfile.txt.gz
+sysadmin@localhost:~/Documents$ ls -l longfile*
+-rw-r--r-- 1 sysadmin sysadmin 66540 Dec 20  2017 longfile.txt</pre
+            >
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Considere Isto:</strong> O comando <code>gunzip</code> é apenas um script que chama <code>gzip</code> com os
+              parâmetros corretos.</span
+            >
+          </div>
+
+          <p>
+            Existem outros comandos que operam de forma virtualmente idêntica ao <code>gzip</code> e <code>gunzip</code>. Estes incluem
+            <code>bzip2</code> e <code>bunzip2</code>, bem como <code>xz</code> e <code>unxz</code>.
+          </p>
+
+          <p>
+            O comando <code>gzip</code> usa o algoritmo de compactação de dados Lempel-Ziv, enquanto os utilitários <code>bzip</code> usam
+            um algoritmo de compactação diferente chamado Burrows-Wheeler block sorting, que pode compactar arquivos menores que o
+            <code>gzip</code> às custas de mais tempo de CPU. Esses arquivos podem ser reconhecidos porque têm extensão <code>.bz</code> ou
+            <code>.bz2</code> em vez de extensão <code>.gz</code>.
+          </p>
+
+          <p>
+            As ferramentas <code>xz</code> e <code>unxz</code> são funcionalmente semelhantes ao <code>gzip</code> e <code>gunzip</code>,
+            pois usam o algoritmo de cadeia Lempel-Ziv-Markov (LZMA), que pode resultar em tempos de CPU de descompactação mais baixos
+            comparáveis ao <code>gzip</code>, enquanto fornece as melhores taxas de compactação tipicamente associadas às ferramentas
+            <code>bzip2</code>. Arquivos compactados com o comando <code>xz</code> usam a extensão <code>.xz</code>.
+          </p>
+        </div>
+      </section>
+      <!-- SEÇÃO 9.3 - ARCHIVING FILES -->
+      <section id="secao9-3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-archive"></i>
+          <span class="section-number">9.3</span> Arquivando Arquivos
+        </h2>
+        <div class="card">
+          <i class="fas fa-boxes"></i>
+          <p>
+            Se você tivesse vários arquivos para enviar a alguém, poderia optar por compactar cada um individualmente. Você teria uma
+            quantidade menor de dados no total do que se enviasse arquivos descompactados, no entanto, ainda teria que lidar com muitos
+            arquivos de uma só vez.
+          </p>
+
+          <p>
+            Arquivamento é a solução para este problema. O utilitário UNIX tradicional para arquivar arquivos é chamado <code>tar</code>,
+            que é uma forma abreviada de <strong>T</strong>ape <strong>A</strong>rchive (Arquivo de Fita). Ele era usado para transmitir
+            muitos arquivos para uma fita para backups ou transferência de arquivos. O comando <code>tar</code> recebe vários arquivos e
+            cria um único arquivo de saída que pode ser dividido novamente nos arquivos originais na outra extremidade da transmissão.
+          </p>
+
+          <p>O comando <code>tar</code> tem três modos que são úteis para se familiarizar:</p>
+
+          <ul style="margin: 1rem 0 1rem 2rem">
+            <li><strong>Create (Criar):</strong> Cria um novo arquivo a partir de uma série de arquivos.</li>
+            <li><strong>Extract (Extrair):</strong> Retira um ou mais arquivos de um arquivo.</li>
+            <li><strong>List (Listar):</strong> Mostra o conteúdo do arquivo sem extrair.</li>
+          </ul>
+
+          <p>
+            Lembrar dos modos é a chave para descobrir as opções de linha de comando necessárias para fazer o que você deseja. Além do modo,
+            lembre-se de onde especificar o nome do arquivo, pois você pode estar inserindo vários nomes de arquivo em uma linha de comando.
+          </p>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Dica:</strong> O nome <code>tar</code> vem de "Tape Archive" (Arquivo de Fita), uma referência ao seu uso original
+              para backups em fitas magnéticas.</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 9.3.1 - CREATE MODE -->
+      <section id="secao9-3-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-plus-circle"></i>
+          <span class="section-number">9.3.1</span> Modo Create (Criar)
+        </h2>
+        <div class="card">
+          <i class="fas fa-box"></i>
+          <div class="terminal">
+            <pre>tar -c [-f ARCHIVE] [OPTIONS] [FILE...]</pre>
+          </div>
+
+          <p>Criar um arquivo com o comando <code>tar</code> requer duas opções nomeadas:</p>
+
+          <table class="table-custom">
+            <thead>
+              <tr>
+                <th>Opção</th>
+                <th>Função</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>-c</code></td>
+                <td>Criar um arquivo (create an archive).</td>
+              </tr>
+              <tr>
+                <td><code>-f ARCHIVE</code></td>
+                <td>Usar arquivo (use archive file).</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>O argumento <code>ARCHIVE</code> será o nome do arquivo resultante.</p>
+
+          <p>
+            Todos os argumentos restantes são considerados como nomes de arquivo de entrada, seja como um caractere curinga, uma lista de
+            arquivos, ou ambos.
+          </p>
+
+          <p>
+            O exemplo a seguir mostra um arquivo tar, também chamado de <strong>tarball</strong>, sendo criado a partir de múltiplos
+            arquivos. O primeiro argumento cria um arquivo chamado <code>alpha_files.tar</code>. A opção curinga <code>*</code> é usada para
+            incluir todos os arquivos que começam com <code>alpha</code> no arquivo:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Documents$ tar -cf alpha_files.tar alpha*
+sysadmin@localhost:~/Documents$ ls -l alpha_files.tar
+-rw-rw-r-- 1 sysadmin sysadmin 10240 Oct 31 17:07 alpha_files.tar</pre
+            >
+          </div>
+
+          <p>
+            O tamanho final do <code>alpha_files.tar</code> é de 10240 bytes. Normalmente, os arquivos tarball são ligeiramente maiores do
+            que os arquivos de entrada combinados devido às informações de overhead para recriar os arquivos originais. Tarballs podem ser
+            compactados para facilitar o transporte, seja usando <code>gzip</code> no arquivo ou fazendo o <code>tar</code> fazer isso com a
+            opção <code>-z</code>.
+          </p>
+
+          <table class="table-custom">
+            <thead>
+              <tr>
+                <th>Opção</th>
+                <th>Função</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>-z</code></td>
+                <td>Compactar (ou descompactar) um arquivo usando o comando <code>gzip</code>.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>O próximo exemplo mostra o mesmo comando do exemplo anterior, mas com a adição da opção <code>-z</code>.</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Documents$ tar -czf alpha_files.tar.gz alpha*
+sysadmin@localhost:~/Documents$ ls -l alpha_files.tar.gz
+-rw-rw-r-- 1 sysadmin sysadmin 417 Oct 31 17:15 alpha_files.tar.gz</pre
+            >
+          </div>
+
+          <p>
+            A saída é muito menor do que o próprio tarball, e o arquivo resultante é compatível com <code>gzip</code>, que pode ser usado
+            para visualizar os detalhes da compactação. O arquivo descompactado é do mesmo tamanho que seria se você o arquivasse em uma
+            etapa separada:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Documents$ gzip -l alpha_files.tar.gz
+         compressed        uncompressed  ratio uncompressed_name
+                417               10240  96.1% alpha_files.tar</pre
+            >
+          </div>
+
+          <p>
+            Embora as extensões de arquivo não afetem a forma como um arquivo é tratado, a convenção é usar <code>.tar</code> para tarballs,
+            e <code>.tar.gz</code> ou <code>.tgz</code> para tarballs compactados.
+          </p>
+
+          <p>
+            A compactação <code>bzip2</code> pode ser usada em vez do <code>gzip</code> substituindo a opção <code>-j</code> pela opção
+            <code>-z</code> e usando <code>.tar.bz2</code>, <code>.tbz</code> ou <code>.tbz2</code> como extensão de arquivo.
+          </p>
+
+          <table class="table-custom">
+            <thead>
+              <tr>
+                <th>Opção</th>
+                <th>Função</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>-j</code></td>
+                <td>Compactar (ou descompactar) um arquivo usando o comando <code>bzip2</code>.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>Por exemplo, para arquivar e compactar o diretório <code>School</code>:</p>
+
+          <div class="terminal">
+            <pre>sysadmin@localhost:~/Documents$ tar -cjf folders.tbz School</pre>
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Convenções de extensão:</strong> <code>.tar</code> (tarball), <code>.tar.gz</code> ou <code>.tgz</code> (compactado
+              com gzip), <code>.tar.bz2</code>, <code>.tbz</code> ou <code>.tbz2</code> (compactado com bzip2).</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 9.3.2 - LIST MODE -->
+      <section id="secao9-3-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-list"></i>
+          <span class="section-number">9.3.2</span> Modo List (Listar)
+        </h2>
+        <div class="card">
+          <i class="fas fa-list-ul"></i>
+          <div class="terminal">
+            <pre>tar -t [-f ARCHIVE] [OPTIONS]</pre>
+          </div>
+
+          <p>
+            Dado um arquivo tar, compactado ou não, você pode ver o que está nele usando a opção <code>-t</code>. O próximo exemplo usa três
+            opções:
+          </p>
+
+          <table class="table-custom">
+            <thead>
+              <tr>
+                <th>Opção</th>
+                <th>Função</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>-t</code></td>
+                <td>Listar os arquivos em um arquivo (list the files in an archive).</td>
+              </tr>
+              <tr>
+                <td><code>-j</code></td>
+                <td>Descompactar com o comando <code>bzip2</code> (decompress with bzip2 command).</td>
+              </tr>
+              <tr>
+                <td><code>-f ARCHIVE</code></td>
+                <td>Operar no arquivo fornecido (operate on the given archive).</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>Para listar o conteúdo do arquivo <code>folders.tbz</code>:</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Documents$ tar -tjf folders.tbz
+School/
+School/Engineering/
+School/Engineering/hello.sh
+School/Art/
+School/Art/linux.txt
+School/Math/
+School/Math/numbers.txt</pre
+            >
+          </div>
+
+          <p>
+            No exemplo, o diretório <code>School/</code> é prefixado aos arquivos. O comando <code>tar</code> irá recursivamente entrar em
+            subdiretórios automaticamente ao compactar e armazenará as informações de caminho dentro do arquivo.
+          </p>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Considere Isto:</strong> Para mostrar que este arquivo ainda não é nada especial, vamos listar o conteúdo do arquivo
+              em duas etapas usando um <strong>pipeline</strong>, o caractere <code>|</code>.</span
+            >
+          </div>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Documents$ bunzip2 -c folders.tbz | tar -t
+School/
+School/Engineering/
+School/Engineering/hello.sh
+School/Art/
+School/Art/linux.txt
+School/Math/
+School/Math/numbers.txt</pre
+            >
+          </div>
+
+          <p>
+            O lado esquerdo do pipeline é <code>bunzip2 -c folders.tbz</code>, que descompacta o arquivo, mas a opção <code>-c</code> envia
+            a saída para a tela. A saída é redirecionada para <code>tar -t</code>. Se você não especificar um arquivo com <code>-f</code>,
+            então o <code>tar</code> lerá da entrada padrão (standard input), que neste caso é o arquivo descompactado.
+          </p>
+
+          <div class="alert alert-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span><strong>Nota:</strong> Pipes e entradas padrão serão abordados em detalhes mais adiante no curso.</span>
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Nota:</strong> Os exemplos acima são projetados para demonstrar a capacidade do comando <code>tar</code> de entrar
+              recursivamente em subdiretórios. Os arquivos exibidos no exemplo não estão disponíveis no ambiente de máquina virtual deste
+              curso.</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 9.3.2 - LIST MODE -->
+      <section id="secao9-3-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-list"></i>
+          <span class="section-number">9.3.2</span> Modo List (Listar)
+        </h2>
+        <div class="card">
+          <i class="fas fa-list-ul"></i>
+          <div class="terminal">
+            <pre>tar -t [-f ARCHIVE] [OPTIONS]</pre>
+          </div>
+
+          <p>
+            Dado um arquivo tar, compactado ou não, você pode ver o que está nele usando a opção <code>-t</code>. O próximo exemplo usa três
+            opções:
+          </p>
+
+          <table class="table-custom">
+            <thead>
+              <tr>
+                <th>Opção</th>
+                <th>Função</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>-t</code></td>
+                <td>Listar os arquivos em um arquivo (list the files in an archive).</td>
+              </tr>
+              <tr>
+                <td><code>-j</code></td>
+                <td>Descompactar com o comando <code>bzip2</code> (decompress with a bzip2 command).</td>
+              </tr>
+              <tr>
+                <td><code>-f ARCHIVE</code></td>
+                <td>Operar no arquivo fornecido (operate on the given archive).</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>Para listar o conteúdo do arquivo <code>folders.tbz</code>:</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Documents$ tar -tjf folders.tbz
+School/
+School/Engineering/
+School/Engineering/hello.sh
+School/Art/
+School/Art/linux.txt
+School/Math/
+School/Math/numbers.txt</pre
+            >
+          </div>
+
+          <p>
+            No exemplo, o diretório <code>School/</code> é prefixado aos arquivos. O comando <code>tar</code> irá recursivamente entrar em
+            subdiretórios automaticamente ao compactar e armazenará as informações de caminho dentro do arquivo.
+          </p>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Considere Isto:</strong> Para mostrar que este arquivo ainda não é nada especial, vamos listar o conteúdo do arquivo
+              em duas etapas usando um <strong>pipeline</strong>, o caractere <code>|</code>.</span
+            >
+          </div>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Documents$ bunzip2 -c folders.tbz | tar -t
+School/
+School/Engineering/
+School/Engineering/hello.sh
+School/Art/
+School/Art/linux.txt
+School/Math/
+School/Math/numbers.txt</pre
+            >
+          </div>
+
+          <p>
+            O lado esquerdo do pipeline é <code>bunzip2 -c folders.tbz</code>, que descompacta o arquivo, mas a opção <code>-c</code> envia
+            a saída para a tela. A saída é redirecionada para <code>tar -t</code>. Se você não especificar um arquivo com <code>-f</code>,
+            então o <code>tar</code> lerá da entrada padrão (standard input), que neste caso é o arquivo descompactado.
+          </p>
+
+          <div class="alert alert-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span><strong>Nota:</strong> Pipes e entradas padrão serão abordados em detalhes mais adiante no curso.</span>
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Nota:</strong> Os exemplos acima são projetados para demonstrar a capacidade do comando <code>tar</code> de entrar
+              recursivamente em subdiretórios. Os arquivos exibidos no exemplo não estão disponíveis no ambiente de máquina virtual deste
+              curso.</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 9.3.3 - EXTRACT MODE -->
+      <section id="secao9-3-3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-folder-open"></i>
+          <span class="section-number">9.3.3</span> Modo Extract (Extrair)
+        </h2>
+        <div class="card">
+          <i class="fas fa-archive"></i>
+          <div class="terminal">
+            <pre>tar -x [-f ARCHIVE] [OPTIONS]</pre>
+          </div>
+
+          <p>
+            Criar arquivos é frequentemente usado para tornar múltiplos arquivos mais fáceis de mover. Antes de extrair os arquivos,
+            realoque-os para o diretório Downloads:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Documents$ cd ~
+sysadmin@localhost:~$ cp Documents/folders.tbz Downloads/folders.tbz
+sysadmin@localhost:~$ cd Downloads</pre
+            >
+          </div>
+
+          <p>
+            Finalmente, você pode extrair o arquivo com a opção <code>-x</code> depois que ele for copiado para um diretório diferente. O
+            exemplo a seguir usa um padrão semelhante ao anterior, especificando a operação, a compactação e um nome de arquivo para operar.
+          </p>
+
+          <table class="table-custom">
+            <thead>
+              <tr>
+                <th>Opção</th>
+                <th>Função</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>-x</code></td>
+                <td>Extrair arquivos de um arquivo (extract files from an archive).</td>
+              </tr>
+              <tr>
+                <td><code>-j</code></td>
+                <td>Descompactar com o comando <code>bzip2</code> (decompress with the bzip2 command).</td>
+              </tr>
+              <tr>
+                <td><code>-f ARCHIVE</code></td>
+                <td>Operar no arquivo fornecido (operate on the given archive).</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Downloads$ tar -xjf folders.tbz
+sysadmin@localhost:~/Downloads$ ls -l
+total 8
+drwx------ 5 sysadmin sysadmin 4096 Dec 20  2017 School
+-rw-rw-r-- 1 sysadmin sysadmin  413 Oct 31 18:37 folders.tbz</pre
+            >
+          </div>
+
+          <p>
+            O arquivo original permanece intacto e o novo diretório é criado. Dentro do diretório estão os diretórios e arquivos originais.
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Downloads$ cd School
+sysadmin@localhost:~/Downloads/School$ ls -l
+total 12
+drwx------ 2 sysadmin sysadmin 4096 Oct 31 17:45 Art
+drwx------ 2 sysadmin sysadmin 4096 Oct 31 17:47 Engineering
+drwx------ 2 sysadmin sysadmin 4096 Oct 31 17:46 Math</pre
+            >
+          </div>
+
+          <p>
+            Adicione a opção <code>-v</code> e você terá uma saída verbosa dos arquivos processados, tornando mais fácil acompanhar o que
+            está acontecendo:
+          </p>
+
+          <table class="table-custom">
+            <thead>
+              <tr>
+                <th>Opção</th>
+                <th>Função</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>-v</code></td>
+                <td>Listar verbosamente os arquivos processados (verbosely list the files processed).</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>O próximo exemplo repete o exemplo anterior, mas com a adição da opção <code>-v</code>:</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Downloads$ tar -xjvf folders.tbz
+School/
+School/Engineering/
+School/Engineering/hello.sh
+School/Art/
+School/Art/linux.txt
+School/Math/
+School/Math/numbers.txt</pre
+            >
+          </div>
+
+          <div class="alert alert-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span
+              ><strong>Importante:</strong> É importante manter a opção <code>-f</code> no final, pois o <code>tar</code> assume que o que
+              quer que siga esta opção é um nome de arquivo. No próximo exemplo, as opções <code>-f</code> e <code>-v</code> foram
+              transpostas, levando o <code>tar</code> a interpretar o comando como uma operação em um arquivo chamado <code>v</code>, que
+              não existe.</span
+            >
+          </div>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Downloads$ tar -xjfv folders.tbz 
+tar (child): v: Cannot open: No such file or directory
+tar (child): Error is not recoverable: exiting now
+tar: Child returned status 2
+tar: Error is not recoverable: exiting now</pre
+            >
+          </div>
+
+          <p>
+            Se você quiser apenas alguns arquivos do arquivo, adicione seus nomes ao final do comando, mas por padrão, eles devem
+            corresponder exatamente ao nome no arquivo ou usar um padrão.
+          </p>
+
+          <p>
+            O exemplo a seguir mostra o mesmo arquivo de antes, mas extraindo apenas o arquivo <code>School/Art/linux.txt</code>. A saída do
+            comando (já que o modo verboso foi solicitado com a opção <code>-v</code>) mostra que apenas um arquivo foi extraído:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Downloads$ tar -xjvf folders.tbz School/Art/linux.txt
+School/Art/linux.txt</pre
+            >
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Nota:</strong> O comando <code>tar</code> tem muitos outros recursos, como a capacidade de usar padrões ao extrair
+              arquivos, excluir certos arquivos ou enviar os arquivos extraídos para a tela em vez do disco. A documentação do
+              <code>tar</code> tem informações detalhadas.</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 9.4 - ZIP FILES -->
+      <section id="secao9-4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-file-archive"></i>
+          <span class="section-number">9.4</span> Arquivos ZIP
+        </h2>
+        <div class="card">
+          <i class="fas fa-file-zipper"></i>
+          <p>
+            O utilitário de arquivamento de fato no Microsoft é o arquivo ZIP. ZIP não é tão prevalente no Linux, mas é bem suportado pelos
+            comandos <code>zip</code> e <code>unzip</code>. No entanto, com <code>tar</code> e <code>gzip</code>/<code>gunzip</code>, os
+            mesmos comandos e opções podem ser usados de forma intercambiável para criar e extrair, mas este não é o caso com
+            <code>zip</code>. A mesma opção tem significados diferentes para os dois comandos diferentes.
+          </p>
+
+          <p>O modo padrão do <code>zip</code> é adicionar arquivos a um arquivo e compactá-lo.</p>
+
+          <div class="terminal">
+            <pre>zip [OPTIONS] [zipfile [file…]]</pre>
+          </div>
+
+          <p>
+            O primeiro argumento <code>zipfile</code> é o nome do arquivo a ser criado, depois disso, uma lista de arquivos a serem
+            adicionados. O exemplo a seguir mostra um arquivo compactado chamado <code>alpha_files.zip</code> sendo criado:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Documents$ zip alpha_files.zip alpha*
+  adding: alpha-first.txt (deflated 32%)
+  adding: alpha-second.txt (deflated 36%)
+  adding: alpha-third.txt (deflated 48%)
+  adding: alpha.txt (deflated 53%)
+  adding: alpha_files.tar.gz (stored 0%)</pre
+            >
+          </div>
+
+          <p>A saída mostra os arquivos e a taxa de compactação.</p>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Nota:</strong> É importante notar que o <code>tar</code> requer a opção <code>-f</code> para indicar que um nome de
+              arquivo está sendo passado, enquanto <code>zip</code> e <code>unzip</code> exigem um nome de arquivo e, portanto, não precisam
+              informar ao comando que um nome de arquivo está sendo passado.</span
+            >
+          </div>
+
+          <p>
+            O comando <code>zip</code> não irá recursivamente entrar em subdiretórios por padrão, o que é um comportamento diferente do
+            comando <code>tar</code>. Isto é, simplesmente adicionar <code>School</code> apenas adicionará o diretório vazio e não os
+            arquivos dentro dele. Se você quiser um comportamento semelhante ao <code>tar</code>, você deve usar a opção
+            <code>-r</code> para indicar que a recursão deve ser usada:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Documents$ zip -r School.zip School
+updating: School/ (stored 0%)
+updating: School/Engineering/ (stored 0%)
+updating: School/Engineering/hello.sh (deflated 88%)
+updating: School/Art/ (stored 0%)
+updating: School/Art/linux.txt (deflated 49%)
+updating: School/Math/ (stored 0%)
+updating: School/Math/numbers.txt (stored 0%)
+  adding: School/Art/red.txt (deflated 33%)
+  adding: School/Art/hidden.txt (deflated 1%)
+  adding: School/Art/animals.txt (deflated 2%)</pre
+            >
+          </div>
+
+          <p>
+            No exemplo acima, todos os arquivos sob o diretório <code>School</code> são adicionados porque ele usa a opção <code>-r</code>.
+            As primeiras linhas da saída indicam que os diretórios foram adicionados ao arquivo, mas caso contrário, a saída é semelhante ao
+            exemplo anterior.
+          </p>
+
+          <p>A opção <code>-l</code> (list) do comando <code>unzip</code> lista arquivos em arquivos <code>.zip</code>:</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Documents$ unzip -l School.zip
+Archive:  School.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+        0  2017-12-20 16:46   School/
+        0  2018-10-31 17:47   School/Engineering/
+      647  2018-10-31 17:47   School/Engineering/hello.sh
+        0  2018-10-31 19:31   School/Art/
+       83  2018-10-31 17:45   School/Art/linux.txt
+        0  2018-10-31 17:46   School/Math/
+       10  2018-10-31 17:46   School/Math/numbers.txt
+       51  2018-10-31 19:31   School/Art/red.txt
+       67  2018-10-31 19:30   School/Art/hidden.txt
+       42  2018-10-31 19:31   School/Art/animals.txt
+---------                     -------
+      900                     10 files</pre
+            >
+          </div>
+
+          <p>
+            Extrair os arquivos é como criar o arquivo, pois a operação padrão do comando <code>unzip</code> é extrair. Ele oferece várias
+            opções se descompactar arquivos for sobrescrever os existentes:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Documents$ unzip School.zip
+Archive:  School.zip
+replace School/Engineering/hello.sh? [y]es, [n]o, [A]ll, [N]one, [r]ename: n
+replace School/Art/linux.txt? [y]es, [n]o, [A]ll, [N]one, [r]ename: n
+replace School/Math/numbers.txt? [y]es, [n]o, [A]ll, [N]one, [r]ename: n
+replace School/Art/red.txt? [y]es, [n]o, [A]ll, [N]one, [r]ename: n
+replace School/Art/hidden.txt? [y]es, [n]o, [A]ll, [N]one, [r]ename: n
+replace School/Art/animals.txt? [y]es, [n]o, [A]ll, [N]one, [r]ename: n</pre
+            >
+          </div>
+
+          <p>Isso pode ser evitado copiando o arquivo zip para um novo diretório:</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Documents$ mkdir tmp
+sysadmin@localhost:~/Documents$ cp School.zip tmp/School.zip
+sysadmin@localhost:~/Documents$ cd tmp
+sysadmin@localhost:~/Documents/tmp$ unzip School.zip
+Archive:  School.zip
+   creating: School/
+   creating: School/Engineering/
+  inflating: School/Engineering/hello.sh
+   creating: School/Art/
+  inflating: School/Art/linux.txt
+   creating: School/Math/
+ extracting: School/Math/numbers.txt
+  inflating: School/Art/red.txt
+  inflating: School/Art/hidden.txt
+  inflating: School/Art/animals.txt</pre
+            >
+          </div>
+
+          <p>
+            Aqui, extraímos todos os arquivos do arquivo para o diretório atual. Assim como no <code>tar</code>, você pode passar nomes de
+            arquivo na linha de comando. Os exemplos abaixo mostram três tentativas diferentes de extrair um arquivo.
+          </p>
+
+          <p>
+            Primeiro, apenas o nome do arquivo é passado sem o componente do diretório. Como no <code>tar</code>, o arquivo não é
+            correspondido.
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Documents/tmp$ unzip School.zip linux.txt
+Archive:  School.zip
+caution: filename not matched:  linux.txt</pre
+            >
+          </div>
+
+          <p>Uma segunda tentativa passa o componente do diretório junto com o nome do arquivo, que extrai apenas esse arquivo.</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Documents/tmp$ unzip School.zip School/Math/numbers.txt
+Archive:  School.zip
+ extracting: School/Math/numbers.txt</pre
+            >
+          </div>
+
+          <p>
+            A terceira versão usa um caractere curinga, que extrai os quatro arquivos correspondentes ao padrão, assim como o
+            <code>tar</code>.
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~/Documents/tmp$ unzip School.zip School/Art/*t
+Archive:  School.zip
+  inflating: School/Art/linux.txt
+  inflating: School/Art/red.txt
+  inflating: School/Art/hidden.txt
+  inflating: School/Art/animals.txt</pre
+            >
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span
+              ><strong>Nota:</strong> As páginas de manual do <code>zip</code> e <code>unzip</code> descrevem outras coisas que você pode
+              fazer com essas ferramentas, como substituir arquivos dentro do arquivo, usar diferentes níveis de compactação e até mesmo
+              usar criptografia.</span
+            >
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p><i class="fab fa-linux"></i> NDG Linux Essentials - Módulo 9: Archiving and Compression</p>
+      <p>Conteúdo traduzido e adaptado seguindo os padrões de documentação Linux</p>
+    </footer>
+
+    <script>
+      // menu.js - Controle do Menu Lateral
+      class SidebarMenu {
+        constructor() {
+          this.sidebar = document.getElementById('sidebar')
+          this.overlay = document.getElementById('sidebarOverlay')
+          this.openBtn = document.getElementById('openMenu')
+          this.closeBtn = document.getElementById('closeMenu')
+          this.init()
+        }
+
+        init() {
+          if (!this.sidebar) return
+
+          if (this.openBtn) {
+            this.openBtn.addEventListener('click', () => this.open())
+          }
+          if (this.closeBtn) {
+            this.closeBtn.addEventListener('click', () => this.close())
+          }
+          if (this.overlay) {
+            this.overlay.addEventListener('click', () => this.close())
+          }
+
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.sidebar.classList.contains('open')) {
+              this.close()
+            }
+          })
+
+          const links = document.querySelectorAll('.sidebar .nav-modules a')
+          links.forEach((link) => {
+            link.addEventListener('click', () => this.close())
+          })
+        }
+
+        open() {
+          this.sidebar.classList.add('open')
+          this.overlay.classList.add('active')
+          document.body.style.overflow = 'hidden'
+        }
+
+        close() {
+          this.sidebar.classList.remove('open')
+          this.overlay.classList.remove('active')
+          document.body.style.overflow = ''
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        new SidebarMenu()
+      })
+    </script>
+  </body>
+</html>
