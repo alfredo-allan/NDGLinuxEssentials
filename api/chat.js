@@ -1,6 +1,4 @@
-// api/chat.js (Padrão CommonJS estável para Vercel)
-const fetch = require("node-fetch"); // A Vercel já fornece fetch nativo ou polyfill no ambiente Node moderno
-
+// api/chat.js (Usando fetch nativo do Node.js moderno na Vercel)
 module.exports = async (req, res) => {
   // Configuração estrita de CORS
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -32,10 +30,8 @@ CONTEXTO DO CURSO:
 ${context}`;
 
   try {
-    // Rota estável do Google para requisições brutas via POST
     const url = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
-    // Payload exato esperado pelo gateway da API
     const payload = {
       contents: [
         {
@@ -51,6 +47,7 @@ ${context}`;
       },
     };
 
+    // Usando o fetch nativo do ambiente (sem require externos)
     const response = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -67,7 +64,6 @@ ${context}`;
       });
     }
 
-    // Navega na árvore exata do JSON retornado pelo modelo v1 estável
     const answer = data.candidates?.[0]?.content?.parts?.[0]?.text;
 
     if (answer) {
