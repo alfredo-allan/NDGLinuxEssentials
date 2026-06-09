@@ -1,6 +1,5 @@
-// api/chat.js (Usando fetch nativo do Node.js moderno na Vercel)
+// api/chat.js (Ajustado especificamente para chaves GCP/Vertex que começam com AQ)
 module.exports = async (req, res) => {
-  // Configuração estrita de CORS
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
@@ -30,7 +29,8 @@ CONTEXTO DO CURSO:
 ${context}`;
 
   try {
-    const url = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+    // 💡 MUDANÇA CRÍTICA: Rota v1beta usando o parâmetro correto para chaves baseadas em projetos numéricos
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
     const payload = {
       contents: [
@@ -42,12 +42,11 @@ ${context}`;
         },
       ],
       generationConfig: {
-        temperature: 0.2,
-        maxOutputTokens: 800,
+        temperature: 0.1, // Mais baixo para evitar que a IA tente "inventar" caminhos fora do contexto
+        maxOutputTokens: 1000,
       },
     };
 
-    // Usando o fetch nativo do ambiente (sem require externos)
     const response = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -57,6 +56,7 @@ ${context}`;
     const data = await response.json();
 
     if (!response.ok) {
+      // Retorna o erro estruturado do Google para sabermos exatamente o motivo se falhar
       return res.status(response.status).json({
         error:
           data.error?.message ||
@@ -71,11 +71,13 @@ ${context}`;
     } else {
       return res
         .status(500)
-        .json({ error: "O modelo não retornou um bloco de texto válido." });
+        .json({
+          error: "O modelo respondeu, mas não gerou um bloco de texto válido.",
+        });
     }
   } catch (error) {
     return res
       .status(500)
-      .json({ error: `Erro no servidor da rota: ${error.message}` });
+      .json({ error: `Erro interno de rede na rota: ${error.message}` });
   }
 };
