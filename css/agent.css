@@ -1,0 +1,262 @@
+/* ==========================================================================
+   NDG LINUX ESSENTIALS - AGENTE DE IA (WIDGET FLUTUANTE)
+   ========================================================================== */
+
+/* Botão Flutuante (Trigger) */
+.ndg-agent-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  z-index: 2000;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ndg-agent-toggle:hover {
+  transform: translateY(-3px) scale(1.05);
+  border-color: var(--primary);
+  background: var(--bg-card-hover);
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+}
+
+/* Janela do Chat Principal */
+.ndg-agent-window {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 380px;
+  height: 550px;
+  max-height: calc(100vh - 120px);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  z-index: 2000;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Estado Escondido (Classe de Controle) */
+.ndg-agent-window.ng-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px) scale(0.95);
+}
+
+/* Cabeçalho do Chat */
+.ndg-agent-header {
+  background: #161616;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.ndg-agent-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ndg-agent-brand i {
+  color: var(--primary);
+  font-size: 1.4rem;
+}
+
+.ndg-agent-brand-info h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.ndg-agent-brand-info span {
+  font-size: 0.75rem;
+  color: var(--primary);
+  font-family: monospace;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ndg-agent-brand-info span::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--primary);
+  border-radius: 50%;
+}
+
+.ndg-agent-close {
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.ndg-agent-close:hover {
+  color: var(--danger);
+}
+
+/* Área de Mensagens */
+.ndg-agent-messages {
+  flex: 1;
+  padding: 1.2rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: var(--bg-dark);
+}
+
+/* Balões de Mensagem */
+.ng-msg {
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  max-width: 85%;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
+  word-wrap: break-word;
+}
+
+.ng-msg.system {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  align-self: flex-start;
+  border-left: 3px solid var(--secondary);
+}
+
+.ng-msg.user {
+  background: rgba(0, 120, 212, 0.15);
+  border: 1px solid rgba(0, 120, 212, 0.3);
+  color: var(--text);
+  align-self: flex-end;
+  border-right: 3px solid var(--secondary);
+}
+
+.ng-msg.ai {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  align-self: flex-start;
+  border-left: 3px solid var(--primary);
+}
+
+/* Códigos e Terminais dentro da IA */
+.ng-msg.ai code {
+  font-family: 'Courier New', monospace;
+  color: var(--primary);
+  background: #0d1117;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+/* Loading state */
+.ng-msg.loading {
+  background: var(--bg-card);
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  font-family: monospace;
+}
+
+/* Campo de Input Rodapé */
+.ndg-agent-input-zone {
+  padding: 0.8rem;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.ndg-agent-input-zone input {
+  flex: 1;
+  background: var(--bg-dark);
+  border: 1px solid var(--border);
+  padding: 0.6rem 1rem;
+  color: var(--text);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.ndg-agent-input-zone input:focus {
+  border-color: var(--primary);
+}
+
+.ndg-agent-send-btn {
+  background: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.ndg-agent-send-btn:hover {
+  background: var(--primary);
+  color: var(--bg-dark);
+}
+
+/* ==========================================================================
+   📱 OTIMIZAÇÃO RESPONSIVA (MOBILE FIRST COMPLIANT)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .ndg-agent-toggle {
+    bottom: 15px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+
+  /* Janela de Chat vira Fullscreen no Mobile para melhor usabilidade */
+  .ndg-agent-window {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+    border: none;
+    z-index: 2001; /* Fica acima da top-bar mobile */
+  }
+
+  .ndg-agent-window.ng-hidden {
+    transform: translateY(100%); /* Desliza suave de baixo para cima */
+  }
+
+  .ndg-agent-header {
+    padding-top: env(safe-area-inset-top, 1rem); /* Suporte a notch de celulares */
+  }
+}

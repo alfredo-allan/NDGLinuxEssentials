@@ -2,21 +2,12 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>NDG Linux Essentials | Módulo 4 - Open Source e Licenciamento</title>
     <!-- Font Awesome 6 -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <!-- Google Fonts Inter -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../css/styles.css" />
   </head>
   <body>
@@ -26,12 +17,8 @@
         <i class="fas fa-bars"></i>
         <span>Menu</span>
       </button>
-      <a href="../index.html" class="top-bar-brand">
-        <i class="fab fa-linux"></i> NDG Linux Essentials
-      </a>
-      <a href="../index.html" class="btn-outline">
-        <i class="fas fa-home"></i> Voltar
-      </a>
+      <a href="../index.html" class="top-bar-brand"> <i class="fab fa-linux"></i> NDG Linux Essentials </a>
+      <a href="../index.html" class="btn-outline"> <i class="fas fa-home"></i> Voltar </a>
     </div>
 
     <!-- Sidebar -->
@@ -44,44 +31,25 @@
       </div>
       <ul class="nav-modules">
         <li>
-          <a href="#secao4-1"
-            ><i class="fas fa-question-circle"></i> 4.1 Introdução ao Open
-            Source</a
-          >
+          <a href="#secao4-1"><i class="fas fa-question-circle"></i> 4.1 Introdução ao Open Source</a>
         </li>
         <li>
-          <a href="#secao4-2"
-            ><i class="fas fa-question-circle"></i> 4.2 Licenciamento de Código
-            Aberto</a
-          >
+          <a href="#secao4-2"><i class="fas fa-question-circle"></i> 4.2 Licenciamento de Código Aberto</a>
         </li>
         <li>
-          <a href="#secao4-2-1"
-            ><i class="fas fa-question-circle"></i> 4.2.1 A Free Software
-            Foundation</a
-          >
+          <a href="#secao4-2-1"><i class="fas fa-question-circle"></i> 4.2.1 A Free Software Foundation</a>
         </li>
         <li>
-          <a href="#secao4-2-2"
-            ><i class="fas fa-question-circle"></i> 4.2.2 A Open Source
-            Initiative</a
-          >
+          <a href="#secao4-2-2"><i class="fas fa-question-circle"></i> 4.2.2 A Open Source Initiative</a>
         </li>
         <li>
-          <a href="#secao4-2-3"
-            ><i class="fas fa-question-circle"></i> 4.2.3 Creative Commons</a
-          >
+          <a href="#secao4-2-3"><i class="fas fa-question-circle"></i> 4.2.3 Creative Commons</a>
         </li>
         <li>
-          <a href="#secao4-3"
-            ><i class="fas fa-question-circle"></i> 4.3 Modelos de Negócio em
-            Código Aberto</a
-          >
+          <a href="#secao4-3"><i class="fas fa-question-circle"></i> 4.3 Modelos de Negócio em Código Aberto</a>
         </li>
         <li>
-          <a href="../pages/questoes_4.html"
-            ><i class="fas fa-question-circle"></i> Questões</a
-          >
+          <a href="../pages/questoes_4.html"><i class="fas fa-question-circle"></i> Questões</a>
         </li>
         <!-- Novas seções serão adicionadas aqui -->
       </ul>
@@ -93,24 +61,13 @@
     <!-- Hero Section -->
     <section class="hero">
       <div class="container">
-        <div class="badge-lab">
-          <i class="fas fa-graduation-cap"></i> NDG Linux Essentials | Módulo 4
-        </div>
+        <div class="badge-lab"><i class="fas fa-graduation-cap"></i> NDG Linux Essentials | Módulo 4</div>
         <h1>Open Source Software and Licensing</h1>
         <p>Software de Código Aberto e Licenciamento</p>
         <div style="margin-top: 1.5rem">
-          <i
-            class="fas fa-code-branch"
-            style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"
-          ></i>
-          <i
-            class="fas fa-balance-scale"
-            style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"
-          ></i>
-          <i
-            class="fab fa-linux"
-            style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"
-          ></i>
+          <i class="fas fa-code-branch" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-balance-scale" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fab fa-linux" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
         </div>
       </div>
     </section>
@@ -127,75 +84,57 @@
           <i class="fas fa-code"></i>
           <p>
             Projetos de software assumem a forma de
-            <strong>código-fonte</strong>, que é um conjunto legível de
-            instruções de computador. Como o código-fonte não é entendido
-            diretamente pelo computador, ele deve ser compilado em instruções de
-            máquina por um <strong>compilador</strong>. O compilador é um
-            programa especial que reúne todos os arquivos de código-fonte e gera
-            instruções que podem ser executadas no computador, como pelo kernel
-            Linux.
+            <strong>código-fonte</strong>, que é um conjunto legível de instruções de computador. Como o código-fonte não é entendido
+            diretamente pelo computador, ele deve ser compilado em instruções de máquina por um <strong>compilador</strong>. O compilador é
+            um programa especial que reúne todos os arquivos de código-fonte e gera instruções que podem ser executadas no computador, como
+            pelo kernel Linux.
           </p>
         </div>
 
         <div class="card">
           <i class="fas fa-lock"></i>
           <p>
-            Historicamente, o software comercial tem sido vendido sob uma
-            licença de <strong>código fechado (closed source)</strong>, o que
-            significa que os usuários têm o direito de usar o código de máquina,
-            também conhecido como binário ou executável, mas não podem ver o
-            código-fonte. Frequentemente, a licença afirma explicitamente que os
-            usuários não podem tentar fazer engenharia reversa do código de
-            máquina de volta para o código-fonte para descobrir o que ele faz.
+            Historicamente, o software comercial tem sido vendido sob uma licença de <strong>código fechado (closed source)</strong>, o que
+            significa que os usuários têm o direito de usar o código de máquina, também conhecido como binário ou executável, mas não podem
+            ver o código-fonte. Frequentemente, a licença afirma explicitamente que os usuários não podem tentar fazer engenharia reversa do
+            código de máquina de volta para o código-fonte para descobrir o que ele faz.
           </p>
         </div>
 
         <div class="alert alert-info">
           <i class="fas fa-lightbulb"></i>
-          <strong>Considere Isto:</strong> Código-fonte compilado em programas
-          binários é um método de criar programas e executar instruções
-          computacionais. Outro é os muitos tipos de linguagens interpretadas,
-          como PERL, Python e até scripts BASH, onde o código não é compilado,
-          mas alimentado para um programa interpretador, tipicamente um
-          executável binário que entende e implementa as instruções contidas no
-          código-fonte ou scripts.
+          <strong>Considere Isto:</strong> Código-fonte compilado em programas binários é um método de criar programas e executar instruções
+          computacionais. Outro é os muitos tipos de linguagens interpretadas, como PERL, Python e até scripts BASH, onde o código não é
+          compilado, mas alimentado para um programa interpretador, tipicamente um executável binário que entende e implementa as instruções
+          contidas no código-fonte ou scripts.
         </div>
 
         <div class="card">
           <i class="fas fa-history"></i>
           <p>
             O desenvolvimento do Linux acompanha de perto a ascensão do
-            <strong>software de código aberto (open source)</strong>. No início
-            existia o shareware, programas disponíveis gratuitamente onde os
-            usuários não tinham necessariamente acesso ao código-fonte. Havia
-            muitas coisas boas nisso, mas também era problemático porque
-            programas maliciosos podiam ser disfarçados como jogos inocentes,
-            protetores de tela e utilitários.
+            <strong>software de código aberto (open source)</strong>. No início existia o shareware, programas disponíveis gratuitamente
+            onde os usuários não tinham necessariamente acesso ao código-fonte. Havia muitas coisas boas nisso, mas também era problemático
+            porque programas maliciosos podiam ser disfarçados como jogos inocentes, protetores de tela e utilitários.
           </p>
         </div>
 
         <div class="card">
           <i class="fas fa-eye"></i>
           <p>
-            O <strong>código aberto</strong> adota uma visão centrada no
-            código-fonte. A filosofia do open source é que os usuários têm o
-            direito de obter o código-fonte do software, e de expandir e
-            modificar programas para seu próprio uso. Isso também significava
-            que o código poderia ser inspecionado quanto a backdoors, vírus e
-            spyware. Ao criar uma comunidade de desenvolvedores e usuários, a
-            responsabilidade por bugs, vulnerabilidades de segurança e problemas
-            de compatibilidade tornou-se uma responsabilidade compartilhada.
-            Esta nova comunidade global de entusiastas de computadores foi
-            impulsionada pela crescente disponibilidade de serviços de internet
-            mais rápidos e da world wide web.
+            O <strong>código aberto</strong> adota uma visão centrada no código-fonte. A filosofia do open source é que os usuários têm o
+            direito de obter o código-fonte do software, e de expandir e modificar programas para seu próprio uso. Isso também significava
+            que o código poderia ser inspecionado quanto a backdoors, vírus e spyware. Ao criar uma comunidade de desenvolvedores e
+            usuários, a responsabilidade por bugs, vulnerabilidades de segurança e problemas de compatibilidade tornou-se uma
+            responsabilidade compartilhada. Esta nova comunidade global de entusiastas de computadores foi impulsionada pela crescente
+            disponibilidade de serviços de internet mais rápidos e da world wide web.
           </p>
         </div>
 
         <div class="card">
           <i class="fas fa-sitemap"></i>
           <p>
-            Existem muitas variantes diferentes de código aberto, mas todas
-            concordam que os usuários devem ter acesso ao código-fonte. Onde
+            Existem muitas variantes diferentes de código aberto, mas todas concordam que os usuários devem ter acesso ao código-fonte. Onde
             elas diferem é em como se pode, ou se deve, redistribuir alterações.
           </p>
         </div>
@@ -203,127 +142,84 @@
         <div class="card">
           <i class="fab fa-linux"></i>
           <p>
-            O Linux adotou esta filosofia com grande sucesso. Como o Linux foi
-            escrito na linguagem de programação C, e espelhava o design e a
-            funcionalidade de sistemas UNIX já estabelecidos, tornou-se
-            naturalmente um fórum onde as pessoas podiam desenvolver e
-            compartilhar novas ideias. Livres das restrições de plataformas de
-            hardware e software proprietárias, um grande número de programadores
-            muito habilidosos pôde contribuir para as várias distribuições,
-            resultando em software que é frequentemente mais robusto, estável,
-            adaptável e, francamente, melhor do que as ofertas proprietárias e
-            de código fechado que dominaram as décadas anteriores.
+            O Linux adotou esta filosofia com grande sucesso. Como o Linux foi escrito na linguagem de programação C, e espelhava o design e
+            a funcionalidade de sistemas UNIX já estabelecidos, tornou-se naturalmente um fórum onde as pessoas podiam desenvolver e
+            compartilhar novas ideias. Livres das restrições de plataformas de hardware e software proprietárias, um grande número de
+            programadores muito habilidosos pôde contribuir para as várias distribuições, resultando em software que é frequentemente mais
+            robusto, estável, adaptável e, francamente, melhor do que as ofertas proprietárias e de código fechado que dominaram as décadas
+            anteriores.
           </p>
         </div>
 
         <div class="card">
           <i class="fas fa-building"></i>
           <p>
-            Grandes organizações estavam compreensivelmente suspeitas em usar
-            software construído desta nova maneira, mas com o tempo perceberam
-            que seus melhores programadores estavam trabalhando em projetos open
-            source baseados em Linux em seu tempo livre. Logo, servidores Linux
-            e programas open source começaram a superar os caros sistemas
-            proprietários já existentes. Quando chegou a hora de atualizar
-            hardware obsoleto, os mesmos programadores, engenheiros e
-            administradores de sistema que começaram a trabalhar com Linux como
-            hobby conseguiram convencer seus chefes a dar uma chance ao Linux. O
-            resto é, como se diz, história.
+            Grandes organizações estavam compreensivelmente suspeitas em usar software construído desta nova maneira, mas com o tempo
+            perceberam que seus melhores programadores estavam trabalhando em projetos open source baseados em Linux em seu tempo livre.
+            Logo, servidores Linux e programas open source começaram a superar os caros sistemas proprietários já existentes. Quando chegou
+            a hora de atualizar hardware obsoleto, os mesmos programadores, engenheiros e administradores de sistema que começaram a
+            trabalhar com Linux como hobby conseguiram convencer seus chefes a dar uma chance ao Linux. O resto é, como se diz, história.
           </p>
         </div>
 
         <div class="card">
           <i class="fas fa-microchip"></i>
           <p>
-            Antes do desenvolvimento do Linux, muitas aplicações corporativas e
-            científicas rodavam em sistemas UNIX proprietários. Empresas,
-            universidades e governos que operam grandes fazendas de servidores
-            gostavam da estabilidade e relativa facilidade de desenvolvimento de
-            aplicações que estas plataformas ofereciam.
+            Antes do desenvolvimento do Linux, muitas aplicações corporativas e científicas rodavam em sistemas UNIX proprietários.
+            Empresas, universidades e governos que operam grandes fazendas de servidores gostavam da estabilidade e relativa facilidade de
+            desenvolvimento de aplicações que estas plataformas ofereciam.
           </p>
         </div>
 
         <div class="card">
           <i class="fas fa-calendar-alt"></i>
           <p>
-            O UNIX foi inicialmente criado em <strong>1969</strong>. Na sua
-            quarta edição, em <strong>1973</strong>, foi reescrito na linguagem
-            de programação C que ainda é proeminente hoje. Em
-            <strong>1984</strong>, a Universidade da Califórnia Berkeley lançou
-            o 4.2BSD que introduziu o <strong>TCP/IP</strong>, a especificação
-            de rede que sustenta a Internet. No início dos anos 1990, quando o
-            desenvolvimento do Linux começou, diferentes empresas desenvolvendo
-            sistemas operacionais UNIX perceberam que seus sistemas precisavam
-            ser compatíveis e começaram a trabalhar na especificação
-            <strong>X/Open</strong> que ainda é usada hoje.
+            O UNIX foi inicialmente criado em <strong>1969</strong>. Na sua quarta edição, em <strong>1973</strong>, foi reescrito na
+            linguagem de programação C que ainda é proeminente hoje. Em <strong>1984</strong>, a Universidade da Califórnia Berkeley lançou
+            o 4.2BSD que introduziu o <strong>TCP/IP</strong>, a especificação de rede que sustenta a Internet. No início dos anos 1990,
+            quando o desenvolvimento do Linux começou, diferentes empresas desenvolvendo sistemas operacionais UNIX perceberam que seus
+            sistemas precisavam ser compatíveis e começaram a trabalhar na especificação <strong>X/Open</strong> que ainda é usada hoje.
           </p>
         </div>
 
         <div class="card">
           <i class="fas fa-handshake"></i>
           <p>
-            Ao longo dos anos, cientistas da computação e as organizações que os
-            empregam perceberam o benefício de sistemas que fornecem ferramentas
-            familiares e maneiras consistentes de realizar tarefas específicas.
-            A padronização das
+            Ao longo dos anos, cientistas da computação e as organizações que os empregam perceberam o benefício de sistemas que fornecem
+            ferramentas familiares e maneiras consistentes de realizar tarefas específicas. A padronização das
             <strong>interfaces de programação de aplicações (APIs)</strong>
-            permite que programas escritos para um sistema operacional UNIX ou
-            Linux específico sejam portados (convertidos) relativamente fácil
-            para rodar em outro. Assim, embora sistemas UNIX proprietários ainda
-            estejam em uso em todo o mundo em ambientes onde soluções
-            "certificadas" são preferidas, a interoperabilidade destes sistemas
-            juntamente com computadores Linux é valorizada pela indústria,
-            academia e governos que os utilizam.
+            permite que programas escritos para um sistema operacional UNIX ou Linux específico sejam portados (convertidos) relativamente
+            fácil para rodar em outro. Assim, embora sistemas UNIX proprietários ainda estejam em uso em todo o mundo em ambientes onde
+            soluções "certificadas" são preferidas, a interoperabilidade destes sistemas juntamente com computadores Linux é valorizada pela
+            indústria, academia e governos que os utilizam.
           </p>
         </div>
 
         <div class="alert alert-success">
           <i class="fas fa-certificate"></i>
-          <strong>Importância dos Padrões:</strong> A importância das
-          organizações de padrões não pode ser subestimada. Grupos como o
-          <strong
-            >IEEE (Institute of Electrical and Electronics Engineers)</strong
-          >
+          <strong>Importância dos Padrões:</strong> A importância das organizações de padrões não pode ser subestimada. Grupos como o
+          <strong>IEEE (Institute of Electrical and Electronics Engineers)</strong>
           e
-          <strong>POSIX (Portable Operating System Interface)</strong> permitem
-          que profissionais de diferentes empresas e instituições colaborem em
-          especificações que tornam possível que diferentes sistemas
-          operacionais e programas trabalhem juntos.
+          <strong>POSIX (Portable Operating System Interface)</strong> permitem que profissionais de diferentes empresas e instituições
+          colaborem em especificações que tornam possível que diferentes sistemas operacionais e programas trabalhem juntos.
         </div>
 
         <div class="card">
           <i class="fas fa-chart-line"></i>
           <p>
-            Não importa se um programa é de código fechado ou aberto, simples ou
-            complexo, se for escrito para esses padrões, outros poderão usá-lo e
-            modificá-lo no futuro. Cada inovação na computação é construída
-            sobre o trabalho de outros que vieram antes. O software de código
-            aberto é uma colaboração de diferentes pessoas com diferentes
-            necessidades e origens, todos trabalhando juntos para fazer algo
-            melhor do que qualquer um deles poderia ter feito individualmente.
-            Os padrões são o que tornam isso possível, e as muitas organizações
-            que os criam, mantêm e promovem são integrais para a indústria.
+            Não importa se um programa é de código fechado ou aberto, simples ou complexo, se for escrito para esses padrões, outros poderão
+            usá-lo e modificá-lo no futuro. Cada inovação na computação é construída sobre o trabalho de outros que vieram antes. O software
+            de código aberto é uma colaboração de diferentes pessoas com diferentes necessidades e origens, todos trabalhando juntos para
+            fazer algo melhor do que qualquer um deles poderia ter feito individualmente. Os padrões são o que tornam isso possível, e as
+            muitas organizações que os criam, mantêm e promovem são integrais para a indústria.
           </p>
         </div>
 
         <div class="alert alert-info">
           <i class="fas fa-copyright"></i>
-          <div
-            style="
-              display: flex;
-              align-items: center;
-              gap: 1rem;
-              flex-wrap: wrap;
-              justify-content: space-between;
-            "
-          >
-            <span
-              ><i class="fab fa-linux"></i> Linux é open source e desenvolvido
-              por uma comunidade que o utiliza em todo o mundo.</span
-            >
-            <span style="color: var(--text-dim); font-size: 0.8rem"
-              >© 2019 Network Development Group Inc.</span
-            >
+          <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; justify-content: space-between">
+            <span><i class="fab fa-linux"></i> Linux é open source e desenvolvido por uma comunidade que o utiliza em todo o mundo.</span>
+            <span style="color: var(--text-dim); font-size: 0.8rem">© 2019 Network Development Group Inc.</span>
           </div>
         </div>
       </section>
@@ -336,22 +232,12 @@
 
         <div class="card">
           <i class="fas fa-comment-dollar"></i>
-          <p>
-            Ao falar sobre compra de software, existem três componentes
-            distintos:
-          </p>
+          <p>Ao falar sobre compra de software, existem três componentes distintos:</p>
           <ul style="margin-top: 0.75rem; margin-left: 1.5rem">
+            <li><strong>Propriedade (Ownership)</strong> – Quem possui a propriedade intelectual por trás do software?</li>
+            <li><strong>Transferência de Dinheiro</strong> – Como o dinheiro muda de mãos, se é que muda?</li>
             <li>
-              <strong>Propriedade (Ownership)</strong> – Quem possui a
-              propriedade intelectual por trás do software?
-            </li>
-            <li>
-              <strong>Transferência de Dinheiro</strong> – Como o dinheiro muda
-              de mãos, se é que muda?
-            </li>
-            <li>
-              <strong>Licenciamento (Licensing)</strong> – O que você recebe? O
-              que você pode fazer com o software? Pode usá-lo em apenas um
+              <strong>Licenciamento (Licensing)</strong> – O que você recebe? O que você pode fazer com o software? Pode usá-lo em apenas um
               computador? Pode dar para outra pessoa?
             </li>
           </ul>
@@ -361,12 +247,9 @@
           <i class="fas fa-copyright"></i>
           <p>
             Na maioria dos casos, a
-            <strong>propriedade do software</strong> permanece com a pessoa ou
-            empresa que o criou. Os usuários recebem apenas uma licença para
-            usar o software; isso é uma questão de lei de direitos autorais. A
-            transferência de dinheiro depende do modelo de negócios do criador.
-            É o <strong>licenciamento</strong> que diferencia o software de
-            código aberto do software de código fechado.
+            <strong>propriedade do software</strong> permanece com a pessoa ou empresa que o criou. Os usuários recebem apenas uma licença
+            para usar o software; isso é uma questão de lei de direitos autorais. A transferência de dinheiro depende do modelo de negócios
+            do criador. É o <strong>licenciamento</strong> que diferencia o software de código aberto do software de código fechado.
           </p>
         </div>
 
@@ -374,76 +257,54 @@
           <i class="fab fa-windows"></i>
           <p>Dois exemplos contrastantes ajudarão a começar:</p>
           <p>
-            Com o <strong>Microsoft Windows</strong>, a Microsoft Corporation
-            possui a propriedade intelectual. A licença em si, o
-            <strong>End User License Agreement (EULA)</strong>, é um documento
-            legal personalizado que você deve clicar, indicando sua aceitação,
-            para instalar o software. A Microsoft mantém o código-fonte e
-            distribui apenas cópias binárias através de canais autorizados. Para
-            a maioria dos produtos de consumo, você pode instalar o software em
-            um computador e não pode fazer cópias do disco, exceto para backup.
-            Você não pode fazer engenharia reversa do software. Você paga por
-            uma cópia do software, que lhe dá atualizações menores, mas não
-            atualizações principais.
+            Com o <strong>Microsoft Windows</strong>, a Microsoft Corporation possui a propriedade intelectual. A licença em si, o
+            <strong>End User License Agreement (EULA)</strong>, é um documento legal personalizado que você deve clicar, indicando sua
+            aceitação, para instalar o software. A Microsoft mantém o código-fonte e distribui apenas cópias binárias através de canais
+            autorizados. Para a maioria dos produtos de consumo, você pode instalar o software em um computador e não pode fazer cópias do
+            disco, exceto para backup. Você não pode fazer engenharia reversa do software. Você paga por uma cópia do software, que lhe dá
+            atualizações menores, mas não atualizações principais.
           </p>
         </div>
 
         <div class="card">
           <i class="fab fa-linux"></i>
           <p>
-            O <strong>Linux</strong> é propriedade de Linus Torvalds. Ele
-            colocou o código sob uma licença chamada
-            <strong>GNU General Public License version 2 (GPLv2)</strong>. Esta
-            licença, entre outras coisas, diz que o código-fonte deve ser
-            disponibilizado a qualquer pessoa que pedir e que qualquer pessoa
-            pode fazer alterações. Uma ressalva é que se alguém fizer alterações
-            e as distribuir, deve colocar as alterações sob a mesma licença para
-            que outros possam se beneficiar. A GPLv2 também diz que ninguém pode
-            cobrar pela distribuição do código-fonte, exceto pelos custos reais
-            de fazê-lo (como copiá-lo para mídia removível).
+            O <strong>Linux</strong> é propriedade de Linus Torvalds. Ele colocou o código sob uma licença chamada
+            <strong>GNU General Public License version 2 (GPLv2)</strong>. Esta licença, entre outras coisas, diz que o código-fonte deve
+            ser disponibilizado a qualquer pessoa que pedir e que qualquer pessoa pode fazer alterações. Uma ressalva é que se alguém fizer
+            alterações e as distribuir, deve colocar as alterações sob a mesma licença para que outros possam se beneficiar. A GPLv2 também
+            diz que ninguém pode cobrar pela distribuição do código-fonte, exceto pelos custos reais de fazê-lo (como copiá-lo para mídia
+            removível).
           </p>
         </div>
 
         <div class="card">
           <i class="fas fa-hand-peace"></i>
           <p>
-            Em geral, quando alguém cria algo, também adquire o direito de
-            decidir como será usado e distribuído.
-            <strong
-              >Software Livre e de Código Aberto (FOSS - Free and Open Source
-              Software)</strong
-            >
-            refere-se a software onde este direito foi cedido; qualquer pessoa
-            pode visualizar o código-fonte e redistribuí-lo. Linus Torvalds fez
-            isso com o Linux – mesmo tendo criado o Linux, ele não pode proibir
-            alguém de usá-lo em seu computador porque cedeu esse direito através
-            da licença GPLv2.
+            Em geral, quando alguém cria algo, também adquire o direito de decidir como será usado e distribuído.
+            <strong>Software Livre e de Código Aberto (FOSS - Free and Open Source Software)</strong>
+            refere-se a software onde este direito foi cedido; qualquer pessoa pode visualizar o código-fonte e redistribuí-lo. Linus
+            Torvalds fez isso com o Linux – mesmo tendo criado o Linux, ele não pode proibir alguém de usá-lo em seu computador porque cedeu
+            esse direito através da licença GPLv2.
           </p>
         </div>
 
         <div class="alert alert-info">
           <i class="fas fa-info-circle"></i>
-          <strong>Software Livre vs Código Aberto:</strong> Embora
-          frequentemente usados como sinônimos, há uma diferença sutil.
-          "Software Livre" (Free Software) enfatiza liberdades éticas, enquanto
-          "Código Aberto" (Open Source) foca nos benefícios práticos do
-          desenvolvimento colaborativo. Ambos compartilham o princípio do acesso
-          ao código-fonte.
+          <strong>Software Livre vs Código Aberto:</strong> Embora frequentemente usados como sinônimos, há uma diferença sutil. "Software
+          Livre" (Free Software) enfatiza liberdades éticas, enquanto "Código Aberto" (Open Source) foca nos benefícios práticos do
+          desenvolvimento colaborativo. Ambos compartilham o princípio do acesso ao código-fonte.
         </div>
 
         <div class="card">
           <i class="fas fa-gavel"></i>
           <p>
-            O licenciamento de software é uma questão política, portanto não é
-            surpresa que existam muitas opiniões diferentes. Organizações
-            criaram suas próprias licenças que incorporam suas visões
-            particulares, então é mais fácil escolher uma licença existente do
-            que criar a sua própria. Por exemplo, universidades como o
-            <strong>Massachusetts Institute of Technology (MIT)</strong> e a
-            <strong>University of California</strong> criaram licenças, assim
-            como projetos como a <strong>Apache Foundation</strong>. Além disso,
-            grupos como a <strong>Free Software Foundation</strong> criaram suas
-            próprias licenças para promover sua agenda.
+            O licenciamento de software é uma questão política, portanto não é surpresa que existam muitas opiniões diferentes. Organizações
+            criaram suas próprias licenças que incorporam suas visões particulares, então é mais fácil escolher uma licença existente do que
+            criar a sua própria. Por exemplo, universidades como o
+            <strong>Massachusetts Institute of Technology (MIT)</strong> e a <strong>University of California</strong> criaram licenças,
+            assim como projetos como a <strong>Apache Foundation</strong>. Além disso, grupos como a
+            <strong>Free Software Foundation</strong> criaram suas próprias licenças para promover sua agenda.
           </p>
         </div>
 
@@ -452,25 +313,12 @@
           <strong>Principais Licenças Open Source:</strong>
           <ul style="margin-top: 0.5rem; margin-left: 1.5rem">
             <li>
-              <strong>GPL (GNU General Public License)</strong> – Copyleft
-              forte: modificações devem ser compartilhadas sob a mesma licença
+              <strong>GPL (GNU General Public License)</strong> – Copyleft forte: modificações devem ser compartilhadas sob a mesma licença
             </li>
-            <li>
-              <strong>MIT License</strong> – Permissiva: permite uso
-              proprietário, apenas requer atribuição
-            </li>
-            <li>
-              <strong>Apache License 2.0</strong> – Permissiva com patentes e
-              atribuição
-            </li>
-            <li>
-              <strong>BSD License</strong> – Permissiva, variações (2-cláusula,
-              3-cláusula)
-            </li>
-            <li>
-              <strong>LGPL (Lesser GPL)</strong> – Permite vinculação com código
-              proprietário
-            </li>
+            <li><strong>MIT License</strong> – Permissiva: permite uso proprietário, apenas requer atribuição</li>
+            <li><strong>Apache License 2.0</strong> – Permissiva com patentes e atribuição</li>
+            <li><strong>BSD License</strong> – Permissiva, variações (2-cláusula, 3-cláusula)</li>
+            <li><strong>LGPL (Lesser GPL)</strong> – Permite vinculação com código proprietário</li>
           </ul>
         </div>
 
@@ -534,27 +382,23 @@
 
         <div class="alert alert-warning">
           <i class="fas fa-exclamation-triangle"></i>
-          <strong>Copyleft:</strong> Um conceito fundamental da GPL. Enquanto o
-          copyright tradicional restringe cópia e modificação, o copyleft usa a
-          lei de direitos autorais para garantir que as liberdades do software
-          sejam preservadas em todas as versões modificadas ou estendidas.
+          <strong>Copyleft:</strong> Um conceito fundamental da GPL. Enquanto o copyright tradicional restringe cópia e modificação, o
+          copyleft usa a lei de direitos autorais para garantir que as liberdades do software sejam preservadas em todas as versões
+          modificadas ou estendidas.
         </div>
       </section>
       <!-- SEÇÃO 4.2.1: The Free Software Foundation -->
       <section id="secao4-2-1" class="section">
         <h2 class="section-title">
           <i class="fas fa-building"></i>
-          <span class="section-number">4.2.1</span> A Free Software Foundation
-          (FSF)
+          <span class="section-number">4.2.1</span> A Free Software Foundation (FSF)
         </h2>
 
         <div class="card">
           <i class="fas fa-users"></i>
           <p>
-            Dois grupos podem ser considerados as forças mais influentes no
-            mundo do código aberto: a
-            <strong>Free Software Foundation (FSF)</strong> e a
-            <strong>Open Source Initiative (OSI)</strong>.
+            Dois grupos podem ser considerados as forças mais influentes no mundo do código aberto: a
+            <strong>Free Software Foundation (FSF)</strong> e a <strong>Open Source Initiative (OSI)</strong>.
           </p>
         </div>
 
@@ -562,14 +406,10 @@
           <i class="fas fa-history"></i>
           <p>
             Apenas alguns anos após o desenvolvimento do projeto GNU,
-            <strong>Richard Stallman</strong> fundou a
-            <strong>Free Software Foundation (FSF)</strong> em 1985 com o
-            objetivo de promover o software livre. Neste contexto, a palavra
-            "livre" (free) não se refere ao preço, mas à
-            <strong>liberdade de compartilhar, estudar e modificar</strong> o
-            código-fonte subjacente. De acordo com seu site, a FSF acredita que
-            os usuários devem ter "controle sobre a tecnologia que usamos em
-            nossas casas, escolas e empresas".
+            <strong>Richard Stallman</strong> fundou a <strong>Free Software Foundation (FSF)</strong> em 1985 com o objetivo de promover o
+            software livre. Neste contexto, a palavra "livre" (free) não se refere ao preço, mas à
+            <strong>liberdade de compartilhar, estudar e modificar</strong> o código-fonte subjacente. De acordo com seu site, a FSF
+            acredita que os usuários devem ter "controle sobre a tecnologia que usamos em nossas casas, escolas e empresas".
           </p>
         </div>
 
@@ -577,36 +417,27 @@
           <i class="fas fa-copy"></i>
           <p>
             A FSF também defende que as licenças de software devem impor a
-            <strong>abertura das modificações</strong>. É sua visão que se
-            alguém modifica software livre, deve ser obrigado a compartilhar
-            quaisquer alterações feitas quando as compartilhar novamente. Esta
-            filosofia específica é chamada de <strong>copyleft</strong>. Segundo
-            a FSF, "copyleft é um método geral para tornar um programa (ou outro
-            trabalho) livre (no sentido de liberdade, não "preço zero"), e
-            exigir que todas as versões modificadas e estendidas do programa
-            também sejam livres".
+            <strong>abertura das modificações</strong>. É sua visão que se alguém modifica software livre, deve ser obrigado a compartilhar
+            quaisquer alterações feitas quando as compartilhar novamente. Esta filosofia específica é chamada de <strong>copyleft</strong>.
+            Segundo a FSF, "copyleft é um método geral para tornar um programa (ou outro trabalho) livre (no sentido de liberdade, não
+            "preço zero"), e exigir que todas as versões modificadas e estendidas do programa também sejam livres".
           </p>
         </div>
 
         <div class="card">
           <i class="fas fa-file-alt"></i>
           <p>
-            A FSF também defende contra <strong>patentes de software</strong> e
-            atua como um cão de guarda para organizações de padrões,
-            manifestando-se quando um padrão proposto pode violar os princípios
-            do software livre ao incluir itens como
-            <strong>Digital Rights Management (DRM)</strong>, que restringem o
-            que pode ser feito com programas compatíveis.
+            A FSF também defende contra <strong>patentes de software</strong> e atua como um cão de guarda para organizações de padrões,
+            manifestando-se quando um padrão proposto pode violar os princípios do software livre ao incluir itens como
+            <strong>Digital Rights Management (DRM)</strong>, que restringem o que pode ser feito com programas compatíveis.
           </p>
         </div>
 
         <div class="card">
           <i class="fas fa-balance-scale"></i>
           <p>
-            A FSF desenvolveu seu próprio conjunto de licenças que são gratuitas
-            para qualquer um usar, baseadas na
-            <strong>GNU General Public License (GPL)</strong> original. A FSF
-            mantém atualmente:
+            A FSF desenvolveu seu próprio conjunto de licenças que são gratuitas para qualquer um usar, baseadas na
+            <strong>GNU General Public License (GPL)</strong> original. A FSF mantém atualmente:
           </p>
           <ul style="margin-top: 0.75rem; margin-left: 1.5rem">
             <li>GNU General Public License version 2 (GPLv2)</li>
@@ -619,47 +450,31 @@
         <div class="card">
           <i class="fas fa-globe"></i>
           <p>
-            Estas licenças são destinadas a serem incluídas no código-fonte real
-            para garantir que todas as futuras variantes e modificações do
-            programa original continuem a ter a mesma liberdade de uso que o
-            original. A licença GPL e suas variantes são ferramentas legais
-            poderosas para avançar a causa do software livre em todo o mundo. O
-            que começou em 1983 como o desejo de um homem de compartilhar e
-            melhorar software, permitindo que outros o modificassem, acabou
-            mudando o mundo.
+            Estas licenças são destinadas a serem incluídas no código-fonte real para garantir que todas as futuras variantes e modificações
+            do programa original continuem a ter a mesma liberdade de uso que o original. A licença GPL e suas variantes são ferramentas
+            legais poderosas para avançar a causa do software livre em todo o mundo. O que começou em 1983 como o desejo de um homem de
+            compartilhar e melhorar software, permitindo que outros o modificassem, acabou mudando o mundo.
           </p>
         </div>
 
         <div class="alert alert-info">
           <i class="fas fa-lightbulb"></i>
-          <strong>Considere Isto:</strong> As mudanças entre GPLv2 e GPLv3
-          focaram-se amplamente no uso de software livre em um dispositivo de
-          hardware fechado, o que foi chamado de <strong>Tivoization</strong>.
-          TiVo é uma empresa que construiu um gravador de vídeo digital de
-          televisão em seu próprio hardware e usou Linux como base para seu
-          software. Embora a TiVo tenha lançado o código-fonte de sua versão do
-          Linux conforme exigido pela GPLv2, o hardware não executava binários
-          modificados. Aos olhos da FSF, isso ia contra o espírito da GPLv2,
-          então eles adicionaram uma cláusula específica à versão 3 da licença.
-          <strong>Linus Torvalds concorda com a TiVo</strong> nesta questão e
-          optou por permanecer com a GPLv2.
+          <strong>Considere Isto:</strong> As mudanças entre GPLv2 e GPLv3 focaram-se amplamente no uso de software livre em um dispositivo
+          de hardware fechado, o que foi chamado de <strong>Tivoization</strong>. TiVo é uma empresa que construiu um gravador de vídeo
+          digital de televisão em seu próprio hardware e usou Linux como base para seu software. Embora a TiVo tenha lançado o código-fonte
+          de sua versão do Linux conforme exigido pela GPLv2, o hardware não executava binários modificados. Aos olhos da FSF, isso ia
+          contra o espírito da GPLv2, então eles adicionaram uma cláusula específica à versão 3 da licença.
+          <strong>Linus Torvalds concorda com a TiVo</strong> nesta questão e optou por permanecer com a GPLv2.
         </div>
 
         <div class="alert alert-success">
           <i class="fas fa-gavel"></i>
           <strong>Resumo da Filosofia FSF:</strong>
           <ul style="margin-top: 0.5rem; margin-left: 1.5rem">
-            <li>
-              <strong>Liberdade 0:</strong> Executar o programa como desejar
-            </li>
-            <li>
-              <strong>Liberdade 1:</strong> Estudar e modificar o código-fonte
-            </li>
+            <li><strong>Liberdade 0:</strong> Executar o programa como desejar</li>
+            <li><strong>Liberdade 1:</strong> Estudar e modificar o código-fonte</li>
             <li><strong>Liberdade 2:</strong> Redistribuir cópias</li>
-            <li>
-              <strong>Liberdade 3:</strong> Distribuir cópias de suas versões
-              modificadas
-            </li>
+            <li><strong>Liberdade 3:</strong> Distribuir cópias de suas versões modificadas</li>
           </ul>
         </div>
 
@@ -715,45 +530,34 @@
 
         <div class="alert alert-warning">
           <i class="fas fa-exclamation-triangle"></i>
-          <strong>Nota Importante:</strong> O Linux kernel permanece sob GPLv2
-          (sem a atualização para v3). Linus Torvalds é publicamente crítico da
-          GPLv3, pois acredita que a cláusula anti-Tivoization vai longe demais.
+          <strong>Nota Importante:</strong> O Linux kernel permanece sob GPLv2 (sem a atualização para v3). Linus Torvalds é publicamente
+          crítico da GPLv3, pois acredita que a cláusula anti-Tivoization vai longe demais.
         </div>
       </section>
       <!-- SEÇÃO 4.2.2: The Open Source Initiative -->
       <section id="secao4-2-2" class="section">
         <h2 class="section-title">
           <i class="fas fa-code-branch"></i>
-          <span class="section-number">4.2.2</span> A Open Source Initiative
-          (OSI)
+          <span class="section-number">4.2.2</span> A Open Source Initiative (OSI)
         </h2>
 
         <div class="card">
           <i class="fas fa-calendar-alt"></i>
           <p>
-            A <strong>Open Source Initiative (OSI)</strong> foi fundada em 1998
-            por <strong>Bruce Perens</strong> e <strong>Eric Raymond</strong>.
-            Eles acreditavam que a Free Software Foundation era politicamente
-            carregada demais e que licenças menos extremas eram necessárias,
-            particularmente em relação aos aspectos de copyleft das licenças da
-            FSF.
+            A <strong>Open Source Initiative (OSI)</strong> foi fundada em 1998 por <strong>Bruce Perens</strong> e
+            <strong>Eric Raymond</strong>. Eles acreditavam que a Free Software Foundation era politicamente carregada demais e que licenças
+            menos extremas eram necessárias, particularmente em relação aos aspectos de copyleft das licenças da FSF.
           </p>
         </div>
 
         <div class="card">
           <i class="fas fa-unlock-alt"></i>
           <p>
-            A OSI acredita que não apenas o código-fonte deve estar livremente
-            disponível, mas também que
-            <strong
-              >nenhuma restrição deve ser colocada no uso do software</strong
-            >, independentemente do uso pretendido. Ao contrário da FSF, a OSI
-            não possui seu próprio conjunto de licenças. Em vez disso, a OSI tem
-            um conjunto de princípios e adiciona licenças a essa lista se elas
-            atenderem a esses princípios, chamadas de
-            <strong>licenças de código aberto (open source licenses)</strong>.
-            Software que está em conformidade com uma licença de código aberto
-            é, portanto, software de código aberto.
+            A OSI acredita que não apenas o código-fonte deve estar livremente disponível, mas também que
+            <strong>nenhuma restrição deve ser colocada no uso do software</strong>, independentemente do uso pretendido. Ao contrário da
+            FSF, a OSI não possui seu próprio conjunto de licenças. Em vez disso, a OSI tem um conjunto de princípios e adiciona licenças a
+            essa lista se elas atenderem a esses princípios, chamadas de <strong>licenças de código aberto (open source licenses)</strong>.
+            Software que está em conformidade com uma licença de código aberto é, portanto, software de código aberto.
           </p>
         </div>
 
@@ -761,31 +565,25 @@
           <i class="fab fa-bsd"></i>
           <p>
             Um tipo de licença de código aberto é a
-            <strong>BSD (Berkeley Software Distribution)</strong> e seus
-            derivados, que são muito mais simples que a GPL. Atualmente existem
-            duas licenças "BSD" aprovadas pela OSI: a
-            <strong>2-Cláusula</strong> e a <strong>3-Cláusula</strong>. Estas
-            licenças afirmam que você pode redistribuir o código-fonte e os
-            binários, desde que mantenha os avisos de direitos autorais e não
-            implique que o criador original endossa sua versão.
+            <strong>BSD (Berkeley Software Distribution)</strong> e seus derivados, que são muito mais simples que a GPL. Atualmente existem
+            duas licenças "BSD" aprovadas pela OSI: a <strong>2-Cláusula</strong> e a <strong>3-Cláusula</strong>. Estas licenças afirmam
+            que você pode redistribuir o código-fonte e os binários, desde que mantenha os avisos de direitos autorais e não implique que o
+            criador original endossa sua versão.
           </p>
         </div>
 
         <div class="alert alert-info">
           <i class="fas fa-quote-left"></i>
-          <strong>Resumo da Licença BSD:</strong> "Faça o que quiser com este
-          software, apenas não diga que você o escreveu."
+          <strong>Resumo da Licença BSD:</strong> "Faça o que quiser com este software, apenas não diga que você o escreveu."
         </div>
 
         <div class="card">
           <i class="fas fa-exclamation-triangle"></i>
           <p>
-            Segundo a FSF, a licença BSD original tinha uma falha grave: exigia
-            que os desenvolvedores adicionassem uma cláusula reconhecendo a
-            <strong>Universidade da Califórnia, Berkeley</strong> em cada
-            anúncio de software licenciado desta forma. Como outros copiaram
-            esta licença simples, eles incluíram reconhecimento para suas
-            próprias instituições, o que levou a mais de 75 desses
+            Segundo a FSF, a licença BSD original tinha uma falha grave: exigia que os desenvolvedores adicionassem uma cláusula
+            reconhecendo a
+            <strong>Universidade da Califórnia, Berkeley</strong> em cada anúncio de software licenciado desta forma. Como outros copiaram
+            esta licença simples, eles incluíram reconhecimento para suas próprias instituições, o que levou a mais de 75 desses
             reconhecimentos em alguns casos.
           </p>
         </div>
@@ -793,38 +591,29 @@
         <div class="card">
           <i class="fas fa-check-circle"></i>
           <p>
-            As licenças da FSF, como a <strong>GPLv2</strong>, também são
-            licenças de código aberto. No entanto, muitas licenças de código
-            aberto, como BSD e MIT, não contêm as disposições de copyleft e,
-            portanto, <strong>não são aceitáveis para a FSF</strong>. Estas
-            licenças são chamadas de
-            <strong>licenças de software livre permissivas</strong> porque são
-            permissivas em como você pode redistribuir o software. Você pode
-            pegar software licenciado sob BSD e incluí-lo em um produto de
-            software fechado, desde que dê a devida atribuição.
+            As licenças da FSF, como a <strong>GPLv2</strong>, também são licenças de código aberto. No entanto, muitas licenças de código
+            aberto, como BSD e MIT, não contêm as disposições de copyleft e, portanto, <strong>não são aceitáveis para a FSF</strong>. Estas
+            licenças são chamadas de <strong>licenças de software livre permissivas</strong> porque são permissivas em como você pode
+            redistribuir o software. Você pode pegar software licenciado sob BSD e incluí-lo em um produto de software fechado, desde que dê
+            a devida atribuição.
           </p>
         </div>
 
         <div class="card">
           <i class="fas fa-handshake"></i>
           <p>
-            Em vez de se debruçar sobre os pontos mais sutis de Código Aberto e
-            Software Livre, a comunidade começou a se referir a eles
+            Em vez de se debruçar sobre os pontos mais sutis de Código Aberto e Software Livre, a comunidade começou a se referir a eles
             coletivamente como
-            <strong>Free and Open Source Software (FOSS)</strong> – Software
-            Livre e de Código Aberto.
+            <strong>Free and Open Source Software (FOSS)</strong> – Software Livre e de Código Aberto.
           </p>
         </div>
 
         <div class="card">
           <i class="fas fa-language"></i>
           <p>
-            A palavra inglesa "free" pode significar "grátis" (como em "free
-            lunch" – almoço grátis) ou "livre" (como em "free speech" –
-            liberdade de expressão). Esta ambiguidade levou à inclusão da
-            palavra <strong>"libre"</strong> (do espanhol/francês) para se
-            referir à segunda definição. Assim, chegamos ao termo
-            <strong>Free/Libre/Open Source Software (FLOSS)</strong>.
+            A palavra inglesa "free" pode significar "grátis" (como em "free lunch" – almoço grátis) ou "livre" (como em "free speech" –
+            liberdade de expressão). Esta ambiguidade levou à inclusão da palavra <strong>"libre"</strong> (do espanhol/francês) para se
+            referir à segunda definição. Assim, chegamos ao termo <strong>Free/Libre/Open Source Software (FLOSS)</strong>.
           </p>
         </div>
 
@@ -832,14 +621,8 @@
           <i class="fas fa-balance-scale"></i>
           <strong>Comparação: FSF vs OSI</strong>
           <ul style="margin-top: 0.5rem; margin-left: 1.5rem">
-            <li>
-              <strong>FSF (Free Software Foundation):</strong> Foco ético e
-              político, defende copyleft (GPL)
-            </li>
-            <li>
-              <strong>OSI (Open Source Initiative):</strong> Foco prático e
-              comercial, aceita licenças permissivas (BSD, MIT)
-            </li>
+            <li><strong>FSF (Free Software Foundation):</strong> Foco ético e político, defende copyleft (GPL)</li>
+            <li><strong>OSI (Open Source Initiative):</strong> Foco prático e comercial, aceita licenças permissivas (BSD, MIT)</li>
           </ul>
         </div>
 
@@ -937,12 +720,9 @@
 
         <div class="alert alert-info">
           <i class="fas fa-lightbulb"></i>
-          <strong>FLOSS:</strong> O acrônimo
-          <strong>F</strong>ree/<strong>L</strong>ibre/<strong>O</strong>pen
-          <strong>S</strong>ource <strong>S</strong>oftware é usado para
-          unificar os dois movimentos, reconhecendo que ambos compartilham o
-          mesmo objetivo fundamental – tornar o código-fonte acessível – mesmo
-          que por diferentes razões filosóficas.
+          <strong>FLOSS:</strong> O acrônimo <strong>F</strong>ree/<strong>L</strong>ibre/<strong>O</strong>pen <strong>S</strong>ource
+          <strong>S</strong>oftware é usado para unificar os dois movimentos, reconhecendo que ambos compartilham o mesmo objetivo
+          fundamental – tornar o código-fonte acessível – mesmo que por diferentes razões filosóficas.
         </div>
       </section>
       <!-- SEÇÃO 4.2.3: Creative Commons -->
@@ -955,8 +735,7 @@
         <div class="card">
           <i class="fas fa-code"></i>
           <p>
-            As licenças <strong>FOSS</strong> são principalmente relacionadas a
-            software. Pessoas colocaram obras como desenhos e planos sob
+            As licenças <strong>FOSS</strong> são principalmente relacionadas a software. Pessoas colocaram obras como desenhos e planos sob
             licenças FOSS, mas esse não era o objetivo pretendido.
           </p>
         </div>
@@ -965,24 +744,18 @@
           <i class="fas fa-globe"></i>
           <p>
             Quando o software é colocado em
-            <strong>domínio público (public domain)</strong>, o autor renunciou
-            a todos os direitos, incluindo os direitos autorais sobre a obra. Em
-            alguns países, este é o padrão quando o trabalho é feito por uma
-            agência governamental. Em alguns países, o trabalho protegido por
-            direitos autorais se torna domínio público após a morte do autor e
-            um longo período de espera.
+            <strong>domínio público (public domain)</strong>, o autor renunciou a todos os direitos, incluindo os direitos autorais sobre a
+            obra. Em alguns países, este é o padrão quando o trabalho é feito por uma agência governamental. Em alguns países, o trabalho
+            protegido por direitos autorais se torna domínio público após a morte do autor e um longo período de espera.
           </p>
         </div>
 
         <div class="card">
           <i class="fab fa-creative-commons"></i>
           <p>
-            A organização <strong>Creative Commons (CC)</strong> criou as
-            <strong>Licenças Creative Commons</strong> que tentam abordar as
-            intenções por trás das licenças FOSS para entidades não relacionadas
-            a software. As licenças CC também podem ser usadas para restringir o
-            uso comercial, se esse for o desejo do detentor dos direitos
-            autorais.
+            A organização <strong>Creative Commons (CC)</strong> criou as <strong>Licenças Creative Commons</strong> que tentam abordar as
+            intenções por trás das licenças FOSS para entidades não relacionadas a software. As licenças CC também podem ser usadas para
+            restringir o uso comercial, se esse for o desejo do detentor dos direitos autorais.
           </p>
         </div>
 
@@ -994,115 +767,80 @@
           </p>
           <ul style="margin-top: 0.75rem; margin-left: 1.5rem">
             <li>
-              <strong><i class="fas fa-user"></i> Attribution (BY)</strong> –
-              Todas as licenças CC exigem que o criador receba crédito, sem
+              <strong><i class="fas fa-user"></i> Attribution (BY)</strong> – Todas as licenças CC exigem que o criador receba crédito, sem
               implicar que o criador endossa o uso.
             </li>
             <li>
               <strong><i class="fas fa-share-alt"></i> ShareAlike (SA)</strong>
-              – Permite que outros copiem, distribuam, executem e modifiquem a
-              obra, desde que o façam sob os mesmos termos.
+              – Permite que outros copiem, distribuam, executem e modifiquem a obra, desde que o façam sob os mesmos termos.
             </li>
             <li>
-              <strong
-                ><i class="fas fa-chart-line"></i> NonCommercial (NC)</strong
-              >
-              – Permite que outros distribuam, exibam, executem e modifiquem a
-              obra para qualquer propósito que não seja comercial.
+              <strong><i class="fas fa-chart-line"></i> NonCommercial (NC)</strong>
+              – Permite que outros distribuam, exibam, executem e modifiquem a obra para qualquer propósito que não seja comercial.
             </li>
             <li>
-              <strong><i class="fas fa-ban"></i> NoDerivatives (ND)</strong> –
-              Permite que outros distribuam, exibam e executem apenas cópias
-              originais da obra. Eles devem obter permissão do criador para
-              modificá-la.
+              <strong><i class="fas fa-ban"></i> NoDerivatives (ND)</strong> – Permite que outros distribuam, exibam e executem apenas
+              cópias originais da obra. Eles devem obter permissão do criador para modificá-la.
             </li>
           </ul>
         </div>
 
         <div class="alert alert-info">
           <i class="fas fa-lightbulb"></i>
-          <strong>Combinações:</strong> Estas condições são então combinadas
-          para criar as seis principais licenças oferecidas pelo Creative
+          <strong>Combinações:</strong> Estas condições são então combinadas para criar as seis principais licenças oferecidas pelo Creative
           Commons.
         </div>
 
         <div class="card">
           <i class="fab fa-creative-commons-by"></i>
-          <h3 style="color: var(--primary); margin-bottom: 0.5rem">
-            1. Attribution (CC BY)
-          </h3>
+          <h3 style="color: var(--primary); margin-bottom: 0.5rem">1. Attribution (CC BY)</h3>
           <p>
-            Muito parecida com a licença BSD, você pode usar conteúdo CC BY para
-            qualquer uso, mas deve creditar o detentor dos direitos autorais.
+            Muito parecida com a licença BSD, você pode usar conteúdo CC BY para qualquer uso, mas deve creditar o detentor dos direitos
+            autorais.
           </p>
         </div>
 
         <div class="card">
           <i class="fab fa-creative-commons-sa"></i>
-          <h3 style="color: var(--primary); margin-bottom: 0.5rem">
-            2. Attribution ShareAlike (CC BY-SA)
-          </h3>
+          <h3 style="color: var(--primary); margin-bottom: 0.5rem">2. Attribution ShareAlike (CC BY-SA)</h3>
           <p>
-            Uma versão copyleft da licença Attribution. Obras derivadas devem
-            ser compartilhadas sob a mesma licença, muito parecido com os ideais
-            do Software Livre.
+            Uma versão copyleft da licença Attribution. Obras derivadas devem ser compartilhadas sob a mesma licença, muito parecido com os
+            ideais do Software Livre.
           </p>
         </div>
 
         <div class="card">
           <i class="fab fa-creative-commons-nd"></i>
-          <h3 style="color: var(--primary); margin-bottom: 0.5rem">
-            3. Attribution NoDerivs (CC BY-ND)
-          </h3>
-          <p>
-            Você pode redistribuir o conteúdo sob as mesmas condições do CC-BY,
-            mas não pode alterá-lo.
-          </p>
+          <h3 style="color: var(--primary); margin-bottom: 0.5rem">3. Attribution NoDerivs (CC BY-ND)</h3>
+          <p>Você pode redistribuir o conteúdo sob as mesmas condições do CC-BY, mas não pode alterá-lo.</p>
         </div>
 
         <div class="card">
           <i class="fab fa-creative-commons-nc"></i>
-          <h3 style="color: var(--primary); margin-bottom: 0.5rem">
-            4. Attribution-NonCommercial (CC BY-NC)
-          </h3>
-          <p>
-            Assim como CC BY, mas você não pode usá-lo para fins comerciais.
-          </p>
+          <h3 style="color: var(--primary); margin-bottom: 0.5rem">4. Attribution-NonCommercial (CC BY-NC)</h3>
+          <p>Assim como CC BY, mas você não pode usá-lo para fins comerciais.</p>
         </div>
 
         <div class="card">
           <i class="fab fa-creative-commons-nc"></i>
           <i class="fab fa-creative-commons-sa"></i>
-          <h3 style="color: var(--primary); margin-bottom: 0.5rem">
-            5. Attribution-NonCommercial-ShareAlike (CC BY-NC-SA)
-          </h3>
-          <p>
-            Baseia-se na licença CC BY-NC, mas exige que suas alterações sejam
-            compartilhadas sob a mesma licença.
-          </p>
+          <h3 style="color: var(--primary); margin-bottom: 0.5rem">5. Attribution-NonCommercial-ShareAlike (CC BY-NC-SA)</h3>
+          <p>Baseia-se na licença CC BY-NC, mas exige que suas alterações sejam compartilhadas sob a mesma licença.</p>
         </div>
 
         <div class="card">
           <i class="fab fa-creative-commons-nc"></i>
           <i class="fab fa-creative-commons-nd"></i>
-          <h3 style="color: var(--primary); margin-bottom: 0.5rem">
-            6. Attribution-NonCommercial-NoDerivs (CC BY-NC-ND)
-          </h3>
-          <p>
-            Você está compartilhando o conteúdo para ser usado para fins não
-            comerciais, mas as pessoas não podem alterar o conteúdo.
-          </p>
+          <h3 style="color: var(--primary); margin-bottom: 0.5rem">6. Attribution-NonCommercial-NoDerivs (CC BY-NC-ND)</h3>
+          <p>Você está compartilhando o conteúdo para ser usado para fins não comerciais, mas as pessoas não podem alterar o conteúdo.</p>
         </div>
 
         <div class="card">
           <i class="fab fa-creative-commons-zero"></i>
-          <h3 style="color: var(--primary); margin-bottom: 0.5rem">
-            7. No Rights Reserved (CC0)
-          </h3>
+          <h3 style="color: var(--primary); margin-bottom: 0.5rem">7. No Rights Reserved (CC0)</h3>
           <p>
             Esta é a versão Creative Commons de
-            <strong>domínio público</strong>. O criador renuncia a todos os
-            direitos sobre a obra.
+            <strong>domínio público</strong>. O criador renuncia a todos os direitos sobre a obra.
           </p>
         </div>
 
@@ -1198,10 +936,7 @@ To view a copy of this license, visit https://creativecommons.org/licenses/by/4.
           <strong>Resumo Visual das Licenças CC:</strong>
           <ul style="margin-top: 0.5rem; margin-left: 1.5rem">
             <li><i class="fas fa-user"></i> BY = Dar crédito ao autor</li>
-            <li>
-              <i class="fas fa-share-alt"></i> SA = Compartilhar sob a mesma
-              licença
-            </li>
+            <li><i class="fas fa-share-alt"></i> SA = Compartilhar sob a mesma licença</li>
             <li><i class="fas fa-chart-line"></i> NC = Sem uso comercial</li>
             <li><i class="fas fa-ban"></i> ND = Sem modificações</li>
           </ul>
@@ -1209,115 +944,82 @@ To view a copy of this license, visit https://creativecommons.org/licenses/by/4.
 
         <div class="alert alert-warning">
           <i class="fas fa-exclamation-triangle"></i>
-          <strong>Nota:</strong> Creative Commons não é recomendado para
-          software. Para software, use licenças FOSS como GPL, MIT ou Apache. As
-          licenças CC são projetadas para obras criativas: textos, imagens,
-          músicas, vídeos, etc.
+          <strong>Nota:</strong> Creative Commons não é recomendado para software. Para software, use licenças FOSS como GPL, MIT ou Apache.
+          As licenças CC são projetadas para obras criativas: textos, imagens, músicas, vídeos, etc.
         </div>
       </section>
       <!-- SEÇÃO 4.3: Open Source Business Models -->
       <section id="secao4-3" class="section">
         <h2 class="section-title">
           <i class="fas fa-chart-line"></i>
-          <span class="section-number">4.3</span> Modelos de Negócio em Código
-          Aberto
+          <span class="section-number">4.3</span> Modelos de Negócio em Código Aberto
         </h2>
 
         <div class="card">
           <i class="fas fa-question-circle"></i>
-          <p>
-            Se todo este software é gratuito, como alguém pode ganhar dinheiro
-            com ele?
-          </p>
+          <p>Se todo este software é gratuito, como alguém pode ganhar dinheiro com ele?</p>
         </div>
 
         <div class="card">
           <i class="fas fa-gavel"></i>
           <p>
             Primeiro, você deve entender que
-            <strong>não há nada na GPL que proíba a venda de software</strong>.
-            Na verdade, o direito de vender software faz parte da licença GPL.
-            Novamente, lembre-se de que a palavra "free" se refere à liberdade,
-            não ao preço. Empresas que agregam valor a esses programas gratuitos
-            são encorajadas a ganhar o máximo de dinheiro possível e reinvestir
-            esses lucros no desenvolvimento de mais e melhores softwares.
+            <strong>não há nada na GPL que proíba a venda de software</strong>. Na verdade, o direito de vender software faz parte da
+            licença GPL. Novamente, lembre-se de que a palavra "free" se refere à liberdade, não ao preço. Empresas que agregam valor a
+            esses programas gratuitos são encorajadas a ganhar o máximo de dinheiro possível e reinvestir esses lucros no desenvolvimento de
+            mais e melhores softwares.
           </p>
         </div>
 
         <div class="card">
           <i class="fas fa-headset"></i>
-          <h3 style="color: var(--primary); margin-bottom: 0.5rem">
-            1. Suporte e Garantia
-          </h3>
+          <h3 style="color: var(--primary); margin-bottom: 0.5rem">1. Suporte e Garantia</h3>
           <p>
             Uma das maneiras mais simples de ganhar dinheiro é vender
-            <strong>suporte ou garantia</strong> em torno do software. Empresas
-            como <strong>Canonical</strong> (desenvolvedora do Ubuntu) e
-            <strong>Red Hat</strong> se tornaram grandes empresas ao criar
-            distribuições Linux e ferramentas que permitem que usuários
-            comerciais gerenciem suas empresas e ofereçam produtos e serviços a
-            seus clientes.
+            <strong>suporte ou garantia</strong> em torno do software. Empresas como <strong>Canonical</strong> (desenvolvedora do Ubuntu) e
+            <strong>Red Hat</strong> se tornaram grandes empresas ao criar distribuições Linux e ferramentas que permitem que usuários
+            comerciais gerenciem suas empresas e ofereçam produtos e serviços a seus clientes.
           </p>
         </div>
 
         <div class="alert alert-info">
           <i class="fas fa-chart-simple"></i>
-          <strong>Exemplo de Sucesso:</strong> A Red Hat, pioneira no modelo de
-          suporte para Linux, foi adquirida pela IBM em 2019 por aproximadamente
-          <strong>US$ 34 bilhões</strong> – a maior aquisição de software da
-          história.
+          <strong>Exemplo de Sucesso:</strong> A Red Hat, pioneira no modelo de suporte para Linux, foi adquirida pela IBM em 2019 por
+          aproximadamente <strong>US$ 34 bilhões</strong> – a maior aquisição de software da história.
         </div>
 
         <div class="card">
           <i class="fas fa-microscope"></i>
-          <h3 style="color: var(--primary); margin-bottom: 0.5rem">
-            2. Projetos que Viram Empresas
-          </h3>
+          <h3 style="color: var(--primary); margin-bottom: 0.5rem">2. Projetos que Viram Empresas</h3>
           <p>
-            Muitos outros projetos de código aberto também se expandiram para
-            negócios substanciais. Na década de 1990,
-            <strong>Gerald Combs</strong> trabalhava em um provedor de serviços
-            de Internet e começou a escrever sua própria ferramenta de análise
-            de rede porque as ferramentas similares da época eram caras. Mais de
-            600 pessoas já contribuíram para o projeto, chamado
-            <strong>Wireshark</strong>. Hoje é frequentemente considerado melhor
-            do que as ofertas comerciais e levou à formação de uma empresa para
-            vender produtos e suporte. Como muitas outras, esta empresa foi
-            comprada por uma empresa maior que apoia seu desenvolvimento
-            contínuo.
+            Muitos outros projetos de código aberto também se expandiram para negócios substanciais. Na década de 1990,
+            <strong>Gerald Combs</strong> trabalhava em um provedor de serviços de Internet e começou a escrever sua própria ferramenta de
+            análise de rede porque as ferramentas similares da época eram caras. Mais de 600 pessoas já contribuíram para o projeto, chamado
+            <strong>Wireshark</strong>. Hoje é frequentemente considerado melhor do que as ofertas comerciais e levou à formação de uma
+            empresa para vender produtos e suporte. Como muitas outras, esta empresa foi comprada por uma empresa maior que apoia seu
+            desenvolvimento contínuo.
           </p>
         </div>
 
         <div class="card">
           <i class="fas fa-microchip"></i>
-          <h3 style="color: var(--primary); margin-bottom: 0.5rem">
-            3. Hardware e Software Embutido
-          </h3>
+          <h3 style="color: var(--primary); margin-bottom: 0.5rem">3. Hardware e Software Embutido</h3>
           <p>
-            Empresas como <strong>TiVo</strong> empacotam hardware ou adicionam
-            software de código fechado extra para vender junto com o software
-            livre. <strong>Aparelhos e sistemas embarcados</strong> que usam
-            Linux são um negócio de bilhões de dólares e abrangem desde DVRs
-            domésticos até câmeras de segurança e dispositivos de fitness
-            vestíveis. Muitos firewalls de consumo e dispositivos de
-            entretenimento seguem este modelo.
+            Empresas como <strong>TiVo</strong> empacotam hardware ou adicionam software de código fechado extra para vender junto com o
+            software livre. <strong>Aparelhos e sistemas embarcados</strong> que usam Linux são um negócio de bilhões de dólares e abrangem
+            desde DVRs domésticos até câmeras de segurança e dispositivos de fitness vestíveis. Muitos firewalls de consumo e dispositivos
+            de entretenimento seguem este modelo.
           </p>
         </div>
 
         <div class="card">
           <i class="fas fa-building"></i>
-          <h3 style="color: var(--primary); margin-bottom: 0.5rem">
-            4. Contribuição Corporativa
-          </h3>
+          <h3 style="color: var(--primary); margin-bottom: 0.5rem">4. Contribuição Corporativa</h3>
           <p>
-            Hoje, tanto empregadores grandes quanto pequenos têm indivíduos e,
-            às vezes, grupos inteiros dedicados a trabalhar em projetos de
-            código aberto. Empresas de tecnologia competem pela oportunidade de
-            influenciar projetos que moldarão o futuro de seus setores. Outras
-            empresas dedicam recursos a projetos que precisam para uso interno.
-            À medida que mais negócios são realizados em recursos de nuvem, a
-            oportunidade para programadores de código aberto continua a se
-            expandir.
+            Hoje, tanto empregadores grandes quanto pequenos têm indivíduos e, às vezes, grupos inteiros dedicados a trabalhar em projetos
+            de código aberto. Empresas de tecnologia competem pela oportunidade de influenciar projetos que moldarão o futuro de seus
+            setores. Outras empresas dedicam recursos a projetos que precisam para uso interno. À medida que mais negócios são realizados em
+            recursos de nuvem, a oportunidade para programadores de código aberto continua a se expandir.
           </p>
         </div>
 
@@ -1358,10 +1060,7 @@ To view a copy of this license, visit https://creativecommons.org/licenses/by/4.
               </tr>
               <tr>
                 <td><strong>Dual Licensing</strong></td>
-                <td>
-                  Duas licenças: GPL para código aberto, comercial para
-                  proprietário
-                </td>
+                <td>Duas licenças: GPL para código aberto, comercial para proprietário</td>
                 <td>MySQL (Oracle), Qt</td>
               </tr>
             </tbody>
@@ -1399,51 +1098,30 @@ To view a copy of this license, visit https://creativecommons.org/licenses/by/4.
           <i class="fas fa-check-circle"></i>
           <strong>Principais Takeaways:</strong>
           <ul style="margin-top: 0.5rem; margin-left: 1.5rem">
-            <li>
-              💰 <strong>Código aberto NÃO significa sem dinheiro</strong> –
-              apenas que o código é livre
-            </li>
-            <li>
-              📦 <strong>Valor está nos serviços</strong> (suporte, garantia,
-              treinamento, certificação)
-            </li>
-            <li>
-              🏢 <strong>Empresas lucram com open source</strong> – Red Hat,
-              Canonical, Databricks, Elastic
-            </li>
-            <li>
-              🔓 <strong>Open core</strong> é um modelo popular: base gratuita,
-              recursos premium pagos
-            </li>
-            <li>
-              ☁️ <strong>Nuvem</strong> abriu novas oportunidades para projetos
-              open source
-            </li>
+            <li>💰 <strong>Código aberto NÃO significa sem dinheiro</strong> – apenas que o código é livre</li>
+            <li>📦 <strong>Valor está nos serviços</strong> (suporte, garantia, treinamento, certificação)</li>
+            <li>🏢 <strong>Empresas lucram com open source</strong> – Red Hat, Canonical, Databricks, Elastic</li>
+            <li>🔓 <strong>Open core</strong> é um modelo popular: base gratuita, recursos premium pagos</li>
+            <li>☁️ <strong>Nuvem</strong> abriu novas oportunidades para projetos open source</li>
           </ul>
         </div>
 
         <div class="alert alert-warning">
           <i class="fas fa-exclamation-triangle"></i>
-          <strong>Desafio do Open Source:</strong> O maior desafio para empresas
-          open source é equilibrar a transparência e liberdade do código aberto
-          com a necessidade de gerar receita sustentável. Muitas empresas falham
-          ao tornar sua versão "open core" muito limitada ou ao mudar licenças
-          de forma controversa (ex: Elastic, HashiCorp).
+          <strong>Desafio do Open Source:</strong> O maior desafio para empresas open source é equilibrar a transparência e liberdade do
+          código aberto com a necessidade de gerar receita sustentável. Muitas empresas falham ao tornar sua versão "open core" muito
+          limitada ou ao mudar licenças de forma controversa (ex: Elastic, HashiCorp).
         </div>
       </section>
       <!-- MAIS SEÇÕES SERÃO ADICIONADAS AQUI -->
     </div>
 
     <footer>
-      <p>
-        <i class="fab fa-linux"></i> NDG Linux Essentials – Módulo 4: Open
-        Source Software and Licensing
-      </p>
-      <p style="font-size: 0.8rem; margin-top: 0.5rem">
-        Software de Código Aberto e Licenciamento
-      </p>
+      <p><i class="fab fa-linux"></i> NDG Linux Essentials – Módulo 4: Open Source Software and Licensing</p>
+      <p style="font-size: 0.8rem; margin-top: 0.5rem">Software de Código Aberto e Licenciamento</p>
     </footer>
 
     <script src="../js/menu.js"></script>
+    <script src="../js/agent.js"></script>
   </body>
 </html>
