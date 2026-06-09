@@ -1,0 +1,3083 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NDG Linux Essentials | Módulo 10 - Trabalhando com Texto</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <button class="menu-toggle" id="openMenu">
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+      </button>
+      <a href="index.html" class="top-bar-brand"> <i class="fab fa-linux"></i> NDG Linux Essentials </a>
+      <a href="index.html" class="btn-outline"> <i class="fas fa-home"></i> Voltar </a>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-compass"></i> Navegação</h3>
+        <button class="close-sidebar" id="closeMenu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="nav-modules">
+        <li>
+          <a href="#secao10-1"><i class="fas fa-file-alt"></i> 10.1 Introdução</a>
+        </li>
+        <li>
+          <a href="#secao10-1-1"><i class="fas fa-eye"></i> 10.1.1 Visualizando Arquivos no Terminal</a>
+        </li>
+        <li>
+          <a href="#secao10-1-2"><i class="fas fa-book-open"></i> 10.1.2 Visualizando Arquivos Usando um Pager</a>
+        </li>
+        <li>
+          <a href="#secao10-1-2-1"><i class="fas fa-arrow-up"></i> 10.1.2.1 Comandos de Movimentação do Pager</a>
+        </li>
+        <li>
+          <a href="#secao10-1-2-2"><i class="fas fa-search"></i> 10.1.2.2 Comandos de Busca do Pager</a>
+        </li>
+        <li>
+          <a href="#secao10-1-3"><i class="fas fa-align-left"></i> 10.1.3 Head e Tail</a>
+        </li>
+        <li>
+          <a href="#secao10-2"><i class="fas fa-pipe"></i> 10.2 Pipes de Linha de Comando</a>
+        </li>
+        <li>
+          <a href="#secao10-3"><i class="fas fa-random"></i> 10.3 Redirecionamento de Entrada/Saída</a>
+        </li>
+        <li>
+          <a href="#secao10-3-1"><i class="fas fa-desktop"></i> 10.3.1 STDOUT</a>
+        </li>
+        <li>
+          <a href="#secao10-3-2"><i class="fas fa-exclamation-triangle"></i> 10.3.2 STDERR</a>
+        </li>
+        <li>
+          <a href="#secao10-3-3"><i class="fas fa-code-branch"></i> 10.3.3 Redirecionando Múltiplos Fluxos</a>
+        </li>
+        <li>
+          <a href="#secao10-3-4"><i class="fas fa-keyboard"></i> 10.3.4 STDIN</a>
+        </li>
+        <li>
+          <a href="#secao10-4"><i class="fas fa-sort-amount-down"></i> 10.4 Ordenando Arquivos ou Entrada</a>
+        </li>
+        <li>
+          <a href="#secao10-4-1"><i class="fas fa-columns"></i> 10.4.1 Campos e Opções de Ordenação</a>
+        </li>
+        <li>
+          <a href="#secao10-5"><i class="fas fa-chart-bar"></i> 10.5 Visualizando Estatísticas de Arquivo</a>
+        </li>
+        <li>
+          <a href="#secao10-6"><i class="fas fa-cut"></i> 10.6 Filtrando Seções de Arquivo</a>
+        </li>
+        <li>
+          <a href="#secao10-7"><i class="fas fa-filter"></i> 10.7 Filtrando Conteúdo de Arquivo</a>
+        </li>
+        <li>
+          <a href="#secao10-8"><i class="fas fa-code"></i> 10.8 Expressões Regulares Básicas</a>
+        </li>
+        <li>
+          <a href="#secao10-8-1"><i class="fas fa-dot-circle"></i> 10.8.1 O Caractere Ponto (.)</a>
+        </li>
+        <li>
+          <a href="#secao10-8-2"><i class="fas fa-brackets"></i> 10.8.2 Os Caracteres de Colchetes [ ]</a>
+        </li>
+        <li>
+          <a href="#secao10-8-3"><i class="fas fa-asterisk"></i> 10.8.3 O Caractere Asterisco *</a>
+        </li>
+        <li>
+          <a href="#secao10-8-4"><i class="fas fa-anchor"></i> 10.8.4 Caracteres de Âncora</a>
+        </li>
+        <li>
+          <a href="#secao10-8-5"><i class="fas fa-backward"></i> 10.8.5 O Caractere Barra Invertida \</a>
+        </li>
+        <li>
+          <a href="#secao10-8-6"><i class="fas fa-expand-alt"></i> 10.8.6 Expressões Regulares Estendidas</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="badge-lab"><i class="fab fa-linux"></i> Módulo 10</div>
+      <h1>Trabalhando com Texto</h1>
+      <p>Working With Text</p>
+    </section>
+
+    <div class="container">
+      <!-- SEÇÃO 10.1 - INTRODUÇÃO (TRADUZIDA FIELMENTE) -->
+      <section id="secao10-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-file-alt"></i>
+          <span class="section-number">10.1</span> Introdução
+        </h2>
+        <div class="card">
+          <p>
+            Um grande número dos arquivos em um sistema de arquivos típico são <strong>arquivos de texto</strong>. Arquivos de texto contêm
+            apenas texto, sem recursos de formatação que você poderia ver em um arquivo de processador de texto.
+          </p>
+        </div>
+        <div class="card">
+          <p>
+            Por existirem tantos desses arquivos em um sistema Linux típico, um número significativo de comandos existe para ajudar os
+            usuários a manipular arquivos de texto. Existem comandos para visualizar e modificar esses arquivos de várias maneiras.
+          </p>
+        </div>
+        <div class="card">
+          <p>
+            Além disso, existem recursos disponíveis no shell para controlar a saída dos comandos, então ao invés de ter a saída exibida na
+            janela do terminal, a saída pode ser <strong>redirecionada</strong> para outro arquivo ou para outro comando. Esses recursos de
+            redirecionamento proporcionam aos usuários um ambiente muito mais flexível e poderoso para trabalhar.
+          </p>
+        </div>
+      </section>
+
+      <!-- STATS CARD - 88% DOS GERENTES (TRADUZIDO) -->
+      <section id="secao10-stats" class="section">
+        <div class="card" style="text-align: center">
+          <i class="fas fa-chart-line" style="font-size: 3rem"></i>
+          <h2 style="font-size: 4rem; color: var(--primary); margin: 1rem 0">88%</h2>
+          <p style="font-size: 1.2rem"><strong>DOS GERENTES DE CONTRATAÇÃO</strong></p>
+          <p>PRIORIZAM CONTRATAR PROFISSIONAIS CERTIFICADOS</p>
+          <div class="alert alert-info" style="margin-top: 1rem">
+            <i class="fas fa-file-alt"></i> Relatório de empregos em open source 2021 (Linux Foundation Research)
+          </div>
+          <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-dim)">Copyright © 2022 Network Development Group Inc.</p>
+        </div>
+      </section>
+      <!-- SEÇÃO 10.1.1 - VISUALIZANDO ARQUIVOS NO TERMINAL -->
+      <section id="secao10-1-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-eye"></i>
+          <span class="section-number">10.1.1</span> Visualizando Arquivos no Terminal
+        </h2>
+        <div class="card">
+          <p>
+            O comando <strong>cat</strong>, abreviação de <em>concatenate</em> (concatenar), é um comando simples mas útil cujas funções
+            incluem criar e exibir arquivos de texto, bem como combinar cópias de arquivos de texto. Um dos usos mais populares do
+            <strong>cat</strong> é exibir o conteúdo de arquivos de texto. Para exibir um arquivo na saída padrão usando o comando
+            <strong>cat</strong>, digite o comando seguido pelo nome do arquivo:
+          </p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ cd Documents
+sysadmin@localhost:~/Documents$ cat food.txt 
+Food is good.</pre
+          >
+        </div>
+        <div class="card">
+          <p>
+            Embora o terminal seja a saída padrão deste comando, o comando <strong>cat</strong> também pode ser usado para redirecionar o
+            conteúdo de arquivos para outros arquivos ou como entrada para outro comando, utilizando caracteres de redirecionamento.
+          </p>
+        </div>
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i> <strong>Dica:</strong> O nome "cat" vem de "concatenate", pois ele pode unir vários arquivos em
+          sequência.
+        </div>
+      </section>
+      <!-- SEÇÃO 10.1.2 - VISUALIZANDO ARQUIVOS USANDO UM PAGER -->
+      <section id="secao10-1-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-book-open"></i>
+          <span class="section-number">10.1.2</span> Visualizando Arquivos Usando um Pager
+        </h2>
+        <div class="card">
+          <p>
+            Embora visualizar arquivos pequenos com o comando <strong>cat</strong> não apresente problemas, ele não é uma escolha ideal para
+            arquivos grandes. O comando <strong>cat</strong> não fornece maneiras fáceis de pausar e reiniciar a exibição, então todo o
+            conteúdo do arquivo é despejado na tela.
+          </p>
+        </div>
+        <div class="card">
+          <p>
+            Para arquivos maiores, use um comando <strong>pager</strong> para visualizar o conteúdo. Comandos pager exibem uma página de
+            dados por vez, permitindo que você avance e retroceda no arquivo usando teclas de movimento.
+          </p>
+        </div>
+        <div class="card">
+          <p>Existem dois comandos pager comumente usados:</p>
+          <ul style="margin-top: 1rem; margin-left: 1.5rem; color: var(--text-dim)">
+            <li>
+              <i class="fas fa-angle-right" style="color: var(--primary); margin-right: 0.5rem"></i> O comando <strong>less</strong> fornece
+              uma capacidade de paginação muito avançada. Ele é geralmente o pager padrão usado por comandos como o comando
+              <strong>man</strong>.
+            </li>
+            <li>
+              <i class="fas fa-angle-right" style="color: var(--primary); margin-right: 0.5rem"></i> O comando <strong>more</strong> existe
+              desde os primórdios do UNIX. Embora tenha menos recursos que o comando <strong>less</strong>, o comando
+              <strong>less</strong> não está incluído em todas as distribuições Linux. O comando <strong>more</strong> está sempre
+              disponível.
+            </li>
+          </ul>
+        </div>
+        <div class="card">
+          <p>
+            Os comandos <strong>more</strong> e <strong>less</strong> permitem que os usuários naveguem pelo documento usando comandos de
+            teclado. Como os desenvolvedores basearam o comando <strong>less</strong> na funcionalidade do comando <strong>more</strong>,
+            todos os comandos de teclado disponíveis no comando <strong>more</strong> também funcionam no comando <strong>less</strong>.
+          </p>
+        </div>
+        <div class="card">
+          <p>
+            O foco do nosso conteúdo está no comando <strong>less</strong>, mais avançado. O comando <strong>more</strong> ainda é útil de
+            se lembrar para quando o comando <strong>less</strong> não estiver disponível. Lembre-se que a maioria dos comandos de teclado
+            fornecidos funciona para ambos os comandos.
+          </p>
+        </div>
+        <div class="alert alert-warning">
+          <i class="fas fa-exclamation-triangle"></i> <strong>Atenção:</strong> O nome "less" é um trocadilho com a frase "less is more"
+          (menos é mais), fazendo referência ao comando "more" original.
+        </div>
+      </section>
+      <!-- SEÇÃO 10.1.2.1 - COMANDOS DE MOVIMENTAÇÃO DO PAGER -->
+      <section id="secao10-1-2-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-arrow-up"></i>
+          <span class="section-number">10.1.2.1</span> Comandos de Movimentação do Pager
+        </h2>
+        <div class="card">
+          <p>Para visualizar um arquivo com o comando <strong>less</strong>, passe o nome do arquivo como argumento:</p>
+        </div>
+        <div class="terminal">
+          <pre>sysadmin@localhost:~/Documents$ less words</pre>
+        </div>
+        <div class="card">
+          <p>
+            Existem muitos comandos de movimentação para o comando <strong>less</strong>, cada um com múltiplas teclas ou combinações de
+            teclas possíveis. Embora isso possa parecer intimidante, não é necessário memorizar todos esses comandos de movimentação. Ao
+            visualizar um arquivo com o comando <strong>less</strong>, use a tecla <strong>H</strong> ou <strong>Shift+H</strong> para
+            exibir uma tela de ajuda:
+          </p>
+        </div>
+        <div class="terminal">
+          <pre>
+                   SUMMARY OF LESS COMMANDS
+
+      Commands marked with * may be preceded by a number, N.
+      Notes in parentheses indicate the behavior if N is given.
+      A key preceded by a caret indicates the Ctrl key; thus ^K is ctrl-K.
+
+  h  H                 Display this help.
+  q  :q  Q  :Q  ZZ     Exit.
+ ------------------------------------------------------------------------
+                           MOVING
+                                                                        
+  e  ^E  j  ^N  CR  *  Forward  one line   (or N lines).
+  y  ^Y  k  ^K  ^P  *  Backward one line   (or N lines).
+  f  ^F  ^V  SPACE  *  Forward  one window (or N lines).
+  b  ^B  ESC-v      *  Backward one window (or N lines).
+  z                 *  Forward  one window (and set window to N).
+  w                 *  Backward one window (and set window to N).
+  ESC-SPACE         *  Forward  one window, but don't stop at end-of-file.
+  d  ^D             *  Forward  one half-window (and set half-window to N).
+  u  ^U             *  Backward one half-window (and set half-window to N).
+  ESC-)  RightArrow *  Left  one half screen width (or N positions).
+  ESC-(  LeftArrow  *  Right one half screen width (or N positions).
+HELP -- Press RETURN for more, or q when done</pre
+          >
+        </div>
+        <div class="card">
+          <p>
+            O primeiro grupo de comandos de movimentação para focar são aqueles mais comumente usados. Para tornar ainda mais conveniente,
+            as teclas que são idênticas no <strong>more</strong> e no <strong>less</strong> estão resumidas abaixo para demonstrar como se
+            movimentar no <strong>more</strong> e no <strong>less</strong> ao mesmo tempo:
+          </p>
+        </div>
+
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Tecla</th>
+              <th>Movimento</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Spacebar (Barra de Espaço)</td>
+              <td>Avançar uma janela</td>
+            </tr>
+            <tr>
+              <td>B</td>
+              <td>Retroceder uma janela</td>
+            </tr>
+            <tr>
+              <td>Enter</td>
+              <td>Avançar uma linha</td>
+            </tr>
+            <tr>
+              <td>Q</td>
+              <td>Sair</td>
+            </tr>
+            <tr>
+              <td>H</td>
+              <td>Ajuda</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="card">
+          <p>
+            Ao usar o <strong>less</strong> como pager, a maneira mais fácil de avançar uma página é pressionar a
+            <strong>Barra de Espaço (Spacebar)</strong>.
+          </p>
+        </div>
+        <div class="alert alert-success">
+          <i class="fas fa-check-circle"></i> <strong>Dica:</strong> A tecla <strong>H</strong> (ou Shift+H) é seu melhor amigo no less —
+          ela mostra a tela de ajuda com todos os comandos disponíveis!
+        </div>
+      </section>
+      <!-- SEÇÃO 10.1.2.2 - COMANDOS DE BUSCA DO PAGER -->
+      <section id="secao10-1-2-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-search"></i>
+          <span class="section-number">10.1.2.2</span> Comandos de Busca do Pager
+        </h2>
+        <div class="card">
+          <p>
+            Existem duas maneiras de buscar no comando <strong>less</strong>: buscando para frente ou para trás a partir da sua posição
+            atual.
+          </p>
+        </div>
+        <div class="card">
+          <p>
+            Para iniciar uma busca para frente a partir da sua posição atual, use a tecla <strong>barra /</strong>. Em seguida, digite o
+            texto ou padrão a ser encontrado e pressione a tecla <strong>Enter</strong>.
+          </p>
+        </div>
+        <div class="terminal">
+          <pre>
+Abdul
+Abdul's
+Abe
+/frog</pre
+          >
+        </div>
+        <div class="card">
+          <p>
+            Se uma correspondência for encontrada, o cursor se move no documento até a correspondência. Por exemplo, no gráfico a seguir a
+            expressão "frog" foi procurada no arquivo words:
+          </p>
+        </div>
+        <div class="terminal">
+          <pre>
+bullfrog
+bullfrog's
+bullfrogs
+bullheaded
+bullhorn
+bullhorn's</pre
+          >
+        </div>
+        <div class="card">
+          <p>
+            Observe que "frog" não precisava ser uma palavra por si só. Observe também que enquanto o comando <strong>less</strong> se moveu
+            para a primeira correspondência a partir da posição atual, todas as correspondências foram destacadas.
+          </p>
+        </div>
+        <div class="card">
+          <p>
+            Se nenhuma correspondência for encontrada à frente da sua posição atual, a última linha da tela reportará
+            <strong>Pattern not found</strong> (Padrão não encontrado):
+          </p>
+        </div>
+        <div class="terminal">
+          <pre>Pattern not found (press RETURN)</pre>
+        </div>
+        <div class="card">
+          <p>
+            Para buscar para trás a partir da sua posição atual, pressione a tecla <strong>ponto de interrogação ?</strong>, então digite o
+            texto ou padrão a ser encontrado e pressione a tecla <strong>Enter</strong>. O cursor se move para trás até a primeira
+            correspondência que conseguir encontrar ou reporta que o padrão não pode ser encontrado.
+          </p>
+        </div>
+        <div class="card">
+          <p>
+            Se mais de uma correspondência for encontrada em uma busca, use a tecla <strong>n</strong> para avançar para a próxima
+            correspondência e use a combinação de teclas <strong>Shift+N</strong> para voltar para uma correspondência anterior.
+          </p>
+        </div>
+        <div class="card">
+          <p>
+            Os termos de busca na verdade usam padrões chamados <strong>expressões regulares</strong> (<em>regular expressions</em>). Mais
+            detalhes sobre expressões regulares são fornecidos mais adiante neste capítulo.
+          </p>
+        </div>
+
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Tecla</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>/</code> (barra)</td>
+              <td>Buscar para frente a partir da posição atual</td>
+            </tr>
+            <tr>
+              <td><code>?</code> (ponto de interrogação)</td>
+              <td>Buscar para trás a partir da posição atual</td>
+            </tr>
+            <tr>
+              <td><code>n</code></td>
+              <td>Avançar para a próxima correspondência</td>
+            </tr>
+            <tr>
+              <td><code>Shift+N</code> ou <code>N</code></td>
+              <td>Voltar para a correspondência anterior</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i> <strong>Dica:</strong> As buscas no <strong>less</strong> diferenciam maiúsculas de minúsculas
+          por padrão. Use <code>-i</code> ao iniciar o less para ignorar diferenças de caixa.
+        </div>
+      </section>
+      <!-- SEÇÃO 10.1.3 - HEAD E TAIL -->
+      <section id="secao10-1-3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-align-left"></i>
+          <span class="section-number">10.1.3</span> Head e Tail
+        </h2>
+        <div class="card">
+          <p>
+            Os comandos <strong>head</strong> e <strong>tail</strong> são usados para exibir apenas as primeiras ou as últimas linhas de um
+            arquivo, respectivamente (ou, quando usados com um pipe, a saída de um comando anterior). Por padrão, os comandos
+            <strong>head</strong> e <strong>tail</strong> exibem dez linhas do arquivo que é fornecido como argumento.
+          </p>
+        </div>
+        <div class="card">
+          <p>Por exemplo, o seguinte comando exibe as primeiras dez linhas do arquivo <code>/etc/sysctl.conf</code>:</p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~/Documents$ cd
+sysadmin@localhost:~$ head /etc/sysctl.conf
+#
+# /etc/sysctl.conf - Configuration file for setting system variables
+# See /etc/sysctl.d/ for additional system variables
+# See sysctl.conf (5) for information.
+#
+
+#kernel.domainname = example.com
+
+# Uncomment the following to stop low-level messages on console
+#kernel.printk = 3 4 1 3</pre
+          >
+        </div>
+        <div class="card">
+          <p>
+            Passar um número como opção fará com que ambos os comandos <strong>head</strong> e <strong>tail</strong> exibam o número
+            especificado de linhas, em vez das dez padrão. Por exemplo, para exibir as últimas cinco linhas do arquivo
+            <code>/etc/sysctl.conf</code> use a opção <strong>-5</strong>:
+          </p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ tail -5 /etc/sysctl.conf
+# Protects against creating or following links under certain conditions
+# Debian kernels have both set to 1 (restricted)
+# See https://www.kernel.org/doc/Documentation/sysctl/fs.txt
+#fs.protected_hardlinks=0
+#fs.protected_symlinks=0</pre
+          >
+        </div>
+        <div class="card">
+          <p>
+            A opção <strong>-n</strong> também pode ser usada para indicar quantas linhas exibir. Passe um número como argumento para a
+            opção:
+          </p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ head -n 3 /etc/sysctl.conf
+#
+# /etc/sysctl.conf - Configuration file for setting system variables
+# See /etc/sysctl.d/ for additional system variables</pre
+          >
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary); margin-bottom: 0.5rem"><i class="fas fa-minus-circle"></i> Opção com Valor Negativo</h3>
+          <p>
+            Tradicionalmente no UNIX, o número de linhas a serem exibidas era especificado como uma opção em qualquer um dos comandos, então
+            <strong>-3</strong> significava mostrar três linhas. Para o comando <strong>tail</strong>, tanto <strong>-3</strong> quanto
+            <strong>-n -3</strong> ainda significam mostrar três linhas.
+          </p>
+          <p>
+            No entanto, a versão GNU do comando <strong>head</strong> reconhece <strong>-n -3</strong> como "mostrar tudo exceto as últimas
+            três linhas", e ainda assim o comando <strong>head</strong> reconhece a opção <strong>-3</strong> como "mostrar as primeiras
+            três linhas".
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary); margin-bottom: 0.5rem"><i class="fas fa-plus-circle"></i> Opção com Valor Positivo</h3>
+          <p>
+            A versão GNU do comando <strong>tail</strong> permite uma variação de como especificar o número de linhas a serem impressas. Se
+            a opção <strong>-n</strong> for usada com um número prefixado pelo sinal de mais (<strong>+</strong>), então o comando
+            <strong>tail</strong> reconhece isso como "exibir o conteúdo começando na linha especificada e continuando até o final".
+          </p>
+          <p>Por exemplo, o seguinte comando exibe o conteúdo do <code>/etc/passwd</code> da linha 25 até o final do arquivo:</p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ nl /etc/passwd | tail -n +25
+    25  sshd:x:103:65534::/var/run/sshd:/usr/sbin/nologin
+    26  operator:x:1000:37::/root:/bin/sh
+    27  sysadmin:x:1001:1001:System Administrator,,,,:/home/sysadmin:/bin/bash</pre
+          >
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary); margin-bottom: 0.5rem"><i class="fas fa-chart-line"></i> Considere Isto</h3>
+          <p>
+            Alterações em tempo real em arquivos podem ser visualizadas usando a opção <strong>-f</strong> no comando
+            <strong>tail</strong> — útil quando você quer ver as mudanças em um arquivo conforme elas acontecem.
+          </p>
+          <p>
+            Um bom exemplo disso seria ao visualizar arquivos de log como administrador de sistema. Arquivos de log podem ser usados para
+            solucionar problemas e administradores frequentemente os visualizam de forma "interativa" com o comando
+            <strong>tail</strong> enquanto executam comandos em uma janela separada.
+          </p>
+          <p>
+            Por exemplo, se você fizer login como usuário <strong>root</strong>, você pode solucionar problemas com o servidor de email
+            visualizando as alterações em tempo real no arquivo de log <code>/var/log/mail.log</code>.
+          </p>
+        </div>
+
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Comando</th>
+              <th>Descrição</th>
+              <th>Exemplo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>head</code></td>
+              <td>Exibe as primeiras 10 linhas</td>
+              <td><code>head arquivo.txt</code></td>
+            </tr>
+            <tr>
+              <td><code>head -n N</code></td>
+              <td>Exibe as primeiras N linhas</td>
+              <td><code>head -n 20 arquivo.txt</code></td>
+            </tr>
+            <tr>
+              <td><code>tail</code></td>
+              <td>Exibe as últimas 10 linhas</td>
+              <td><code>tail arquivo.txt</code></td>
+            </tr>
+            <tr>
+              <td><code>tail -n N</code></td>
+              <td>Exibe as últimas N linhas</td>
+              <td><code>tail -n 15 arquivo.txt</code></td>
+            </tr>
+            <tr>
+              <td><code>tail -f</code></td>
+              <td>Acompanha alterações em tempo real</td>
+              <td><code>tail -f /var/log/syslog</code></td>
+            </tr>
+            <tr>
+              <td><code>tail -n +N</code></td>
+              <td>Exibe da linha N até o final</td>
+              <td><code>tail -n +25 /etc/passwd</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="alert alert-warning">
+          <i class="fas fa-eye"></i> <strong>Dica:</strong> Use <code>tail -f</code> para monitorar logs em tempo real. Pressione
+          <strong>Ctrl+C</strong> para sair do modo de acompanhamento.
+        </div>
+      </section>
+      <!-- SEÇÃO 10.2 - PIPES DE LINHA DE COMANDO -->
+      <section id="secao10-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-pipe"></i>
+          <span class="section-number">10.2</span> Pipes de Linha de Comando
+        </h2>
+        <div class="card">
+          <p>
+            O caractere <strong>pipe |</strong> pode ser usado para enviar a saída de um comando para outro. Tipicamente, quando um comando
+            tem saída ou gera um erro, a saída é exibida na tela; no entanto, isso não precisa ser sempre assim. Ao invés de ser impressa na
+            tela, a saída de um comando se torna a entrada para o próximo comando. Esta ferramenta pode ser poderosa, especialmente ao
+            procurar por dados específicos; o pipe é frequentemente usado para refinar os resultados de um comando inicial.
+          </p>
+        </div>
+        <div class="card">
+          <p>
+            Nos exemplos anteriores, os comandos <strong>head</strong> e <strong>tail</strong> recebiam arquivos como argumentos para
+            operar. No entanto, o caractere pipe permite que você utilize esses comandos não apenas em arquivos, mas também na saída de
+            outros comandos. Isso pode ser útil ao listar um diretório grande, por exemplo o diretório <code>/etc</code>:
+          </p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ ls /etc
+X11                     gss              mke2fs.conf     rpc
+adduser.conf            host.conf        modprobe.d      rsyslog.conf
+alternatives            hostname         modules         rsyslog.d
+apparmor                hosts            modules-load.d  securetty
+apparmor.d              hosts.allow      motd            security
+apt                     hosts.deny       mtab            selinux
+bash.bashrc             init.d           nanorc          services
+bind                    initramfs-tools  netplan         shadow
+bindresvport.blacklist  inputrc          network         shadow-
+binfmt.d                insserv.conf.d   networks        shells
+ca-certificates         iproute2         newt            skel
+ca-certificates.conf    issue            nsswitch.conf   ssh
+calendar                issue.net        opt             ssl
+console-setup           kernel           os-release      subgid
+cron.d                  ld.so.cache      pam.conf        subgid-
+cron.daily              ld.so.conf       pam.d           subuid
+cron.hourly             ld.so.conf.d     passwd          subuid-
+cron.monthly            ldap             passwd-         sudoers
+cron.weekly             legal            perl            sudoers.d
+crontab                 libaudit.conf    pinforc         sysctl.conf
+dbus-1                  locale.alias     ppp             sysctl.d
+debconf.conf            locale.gen       profile         systemd
+debian_version          localtime        profile.d       terminfo
+default                 logcheck         protocols       timezone
+deluser.conf            login.defs       python3         tmpfiles.d
+depmod.d                logrotate.conf   python3.6       ucf.conf
+dhcp                    logrotate.d      rc0.d           udev
+dpkg                    lsb-release      rc1.d           ufw
+environment             machine-id       rc2.d           update-motd.d
+fstab                   magic            rc3.d           updatedb.conf
+gai.conf                magic.mime       rc4.d           vim
+groff                   mailcap          rc5.d           vtrgb
+group                   mailcap.order    rc6.d           wgetrc
+group-                  manpath.config   rcS.d           xdg
+gshadow                 mc               resolv.conf
+gshadow-                mime.types       rmt</pre
+          >
+        </div>
+        <div class="card">
+          <p>
+            O comando anterior lista um grande número de arquivos. Se você executar isso no terminal, a saída é cortada e só pode ser
+            visualizada rolando para cima. Para visualizar mais facilmente o início da saída, use pipe com o comando <strong>head</strong>.
+            O exemplo a seguir exibe apenas as primeiras dez linhas:
+          </p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ ls /etc | head
+X11
+adduser.conf
+alternatives
+apparmor
+apparmor.d
+apt
+bash.bashrc
+bind
+bindresvport.blacklist
+binfmt.d</pre
+          >
+        </div>
+        <div class="card">
+          <p>
+            A saída completa do comando <strong>ls</strong> é passada pelo shell para o comando <strong>head</strong> ao invés de ser
+            impressa na tela. O comando <strong>head</strong> recebe esta saída do comando <strong>ls</strong> como dados de entrada, e a
+            saída do <strong>head</strong> é então impressa na tela.
+          </p>
+        </div>
+        <div class="card">
+          <p>
+            Múltiplos pipes podem ser usados consecutivamente para encadear múltiplos comandos. Se três comandos são conectados por pipe, a
+            saída do primeiro comando é passada para o segundo comando. Então, a saída do segundo comando é passada para o terceiro comando.
+            A saída do terceiro comando seria então impressa na tela.
+          </p>
+        </div>
+        <div class="card">
+          <p>
+            É importante escolher cuidadosamente a ordem em que os comandos são pipe, pois cada comando vê apenas a entrada do comando
+            anterior. Os exemplos abaixo ilustram isso usando o comando <strong>nl</strong>, que adiciona números de linha à saída. No
+            primeiro exemplo, o comando <strong>nl</strong> é usado para numerar as linhas da saída do comando <strong>ls</strong> anterior:
+          </p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ ls /etc/ssh | nl
+     1  moduli
+     2  ssh_config
+     3  ssh_host_ecdsa_key
+     4  ssh_host_ecdsa_key.pub
+     5  ssh_host_ed25519_key
+     6  ssh_host_ed25519_key.pub
+     7  ssh_host_rsa_key
+     8  ssh_host_rsa_key.pub
+     9  ssh_import_id
+    10  sshd_config</pre
+          >
+        </div>
+        <div class="card">
+          <p>
+            No próximo exemplo, note que o comando <strong>ls</strong> é executado primeiro e sua saída é enviada para o comando
+            <strong>nl</strong>, numerando todas as linhas da saída do comando <strong>ls</strong>. Então o comando <strong>tail</strong> é
+            executado, exibindo as últimas cinco linhas da saída do comando <strong>nl</strong>:
+          </p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ ls /etc/ssh | nl | tail -5
+     6  ssh_host_ed25519_key.pub
+     7  ssh_host_rsa_key
+     8  ssh_host_rsa_key.pub
+     9  ssh_import_id
+    10  sshd_config</pre
+          >
+        </div>
+        <div class="card">
+          <p>Compare a saída acima com o próximo exemplo:</p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ ls /etc/ssh | tail -5 | nl
+     1  ssh_host_ed25519_key.pub
+     2  ssh_host_rsa_key
+     3  ssh_host_rsa_key.pub
+     4  ssh_import_id
+     5  sshd_config</pre
+          >
+        </div>
+        <div class="card">
+          <p>Observe como os números das linhas são diferentes. Por quê?</p>
+          <p>
+            No segundo exemplo, a saída do comando <strong>ls</strong> é primeiro enviada para o comando <strong>tail</strong> que captura
+            apenas as últimas cinco linhas da saída. Então o comando <strong>tail</strong> envia essas cinco linhas para o comando
+            <strong>nl</strong>, que as numera de 1 a 5.
+          </p>
+        </div>
+        <div class="card">
+          <p>
+            Pipes podem ser poderosos, mas é necessário considerar como os comandos são pipe para garantir que a saída desejada seja
+            exibida.
+          </p>
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i> <strong>Dica:</strong> Pense no pipe como um "encanamento" — a saída de um comando flui para
+          dentro do próximo comando. A ordem dos comandos importa e muda o resultado final!
+        </div>
+
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Comando</th>
+              <th>Descrição</th>
+              <th>Exemplo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>command1 | command2</code></td>
+              <td>Envia a saída de command1 para a entrada de command2</td>
+              <td><code>ls /etc | head</code></td>
+            </tr>
+            <tr>
+              <td><code>command1 | command2 | command3</code></td>
+              <td>Encadeia múltiplos comandos com pipe</td>
+              <td><code>ls /etc/ssh | nl | tail -5</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <!-- SEÇÃO 10.3 - REDIRECIONAMENTO DE ENTRADA/SAÍDA -->
+      <section id="secao10-3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-random"></i>
+          <span class="section-number">10.3</span> Redirecionamento de Entrada/Saída
+        </h2>
+        <div class="card">
+          <p>
+            O redirecionamento de Entrada/Saída (I/O) permite que informações da linha de comando sejam passadas para diferentes fluxos
+            (<em>streams</em>). Antes de discutir redirecionamento, é importante entender os fluxos padrão (<em>standard streams</em>).
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary); margin-bottom: 0.5rem"><i class="fas fa-keyboard"></i> STDIN</h3>
+          <p>
+            <strong>Entrada padrão</strong>, ou <strong>STDIN</strong>, são informações normalmente inseridas pelo usuário via teclado.
+            Quando um comando solicita dados ao shell, o shell fornece ao usuário a capacidade de digitar comandos que, por sua vez, são
+            enviados ao comando como STDIN.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary); margin-bottom: 0.5rem"><i class="fas fa-desktop"></i> STDOUT</h3>
+          <p>
+            <strong>Saída padrão</strong>, ou <strong>STDOUT</strong>, é a saída normal dos comandos. Quando um comando funciona
+            corretamente (sem erros), a saída que ele produz é chamada de STDOUT. Por padrão, STDOUT é exibido na janela do terminal onde o
+            comando está sendo executado. STDOUT também é conhecido como fluxo ou canal <strong>#1</strong>.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary); margin-bottom: 0.5rem"><i class="fas fa-exclamation-triangle"></i> STDERR</h3>
+          <p>
+            <strong>Erro padrão</strong>, ou <strong>STDERR</strong>, são mensagens de erro geradas por comandos. Por padrão, STDERR é
+            exibido na janela do terminal onde o comando está sendo executado. STDERR também é conhecido como fluxo ou canal
+            <strong>#2</strong>.
+          </p>
+        </div>
+
+        <div class="card">
+          <p>
+            O redirecionamento de I/O permite que o usuário redirecione STDIN para que os dados venham de um arquivo e STDOUT/STDERR para
+            que a saída vá para um arquivo. O redirecionamento é alcançado usando os caracteres de seta <strong>< ></strong>.
+          </p>
+        </div>
+
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Fluxo</th>
+              <th>Descrição</th>
+              <th>Canal</th>
+              <th>Padrão</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>STDIN</code></td>
+              <td>Entrada padrão (teclado)</td>
+              <td>0</td>
+              <td><code>stdin</code> (teclado)</td>
+            </tr>
+            <tr>
+              <td><code>STDOUT</code></td>
+              <td>Saída padrão (normal)</td>
+              <td>1</td>
+              <td><code>stdout</code> (terminal)</td>
+            </tr>
+            <tr>
+              <td><code>STDERR</code></td>
+              <td>Erro padrão</td>
+              <td>2</td>
+              <td><code>stderr</code> (terminal)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i> <strong>Dica:</strong> Pense nos canais como "portas": canal 0 para entrada, canal 1 para saída
+          normal, canal 2 para erros.
+        </div>
+      </section>
+      <!-- SEÇÃO 10.3.1 - STDOUT -->
+      <section id="secao10-3-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-desktop"></i>
+          <span class="section-number">10.3.1</span> STDOUT
+        </h2>
+        <div class="card">
+          <p>
+            O STDOUT pode ser direcionado para arquivos. Para começar, observe a saída do seguinte comando <strong>echo</strong> que exibe
+            na tela:
+          </p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ echo "Line 1"
+Line 1</pre
+          >
+        </div>
+        <div class="card">
+          <p>Usando o caractere <strong>></strong>, a saída pode ser redirecionada para um arquivo:</p>
+        </div>
+        <div class="terminal">
+          <pre>sysadmin@localhost:~$ echo "Line 1" > example.txt</pre>
+        </div>
+        <div class="card">
+          <p>
+            Este comando não exibe saída porque o STDOUT foi enviado para o arquivo <code>example.txt</code> ao invés da tela. Você pode ver
+            o novo arquivo com a saída do comando <strong>ls</strong>.
+          </p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ ls
+Desktop    Downloads  Pictures  Templates  example.txt
+Documents  Music      Public    Videos</pre
+          >
+        </div>
+        <div class="card">
+          <p>O arquivo contém a saída do comando <strong>echo</strong>, que pode ser visualizada com o comando <strong>cat</strong>:</p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ cat example.txt                                  
+Line 1</pre
+          >
+        </div>
+        <div class="card">
+          <p>
+            É importante perceber que a <strong>seta única ></strong> <strong>sobrescreve</strong> qualquer conteúdo de um arquivo
+            existente:
+          </p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ cat example.txt
+Line 1
+sysadmin@localhost:~$ echo "New line 1" > example.txt
+sysadmin@localhost:~$ cat example.txt
+New line 1</pre
+          >
+        </div>
+        <div class="card">
+          <p>O conteúdo original do arquivo se foi, substituído pela saída do novo comando <strong>echo</strong>.</p>
+        </div>
+        <div class="card">
+          <p>
+            Também é possível preservar o conteúdo de um arquivo existente adicionando a ele (<em>appending</em>). Use
+            <strong>dois caracteres >></strong> para adicionar ao final de um arquivo ao invés de sobrescrevê-lo:
+          </p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ cat example.txt
+New line 1
+sysadmin@localhost:~$ echo "Another line" >> example.txt
+sysadmin@localhost:~$ cat example.txt
+New line 1
+Another line</pre
+          >
+        </div>
+        <div class="card">
+          <p>Ao invés de ser sobrescrita, a saída do comando <strong>echo</strong> é adicionada ao final do arquivo.</p>
+        </div>
+
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Operador</th>
+              <th>Nome</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>></code></td>
+              <td>Redirecionamento</td>
+              <td>Sobrescreve o arquivo (cria se não existir)</td>
+            </tr>
+            <tr>
+              <td><code>>></code></td>
+              <td>Append (adicionar)</td>
+              <td>Adiciona ao final do arquivo</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="alert alert-warning">
+          <i class="fas fa-exclamation-triangle"></i> <strong>Cuidado!</strong> Usar <code>></code> com um arquivo existente apaga todo o
+          conteúdo anterior. Sempre verifique se não vai perder dados importantes!
+        </div>
+      </section>
+      <!-- SEÇÃO 10.3.2 - STDERR -->
+      <section id="secao10-3-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-exclamation-triangle"></i>
+          <span class="section-number">10.3.2</span> STDERR
+        </h2>
+        <div class="card">
+          <p>
+            O STDERR pode ser redirecionado de forma semelhante ao STDOUT. Ao usar o caractere de seta para redirecionar, assume-se o fluxo
+            #1 (STDOUT), a menos que outro fluxo seja especificado. Assim, o fluxo #2 deve ser especificado ao redirecionar o STDERR,
+            colocando o número <strong>2</strong> antes do caractere <strong>></strong>.
+          </p>
+        </div>
+        <div class="card">
+          <p>
+            Para demonstrar o redirecionamento do STDERR, primeiro observe o seguinte comando que produz um erro porque o diretório
+            especificado não existe:
+          </p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ ls /fake
+ls: cannot access /fake: No such file or directory</pre
+          >
+        </div>
+        <div class="card">
+          <p>
+            Note que não há nada no exemplo acima que indique que a saída é STDERR. A saída é claramente uma mensagem de erro, mas como você
+            poderia dizer que ela está sendo enviada para o STDERR? Uma maneira fácil de determinar isso é redirecionar o STDOUT:
+          </p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ ls /fake > output.txt
+ls: cannot access /fake: No such file or directory</pre
+          >
+        </div>
+        <div class="card">
+          <p>
+            No exemplo acima, o STDOUT foi redirecionado para o arquivo <code>output.txt</code>. Então, a saída que é exibida não pode ser
+            STDOUT porque teria sido colocada no arquivo <code>output.txt</code> ao invés do terminal. Como toda saída de comando vai para
+            STDOUT ou STDERR, a saída exibida acima deve ser STDERR.
+          </p>
+        </div>
+        <div class="card">
+          <p>A saída STDERR de um comando pode ser enviada para um arquivo:</p>
+        </div>
+        <div class="terminal">
+          <pre>sysadmin@localhost:~$ ls /fake 2> error.txt</pre>
+        </div>
+        <div class="card">
+          <p>
+            No exemplo, o <strong>2></strong> indica que todas as mensagens de erro devem ser enviadas para o arquivo
+            <code>error.txt</code>, o que pode ser confirmado usando o comando <strong>cat</strong>:
+          </p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ cat error.txt
+ls: cannot access /fake: No such file or directory</pre
+          >
+        </div>
+
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Operador</th>
+              <th>Fluxo</th>
+              <th>Descrição</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>></code> ou <code>1></code></td>
+              <td>STDOUT (1)</td>
+              <td>Redireciona saída normal (padrão)</td>
+            </tr>
+            <tr>
+              <td><code>2></code></td>
+              <td>STDERR (2)</td>
+              <td>Redireciona mensagens de erro</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i> <strong>Dica:</strong> Lembre-se: <strong>1></strong> é para saída normal, <strong>2></strong> é
+          para erros. Se você não colocar o número, o padrão é <strong>1></strong> (STDOUT).
+        </div>
+      </section>
+      <!-- SEÇÃO 10.3.3 - REDIRECIONANDO MÚLTIPLOS FLUXOS -->
+      <section id="secao10-3-3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-code-branch"></i>
+          <span class="section-number">10.3.3</span> Redirecionando Múltiplos Fluxos
+        </h2>
+        <div class="card">
+          <p>
+            É possível direcionar tanto o STDOUT quanto o STDERR de um comando ao mesmo tempo. O seguinte comando produz tanto STDOUT quanto
+            STDERR porque um dos diretórios especificados existe e o outro não:
+          </p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ ls /fake /etc/ppp
+ls: cannot access /fake: No such file or directory
+/etc/ppp:
+ip-down.d  ip-up.d</pre
+          >
+        </div>
+        <div class="card">
+          <p>Se apenas o STDOUT for enviado para um arquivo, o STDERR ainda é impresso na tela:</p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ ls /fake /etc/ppp > example.txt
+ls: cannot access /fake: No such file or directory
+sysadmin@localhost:~$ cat example.txt
+/etc/ppp:
+ip-down.d
+ip-up.d</pre
+          >
+        </div>
+        <div class="card">
+          <p>Se apenas o STDERR for enviado para um arquivo, o STDOUT ainda é impresso na tela:</p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ ls /fake /etc/ppp 2> error.txt
+/etc/ppp:
+ip-down.d
+ip-up.d
+sysadmin@localhost:~$ cat error.txt
+ls: cannot access /fake: No such file or directory</pre
+          >
+        </div>
+        <div class="card">
+          <p>
+            Ambos STDOUT e STDERR podem ser enviados para um arquivo usando o caractere <strong>&amp;</strong> (ampersand) antes do
+            caractere <strong>></strong>. O conjunto de caracteres <strong>&amp;&gt;</strong> significa tanto <strong>1&gt;</strong> quanto
+            <strong>2&gt;</strong>:
+          </p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ ls /fake /etc/ppp &> all.txt
+sysadmin@localhost:~$ cat all.txt
+ls: cannot access /fake: No such file or directory
+/etc/ppp:
+ip-down.d
+ip-up.d</pre
+          >
+        </div>
+        <div class="card">
+          <p>
+            Note que quando você usa <strong>&amp;&gt;</strong>, a saída aparece no arquivo com todas as mensagens de STDERR no topo e todas
+            as mensagens de STDOUT abaixo de todas as mensagens de STDERR:
+          </p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ ls /fake /etc/ppp /junk /etc/sound &> all.txt
+sysadmin@localhost:~$ cat all.txt
+ls: cannot access '/fake': No such file or directory
+ls: cannot access '/junk': No such file or directory
+ls: cannot access '/etc/sound': No such file or directory
+/etc/ppp:
+ip-down.d
+ip-up.d</pre
+          >
+        </div>
+        <div class="card">
+          <p>
+            Se você não quer que STDERR e STDOUT vão ambos para o mesmo arquivo, eles podem ser redirecionados para arquivos diferentes
+            usando tanto <strong>&gt;</strong> quanto <strong>2&gt;</strong>. Por exemplo, para direcionar STDOUT para
+            <code>example.txt</code> e STDERR para <code>error.txt</code>, execute o seguinte:
+          </p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ ls /fake /etc/ppp > example.txt 2> error.txt
+sysadmin@localhost:~$ cat error.txt
+ls: cannot access /fake: No such file or directory
+sysadmin@localhost:~$ cat example.txt
+/etc/ppp:
+ip-down.d
+ip-up.d</pre
+          >
+        </div>
+        <div class="card">
+          <p>A ordem em que os fluxos são especificados não importa.</p>
+        </div>
+
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Operador</th>
+              <th>Descrição</th>
+              <th>Exemplo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>&gt; arquivo</code> ou <code>1&gt; arquivo</code></td>
+              <td>Redireciona apenas STDOUT</td>
+              <td><code>ls /fake /etc/ppp > out.txt</code></td>
+            </tr>
+            <tr>
+              <td><code>2&gt; arquivo</code></td>
+              <td>Redireciona apenas STDERR</td>
+              <td><code>ls /fake /etc/ppp 2> err.txt</code></td>
+            </tr>
+            <tr>
+              <td><code>&amp;&gt; arquivo</code></td>
+              <td>Redireciona ambos STDOUT e STDERR para o mesmo arquivo</td>
+              <td><code>ls /fake /etc/ppp &> all.txt</code></td>
+            </tr>
+            <tr>
+              <td><code>&gt; out.txt 2&gt; err.txt</code></td>
+              <td>Redireciona STDOUT e STDERR para arquivos diferentes</td>
+              <td><code>ls /fake /etc/ppp > out.txt 2> err.txt</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i> <strong>Dica:</strong> Use <code>&amp;&gt;</code> quando quiser capturar toda a saída (normal +
+          erros) em um único arquivo. Use <code>&gt; out.txt 2&gt; err.txt</code> quando quiser separar a saída normal dos erros.
+        </div>
+      </section>
+      <!-- SEÇÃO 10.3.4 - STDIN -->
+      <section id="secao10-3-4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-keyboard"></i>
+          <span class="section-number">10.3.4</span> STDIN
+        </h2>
+        <div class="card">
+          <p>
+            O conceito de redirecionar o STDIN é um conceito difícil porque é mais complicado entender por que você iria querer redirecionar
+            o STDIN. Com STDOUT e STDERR, seus propósitos são diretos; às vezes é útil armazenar a saída em um arquivo para uso futuro.
+          </p>
+        </div>
+        <div class="card">
+          <p>A maioria dos usuários Linux acaba redirecionando STDOUT rotineiramente, STDERR ocasionalmente, e STDIN muito raramente.</p>
+        </div>
+        <div class="card">
+          <p>
+            Existem muito poucos comandos que exigem que você redirecione o STDIN porque com a maioria dos comandos, se você quiser ler
+            dados de um arquivo para um comando, você pode especificar o nome do arquivo como um argumento para o comando.
+          </p>
+        </div>
+        <div class="card">
+          <p>
+            Para alguns comandos, se você não especificar um nome de arquivo como argumento, eles voltam a usar o STDIN para obter dados.
+            Por exemplo, considere o seguinte comando <strong>cat</strong>:
+          </p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ cat
+hello
+hello
+how are you?
+how are you?
+goodbye
+goodbye</pre
+          >
+        </div>
+
+        <div class="alert alert-warning">
+          <i class="fas fa-exclamation-triangle"></i> <strong>Nota:</strong> Se você tentar o comando <strong>cat</strong> sem argumentos,
+          mate o processo e retorne ao prompt usando <strong>Ctrl+C</strong>.
+        </div>
+
+        <div class="card">
+          <p>
+            No exemplo anterior, o comando <strong>cat</strong> não recebeu um nome de arquivo como argumento. Então, ele solicita os dados
+            para exibir na tela a partir do STDIN. O usuário digita <em>hello</em>, e então o comando <strong>cat</strong> exibe
+            <em>hello</em> na tela. Embora isso seja moderadamente interessante, não é particularmente útil.
+          </p>
+        </div>
+        <div class="card">
+          <p>
+            No entanto, se a saída do comando <strong>cat</strong> fosse redirecionada para um arquivo, então este método poderia ser usado
+            para adicionar texto a um arquivo existente ou para colocar texto em um novo arquivo.
+          </p>
+        </div>
+        <div class="card">
+          <p>
+            O primeiro comando no exemplo abaixo redireciona a saída do comando <strong>cat</strong> para um arquivo recém-criado chamado
+            <code>new.txt</code>. Esta ação é seguida fornecendo ao comando <strong>cat</strong> o arquivo <code>new.txt</code> como
+            argumento para exibir o texto redirecionado no STDOUT.
+          </p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ cat > new.txt
+Hello
+How are you?
+Goodbye
+sysadmin@localhost:~$ cat new.txt                               
+Hello
+How are you?
+Goodbye</pre
+          >
+        </div>
+        <div class="card">
+          <p>
+            Embora o exemplo anterior demonstre outra vantagem de redirecionar o STDOUT, ele não aborda por que ou como o STDIN pode ser
+            direcionado. Para entender isso, considere um novo comando chamado <strong>tr</strong>. Este comando pega um conjunto de
+            caracteres e os traduz em outro conjunto de caracteres.
+          </p>
+        </div>
+        <div class="card">
+          <p>Por exemplo, para capitalizar uma linha de texto, use o comando <strong>tr</strong> da seguinte forma:</p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ tr 'a-z' 'A-Z'
+watch how this works
+WATCH HOW THIS WORKS</pre
+          >
+        </div>
+        <div class="card">
+          <p>
+            O comando <strong>tr</strong> pegou o STDIN do teclado e converteu todas as letras minúsculas antes de enviar o STDOUT para a
+            tela.
+          </p>
+        </div>
+        <div class="card">
+          <p>
+            Parece que um uso melhor do comando <strong>tr</strong> seria realizar a tradução em um arquivo, não na entrada do teclado. No
+            entanto, o comando <strong>tr</strong> não suporta argumentos de nome de arquivo:
+          </p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ cat example.txt
+/etc/ppp:
+ip-down.d
+ip-up.d
+sysadmin@localhost:~$ tr 'a-z' 'A-Z' example.txt
+tr: extra operand `example.txt'
+Try `tr --help' for more information</pre
+          >
+        </div>
+        <div class="card">
+          <p>
+            É possível, no entanto, dizer ao shell para obter o STDIN de um arquivo ao invés do teclado usando o caractere
+            <strong>&lt;</strong>:
+          </p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ tr 'a-z' 'A-Z' < example.txt
+/ETC/PPP:
+IP-DOWN.D
+IP-UP.D</pre
+          >
+        </div>
+        <div class="card">
+          <p>
+            A maioria dos comandos aceita nomes de arquivo como argumentos, então este caso de uso é relativamente raro. No entanto, para
+            aqueles que não aceitam, este método pode ser usado para fazer o shell ler do arquivo ao invés de depender da capacidade do
+            comando.
+          </p>
+        </div>
+        <div class="card">
+          <p>Uma última observação: para salvar a saída resultante, redirecione-a para outro arquivo:</p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ tr 'a-z' 'A-Z' < example.txt > newexample.txt
+sysadmin@localhost:~$ cat newexample.txt
+/ETC/PPP:
+IP-DOWN.D
+IP-UP.D</pre
+          >
+        </div>
+
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Operador</th>
+              <th>Descrição</th>
+              <th>Exemplo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>&lt; arquivo</code></td>
+              <td>Redireciona o conteúdo de um arquivo como STDIN para o comando</td>
+              <td><code>tr 'a-z' 'A-Z' < example.txt</code></td>
+            </tr>
+            <tr>
+              <td><code>comando &lt; arquivo &gt; novo_arquivo</code></td>
+              <td>Redireciona STDIN de um arquivo e STDOUT para outro arquivo</td>
+              <td><code>tr 'a-z' 'A-Z' < example.txt > out.txt</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i> <strong>Dica:</strong> Use <code>&lt;</code> para redirecionar STDIN de um arquivo. Isso é útil
+          para comandos como <strong>tr</strong> que não aceitam nomes de arquivo como argumentos.
+        </div>
+      </section>
+      <!-- SEÇÃO 10.4 - ORDENANDO ARQUIVOS OU ENTRADA -->
+      <section id="secao10-4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-sort-amount-down"></i>
+          <span class="section-number">10.4</span> Ordenando Arquivos ou Entrada
+        </h2>
+        <div class="card">
+          <p>
+            O comando <strong>sort</strong> pode ser usado para reorganizar as linhas de arquivos ou entrada em ordem dicionário ou
+            numérica. O exemplo a seguir cria um pequeno arquivo, usando o comando <strong>head</strong> para capturar as primeiras 5 linhas
+            do arquivo <code>/etc/passwd</code> e enviar a saída para um arquivo chamado <code>mypasswd</code>.
+          </p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ head -5 /etc/passwd > mypasswd
+sysadmin@localhost:~$ cat mypasswd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync</pre
+          >
+        </div>
+        <div class="card">
+          <p>Agora vamos ordenar o arquivo <code>mypasswd</code>:</p>
+        </div>
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ sort mypasswd
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+root:x:0:0:root:/root:/bin/bash
+sync:x:4:65534:sync:/bin:/bin/sync
+sys:x:3:3:sys:/dev:/usr/sbin/nologin</pre
+          >
+        </div>
+        <div class="card">
+          <p>
+            Após um exame cuidadoso da saída no exemplo anterior, o comando <strong>sort</strong> organizou as linhas do arquivo em ordem
+            alfabética. Compare esta saída com a saída do comando <strong>cat</strong> anterior.
+          </p>
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i> <strong>Dica:</strong> Por padrão, o <strong>sort</strong> ordena em ordem alfabética. Use a
+          opção <code>-n</code> para ordenação numérica e <code>-r</code> para ordem reversa.
+        </div>
+
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Opção</th>
+              <th>Descrição</th>
+              <th>Exemplo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>-n</code></td>
+              <td>Ordena numericamente (pelo início numérico da linha)</td>
+              <td><code>sort -n numeros.txt</code></td>
+            </tr>
+            <tr>
+              <td><code>-r</code></td>
+              <td>Ordena em ordem reversa</td>
+              <td><code>sort -r nomes.txt</code></td>
+            </tr>
+            <tr>
+              <td><code>-k N</code></td>
+              <td>Ordena pela coluna/posição N</td>
+              <td><code>sort -k 3 -n dados.txt</code></td>
+            </tr>
+            <tr>
+              <td><code>-u</code></td>
+              <td>Remove linhas duplicadas</td>
+              <td><code>sort -u arquivo.txt</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <!-- SEÇÃO 10.4.1 - CAMPOS E OPÇÕES DE ORDENAÇÃO -->
+      <section id="secao10-4-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-columns"></i>
+          <span class="section-number">10.4.1</span> Campos e Opções de Ordenação
+        </h2>
+
+        <div class="card">
+          <p>
+            O comando <strong>sort</strong> pode reorganizar a saída com base no conteúdo de um ou mais campos. Os campos são determinados
+            por um <strong>delimitador</strong> de campo contido em cada linha. Na computação, um delimitador é um caractere que separa uma
+            string de texto ou dados; o padrão é espaço em branco (<em>whitespace</em>), como espaços ou tabs.
+          </p>
+        </div>
+
+        <div class="card">
+          <p>
+            O seguinte comando pode ser usado para ordenar numericamente o terceiro campo do arquivo <code>mypasswd</code>. Três opções são
+            usadas para alcançar esta ordenação:
+          </p>
+        </div>
+
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Opção</th>
+              <th>Função</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>-t:</code></td>
+              <td>
+                A opção <strong>-t</strong> especifica o delimitador de campo. Se o arquivo ou entrada for separado por um delimitador
+                diferente de espaço em branco, por exemplo uma vírgula ou dois pontos, a opção <strong>-t</strong> permite que outro
+                separador de campo seja especificado como argumento. O arquivo <code>mypasswd</code> usado no exemplo anterior usa o
+                caractere <strong>dois pontos :</strong> como delimitador para separar os campos, então o exemplo a seguir usa a opção
+                <strong>-t:</strong>.
+              </td>
+            </tr>
+            <tr>
+              <td><code>-k3</code></td>
+              <td>
+                A opção <strong>-k</strong> especifica o número do campo. Para especificar por qual campo ordenar, use a opção
+                <strong>-k</strong> com um argumento para indicar o número do campo, começando com 1 para o primeiro campo. O exemplo a
+                seguir usa a opção <strong>-k3</strong> para ordenar pelo terceiro campo.
+              </td>
+            </tr>
+            <tr>
+              <td><code>-n</code></td>
+              <td>
+                Esta opção especifica o tipo de ordenação. O terceiro campo no arquivo <code>mypasswd</code> contém números, então a opção
+                <strong>-n</strong> é usada para realizar uma ordenação numérica.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ sort -t: -n -k3 mypasswd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            Outra opção comumente usada no comando <strong>sort</strong> é a opção <strong>-r</strong>, que é usada para realizar uma
+            ordenação reversa. O exemplo a seguir mostra o mesmo comando do exemplo anterior, com a adição da opção <strong>-r</strong>,
+            fazendo com que os números mais altos no terceiro campo apareçam no topo da saída:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ sort -t: -n -r -k3 mypasswd
+sync:x:4:65534:sync:/bin:/bin/sync 
+sys:x:3:3:sys:/dev:/usr/sbin/nologin  
+bin:x:2:2:bin:/bin:/usr/sbin/nologin  
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+root:x:0:0:root:/root:/bin/bash</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            Por fim, você pode querer realizar ordenações mais complexas, como ordenar por um campo primário e depois por um campo
+            secundário. Por exemplo, considere o seguinte arquivo de valores separados por vírgula (<em>comma-separated value</em>), um
+            arquivo onde o caractere vírgula é o delimitador de campo:
+          </p>
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-hand-point-right"></i> <strong>Acompanhe:</strong> Use o seguinte comando para mudar para o diretório Documents:
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ cd ~/Documents
+
+sysadmin@localhost:~/Documents$ cat os.csv
+1970,Unix,Richie
+1987,Minix,Tanenbaum
+1970,Unix,Thompson
+1991,Linux,Torvalds</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            Para ordenar primeiro por sistema operacional (campo #2), depois por ano (campo #1) e depois por sobrenome (campo #3), use o
+            seguinte comando:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~/Documents$ sort -t, -k2 -k1n -k3 os.csv
+1991,Linux,Torvalds
+1987,Minix,Tanenbaum
+1970,Unix,Richie
+1970,Unix,Thompson</pre
+          >
+        </div>
+
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Opção</th>
+              <th>Função</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>-t,</code></td>
+              <td>Especifica o caractere vírgula como delimitador de campo</td>
+            </tr>
+            <tr>
+              <td><code>-k2</code></td>
+              <td>Ordena pelo campo #2 (sistema operacional)</td>
+            </tr>
+            <tr>
+              <td><code>-k1n</code></td>
+              <td>Ordena numericamente pelo campo #1 (ano)</td>
+            </tr>
+            <tr>
+              <td><code>-k3</code></td>
+              <td>Ordena pelo campo #3 (sobrenome)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="card">
+          <p>Use o seguinte comando para retornar ao diretório home:</p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~/Documents$ cd
+sysadmin@localhost:~$</pre
+          >
+        </div>
+
+        <div class="alert alert-success">
+          <i class="fas fa-check-circle"></i> <strong>Dica:</strong> A ordem das opções <code>-k</code> determina a prioridade da ordenação:
+          primeiro pelo primeiro <code>-k</code>, depois pelo segundo, e assim por diante.
+        </div>
+      </section>
+      <!-- SEÇÃO 10.5 - VISUALIZANDO ESTATÍSTICAS DE ARQUIVO -->
+      <section id="secao10-5" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-chart-bar"></i>
+          <span class="section-number">10.5</span> Visualizando Estatísticas de Arquivo
+        </h2>
+
+        <div class="card">
+          <p>
+            O comando <strong>wc</strong> fornece o número de linhas, palavras e bytes (1 byte = 1 caractere em um arquivo de texto) para um
+            arquivo, e uma contagem total de linhas se mais de um arquivo for especificado. Por padrão, o comando
+            <strong>wc</strong> permite que até três estatísticas sejam impressas para cada arquivo fornecido, bem como o total dessas
+            estatísticas se mais de um nome de arquivo for fornecido:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ wc /etc/passwd /etc/passwd-
+  35   56 1710 /etc/passwd
+  34   55 1665 /etc/passwd-
+  69  111 3375 total</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>A saída do exemplo anterior tem quatro colunas:</p>
+          <ul style="margin-top: 1rem; margin-left: 1.5rem; color: var(--text-dim)">
+            <li><i class="fas fa-angle-right" style="color: var(--primary); margin-right: 0.5rem"></i> Número de linhas</li>
+            <li><i class="fas fa-angle-right" style="color: var(--primary); margin-right: 0.5rem"></i> Número de palavras</li>
+            <li><i class="fas fa-angle-right" style="color: var(--primary); margin-right: 0.5rem"></i> Número de bytes</li>
+            <li><i class="fas fa-angle-right" style="color: var(--primary); margin-right: 0.5rem"></i> Nome do arquivo</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <p>
+            Também é possível visualizar apenas estatísticas específicas, usando a opção <strong>-l</strong> para mostrar apenas o número de
+            linhas, a opção <strong>-w</strong> para mostrar apenas o número de palavras, a opção <strong>-c</strong> para mostrar apenas o
+            número de bytes, ou qualquer combinação dessas opções.
+          </p>
+        </div>
+
+        <div class="card">
+          <p>
+            O comando <strong>wc</strong> pode ser útil para contar o número de linhas de saída de algum outro comando através de um pipe.
+            Por exemplo, se você quisesse saber o número total de arquivos no diretório <code>/etc</code>, envie a saída de
+            <strong>ls</strong> para o <strong>wc</strong> e conte apenas o número de linhas:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ ls /etc/ | wc -l
+142</pre
+          >
+        </div>
+
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Opção</th>
+              <th>Descrição</th>
+              <th>Exemplo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>-l</code></td>
+              <td>Conta apenas o número de linhas</td>
+              <td><code>wc -l arquivo.txt</code></td>
+            </tr>
+            <tr>
+              <td><code>-w</code></td>
+              <td>Conta apenas o número de palavras</td>
+              <td><code>wc -w arquivo.txt</code></td>
+            </tr>
+            <tr>
+              <td><code>-c</code></td>
+              <td>Conta apenas o número de bytes</td>
+              <td><code>wc -c arquivo.txt</code></td>
+            </tr>
+            <tr>
+              <td><code>-m</code></td>
+              <td>Conta apenas o número de caracteres</td>
+              <td><code>wc -m arquivo.txt</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i> <strong>Dica:</strong> Use <code>wc -l</code> com pipe para contar quantos itens um comando
+          retorna. Por exemplo: <code>ls | wc -l</code> conta quantos arquivos estão no diretório atual.
+        </div>
+      </section>
+      <!-- SEÇÃO 10.6 - FILTRANDO SEÇÕES DE ARQUIVO -->
+      <section id="secao10-6" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-cut"></i>
+          <span class="section-number">10.6</span> Filtrando Seções de Arquivo
+        </h2>
+
+        <div class="card">
+          <p>
+            O comando <strong>cut</strong> pode extrair colunas de texto de um arquivo ou da entrada padrão. Ele é usado principalmente para
+            trabalhar com arquivos de banco de dados delimitados. Novamente, arquivos delimitados são arquivos que contêm colunas separadas
+            por um delimitador. Esses arquivos são muito comuns em sistemas Linux.
+          </p>
+        </div>
+
+        <div class="card">
+          <p>
+            Por padrão, o comando <strong>cut</strong> espera que sua entrada seja separada pelo caractere <strong>tab</strong>, mas a opção
+            <strong>-d</strong> pode especificar delimitadores alternativos, como dois pontos ou vírgula.
+          </p>
+        </div>
+
+        <div class="card">
+          <p>
+            A opção <strong>-f</strong> pode especificar quais campos exibir, seja como um intervalo com hífen ou uma lista separada por
+            vírgulas.
+          </p>
+        </div>
+
+        <div class="card">
+          <p>
+            No exemplo a seguir, o primeiro, quinto, sexto e sétimo campos do arquivo de banco de dados <code>mypasswd</code> são exibidos:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ cut -d: -f1,5-7 mypasswd
+root:root:/root:/bin/bash
+daemon:daemon:/usr/sbin:/usr/sbin/nologin
+bin:bin:/bin:/usr/sbin/nologin
+sys:sys:/dev:/usr/sbin/nologin
+sync:sync:/bin:/bin/sync</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            O comando <strong>cut</strong> também é capaz de extrair colunas de texto com base na posição do caractere com a opção
+            <strong>-c</strong> — útil ao trabalhar com arquivos de banco de dados de largura fixa ou saídas de comandos.
+          </p>
+        </div>
+
+        <div class="card">
+          <p>
+            Por exemplo, os campos do comando <strong>ls -l</strong> estão sempre nas mesmas posições de caractere. O exemplo a seguir
+            exibirá apenas o tipo de arquivo (caractere 1), permissões (caracteres 2-10), um espaço (caractere 11) e o nome do arquivo
+            (caracteres 50+):
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ ls -l | cut -c1-11,50-
+total 44
+drwxr-xr-x Desktop
+drwxr-xr-x Documents
+drwxr-xr-x Downloads
+drwxr-xr-x Music
+drwxr-xr-x Pictures
+drwxr-xr-x Public
+drwxr-xr-x Templates
+drwxr-xr-x Videos
+-rw-rw-r-- all.txt
+-rw-rw-r-- example.txt
+-rw-rw-r-- mypasswd
+-rw-rw-r-- new.txt</pre
+          >
+        </div>
+
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Opção</th>
+              <th>Descrição</th>
+              <th>Exemplo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>-d</code></td>
+              <td>Especifica o delimitador de campo</td>
+              <td><code>cut -d: -f1 arquivo.txt</code></td>
+            </tr>
+            <tr>
+              <td><code>-f</code></td>
+              <td>Especifica quais campos exibir (1-indexado)</td>
+              <td><code>cut -d, -f2,4 dados.csv</code></td>
+            </tr>
+            <tr>
+              <td><code>-c</code></td>
+              <td>Extrai por posição de caractere(s)</td>
+              <td><code>cut -c1-10 arquivo.txt</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i> <strong>Dica:</strong> Use <code>cut</code> com <code>-d</code> (delimitador) e
+          <code>-f</code> (campos) para extrair colunas específicas de arquivos CSV ou logs separados por dois pontos.
+        </div>
+      </section>
+      <!-- SEÇÃO 10.7 - FILTRANDO CONTEÚDO DE ARQUIVO -->
+      <section id="secao10-7" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-filter"></i>
+          <span class="section-number">10.7</span> Filtrando Conteúdo de Arquivo
+        </h2>
+
+        <div class="card">
+          <p>
+            O comando <strong>grep</strong> pode ser usado para filtrar linhas em um arquivo ou na saída de outro comando que corresponda a
+            um padrão especificado. Esse padrão pode ser tão simples quanto o texto exato que você quer encontrar ou pode ser muito mais
+            avançado através do uso de <strong>expressões regulares</strong> (<em>regular expressions</em>).
+          </p>
+        </div>
+
+        <div class="card">
+          <p>
+            Por exemplo, para encontrar todos os usuários que podem fazer login no sistema com o shell BASH, o comando
+            <strong>grep</strong> pode ser usado para filtrar as linhas do arquivo <code>/etc/passwd</code> que contêm o padrão
+            <strong>bash</strong>:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ grep bash /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+sysadmin:x:1001:1001:System Administrator,,,,:/home/sysadmin:/bin/bash</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            Para facilitar a visualização do que exatamente foi encontrado, use a opção <strong>--color</strong>. Esta opção destacará os
+            itens encontrados em vermelho:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ grep --color bash /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+sysadmin:x:1001:1001:System Administrator,,,,:/home/sysadmin:/bin/bash</pre
+          >
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-info-circle"></i> <strong>Nota:</strong> Em nossas máquinas virtuais, o comando <strong>grep</strong> tem um
+          alias que inclui a opção <strong>--color</strong> automaticamente.
+        </div>
+
+        <div class="card">
+          <p>
+            Em alguns casos, pode não ser importante encontrar as linhas específicas que correspondem ao padrão, mas sim quantas linhas
+            correspondem ao padrão. A opção <strong>-c</strong> fornece uma contagem de quantas linhas correspondem:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ grep -c bash /etc/passwd
+2</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            Ao visualizar a saída do comando <strong>grep</strong>, pode ser difícil determinar os números das linhas originais. Esta
+            informação pode ser útil ao voltar ao arquivo (talvez para editar o arquivo) para encontrar rapidamente uma das linhas
+            encontradas.
+          </p>
+        </div>
+
+        <div class="card">
+          <p>
+            A opção <strong>-n</strong> do comando <strong>grep</strong> exibirá os números das linhas originais. Para exibir todas as
+            linhas e seus números de linha no arquivo <code>/etc/passwd</code> que contêm o padrão <strong>bash</strong>:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ grep -n bash /etc/passwd                          
+1:root:x:0:0:root:/root:/bin/bash                                       
+27:sysadmin:x:1001:1001:System Administrator,,,,:/home/sysadmin:/bin/bash</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            A opção <strong>-v</strong> inverte a correspondência, exibindo todas as linhas que <strong>não</strong> contêm o padrão. Para
+            exibir todas as linhas que não contêm <strong>nologin</strong> no arquivo <code>/etc/passwd</code>:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ grep -v nologin /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+sync:x:4:65534:sync:/bin:/bin/sync
+operator:x:1000:37::/root:/bin/sh
+sysadmin:x:1001:1001:System Administrator,,,,:/home/sysadmin:/bin/bash</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            A opção <strong>-i</strong> ignora as diferenças de maiúsculas e minúsculas (<em>case insensitive</em>). O seguinte comando
+            busca pelo padrão <strong>the</strong> no arquivo <code>newhome.txt</code>, permitindo que cada caractere seja maiúsculo ou
+            minúsculo:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ cd Documents
+sysadmin@localhost:~/Documents$ grep -i the newhome.txt
+There are three bathrooms.
+**Beware** of the ghost in the bedroom.
+The kitchen is open for entertaining.
+**Caution** the spirits don't like guests.</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            A opção <strong>-w</strong> retorna apenas linhas que contêm correspondências que formam <strong>palavras completas</strong>.
+            Para ser uma palavra, a string de caracteres deve ser precedida e seguida por um caractere não-palavra. Caracteres de palavra
+            incluem letras, dígitos e o caractere sublinhado (<strong>_</strong>).
+          </p>
+        </div>
+
+        <div class="card">
+          <p>
+            Os exemplos a seguir buscam pelo padrão <strong>are</strong> no arquivo <code>newhome.txt</code>. O primeiro comando busca sem
+            opções, enquanto o segundo comando inclui a opção <strong>-w</strong>. Compare as saídas:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~/Documents$ grep are newhome.txt
+There are three bathrooms.
+**Beware** of the ghost in the bedroom.
+sysadmin@localhost:~/Documents$ grep -w are newhome.txt
+There are three bathrooms.</pre
+          >
+        </div>
+
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Opção</th>
+              <th>Descrição</th>
+              <th>Exemplo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>--color</code></td>
+              <td>Destaca os itens encontrados (em vermelho)</td>
+              <td><code>grep --color bash /etc/passwd</code></td>
+            </tr>
+            <tr>
+              <td><code>-c</code></td>
+              <td>Conta quantas linhas correspondem ao padrão</td>
+              <td><code>grep -c bash /etc/passwd</code></td>
+            </tr>
+            <tr>
+              <td><code>-n</code></td>
+              <td>Exibe o número da linha original</td>
+              <td><code>grep -n bash /etc/passwd</code></td>
+            </tr>
+            <tr>
+              <td><code>-v</code> домаћинствима linhas que NÃO contêm o padrão</td>
+
+              <td><code>grep -v nologin /etc/passwd</code></td>
+            </tr>
+            <tr>
+              <td><code>-i</code></td>
+              <td>Ignora maiúsculas/minúsculas (case insensitive)</td>
+              <td><code>grep -i the arquivo.txt</code></td>
+            </tr>
+            <tr>
+              <td><code>-w</code></td>
+              <td>Busca por palavras completas</td>
+              <td><code>grep -w are arquivo.txt</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="alert alert-success">
+          <i class="fas fa-check-circle"></i> <strong>Dica:</strong> O <strong>grep</strong> é um dos comandos mais poderosos do Linux.
+          Combine-o com pipes para filtrar resultados: <code>ls -la | grep "\.txt$"</code> para encontrar apenas arquivos .txt.
+        </div>
+      </section>
+      <!-- SEÇÃO 10.8 - EXPRESSÕES REGULARES BÁSICAS -->
+      <section id="secao10-8" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-code"></i>
+          <span class="section-number">10.8</span> Expressões Regulares Básicas
+        </h2>
+
+        <div class="card">
+          <p>
+            <strong>Expressões regulares</strong>, também chamadas de <strong>regex</strong>, são uma coleção de caracteres normais e
+            especiais que são usados para encontrar padrões simples ou complexos, respectivamente, em arquivos. Esses caracteres são usados
+            para realizar uma função de correspondência específica em uma busca.
+          </p>
+        </div>
+
+        <div class="card">
+          <p>
+            <strong>Caracteres normais</strong> são caracteres alfanuméricos que correspondem a eles mesmos. Por exemplo, um
+            <strong>a</strong> corresponderia a um <strong>a</strong>. <strong>Caracteres especiais</strong> têm significados especiais
+            quando usados dentro de padrões por comandos como o comando <strong>grep</strong>. Eles se comportam de maneira mais complexa e
+            não correspondem a eles mesmos.
+          </p>
+        </div>
+
+        <div class="card">
+          <p>
+            Existem tanto <strong>Expressões Regulares Básicas</strong> (disponíveis para uma grande variedade de comandos Linux) quanto
+            <strong>Expressões Regulares Estendidas</strong> (disponíveis para comandos Linux mais avançados). As Expressões Regulares
+            Básicas incluem o seguinte:
+          </p>
+        </div>
+
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Caractere</th>
+              <th>Corresponde a</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>.</code> (ponto)</td>
+              <td>Qualquer caractere único</td>
+            </tr>
+            <tr>
+              <td><code>[ ]</code></td>
+              <td>
+                Uma lista ou intervalo de caracteres para corresponder a um caractere. Se o primeiro caractere dentro dos colchetes for o
+                <strong>circunflexo ^</strong>, significa qualquer caractere <strong>que não esteja</strong> na lista
+              </td>
+            </tr>
+            <tr>
+              <td><code>*</code></td>
+              <td>O caractere anterior repetido zero ou mais vezes</td>
+            </tr>
+            <tr>
+              <td><code>^</code></td>
+              <td>
+                Se for o primeiro caractere no padrão, o padrão deve estar no <strong>início da linha</strong> para corresponder; caso
+                contrário, é apenas um caractere literal <strong>^</strong>
+              </td>
+            </tr>
+            <tr>
+              <td><code>$</code></td>
+              <td>
+                Se for o último caractere no padrão, o padrão deve estar no <strong>final da linha</strong> para corresponder; caso
+                contrário, é apenas um caractere literal <strong>$</strong>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="card">
+          <p>
+            O comando <strong>grep</strong> é apenas um dos muitos comandos que suportam expressões regulares. Alguns outros comandos
+            incluem os comandos <strong>more</strong> e <strong>less</strong>.
+          </p>
+        </div>
+
+        <div class="card">
+          <p>
+            Embora algumas expressões regulares sejam desnecessariamente colocadas entre aspas simples, é uma boa prática usar
+            <strong>aspas simples</strong> ao redor de expressões regulares para evitar que o shell tente interpretar significados especiais
+            delas.
+          </p>
+        </div>
+
+        <div class="alert alert-warning">
+          <i class="fas fa-exclamation-triangle"></i> <strong>Importante:</strong> Sempre use <strong>aspas simples</strong> (<code
+            >' '</code
+          >) em torno das expressões regulares para evitar que o shell interprete caracteres especiais como <code>$</code> ou
+          <code>*</code>.
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i> <strong>Exemplos práticos:</strong>
+          <ul style="margin-top: 0.5rem; margin-left: 1.5rem">
+            <li><code>grep '^root' /etc/passwd</code> - encontra linhas que começam com "root"</li>
+            <li><code>grep 'bash$' /etc/passwd</code> - encontra linhas que terminam com "bash"</li>
+            <li><code>grep 'r..t' /etc/passwd</code> - encontra "root", "rout", "rapt", etc.</li>
+            <li><code>grep '[0-9]' arquivo.txt</code> - encontra linhas com qualquer dígito</li>
+            <li><code>grep '[^0-9]' arquivo.txt</code> - encontra linhas com caracteres não numéricos</li>
+          </ul>
+        </div>
+      </section>
+      <!-- SEÇÃO 10.8.1 - O CARACTERE PONTO (.) -->
+      <section id="secao10-8-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-dot-circle"></i>
+          <span class="section-number">10.8.1</span> O Caractere Ponto (.)
+        </h2>
+
+        <div class="card">
+          <p>
+            Uma das expressões mais úteis é o caractere <strong>ponto (.)</strong>. Ele corresponde a qualquer caractere, exceto o caractere
+            de nova linha. Considere o conteúdo não filtrado do arquivo <code>~/Documents/red.txt</code>:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~/Documents$ cat red.txt
+red
+reef
+rot
+reeed
+rd
+rod
+roof
+reed
+root
+reel
+read</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            O padrão <strong>r..f</strong> encontraria qualquer linha que contivesse a letra <strong>r</strong> seguida por exatamente dois
+            caracteres e depois a letra <strong>f</strong>:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~/Documents$ grep 'r..f' red.txt
+reef
+roof</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            A linha não precisa ser uma correspondência exata, ela simplesmente deve conter o padrão, como visto aqui quando
+            <strong>r..t</strong> é procurado no arquivo <code>/etc/passwd</code>:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~/Documents$ grep 'r..t' /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+operator:x:1000:37::/root:</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            O caractere ponto pode ser usado qualquer número de vezes. Para encontrar todas as palavras que têm pelo menos quatro
+            caracteres, o seguinte padrão pode ser usado:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~/Documents$ grep '....' red.txt
+reef
+reeed
+roof
+reed
+root
+reel
+read</pre
+          >
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i> <strong>Dica:</strong> Cada <code>.</code> representa exatamente UM caractere (qualquer um,
+          exceto nova linha). <code>r..f</code> significa: "r" + qualquer caractere + qualquer caractere + "f".
+        </div>
+
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Padrão</th>
+              <th>Significado</th>
+              <th>Exemplos de correspondência</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>r..f</code></td>
+              <td>"r" + 2 caracteres + "f"</td>
+              <td><code>reef</code>, <code>roof</code>, <code>raaf</code></td>
+            </tr>
+            <tr>
+              <td><code>r.t</code></td>
+              <td>"r" + 1 caractere + "t"</td>
+              <td><code>rot</code>, <code>rat</code>, <code>rzt</code></td>
+            </tr>
+            <tr>
+              <td><code>....</code></td>
+              <td>4 ou mais caracteres (qualquer sequência de 4 caracteres)</td>
+              <td><code>reef</code>, <code>reed</code>, <code>root</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <!-- SEÇÃO 10.8.2 - OS CARACTERES DE COLCHETES [ ] -->
+      <section id="secao10-8-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-brackets"></i>
+          <span class="section-number">10.8.2</span> Os Caracteres de Colchetes [ ]
+        </h2>
+
+        <div class="card">
+          <p>
+            Ao usar o caractere <strong>.</strong> (ponto), qualquer caractere possível pode corresponder a ele. Em alguns casos, você quer
+            especificar exatamente quais caracteres deseja encontrar, como um caractere alfabético minúsculo ou um caractere numérico.
+          </p>
+        </div>
+
+        <div class="card">
+          <p>
+            Os <strong>colchetes [ ]</strong> correspondem a um único caractere da lista ou intervalo de caracteres possíveis contidos
+            dentro dos colchetes. Por exemplo, dado o arquivo <code>profile.txt</code>:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~/Documents$ cat profile.txt
+Hello my name is Joe.
+I am 37 years old.
+3121991
+My favorite food is avocados.
+I have 2 dogs.
+123456789101112</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            Para encontrar todas as linhas no arquivo <code>profile.txt</code> que contêm um número, use o padrão
+            <strong>[0123456789]</strong> ou <strong>[0-9]</strong>:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~/Documents$ grep '[0-9]' profile.txt
+I am 37 years old.
+3121991
+I have 2 dogs.
+123456789101112</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            Note que cada caractere possível pode ser listado <strong>[abcd]</strong> ou fornecido como um intervalo <strong>[a-d]</strong>,
+            desde que o intervalo esteja na ordem correta. Por exemplo, <strong>[d-a]</strong> não funcionaria porque não é um intervalo
+            válido:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~/Documents$ grep '[d-a]' profile.txt
+grep: Invalid range end</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            O intervalo é especificado por um padrão chamado <strong>tabela ASCII</strong>. Esta tabela é uma coleção de todos os caracteres
+            imprimíveis em uma ordem específica. Você pode ver a tabela ASCII com o comando <strong>ascii</strong>. Uma pequena amostra:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+      041  33  21  !                                 141   97  61  a 
+      042  34  22  "                                 142   98  62  b
+      043  35  23  #                                 143   99  63  c
+      044  36  24  $                                 144   100 64  d
+      045  37  25  %                                 145   101 65  e
+      046  38  26  &                                 146   102 66  f</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            O valor ASCII da letra <strong>a</strong> é 97 enquanto o valor de <strong>d</strong> é 100. Como 97 é menor que 100, o
+            intervalo <strong>a-d</strong> (97-100) é um intervalo válido.
+          </p>
+        </div>
+
+        <div class="card">
+          <p>
+            E quanto a <strong>excluir caracteres</strong>? Por exemplo, para corresponder a um caractere que pode ser qualquer coisa,
+            exceto <strong>x</strong>, <strong>y</strong> ou <strong>z</strong>? Seria ineficiente fornecer um conjunto com todos os
+            caracteres, exceto x, y ou z.
+          </p>
+        </div>
+
+        <div class="card">
+          <p>
+            Para corresponder a um caractere que <strong>não é</strong> um dos caracteres listados, comece o conjunto com um símbolo
+            <strong>^</strong> (circunflexo). Para encontrar todas as linhas que contêm qualquer caractere não numérico, insira um
+            <strong>^</strong> como o primeiro caractere dentro dos colchetes. Este caractere <strong>nega</strong> os caracteres listados:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~/Documents$ grep '[^0-9]' profile.txt
+Hello my name is Joe.
+I am 37 years old.
+My favorite food is avocados.
+I have 2 dogs.</pre
+          >
+        </div>
+
+        <div class="alert alert-warning">
+          <i class="fas fa-exclamation-triangle"></i> <strong>Considere Isto:</strong>
+          <p>
+            Não confunda <strong>[^0-9]</strong> como correspondendo a linhas que <strong>não contêm números</strong>. Na verdade, ele
+            corresponde a linhas que <strong>contêm não-números</strong>. Observe o arquivo original para ver a diferença. A terceira e
+            sexta linhas contêm apenas números; elas não contêm não-números, então essas linhas <strong>não</strong> correspondem.
+          </p>
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i> <strong>Dica:</strong>
+          <ul style="margin-top: 0.5rem; margin-left: 1.5rem">
+            <li><code>[a-z]</code> - qualquer letra minúscula</li>
+            <li><code>[A-Z]</code> - qualquer letra maiúscula</li>
+            <li><code>[0-9]</code> - qualquer dígito</li>
+            <li><code>[a-zA-Z]</code> - qualquer letra (maiúscula ou minúscula)</li>
+            <li><code>[^aeiou]</code> - qualquer caractere que NÃO seja vogal</li>
+            <li><code>[^0-9]</code> - qualquer caractere que NÃO seja dígito</li>
+          </ul>
+        </div>
+
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Padrão</th>
+              <th>Significado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>[0123456789]</code> ou <code>[0-9]</code></td>
+              <td>Qualquer dígito (0-9)</td>
+            </tr>
+            <tr>
+              <td><code>[a-z]</code></td>
+              <td>Qualquer letra minúscula</td>
+            </tr>
+            <tr>
+              <td><code>[A-Z]</code></td>
+              <td>Qualquer letra maiúscula</td>
+            </tr>
+            <tr>
+              <td><code>[^0-9]</code></td>
+              <td>Qualquer caractere que NÃO seja dígito</td>
+            </tr>
+            <tr>
+              <td><code>[^aeiou]</code></td>
+              <td>Qualquer caractere que NÃO seja vogal minúscula</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <!-- SEÇÃO 10.8.3 - O CARACTERE ASTERISCO * -->
+      <section id="secao10-8-3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-asterisk"></i>
+          <span class="section-number">10.8.3</span> O Caractere Asterisco *
+        </h2>
+
+        <div class="card">
+          <p>Considere o arquivo <code>~/Documents/red.txt</code> com o seguinte conteúdo:</p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~/Documents$ cat red.txt
+red
+reef
+rot
+reeed
+rd
+rod
+roof
+reed
+root
+reel
+read</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            O caractere <strong>*</strong> (asterisco) corresponde a <strong>zero ou mais ocorrências</strong> do caractere anterior. Por
+            exemplo, o padrão <strong>re*d</strong> corresponde a: um "r" seguido por zero ou mais "e" seguido por um "d":
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~/Documents$ grep 're*d' red.txt
+red
+reeed
+rd
+reed</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            Também é possível corresponder a <strong>zero ou mais ocorrências de uma lista de caracteres</strong> utilizando os colchetes. O
+            padrão <strong>[oe]*</strong> usado no exemplo a seguir corresponde a zero ou mais ocorrências do caractere
+            <strong>o</strong> ou do caractere <strong>e</strong>:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~/Documents$ grep 'r[oe]*d' red.txt
+red
+reeed
+rd
+rod
+reed</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            Quando usado com apenas um outro caractere, o <strong>*</strong> não é muito útil. Qualquer um dos seguintes padrões
+            corresponderia a <strong>todas as strings ou linhas</strong> do arquivo: <strong>'.*'</strong> <strong>'e*'</strong>
+            <strong>'b*'</strong> <strong>'z*'</strong> porque o caractere asterisco <strong>*</strong> pode corresponder a
+            <strong>zero ocorrências</strong> de um padrão.
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~/Documents$ grep 'z*' red.txt
+red
+reef
+rot
+reeed
+rd
+rod
+roof
+reed
+root
+reel
+read</pre
+          >
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~/Documents$ grep 'e*' red.txt
+red
+reef
+rot
+reeed
+rd
+rod
+roof
+reed
+root
+reel
+read</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            Para tornar o caractere asterisco <strong>*</strong> útil, é necessário criar um padrão que inclua mais do que apenas o
+            caractere que o precede. Por exemplo, os resultados acima podem ser refinados adicionando outro <strong>e</strong> para fazer o
+            padrão <strong>ee*</strong>, que efetivamente corresponde a cada linha que contém <strong>pelo menos um e</strong>:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~/Documents$ grep 'ee*' red.txt
+red
+reef
+reeed
+reed
+reel
+read</pre
+          >
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i> <strong>Dica:</strong> O padrão <code>.*</code> (ponto asterisco) é um dos mais úteis — ele
+          corresponde a <strong>qualquer caractere (exceto nova linha) repetido zero ou mais vezes</strong>, ou seja, praticamente qualquer
+          coisa.
+        </div>
+
+        <div class="alert alert-warning">
+          <i class="fas fa-exclamation-triangle"></i> <strong>Importante:</strong> O asterisco <code>*</code> em expressões regulares NÃO é
+          o mesmo que o coringa <code>*</code> do shell. No regex, ele repete o caractere anterior; no shell, ele substitui qualquer
+          sequência de caracteres.
+        </div>
+
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Padrão</th>
+              <th>Significado</th>
+              <th>Exemplos de correspondência</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>re*d</code></td>
+              <td>"r" + zero ou mais "e" + "d"</td>
+              <td><code>red</code>, <code>reed</code>, <code>reeed</code>, <code>rd</code></td>
+            </tr>
+            <tr>
+              <td><code>r[oe]*d</code></td>
+              <td>"r" + zero ou mais "o" ou "e" + "d"</td>
+              <td><code>red</code>, <code>rod</code>, <code>reed</code>, <code>rd</code></td>
+            </tr>
+            <tr>
+              <td><code>.*</code></td>
+              <td>Qualquer caractere (zero ou mais vezes)</td>
+              <td>Todas as linhas</td>
+            </tr>
+            <tr>
+              <td><code>ee*</code></td>
+              <td>Pelo menos um "e"</td>
+              <td><code>red</code>, <code>reef</code>, <code>reed</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <!-- SEÇÃO 10.8.4 - CARACTERES DE ÂNCORA -->
+      <section id="secao10-8-4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-anchor"></i>
+          <span class="section-number">10.8.4</span> Caracteres de Âncora
+        </h2>
+
+        <div class="card">
+          <p>
+            Ao realizar uma correspondência de padrão, a correspondência pode ocorrer em qualquer lugar da linha.
+            <strong>Caracteres de âncora</strong> são uma das maneiras que as expressões regulares podem ser usadas para restringir os
+            resultados da busca. Eles especificam se a correspondência ocorre no <strong>início da linha</strong> ou no
+            <strong>final da linha</strong>.
+          </p>
+        </div>
+
+        <div class="card">
+          <p>Por exemplo, o padrão <strong>root</strong> aparece muitas vezes no arquivo <code>/etc/passwd</code>:</p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~/Documents$ grep 'root' /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+operator:x:1000:37::/root:</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            O caractere <strong>circunflexo (^)</strong> é usado para garantir que um padrão apareça no <strong>início da linha</strong>.
+            Por exemplo, para encontrar todas as linhas em <code>/etc/passwd</code> que começam com <strong>root</strong>, use o padrão
+            <strong>^root</strong>. Note que <strong>^</strong> deve ser o <strong>primeiro caractere</strong> no padrão para ser eficaz:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~/Documents$ grep '^root' /etc/passwd
+root:x:0:0:root:/root:/bin/bash</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            O segundo caractere de âncora <strong>$</strong> (cifrão) pode ser usado para garantir que um padrão apareça no
+            <strong>final da linha</strong>, reduzindo assim os resultados da busca. Para encontrar as linhas que terminam com a letra
+            <strong>r</strong> no arquivo <code>alpha-first.txt</code>, use o padrão <strong>r$</strong>:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~/Documents$ cat alpha-first.txt
+A is for Animal
+B is for Bear
+C is for Cat
+D is for Dog
+E is for Elephant
+F is for Flower
+sysadmin@localhost:~/Documents$ grep 'r$' alpha-first.txt
+B is for Bear
+F is for Flower</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            Novamente, a posição deste caractere é importante. O <strong>$</strong> deve ser o <strong>último caractere</strong> no padrão
+            para ser eficaz como âncora.
+          </p>
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i> <strong>Dica:</strong> Combine âncoras para corresponder a linhas exatas:
+          <ul style="margin-top: 0.5rem; margin-left: 1.5rem">
+            <li><code>^início</code> - linha começa com "início"</li>
+            <li><code>fim$</code> - linha termina com "fim"</li>
+            <li><code>^linha exata$</code> - linha contém EXATAMENTE "linha exata" (nada mais, nada menos)</li>
+          </ul>
+        </div>
+
+        <div class="alert alert-success">
+          <i class="fas fa-check-circle"></i> <strong>Exemplos práticos:</strong>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+# Linhas que começam com comentário
+grep '^#' arquivo.conf
+
+# Linhas vazias
+grep '^$' arquivo.txt
+
+# Linhas que terminam com .txt
+grep '\.txt$' lista.txt
+
+# Linhas que não estão vazias
+grep -v '^$' arquivo.txt</pre
+            >
+          </div>
+        </div>
+
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Padrão</th>
+              <th>Significado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>^palavra</code></td>
+              <td>Linhas que começam com "palavra"</td>
+            </tr>
+            <tr>
+              <td><code>palavra$</code></td>
+              <td>Linhas que terminam com "palavra"</td>
+            </tr>
+            <tr>
+              <td><code>^palavra$</code></td>
+              <td>Linhas que contêm EXATAMENTE "palavra"</td>
+            </tr>
+            <tr>
+              <td><code>^$</code></td>
+              <td>Linhas vazias</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <!-- SEÇÃO 10.8.5 - O CARACTERE BARRA INVERTIDA \ -->
+      <section id="secao10-8-5" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-backward"></i>
+          <span class="section-number">10.8.5</span> O Caractere Barra Invertida \
+        </h2>
+
+        <div class="card">
+          <p>
+            Em alguns casos, você pode querer encontrar um caractere que é, por acaso, um caractere especial de expressão regular. Por
+            exemplo, considere o seguinte arquivo <code>newhome.txt</code>:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~/Documents$ cat newhome.txt
+Thanks for purchasing your new home!!
+
+**Warning** it may be haunted.
+
+There are three bathrooms.
+
+**Beware** of the ghost in the bedroom.
+
+The kitchen is open for entertaining.
+
+**Caution** the spirits don't like guests.
+
+Good luck!!!</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            No exemplo a seguir, a busca por <strong>re*</strong> corresponde a cada linha que contém um <strong>r</strong> seguido por zero
+            ou mais da letra <strong>e</strong>:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~/Documents$ grep 're*' newhome.txt
+Thanks for purchasing your new home!!
+**Warning** it may be haunted.
+There are three bathrooms.
+**Beware** of the ghost in the bedroom.
+The kitchen is open for entertaining.
+**Caution** the spirits don't like guests.</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            Para procurar um caractere <strong>asterisco *</strong> literal (e não o significado especial de "zero ou mais ocorrências"),
+            coloque um caractere <strong>barra invertida \</strong> antes do caractere <strong>asterisco *</strong>:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~/Documents$ grep 're\*' newhome.txt
+**Beware** of the ghost in the bedroom.</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            Isso porque <strong>re\*</strong> significa: a letra <strong>r</strong> seguida pela letra <strong>e</strong> seguida por um
+            <strong>asterisco literal *</strong>.
+          </p>
+        </div>
+
+        <div class="alert alert-warning">
+          <i class="fas fa-exclamation-triangle"></i>
+          <strong>Caracteres especiais que precisam ser escapados com \ quando buscados literalmente:</strong>
+          <ul style="margin-top: 0.5rem; margin-left: 1.5rem">
+            <li><code>.</code> (ponto) - corresponde a qualquer caractere</li>
+            <li><code>*</code> (asterisco) - zero ou mais ocorrências</li>
+            <li><code>[ ]</code> (colchetes) - lista/intervalo de caracteres</li>
+            <li><code>^</code> (circunflexo) - início da linha</li>
+            <li><code>$</code> (cifrão) - fim da linha</li>
+            <li><code>\</code> (barra invertida) - o próprio caractere de escape</li>
+          </ul>
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i> <strong>Dica:</strong> Para buscar um caractere literal que tem significado especial em regex,
+          coloque <code>\</code> antes dele:
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+# Buscar por um ponto literal (não qualquer caractere)
+grep '\.' arquivo.txt
+
+# Buscar por um cifrão literal (não final da linha)
+grep '\$' arquivo.txt
+
+# Buscar por um colchete literal
+grep '\[' arquivo.txt</pre
+            >
+          </div>
+        </div>
+
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Padrão</th>
+              <th>Significado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>re*</code></td>
+              <td>"r" + zero ou mais "e" (expressão regular)</td>
+            </tr>
+            <tr>
+              <td><code>re\*</code></td>
+              <td>"r" + "e" + asterisco literal * (caractere escapado)</td>
+            </tr>
+            <tr>
+              <td><code>\.</code></td>
+              <td>Ponto literal . (não "qualquer caractere")</td>
+            </tr>
+            <tr>
+              <td><code>\$</code></td>
+              <td>Cifrão literal $ (não "fim da linha")</td>
+            </tr>
+            <tr>
+              <td><code>\\</code></td>
+              <td>Barra invertida literal \ (o próprio caractere de escape)</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <!-- SEÇÃO 10.8.6 - EXPRESSÕES REGULARES ESTENDIDAS -->
+      <section id="secao10-8-6" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-expand-alt"></i>
+          <span class="section-number">10.8.6</span> Expressões Regulares Estendidas
+        </h2>
+
+        <div class="card">
+          <p>
+            O uso de expressões regulares estendidas frequentemente requer que uma opção especial seja fornecida ao comando para
+            reconhecê-las. Historicamente, existia um comando chamado <strong>egrep</strong>, que é semelhante ao <strong>grep</strong>, mas
+            pode entender expressões regulares estendidas. Agora, o comando <strong>egrep</strong> está obsoleto em favor do uso do
+            <strong>grep</strong> com a opção <strong>-E</strong>.
+          </p>
+        </div>
+
+        <div class="card">
+          <p>As seguintes expressões regulares são consideradas <strong>estendidas</strong>:</p>
+        </div>
+
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Caractere</th>
+              <th>Significado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>?</code> (interrogação)</td>
+              <td>Corresponde ao caractere anterior <strong>zero ou uma vez</strong>, ou seja, é um caractere <strong>opcional</strong></td>
+            </tr>
+            <tr>
+              <td><code>+</code> (mais)</td>
+              <td>Corresponde ao caractere anterior repetido <strong>uma ou mais vezes</strong></td>
+            </tr>
+            <tr>
+              <td><code>|</code> (pipe/barra vertical)</td>
+              <td><strong>Alternação</strong> ou como um operador lógico <strong>"ou"</strong> (OR)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="card">
+          <p>
+            Para corresponder a <strong>colo</strong> seguido por zero ou um caractere <strong>u</strong> seguido por um caractere
+            <strong>r</strong>:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~/Documents$ grep -E 'colou?r' spelling.txt
+American English: Do you consider gray to be a color or a shade?
+British English: Do you consider grey to be a colour or a shade?</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>Para corresponder a <strong>uma ou mais</strong> letras <strong>e</strong>:</p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~/Documents$ grep -E 'e+' red.txt
+red
+reef
+reeed
+reed
+reel
+read</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>Para corresponder a <strong>gray</strong> ou <strong>grey</strong>:</p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~/Documents$ grep -E 'gray|grey' spelling.txt
+American English: Do you consider gray to be a color or a shade?
+British English: Do you consider grey to be a colour or a shade?</pre
+          >
+        </div>
+
+        <div class="alert alert-info">
+          <i class="fas fa-lightbulb"></i> <strong>Dica:</strong> Use <code>grep -E</code> (ou <code>egrep</code>) para usar expressões
+          regulares estendidas. Os caracteres <code>?</code>, <code>+</code>, <code>|</code>, <code>( )</code> e <code>{ }</code> têm
+          significado especial apenas no modo estendido.
+        </div>
+
+        <div class="alert alert-success">
+          <i class="fas fa-check-circle"></i> <strong>Exemplos práticos com Expressões Regulares Estendidas:</strong>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>
+# Opcional: corresponde a "color" ou "colour"
+grep -E 'colou?r' arquivo.txt
+
+# Uma ou mais: corresponde a "abc", "abbc", "abbbc", etc.
+grep -E 'ab+c' arquivo.txt
+
+# Alternação: corresponde a "gato" ou "cachorro"
+grep -E 'gato|cachorro' arquivo.txt
+
+# Agrupamento: corresponde a "abc" ou "adc"
+grep -E 'a(b|d)c' arquivo.txt
+
+# Quantificador: corresponde a exatamente 3 letras 'a'
+grep -E 'a{3}' arquivo.txt
+
+# Quantificador: corresponde a 2 a 5 letras 'a'
+grep -E 'a{2,5}' arquivo.txt</pre
+            >
+          </div>
+        </div>
+
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Padrão (Extended)</th>
+              <th>Significado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>colou?r</code></td>
+              <td>"color" ou "colour" (u é opcional)</td>
+            </tr>
+            <tr>
+              <td><code>e+</code></td>
+              <td>Uma ou mais letras "e" (pelo menos uma)</td>
+            </tr>
+            <tr>
+              <td><code>gray|grey</code></td>
+              <td>"gray" ou "grey"</td>
+            </tr>
+            <tr>
+              <td><code>a(b|c)d</code></td>
+              <td>"abd" ou "acd"</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer style="text-align: center; padding: 2rem; border-top: 1px solid var(--border); margin-top: 2rem">
+      <p><i class="fab fa-linux"></i> NDG Linux Essentials - Módulo 10: Trabalhando com Texto</p>
+      <p style="font-size: 0.8rem; color: var(--text-dim)">Copyright © 2022 Network Development Group Inc.</p>
+    </footer>
+
+    <script>
+      // SIDEBAR MENU CONTROLLER
+      class SidebarMenu {
+        constructor() {
+          this.sidebar = document.getElementById('sidebar')
+          this.overlay = document.getElementById('sidebarOverlay')
+          this.openBtn = document.getElementById('openMenu')
+          this.closeBtn = document.getElementById('closeMenu')
+          this.init()
+        }
+
+        init() {
+          if (!this.sidebar) return
+
+          if (this.openBtn) {
+            this.openBtn.addEventListener('click', () => this.open())
+          }
+          if (this.closeBtn) {
+            this.closeBtn.addEventListener('click', () => this.close())
+          }
+          if (this.overlay) {
+            this.overlay.addEventListener('click', () => this.close())
+          }
+
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.sidebar.classList.contains('open')) {
+              this.close()
+            }
+          })
+
+          const links = document.querySelectorAll('.sidebar .nav-modules a')
+          links.forEach((link) => {
+            link.addEventListener('click', () => this.close())
+          })
+        }
+
+        open() {
+          this.sidebar.classList.add('open')
+          this.overlay.classList.add('active')
+          document.body.style.overflow = 'hidden'
+        }
+
+        close() {
+          this.sidebar.classList.remove('open')
+          this.overlay.classList.remove('active')
+          document.body.style.overflow = ''
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        new SidebarMenu()
+      })
+    </script>
+  </body>
+</html>

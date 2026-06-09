@@ -26,9 +26,34 @@ class NDGLinuxSearch {
         path: "pages/modulo_5.html",
         name: "Módulo 5",
         title: "Habilidades de Linha de Comando",
-      }, // NOVO
+      },
+      {
+        path: "pages/modulo_6.html",
+        name: "Módulo 6",
+        title: "Obtendo Ajuda no Linux",
+      },
+      {
+        path: "pages/modulo_7.html",
+        name: "Módulo 7",
+        title: "Navegando pelo Sistema de Arquivos",
+      },
+      {
+        path: "pages/modulo_8.html",
+        name: "Módulo 8",
+        title: "Manipulando Arquivos e Diretórios",
+      },
+      {
+        path: "pages/modulo_9.html",
+        name: "Módulo 9",
+        title: "Arquivamento e Compressão",
+      },
+      {
+        path: "pages/modulo_10.html",
+        name: "Módulo 10",
+        title: "Trabalhando com Texto",
+      },
       // Adicione novos módulos aqui:
-      // { path: "pages/modulo_3.html", name: "Módulo 3", title: "Título" },
+      // { path: "pages/modulo_11.html", name: "Módulo 11", title: "Título" },
     ];
 
     this.searchTimeout = null;
