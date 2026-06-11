@@ -1,0 +1,1048 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NDG Linux Essentials | Módulo 12 - Hardware do Computador</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <div class="top-bar">
+      <button class="menu-toggle" id="openMenu">
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+      </button>
+      <a href="../index.html" class="top-bar-brand"> <i class="fab fa-linux"></i> NDG Linux Essentials </a>
+      <a href="../index.html" class="btn-outline"> <i class="fas fa-home"></i> Voltar </a>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-compass"></i> Navegação</h3>
+        <button class="close-sidebar" id="closeMenu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="nav-modules">
+        <li>
+          <a href="#secao12-1"><i class="fas fa-microchip"></i> 12.1 Introdução</a>
+        </li>
+        <li>
+          <a href="#secao12-2"><i class="fas fa-microchip"></i> 12.2 Placas-Mãe</a>
+        </li>
+        <li>
+          <a href="#secao12-3"><i class="fas fa-microchip"></i> 12.3 Processadores</a>
+        </li>
+        <li>
+          <a href="#secao12-4"><i class="fas fa-microchip"></i> 12.4 Memória de Acesso Aleatório (RAM)</a>
+        </li>
+        <li>
+          <a href="#secao12-5"><i class="fas fa-sitemap"></i> 12.5 Barramentos e Periféricos</a>
+        </li>
+        <li>
+          <a href="#secao12-6"><i class="fas fa-hdd"></i> 12.6 Discos Rígidos (Hard Drives)</a>
+        </li>
+        <li>
+          <a href="#secao12-7"><i class="fas fa-microchip"></i> 12.7 Discos de Estado Sólido (SSDs)</a>
+        </li>
+        <li>
+          <a href="#secao12-8"><i class="fas fa-compact-disc"></i> 12.8 Unidades Ópticas</a>
+        </li>
+        <li>
+          <a href="#secao12-9"><i class="fas fa-tools"></i> 12.9 Gerenciamento de Dispositivos</a>
+        </li>
+        <li>
+          <a href="#secao12-10"><i class="fas fa-desktop"></i> 12.10 Dispositivos de Exibição de Vídeo</a>
+        </li>
+        <li>
+          <a href="#secao12-11"><i class="fas fa-plug"></i> 12.11 Fontes de Alimentação (Power Supplies)</a>
+        </li>
+        <li>
+          <a href="../pages/questoes_12.html"><i class="fas fa-question-circle"></i> Questões</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <section class="hero">
+      <div class="container">
+        <div class="badge-lab"><i class="fas fa-microchip"></i> Módulo 12</div>
+        <h1
+          style="
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+          "
+        >
+          Computer Hardware
+        </h1>
+        <p style="color: var(--text-dim); margin-top: 1rem">Compreendendo os componentes físicos, arquitetura e integração de sistemas.</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <section id="secao12-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-microchip"></i>
+          <span class="section-number">12.1</span> Introdução
+        </h2>
+
+        <div class="card">
+          <p>
+            Os computadores começam como dispositivos de hardware, mas podem evoluir para abranger máquinas virtuais que são totalmente
+            construídas por meio de software. Para todos os efeitos, elas operam e se parecem com uma máquina remota à qual os usuários
+            podem se conectar utilizando protocolos e métodos de acesso remoto.
+          </p>
+          <p style="margin-top: 1rem">
+            Mantendo o conceito de máquinas virtuais em mente, torna-se imperativo compreender o que constitui o hardware físico que compõe
+            um computador real. Sem o devido entendimento sobre quais componentes formam um computador, como eles se integram, como se
+            comunicam entre si e como uma máquina deve funcionar, você não será capaz de instalar, configurar, administrar, proteger ou
+            solucionar problemas (<em>troubleshoot</em>) de um sistema de forma adequada.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-server"></i> Diversidade de Dispositivos</h3>
+          <p>
+            Existem centenas de tipos específicos de computadores em operação no mercado atual — desde receptores de TV (<em
+              >set-top boxes</em
+            >) e firewalls dedicados até laptops, servidores e diversos outros dispositivos de finalidade especial. Contudo, todos eles
+            apresentam pelo menos alguns dos mesmos componentes básicos que efetivamente os caracterizam como um computador.
+          </p>
+          <p style="margin-top: 1rem">
+            Este capítulo introduz e explica os fundamentos da composição de um computador e expande o conhecimento para alguns itens
+            opcionais.
+          </p>
+        </div>
+      </section>
+      <section id="secao12-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-microchip"></i>
+          <span class="section-number">12.2</span> Placas-Mãe
+        </h2>
+
+        <div class="card">
+          <p>
+            A <strong>placa-mãe</strong> (<em>motherboard</em> ou <em>system board</em>) é a placa de hardware principal do computador, por
+            meio da qual a unidade central de processamento (CPU), a memória de acesso aleatório (RAM) e todos os outros componentes se
+            conectam.
+          </p>
+          <p style="margin-top: 1rem">
+            Dependendo do tipo de computador (laptop, desktop ou servidor), alguns dispositivos, como os processadores e os módulos de
+            memória RAM, são acoplados ou soldados diretamente na placa-mãe. Por outro lado, dispositivos adicionais, como placas de
+            expansão (placas de vídeo, placas de rede adicionais, etc.), são conectados por meio de um
+            <strong>barramento</strong> (<em>bus</em>).
+          </p>
+        </div>
+      </section>
+      <section id="secao12-3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-microchip"></i>
+          <span class="section-number">12.3</span> Processadores
+        </h2>
+
+        <div class="card">
+          <p>
+            A unidade central de processamento (CPU ou processador) é um dos componentes de hardware mais críticos de um computador. O
+            processador funciona como o cérebro da máquina, local onde ocorre a execução do código e onde a maior parte dos cálculos é
+            realizada. Ele é conectado ou soldado diretamente à placa-mãe, que por sua vez é projetada e configurada para operar com modelos
+            específicos de processadores.
+          </p>
+          <p style="margin-top: 1rem">
+            Se um sistema de hardware possui mais de um processador físico instalado, ele é classificado como um sistema
+            <strong>multiprocessador</strong>. Caso múltiplos núcleos de processamento sejam combinados dentro de um único chip encapsulado,
+            ele é chamado de <strong>multi-core</strong> (multi-núcleo).
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-tachometer-alt"></i> Arquiteturas: x86 vs x86_64</h3>
+          <p>
+            Embora o Linux ofereça suporte a mais tipos de processadores do que qualquer outro sistema operacional no mercado, existem
+            essencialmente duas arquiteturas principais utilizadas em computadores desktops e servidores:
+          </p>
+
+          <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem">
+            <div style="border-left: 3px solid var(--info); padding-left: 1rem">
+              <h4 style="color: var(--info); font-size: 1.1rem; font-weight: 600"><i class="fas fa-bolt"></i> Arquitetura x86 (32 bits)</h4>
+              <p style="color: var(--text); font-size: 0.95rem">
+                Processa blocos de dados de 32 bits por vez. Possui fortes limitações físicas para o gerenciamento e endereçamento de
+                memória RAM.
+              </p>
+            </div>
+
+            <div style="border-left: 3px solid var(--primary); padding-left: 1rem">
+              <h4 style="color: var(--primary); font-size: 1.1rem; font-weight: 600">
+                <i class="fas fa-rocket"></i> Arquitetura x86_64 (64 bits)
+              </h4>
+              <p style="color: var(--text); font-size: 0.95rem">
+                Processa blocos de dados de 64 bits por vez. Também é capaz de rodar instruções de 32 bits através de um modo de
+                retrocompatibilidade. Suas principais vantagens incluem a capacidade de trabalhar com grandes volumes de memória, maior
+                eficiência no processamento e segurança aprimorada do sistema.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-history"></i> Evolução Histórica</h3>
+          <p>
+            A Intel originou a família de processadores x86 em 1978 com o lançamento do processador 8086. Desde então, a empresa produziu
+            diversas evoluções baseadas nesse modelo, conhecidas genericamente como processadores x86 de 32 bits. Essa linha engloba
+            gerações clássicas como o 80386 (<code>i386</code>), 80486 (<code>i486</code>), a série Pentium (<code>i586</code>) e a série
+            Pentium Pro (<code>i686</code>). Outras empresas, como AMD e Cyrix, também passaram a fabricar processadores compatíveis com
+            x86.
+          </p>
+
+          <div class="alert alert-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <strong>Nota de Suporte das Distribuições:</strong> Embora o kernel Linux seja capaz de suportar processadores desde a geração
+            i386, muitas distribuições modernas (especialmente as que oferecem suporte corporativo, como SUSE, Red Hat e Canonical) limitam
+            o suporte mínimo para arquiteturas <code>i686</code> ou superiores.
+          </div>
+
+          <p style="margin-top: 1rem">
+            A família de processadores <code>x86_64</code>, que engloba os chips de 64 bits tanto da Intel quanto da AMD, está em produção
+            em larga escala desde os anos 2000. Praticamente todos os processadores modernos distribuídos hoje pertencem a essa arquitetura.
+            Apesar do hardware estar consolidado há décadas, o ecossistema de softwares e pacotes compilados puramente para 64 bits levou
+            mais tempo para se desvincular das dependências legadas da arquitetura x86 de 32 bits.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-terminal"></i> Inspecionando a CPU no Linux</h3>
+          <p>
+            Para identificar de forma rápida a qual família arquitetônica pertence a CPU do sistema atual, utilize o comando
+            <code>arch</code>:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ arch
+x86_64</pre
+            >
+          </div>
+
+          <p>
+            Para obter um relatório detalhado e estruturado com os dados técnicos e recursos da sua CPU, utilize o comando
+            <code>lscpu</code>:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ lscpu
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                4
+On-line CPU(s) list:   0-3                                                    
+Thread(s) per core:    1                                                      
+Core(s) per socket:    4                                                      
+Socket(s):             1
+NUMA node(s):          1                                                      
+Vendor ID:             GenuineIntel</pre
+            >
+          </div>
+
+          <p>
+            A primeira linha do retorno indica que a CPU está operando atualmente no modo de 64 bits (<code>Architecture: x86_64</code>). A
+            segunda linha (<code>CPU op-mode(s)</code>) comprova que o processador possui capacidade física para executar instruções de 32
+            ou 64 bits, confirmando que se trata nativamente de um processador de 64 bits.
+          </p>
+        </div>
+      </section>
+      <section id="secao12-4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-microchip"></i>
+          <span class="section-number">12.4</span> Memória de Acesso Aleatório (RAM)
+        </h2>
+
+        <div class="card">
+          <p>
+            A placa-mãe normalmente possui slots dedicados onde a memória de acesso aleatório (RAM) é conectada ao sistema. Os limites de
+            endereçamento físico variam drasticamente entre as arquiteturas:
+          </p>
+          <ul style="margin: 1rem 0 1rem 2rem; color: var(--text)">
+            <li style="margin-bottom: 0.5rem">
+              Sistemas com arquitetura de <strong>32 bits</strong> conseguem gerenciar e utilizar no máximo até
+              <strong>4 gigabytes (GB)</strong> de RAM.
+            </li>
+            <li>
+              Sistemas com arquitetura de <strong>64 bits</strong> são fisicamente capazes de endereçar e utilizar volumes muito maiores de
+              memória.
+            </li>
+          </ul>
+          <p style="margin-top: 1rem">
+            Quando os programas são invocados, eles são carregados na memória RAM junto com quaisquer dados que precisem armazenar
+            temporariamente, enquanto suas instruções de execução são enviadas sequencialmente ao processador.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-exchange-alt"></i> O Conceito de Memória Virtual (Swap Space)</h3>
+          <p>
+            Em alguns cenários, a quantidade de memória RAM física do sistema pode não ser suficiente para suprir todas as demandas ativas
+            do sistema operacional e dos softwares. Para solucionar isso, o Linux utiliza uma memória virtualizada chamada
+            <strong>espaço de swap</strong> (<em>swap space</em>) para armazenar dados temporariamente no disco rígido.
+          </p>
+          <p style="margin-top: 1rem">
+            Dados que estão alocados na RAM mas não foram acessados ou utilizados recentemente são movidos (operados via <em>page-out</em>)
+            para a seção do disco rígido designada como swap, liberando blocos de RAM física preciosa para o uso imediato dos programas
+            ativos em primeiro plano. Caso o sistema precise dessas informações mais tarde, os dados são trazidos de volta para a RAM
+            (<em>page-in</em>). O Linux realiza todo esse gerenciamento de forma totalmente automatizada, desde que a partição ou arquivo de
+            swap esteja configurado.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-terminal"></i> Monitorando a Memória com o comando free</h3>
+          <p>
+            Para visualizar a quantidade de memória RAM e o espaço de swap configurados no seu sistema, utilize o comando <code>free</code>.
+            Ele aceita parâmetros de arredondamento e escala muito úteis para o dia a dia:
+          </p>
+          <ul style="margin: 1rem 0 1rem 2rem; color: var(--text)">
+            <li style="margin-bottom: 0.5rem">
+              A opção <code>-m</code> força a exibição do relatório arredondando os valores para o megabyte (MB) mais próximo.
+            </li>
+            <li>A opção <code>-g</code> força a exibição do relatório arredondando os valores para o gigabyte (GB) mais próximo.</li>
+          </ul>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ free -m
+             total       used       free     shared    buffers     cached
+Mem:          1894        356       1537          0          25        177
+-/+ buffers/cache:        153       1741
+Swap:         4063          0       4063</pre
+            >
+          </div>
+
+          <p>
+            A saída do terminal indica que este sistema possui um total de <strong>1.894 MB</strong> de memória física e está utilizando
+            <strong>356 MB</strong> no momento.
+          </p>
+          <p style="margin-top: 1rem">
+            A linha referente ao <code>Swap</code> aponta uma disponibilidade de aproximadamente <strong>4 GB</strong> de memória virtual,
+            constando que nenhuma parte dela está em uso (<code>used: 0</code>). Esse comportamento é esperado e perfeitamente normal, dado
+            que uma grande porção da memória RAM física ainda está totalmente livre (<code>free: 1537</code>), eliminando qualquer
+            necessidade de paginação em disco naquele instante.
+          </p>
+        </div>
+      </section>
+      <section id="secao12-5" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-sitemap"></i>
+          <span class="section-number">12.5</span> Barramentos e Periféricos
+        </h2>
+
+        <div class="card">
+          <p>
+            Um <strong>barramento</strong> (<em>bus</em>) é uma conexão de alta velocidade que permite a comunicação entre computadores ou
+            entre os componentes internos de um mesmo computador. A placa-mãe possui barramentos que viabilizam a conexão de múltiplos
+            dispositivos ao sistema, incluindo o <strong>PCI</strong> (<em>Peripheral Component Interconnect</em>) e o
+            <strong>USB</strong> (<em>Universal Serial Bus</em>). A placa-mãe também disponibiliza conectores nativos para monitores,
+            teclados e mouses.
+          </p>
+          <p style="margin-top: 1rem">
+            Diferentes formatos de sistemas utilizam os barramentos de maneiras distintas. Em computadores do tipo desktop ou servidores, a
+            placa-mãe traz o processador e a RAM diretamente acoplados, contando com um barramento de alta velocidade que permite expandir
+            recursos por meio de slots de placas (como placas de vídeo, placas de rede adicionais e outros periféricos).
+          </p>
+          <p style="margin-top: 1rem">
+            Por outro lado, em laptops e computadores de formato compacto (<em>thin / small form factor</em>), a grande maioria dos
+            componentes é soldada diretamente na placa-mãe para economizar espaço (incluindo CPU, RAM e a interface de rede). Nessa
+            configuração, o barramento físico ainda existe internamente, mas o fator conveniência de poder substituir, reparar ou fazer
+            <em>upgrades</em> de hardware é praticamente inexistente.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-plug"></i> Dispositivos Periféricos</h3>
+          <p>
+            Dispositivos periféricos são componentes conectados ao computador que permitem a entrada (input), saída (output) ou o
+            armazenamento de dados. Teclados, mouses, monitores, impressoras e discos rígidos são todos considerados periféricos, acessados
+            pelo sistema para realizar funções além do processamento central.
+          </p>
+          <p style="margin-top: 1rem">
+            Para listar todos os dispositivos conectados especificamente pelo barramento PCI do sistema, utiliza-se o comando
+            <code>lspci</code>. Veja abaixo uma saída de exemplo destacando controladores de vídeo (VGA), de armazenamento (SCSI) e de rede
+            (Ethernet):
+          </p>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <strong>Nota:</strong> O comando <code>lspci</code> não está disponível dentro do ambiente de máquina virtual deste curso.
+          </div>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ lspci
+00:00.0 Host bridge: Intel Corporation 440BX/ZX/DX - 82443BX/ZX/DX Host bridge (rev 01)
+00:01.0 PCI bridge: Intel Corporation 440BX/ZX/DX - 82443BX/ZX/DX AGP bridge (rev 01)
+00:07.0 ISA bridge: Intel Corporation 82371AB/EB/MB PIIX4 ISA (rev 08)
+00:07.1 IDE interface: Intel Corporation 82371AB/EB/MB PIIX4 IDE (rev 01)
+00:07.3 Bridge: Intel Corporation 82371AB/EB/MB PIIX4 ACPI (rev 08)
+00:07.7 System peripheral: VMware Virtual Machine Communication Interface (rev 10)
+00:0f.0 VGA compatible controller: VMware SVGA II Adapter
+03:00.0 Serial Attached SCSI controller: VMware PVSCSI SCSI Controller (rev 02)
+0b:00.0 Ethernet controller: VMware VMXNET3 Ethernet Controller (rev 01)</pre
+            >
+          </div>
+        </div>
+
+        <div class="card">
+          <h3><i class="fab fa-usb"></i> Dispositivos Universal Serial Bus (USB)</h3>
+          <p>
+            Enquanto o barramento PCI gerencia a maior parte dos dispositivos internos (como placas de som e placas de rede), um número cada
+            vez maior de periféricos externos conecta-se ao computador por meio das portas USB.
+          </p>
+
+          <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem">
+            <div style="border-left: 3px solid var(--danger); padding-left: 1rem">
+              <h4 style="color: var(--danger); font-size: 1.1rem; font-weight: 600">
+                <i class="fas fa-snowflake"></i> Conexão a Frio (Cold-plug)
+              </h4>
+              <p style="color: var(--text); font-size: 0.95rem">
+                Dispositivos conectados internamente na placa costumam ser <em>cold-plug</em>. Isso significa que o sistema operacional
+                precisa ser completamente desligado antes que você possa conectar ou desconectar o hardware com segurança.
+              </p>
+            </div>
+
+            <div style="border-left: 3px solid var(--success); padding-left: 1rem">
+              <h4 style="color: var(--success); font-size: 1.1rem; font-weight: 600">
+                <i class="fas fa-fire"></i> Conexão a Quente (Hot-plug)
+              </h4>
+              <p style="color: var(--text); font-size: 0.95rem">
+                Dispositivos USB são <em>hot-plug</em> por design, o que significa que eles podem ser inseridos ou removidos livremente com
+                o computador ligado e o sistema operacional rodando.
+              </p>
+            </div>
+          </div>
+
+          <div class="alert alert-warning" style="margin-top: 1.5rem">
+            <i class="fas fa-exclamation-triangle"></i>
+            <strong>Risco de Corrupção de Dados:</strong> Apesar de os dispositivos USB suportarem o desencaixe a quente
+            (<em>hot-plug</em>), no caso de mídias de armazenamento (como pendrives ou HDs externos), é obrigatório garantir que todos os
+            sistemas de arquivos montados sejam devidamente <strong>desmontados</strong> (usando o comando <code>umount</code>) antes da
+            remoção física. Caso contrário, haverá perda de dados e corrupção do sistema de arquivos.
+          </div>
+
+          <p style="margin-top: 1.5rem">
+            Para listar detalhadamente todos os dispositivos conectados à máquina através do barramento USB, execute o comando
+            <code>lsusb</code>:
+          </p>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <strong>Nota:</strong> O comando <code>lsusb</code> não está disponível dentro do ambiente de máquina virtual deste curso.
+          </div>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ lsusb
+Bus 001 Device 002: ID 0e0f:000b VMware, Inc. 
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 002 Device 004: ID 0e0f:0008 VMware, Inc. 
+Bus 002 Device 003: ID 0e0f:0002 VMware, Inc. Virtual USB Hub
+Bus 002 Device 002: ID 0e0f:0003 VMware, Inc. Virtual Mouse
+Bus 002 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub</pre
+            >
+          </div>
+        </div>
+      </section>
+      <section id="secao12-6" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-hdd"></i>
+          <span class="section-number">12.6</span> Discos Rígidos (Hard Drives)
+        </h2>
+
+        <div class="card">
+          <p>
+            Os <strong>discos rígidos</strong> — também chamados de hard disks, unidades de disco ou dispositivos de armazenamento — podem
+            ser conectados ao sistema de diversas maneiras. O seu controlador físico pode vir integrado diretamente na placa-mãe, em uma
+            placa de expansão PCI ou externamente como um dispositivo USB. Para a grande maioria dos sistemas Linux, um disco rígido pode
+            ser genericamente definido como qualquer dispositivo de armazenamento eletromecânico (HD) ou eletrônico (SSD) que guarda os
+            dados que serão acessados pelo sistema operacional.
+          </p>
+          <p style="margin-top: 1rem">
+            Os discos rígidos são divididos em uma ou mais <strong>partições</strong>. Uma partição é uma divisão lógica do disco físico,
+            projetada para pegar um grande espaço de armazenamento disponível e fragmentá-lo em áreas menores e independentes. Enquanto no
+            ecossistema Microsoft Windows é muito comum manter apenas uma única partição para o disco inteiro, nas distribuições Linux a
+            criação de múltiplas partições por disco é o padrão mais utilizado.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-th-large"></i> Tecnologias de Particionamento: MBR vs GPT</h3>
+          <p>
+            O Linux trabalha com dois padrões principais de tabelas de particionamento para gerenciar a organização lógica dos blocos de
+            dados nos discos:
+          </p>
+
+          <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem">
+            <div style="border-left: 3px solid var(--info); padding-left: 1rem">
+              <h4 style="color: var(--info); font-size: 1.1rem; font-weight: 600">
+                <i class="fas fa-history"></i> Master Boot Record (MBR)
+              </h4>
+              <p style="color: var(--text); font-size: 0.95rem">
+                Padrão legado utilizado desde os primeiros dias dos Computadores Pessoais (PC). O termo antigo utilizado para descrever um
+                disco rígido interno não removível era <em>fixed disk</em> (disco fixo), o que deu origem aos nomes de ferramentas clássicas
+                de gerenciamento como <code>fdisk</code>, <code>cfdisk</code> e <code>sfdisk</code>.
+              </p>
+            </div>
+
+            <div style="border-left: 3px solid var(--primary); padding-left: 1rem">
+              <h4 style="color: var(--primary); font-size: 1.1rem; font-weight: 600">
+                <i class="fas fa-list-ol"></i> GUID Partitioning Table (GPT)
+              </h4>
+              <p style="color: var(--text); font-size: 0.95rem">
+                Tecnologia moderna disponível desde os anos 2000. Supera os limites do MBR permitindo a criação de um número muito maior de
+                partições por disco e oferece suporte a volumes que ultrapassam o limite físico de 2 terabytes (TB). Os utilitários
+                dedicados ao gerenciamento de GPT seguem nomes similares aos seus equivalentes clássicos: <code>gdisk</code>,
+                <code>cgdisk</code> e <code>sgdisk</code>.
+              </p>
+            </div>
+          </div>
+
+          <p style="margin-top: 1.5rem">
+            Além dos comandos específicos, há uma família de ferramentas desenvolvida para oferecer suporte híbrido a ambos os padrões de
+            disco (MBR e GPT). Essa gama engloba o comando utilitário <code>parted</code> e a sua famosa contraparte gráfica, o
+            <code>gparted</code>.
+          </p>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <strong>Dica de Instalação:</strong> Muitas distribuições Linux adotam o <code>gparted</code> nativamente em suas rotinas de
+            instalação gráfica, visto que ele provê uma interface visual muito poderosa para tarefas avançadas como criar novas partições,
+            formatar sistemas de arquivos e redimensionar partições já existentes de forma segura (incluindo partições do Windows NTFS).
+          </div>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-folder-open"></i> Padrão de Nomenclatura dos Dispositivos em /dev</h3>
+          <p>
+            No Linux, os discos rígidos e suas respectivas partições são associados a arquivos especiais de sistema (chamados de
+            <strong>arquivos de dispositivo</strong> ou <em>device files</em>) mapeados e centralizados dentro do diretório
+            <code>/dev</code>. Cada nome de arquivo é composto sistematicamente por três partes:
+          </p>
+
+          <table class="table-custom">
+            <thead>
+              <tr>
+                <th>Componente</th>
+                <th>Padrão de Identificação</th>
+                <th>Exemplos Práticos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Tipo de Arquivo (Prefixo)</strong></td>
+                <td>
+                  Identifica a tecnologia de barramento do disco. Unidades IDE antigas começam com <code>hd</code>. Unidades USB, SATA e
+                  SCSI modernas começam com <code>sd</code>.
+                </td>
+                <td><code>hd</code> (IDE)<br /><code>sd</code> (SATA/USB)</td>
+              </tr>
+              <tr>
+                <td><strong>Ordem do Dispositivo</strong></td>
+                <td>
+                  Uma letra sequencial em ordem alfabética é atribuída logo após o prefixo para diferenciar os discos físicos acoplados à
+                  máquina.
+                </td>
+                <td><code>/dev/sda</code> (1º disco)<br /><code>/dev/sdb</code> (2º disco)</td>
+              </tr>
+              <tr>
+                <td><strong>Número da Partição</strong></td>
+                <td>
+                  Um identificador numérico adicionado ao final do nome para representar individualmente cada partição lógica criada naquele
+                  disco físico.
+                </td>
+                <td><code>/dev/sda1</code> (1ª partição do 1º disco)<br /><code>/dev/sda2</code> (2ª partição do 1º disco)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-terminal"></i> Inspecionando Discos e Partições no Terminal</h3>
+          <p>
+            Para listar rapidamente todos os arquivos de dispositivos relacionados a discos e partições do tipo <code>sd</code> mapeados no
+            sistema operacional, utilize o comando de listagem com caractere curinga:
+          </p>
+
+          <div class="terminal">
+            <pre>
+root@localhost:~$ ls /dev/sd*
+/dev/sda  /dev/sda1  /dev/sda2  /dev/sdb  /dev/sdb1  /dev/sdc</pre
+            >
+          </div>
+
+          <p>
+            O retorno acima comprova a existência de três dispositivos físicos detectados (<code>sda</code>, <code>sdb</code> e
+            <code>sdc</code>), apontando que o primeiro disco possui duas partições (<code>sda1</code> e <code>sda2</code>) e o segundo
+            possui uma partição (<code>sdb1</code>).
+          </p>
+
+          <p style="margin-top: 1.5rem">
+            Para extrair informações detalhadas sobre a estrutura de blocos e geometrias de uma unidade específica, utilizamos o comando
+            <code>fdisk -l</code>:
+          </p>
+
+          <div class="alert alert-danger">
+            <i class="fas fa-shield-alt"></i>
+            <strong>Privilégios Administrativos:</strong> O comando de manipulação e leitura de tabelas de partições
+            <code>fdisk</code> exige obrigatoriamente acessos de superusuário (<strong>root</strong> ou uso de prefixo <code>sudo</code>)
+            para ser executado.
+          </div>
+
+          <div class="terminal">
+            <pre>
+root@localhost:~$ fdisk -l /dev/sda
+Disk /dev/sda: 21.5 GB, 21474836480 bytes
+255 heads, 63 sectors/track, 2610 cylinders, total 41943040 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x000571a2
+
+Device Boot      Start         End      Blocks   Id  System
+/dev/sda1   * 2048    39845887    19921920   83  Linux
+/dev/sda2        39847934    41940991     1046529    5  Extended
+/dev/sda5        39847936    41940991     1046528   82  Linux swap / Solaris</pre
+            >
+          </div>
+
+          <div class="alert alert-warning">
+            <i class="fas fa-graduation-cap"></i>
+            <strong>Nota de Escopo:</strong> A criação profunda e a modificação estrutural de partições do sistema vão além do escopo
+            proposto para este módulo introdutório. Para estudos avançados sobre particionamento, consulte o conteúdo complementar do curso
+            <em>NDG Linux I</em>.
+          </div>
+        </div>
+      </section>
+      <section id="secao12-7" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-microchip"></i>
+          <span class="section-number">12.7</span> Discos de Estado Sólido (SSDs)
+        </h2>
+
+        <div class="card">
+          <p>
+            Embora a expressão "disco rígido" (<em>hard disk</em>) seja tipicamente associada aos dispositivos tradicionais de discos
+            giratórios mecânicos, ela também pode se referir às unidades de estado sólido (<strong>SSDs - Solid State Drives</strong>), que
+            funcionam de uma maneira totalmente diferente.
+          </p>
+          <p style="margin-top: 1rem">
+            Para entender a diferença básica, pense no contraste entre um disco rígido tradicional de travessa giratória e um pendrive USB
+            comum. O primeiro possui literalmente pratos magnéticos que giram em alta velocidade e são lidos por cabeçotes físicos, onde os
+            dados são gravados e lidos em longas sequências de blocos conforme o prato passa pelo cabeçote.
+          </p>
+          <p style="margin-top: 1rem">
+            Os <strong>discos de estado sólido (SSDs)</strong> são, essencialmente, pendrives USB de altíssima capacidade em termos de
+            construção e funcionamento. Como não possuem nenhuma parte móvel e nenhum disco giratório — contando apenas com posições de
+            memória eletrônica gerenciadas por um controlador —, um SSD é mensuravelmente e visivelmente mais rápido no acesso às
+            informações armazenadas em seus chips de memória flash.
+          </p>
+          <p style="margin-top: 1rem">
+            Todo SSD é controlado por um processador integrado (onboard) que toma as decisões em tempo real de onde e como os dados serão
+            gravados e recuperados nos chips de memória quando solicitados pelo sistema operacional.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-balance-scale"></i> Vantagens e Desvantagens dos SSDs</h3>
+          <p>Abaixo estão listados os principais prós e contras que diferenciam os SSDs das unidades mecânicas tradicionais:</p>
+
+          <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem">
+            <div style="border-left: 3px solid var(--success); padding-left: 1rem">
+              <h4 style="color: var(--success); font-size: 1.1rem; font-weight: 600"><i class="fas fa-plus-circle"></i> Vantagens</h4>
+              <p style="color: var(--text); font-size: 0.95rem">
+                Menor consumo de energia elétrica, economia drástica de tempo na inicialização do sistema (boot), carregamento de programas
+                muito mais veloz, além de produzir menos calor e nenhuma vibração por não possuir partes móveis.
+              </p>
+            </div>
+
+            <div style="border-left: 3px solid var(--danger); padding-left: 1rem">
+              <h4 style="color: var(--danger); font-size: 1.1rem; font-weight: 600"><i class="fas fa-minus-circle"></i> Desvantagens</h4>
+              <p style="color: var(--text); font-size: 0.95rem">
+                Custo financeiro mais elevado por gigabyte em comparação com discos rígidos giratórios, o que consequentemente limita as
+                capacidades de armazenamento comercializadas pelo mesmo preço. Além disso, se forem soldados diretamente na placa-mãe (comum
+                em ultrabooks compactos), perde-se completamente a capacidade de fazer upgrades substituindo a unidade.
+              </p>
+            </div>
+          </div>
+
+          <div class="alert alert-info" style="margin-top: 1.5rem">
+            <i class="fas fa-info-circle"></i>
+            <strong>Nota de Convenção:</strong> Para fins didáticos e de entendimento geral ao longo deste curso, nos referiremos a todas as
+            unidades de armazenamento (sejam elas mecânicas giratórias ou de estado sólido) genericamente como "discos rígidos", a menos que
+            haja uma distinção técnica crucial que nos obrigue a diferenciar os dois padrões.
+          </div>
+        </div>
+      </section>
+      <section id="secao12-8" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-compact-disc"></i>
+          <span class="section-number">12.8</span> Unidades Ópticas
+        </h2>
+
+        <div class="card">
+          <p>
+            As <strong>unidades ópticas</strong> — frequentemente referidas pelas mídias que suportam, como CD-ROMs, DVDs ou Blu-Rays — são
+            dispositivos de armazenamento removíveis. Embora alguns leitores usados com discos ópticos funcionem apenas em modo de leitura
+            (<em>read-only</em>), outros são capazes de "gravar" (escrever dados) quando uma mídia gravável compatível é utilizada.
+          </p>
+          <p style="margin-top: 1rem">
+            Existe uma grande variedade de padrões do mercado para mídias graváveis e regraváveis, tais como: <code>CD-R</code>,
+            <code>CD+R</code>, <code>DVD+RW</code> e <code>DVD-RW</code>.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-folder-open"></i> Pontos de Montagem no Sistema de Arquivos</h3>
+          <p>
+            Saber exatamente onde essas mídias removíveis são anexadas à árvore de diretórios (processo chamado de
+            <strong>montagem</strong> ou <em>mount</em>) é uma consideração técnica crucial para qualquer administrador Linux:
+          </p>
+          <ul style="margin: 1rem 0 1rem 2rem; color: var(--text)">
+            <li style="margin-bottom: 0.5rem">
+              As distribuições <strong>modernas</strong> costumam montar essas mídias automaticamente dentro do diretório
+              <code>/media</code> (por exemplo, um pendrive USB ou drive óptico externo pode ser mapeado no caminho
+              <code>/media/usbthumb</code>).
+            </li>
+            <li>
+              As distribuições mais <strong>antigas ou legadas</strong> tipicamente realizavam essa montagem de forma manual dentro da pasta
+              <code>/mnt</code>.
+            </li>
+          </ul>
+          <p style="margin-top: 1rem">
+            Ao espetar ou inserir a mídia, a maioria das interfaces gráficas (GUI) do Linux dispara um aviso sugerindo ações imediatas ao
+            usuário, como abrir os arquivos em um gerenciador de janelas ou iniciar um reprodutor de mídia dedicado.
+          </p>
+
+          <div class="alert alert-danger">
+            <i class="fas fa-exclamation-triangle"></i>
+            <strong>Regra de Desmontagem Obrigatória:</strong> Quando o usuário terminar de utilizar a mídia ou o disco, é estritamente
+            necessário realizar o processo de desmontagem lógica (seja clicando na opção "Ejetar/Desmontar" do menu gráfico ou executando o
+            comando <code>umount</code> no terminal) antes de remover fisicamente o dispositivo, evitando a perda irreparável de dados.
+          </div>
+        </div>
+      </section>
+      <section id="secao12-9" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-tools"></i>
+          <span class="section-number">12.9</span> Gerenciamento de Dispositivos
+        </h2>
+
+        <div class="card">
+          <p>
+            O ecossistema Linux possui intrinsecamente uma enorme quantidade de distribuições e versões. Grande parte delas é totalmente
+            focada em suportar o hardware de consumo em massa (<em>mainstream</em>), enquanto outras são otimizadas para rodar em modelos de
+            hardware relativamente obscuros ou embarcados. É seguro afirmar que existe uma distribuição Linux projetada especificamente para
+            praticamente qualquer plataforma de hardware moderna, bem como para muitas arquiteturas históricas e legadas.
+          </p>
+          <p style="margin-top: 1rem">
+            Cada uma dessas plataformas possui uma enorme variedade de componentes disponíveis. Além de vários tipos distintos de discos
+            rígidos, existem dezenas de placas gráficas, monitores e impressoras diferentes. Com a popularidade em massa de barramentos USB
+            — conectando mídias de armazenamento, câmeras e smartphones —, a quantidade de periféricos que um usuário pode desejar acoplar a
+            um sistema Linux passa facilmente da casa dos milhares.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-puzzle-piece"></i> O Desafio dos Drivers de Dispositivo</h3>
+          <p>
+            A enorme quantidade de dispositivos distintos impõe um grande desafio de integração, pois esses componentes físicos necessitam
+            obrigatoriamente de <strong>drivers</strong> — que são softwares especializados que ensinam o sistema operacional instalado a se
+            comunicar e controlar o hardware.
+          </p>
+          <p style="margin-top: 1rem">
+            No ecossistema Linux, o carregamento e a arquitetura desses drivers podem ocorrer de três maneiras principais:
+          </p>
+
+          <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem">
+            <div style="border-left: 3px solid var(--primary); padding-left: 1rem">
+              <h4 style="color: var(--primary); font-size: 1.1rem; font-weight: 600"><i class="fas fa-cube"></i> Compilados no Kernel</h4>
+              <p style="color: var(--text); font-size: 0.95rem">
+                O driver é embutido e integrado de forma nativa e fixa diretamente dentro do binário principal do kernel Linux durante a sua
+                construção.
+              </p>
+            </div>
+
+            <div style="border-left: 3px solid var(--info); padding-left: 1rem">
+              <h4 style="color: var(--info); font-size: 1.1rem; font-weight: 600">
+                <i class="fas fa-plug"></i> Módulos Dinâmicos do Kernel (LKM)
+              </h4>
+              <p style="color: var(--text); font-size: 0.95rem">
+                O driver existe como um bloco isolado e é injetado ou removido da memória do kernel dinamicamente sob demanda, sem a
+                necessidade de reiniciar o sistema operacional.
+              </p>
+            </div>
+
+            <div style="border-left: 3px solid var(--warning); padding-left: 1rem">
+              <h4 style="color: var(--warning); font-size: 1.1rem; font-weight: 600">
+                <i class="fas fa-user-cog"></i> Espaço do Usuário (User Space)
+              </h4>
+              <p style="color: var(--text); font-size: 0.95rem">
+                Periféricos externos (como scanners e impressoras) frequentemente possuem seus drivers gerenciados diretamente por uma
+                aplicação ou serviço em espaço de usuário, que por sua vez se comunica com o dispositivo enviando dados através das
+                interfaces do kernel (como o subsistema USB).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-users"></i> Suporte do Fabricante vs Suporte da Comunidade</h3>
+          <p>
+            Historicamente, os fabricantes de hardware desenvolvem e fornecem drivers oficiais focados prioritariamente no Microsoft
+            Windows. Embora esse cenário venha mudando positivamente devido à ascensão expressiva do Linux no mercado corporativo e em
+            nuvem, a fatia de mercado do Linux em computadores desktop ainda o posiciona em um distante terceiro lugar quando comparado aos
+            sistemas da Microsoft e da Apple.
+          </p>
+          <p style="margin-top: 1rem">
+            Em decorrência desse suporte nativo escasso por parte de alguns fabricantes, a robustez do Linux deve-se amplamente ao massivo
+            **suporte comunitário**. Há comunidades globais de desenvolvedores independentes que investem esforços contínuos para fazer
+            engenharia reversa e criar drivers de código aberto estáveis para os sistemas Linux. Embora nem todo hardware do mercado possua
+            drivers compatíveis, uma quantidade massiva é perfeitamente suportada.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-check-circle"></i> Estratégias para Administradores de Sistemas</h3>
+          <p>
+            Para garantir o sucesso na ativação e homologação de componentes físicos no Linux, a melhor prática técnica consiste em
+            verificar previamente as listas de compatibilidade da sua distribuição:
+          </p>
+
+          <div class="alert alert-success">
+            <i class="fas fa-award"></i>
+            <strong>Hardware Certificado:</strong> Distribuições comerciais de peso no mercado, como <strong>Red Hat (RHEL)</strong> e
+            <strong>SUSE</strong>, mantêm portais e páginas web dedicadas exclusivamente a listar hardwares que foram oficialmente testados,
+            homologados e certificados para operar com seus softwares.
+          </div>
+
+          <p style="margin-top: 1.5rem"><strong>Dicas práticas adicionais para evitar problemas de compatibilidade:</strong></p>
+          <ul style="margin: 1rem 0 1rem 2rem; color: var(--text); display: flex; flex-direction: column; gap: 0.5rem">
+            <li>
+              <i class="fas fa-shield-alt" style="color: var(--primary); margin-right: 0.5rem"></i> Evite adquirir hardwares recém-lançados
+              no mercado (que ainda não tiveram tempo de receber engenharia reversa pela comunidade) ou dispositivos altamente
+              especializados/proprietários.
+            </li>
+            <li>
+              <i class="fas fa-search" style="color: var(--primary); margin-right: 0.5rem"></i> Consulte sempre as especificações do
+              fabricante e fóruns técnicos antes de efetuar a compra para certificar-se de que há suporte oficial ou comunitário maduro para
+              a arquitetura Linux.
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section id="secao12-10" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-desktop"></i>
+          <span class="section-number">12.10</span> Dispositivos de Exibição de Vídeo
+        </h2>
+
+        <div class="card">
+          <p>
+            Para exibir saídas visuais ao usuário, o computador precisa dispor de um
+            <strong>dispositivo de exibição de vídeo</strong> (placa de vídeo) e de um monitor. As placas de vídeo são frequentemente
+            integradas diretamente à placa-mãe (vídeo <em>onboard</em>), embora também possam ser conectadas de forma dedicada através dos
+            slots do barramento PCI Express (vídeo <em>offboard</em>).
+          </p>
+          <p style="margin-top: 1rem">
+            Devido à enorme gama de fabricantes de chips gráficos no mercado, cada dispositivo geralmente exige um driver proprietário
+            fornecido pelo próprio fabricante. Todos os drivers, mas muito especialmente os drivers de vídeo, precisam ser escritos
+            especificamente para cada sistema operacional — algo feito rotineiramente para o Microsoft Windows, mas nem sempre para o Linux.
+            Felizmente, a maioria dos grandes fabricantes de hardware gráfico provê atualmente algum nível de suporte oficial para Linux,
+            além de a própria comunidade Linux ter realizado um trabalho extraordinário no desenvolvimento de drivers de código aberto
+            padronizados.
+          </p>
+
+          <div class="alert alert-info">
+            <i class="fas fa-server"></i>
+            <strong>Impacto em Servidores:</strong> Os problemas históricos de suporte a vídeo enfrentados pelo Linux concentram-se quase
+            que exclusivamente no mercado de desktops. O mercado de servidores permanece praticamente inafetado por questões de interface
+            gráfica (GUI), visto que a vasta maioria das implementações de servidores Linux opera puramente em modo texto (CLI).
+          </div>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-plug"></i> Padrões de Cabos e Interfaces de Vídeo</h3>
+          <p>Existem quatro tipos de conexões e cabos de vídeo comumente utilizados na indústria:</p>
+
+          <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem">
+            <div style="border-left: 3px solid var(--text-dim); padding-left: 1rem">
+              <h4 style="color: var(--text); font-size: 1.1rem; font-weight: 600">
+                <i class="fas fa-bezier-curve"></i> VGA (Video Graphics Array)
+              </h4>
+              <p style="color: var(--text-dim); font-size: 0.95rem">
+                Interface analógica antiga de 15 pinos. Embora legada, ainda é amplamente encontrada em datacenters e monitores corporativos
+                mais antigos.
+              </p>
+            </div>
+
+            <div style="border-left: 3px solid var(--info); padding-left: 1rem">
+              <h4 style="color: var(--info); font-size: 1.1rem; font-weight: 600">
+                <i class="fas fa-digital-tachograph"></i> DVI (Digital Visual Interface)
+              </h4>
+              <p style="color: var(--text-dim); font-size: 0.95rem">
+                Interface digital mais recente que a VGA, contando tipicamente com 29 pinos para transmissão de sinal digital limpo.
+              </p>
+            </div>
+
+            <div style="border-left: 3px solid var(--success); padding-left: 1rem">
+              <h4 style="color: var(--success); font-size: 1.1rem; font-weight: 600">
+                <i class="fas fa-tv"></i> HDMI (High-Definition Multimedia Interface)
+              </h4>
+              <p style="color: var(--text-dim); font-size: 0.95rem">
+                Interface digital amplamente difundida no mercado de consumo. Suporta áudio e resoluções de alta definição até a faixa de 4K
+                ou Ultra HD, operando com conectores de 19 ou 29 pinos.
+              </p>
+            </div>
+
+            <div style="border-left: 3px solid var(--primary); padding-left: 1rem">
+              <h4 style="color: var(--primary); font-size: 1.1rem; font-weight: 600"><i class="fas fa-laptop"></i> DisplayPort (DP)</h4>
+              <p style="color: var(--text-dim); font-size: 0.95rem">
+                A interface de exibição digital mais recente, operando com 20 pinos. Possui também uma contraparte miniaturizada, o
+                <em>Mini DisplayPort</em>, utilizado principalmente em ecossistemas de produtos da Apple.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-compress-arrows-alt"></i> Resolução de Tela e Detecção Automática</h3>
+          <p>
+            Para que os monitores funcionem perfeitamente em conjunto com as placas de vídeo, ambos os hardwares devem suportar as mesmas
+            taxas de <strong>resolução</strong> espacial. Sob condições normais, o servidor gráfico ou o software de gerenciamento do driver
+            de vídeo consegue realizar a identificação automática (DDC/EDID) da resolução máxima suportada simultaneamente pela placa e pelo
+            monitor conectado, ajustando a saída do display para esse valor de forma transparente.
+          </p>
+        </div>
+      </section>
+      <section id="secao12-11" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-plug"></i>
+          <span class="section-number">12.11</span> Fontes de Alimentação (Power Supplies)
+        </h2>
+
+        <div class="card">
+          <p>
+            As <strong>fontes de alimentação</strong> (<em>power supplies</em>) são os dispositivos responsáveis por converter a corrente
+            alternada da rede elétrica externa (110v, 220v) em corrente contínua, que é a energia que o computador efetivamente utiliza em
+            várias tensões internas reguladas (como 3.3v, 5v e 12v). As fontes de alimentação geralmente não são programáveis por software;
+            no entanto, o seu funcionamento correto e estável tem um impacto massivo em todo o resto do sistema.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-shield-alt"></i> Proteção Eletrônica e Confiabilidade</h3>
+          <p>
+            Embora não sejam tipicamente projetadas para atuar como supressores de surto (estabilizadores/filtros de linha dedicados), essas
+            unidades frequentemente protegem os circuitos lógicos sensíveis do computador contra pequenas flutuações de voltagem vindas da
+            rede elétrica de distribuição externa.
+          </p>
+
+          <div class="alert alert-danger">
+            <i class="fas fa-exclamation-triangle"></i>
+            <strong>Recomendação de Infraestrutura:</strong> É altamente recomendável que um administrador de redes ou sistemas escolha uma
+            fonte de alimentação baseada estritamente na sua <strong>qualidade de construção e eficiência de filtragem</strong>, e não no
+            preço de mercado. Uma falha catastrófica ou surto em uma fonte de baixa qualidade pode resultar em danos permanentes e queima de
+            componentes cruciais do computador (como placa-mãe, processador e discos).
+          </div>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-battery-half"></i> Vulnerabilidade por Tipo de Sistema</h3>
+          <p>
+            Sistemas do tipo desktop, servidores em formato torre ou montados em rack e estruturas corporativas isoladas são
+            significativamente mais vulneráveis a oscilações e quedas bruscas de energia do que os sistemas baseados em laptops:
+          </p>
+          <ul style="margin: 1rem 0 1rem 2rem; color: var(--text); display: flex; flex-direction: column; gap: 0.5rem">
+            <li>
+              <i class="fas fa-server" style="color: var(--danger); margin-right: 0.5rem"></i> <strong>Sistemas sem Bateria:</strong> Se a
+              energia oscilar ou cair, pode causar estragos imediatos, travamentos de kernel e corrupção nos arquivos e bancos de dados que
+              estavam sendo gravados no disco naquele exato instante.
+            </li>
+            <li>
+              <i class="fas fa-laptop" style="color: var(--success); margin-right: 0.5rem"></i> <strong>Laptops e Notebooks:</strong> Caso
+              ocorra uma interrupção na rede elétrica, o circuito interno do laptop comuta de forma transparente, continuando a extrair
+              energia da sua própria bateria interna até que ela seja totalmente drenada.
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <footer
+      style="
+        padding: 40px 0;
+        text-align: center;
+        border-top: 1px solid var(--border);
+        margin-top: 60px;
+        color: var(--text-dim);
+        font-size: 0.85rem;
+      "
+    >
+      <p><i class="fab fa-linux"></i> NDG Linux Essentials — Curso de Capacitação Técnica</p>
+    </footer>
+
+    <script>
+      class SidebarMenu {
+        constructor() {
+          this.sidebar = document.getElementById('sidebar')
+          this.overlay = document.getElementById('sidebarOverlay')
+          this.openBtn = document.getElementById('openMenu')
+          this.closeBtn = document.getElementById('closeMenu')
+          this.init()
+        }
+
+        init() {
+          if (!this.sidebar) return
+
+          if (this.openBtn) {
+            this.openBtn.addEventListener('click', () => this.open())
+          }
+          if (this.closeBtn) {
+            this.closeBtn.addEventListener('click', () => this.close())
+          }
+          if (this.overlay) {
+            this.overlay.addEventListener('click', () => this.close())
+          }
+
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.sidebar.classList.contains('open')) {
+              this.close()
+            }
+          })
+
+          const links = document.querySelectorAll('.sidebar .nav-modules a')
+          links.forEach((link) => {
+            link.addEventListener('click', () => this.close())
+          })
+        }
+
+        open() {
+          this.sidebar.classList.add('open')
+          this.overlay.classList.add('active')
+          document.body.style.overflow = 'hidden'
+        }
+
+        close() {
+          this.sidebar.classList.remove('open')
+          this.overlay.classList.remove('active')
+          document.body.style.overflow = ''
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        new SidebarMenu()
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,969 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NDG Linux Essentials | Scripting Básico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <div class="top-bar">
+      <button class="menu-toggle" id="openMenu">
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+      </button>
+      <a href="../index.html" class="top-bar-brand"> <i class="fab fa-linux"></i> NDG Linux Essentials </a>
+      <a href="../index.html" class="btn-outline"> <i class="fas fa-home"></i> Voltar </a>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-compass"></i> Navegação</h3>
+        <button class="close-sidebar" id="closeMenu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="nav-modules">
+        <li>
+          <a href="#secao11-1"><i class="fas fa-terminal"></i> 11.1 Introdução</a>
+        </li>
+        <li>
+          <a href="#secao11-2"><i class="fas fa-code"></i> 11.2 Shell Scripts em Resumo</a>
+        </li>
+        <li>
+          <a href="#secao11-3"><i class="fas fa-file-alt"></i> 11.3 Editando Shell Scripts</a>
+        </li>
+        <li>
+          <a href="#secao11-4"><i class="fas fa-graduation-cap"></i> 11.4 Fundamentos de Scripting</a>
+        </li>
+        <li>
+          <a href="#secao11-4-1"><i class="fas fa-box"></i> 11.4.1 Variáveis</a>
+        </li>
+        <li>
+          <a href="#secao11-4-2"><i class="fas fa-code-branch"></i> 11.4.2 Condicionais</a>
+        </li>
+        <li>
+          <a href="#secao11-4-3"><i class="fas fa-redo"></i> 11.4.3 Loops</a>
+        </li>
+        <li>
+          <a href="../pages/questoes_11.html"><i class="fas fa-question-circle"></i> Questões</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <section class="hero">
+      <div class="badge-lab"><i class="fas fa-terminal"></i> Módulo 11</div>
+      <h1
+        style="
+          background: linear-gradient(90deg, var(--primary), var(--secondary));
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        "
+      >
+        Basic Scripting
+      </h1>
+      <p style="color: var(--text-dim); margin-top: 1rem">Introdução à automação e criação de scripts reutilizáveis no Linux.</p>
+    </section>
+
+    <div class="container">
+      <section id="secao11-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-terminal"></i>
+          <span class="section-number">11.1</span> Introdução
+        </h2>
+
+        <div class="card">
+          <p>
+            Neste capítulo, discutiremos como as ferramentas que você aprendeu até agora podem ser transformadas em scripts reutilizáveis.
+          </p>
+        </div>
+
+        <div class="alert alert-success">
+          <p>
+            <i class="fas fa-graduation-cap"></i>
+            <strong>Destaque de Mercado:</strong> <strong>88%</strong> dos gerentes de contratação declararam que contratar profissionais
+            certificados é uma prioridade significativa.
+          </p>
+        </div>
+      </section>
+
+      <section id="secao11-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-code"></i>
+          <span class="section-number">11.2</span> Shell Scripts em Resumo
+        </h2>
+
+        <div class="card">
+          <p>
+            Um <strong>shell script</strong> é um arquivo de texto que armazena comandos executáveis. Quando o arquivo é executado, cada
+            comando é processado sequencialmente. Os shell scripts têm acesso a todos os comandos do shell, incluindo estruturas lógicas.
+            Portanto, um script pode verificar a existência de um arquivo ou buscar por uma saída específica e alterar seu comportamento de
+            acordo.
+          </p>
+          <p style="margin-top: 1rem">
+            Você pode construir scripts para automatizar partes repetitivas do seu trabalho, o que libera o seu tempo e garante consistência
+            a cada execução. Por exemplo, se você executa os mesmos cinco comandos todos os dias, pode transformá-los em um shell script que
+            reduz o seu trabalho a apenas um comando.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-terminal"></i> Um Script Simples</h3>
+          <p>Um script pode ser tão simples quanto um único comando:</p>
+
+          <div class="terminal"><pre>echo "Hello, World!"</pre></div>
+
+          <p>O script, <code>test.sh</code>, consiste em apenas uma linha que imprime a string <em>Hello, World!</em> no console.</p>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <strong>Nota:</strong> Este arquivo não está disponível dentro do ambiente de máquina virtual deste curso.
+          </div>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-play-circle"></i> Executando um Script</h3>
+          <p>A execução de um script pode ser feita passando-o como um argumento para o seu shell ou executando-o diretamente:</p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ sh test.sh
+Hello, World!
+sysadmin@localhost:~$ ./test.sh
+-bash: ./test.sh: Permission denied
+sysadmin@localhost:~$ chmod +x ./test.sh
+sysadmin@localhost:~$ ./test.sh
+Hello, World!</pre
+            >
+          </div>
+
+          <p>
+            No exemplo acima, primeiro o script é executado como um argumento do shell. Em seguida, o script é executado diretamente a
+            partir do shell. É raro ter o diretório atual no caminho de busca binária <code>$PATH</code>, por isso o nome é prefixado com
+            <code>./</code> para indicar que ele deve ser executado a partir do diretório atual.
+          </p>
+
+          <p style="margin-top: 1rem">
+            O erro <code>Permission denied</code> (Permissão negada) significa que o script não foi marcado como executável. Um rápido
+            <code>chmod</code> depois e o script funciona. O comando <code>chmod</code> é usado para alterar as permissões de um arquivo, o
+            que será explicado em detalhes em um capítulo posterior.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-hashtag"></i> O Conceito de Shebang</h3>
+          <p>
+            Existem vários shells com suas próprias sintaxes de linguagem. Portanto, scripts mais complexos indicarão um shell específico
+            especificando o caminho absoluto para o interpretador logo na primeira linha, prefixado por <code>#!</code> como mostrado
+            abaixo:
+          </p>
+
+          <div class="terminal">
+            <pre>
+#!/bin/sh
+echo "Hello, World!"</pre
+            >
+          </div>
+
+          <p>ou</p>
+
+          <div class="terminal">
+            <pre>
+#!/bin/bash
+echo "Hello, World!"</pre
+            >
+          </div>
+
+          <p>
+            Os dois caracteres <code>#!</code> são tradicionalmente chamados de <em>hash</em> e <em>bang</em>, respectivamente, o que leva à
+            forma abreviada de <strong>"shebang"</strong> quando usados no início de um script.
+          </p>
+
+          <p style="margin-top: 1rem">
+            O shebang (ou <em>crunchbang</em>) é utilizado para scripts de shell tradicionais e outras linguagens baseadas em texto como
+            Perl, Ruby e Python. Qualquer arquivo de texto marcado como executável será rodado sob o interpretador especificado na primeira
+            linha, desde que o script seja executado diretamente.
+          </p>
+
+          <div class="alert alert-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <strong>Regra de Invocação:</strong> Se o script for invocado diretamente como um argumento para um interpretador, como
+            <code>sh script</code> ou <code>bash script</code>, o shell fornecido será utilizado não importa o que esteja na linha do
+            shebang.
+          </div>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-file-alt"></i> Preparação do Ambiente</h3>
+          <p>
+            É fundamental ambientar-se com o uso de um editor de texto antes de começar a escrever shell scripts, já que você precisará
+            criar arquivos em texto puro (plain text). Ferramentas de escritório tradicionais como o LibreOffice — que geram formatos de
+            arquivo contendo estilizações, metadados e outras informações de formatação — <strong>não são adequadas</strong> para esta
+            tarefa.
+          </p>
+        </div>
+      </section>
+
+      <section id="secao11-3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-file-alt"></i>
+          <span class="section-number">11.3</span> Editando Shell Scripts
+        </h2>
+
+        <div class="card">
+          <p>
+            O ecossistema UNIX possui muitos editores de texto, e os méritos de um sobre o outro são frequentemente debatidos de forma
+            calorosa. Dois editores são especificamente mencionados no programa do <em>LPI Linux Essentials</em>:
+          </p>
+          <ul style="margin: 1rem 0 1rem 2rem; color: var(--text)">
+            <li style="margin-bottom: 0.5rem">
+              O <strong>GNU nano</strong>: um editor muito simples, ideal para editar pequenos arquivos de texto.
+            </li>
+            <li>
+              O <strong>Visual Editor (vi)</strong> (ou sua versão mais recente, o <strong>VI improved - vim</strong>): um editor
+              incrivelmente poderoso, mas que possui uma curva de aprendizado íngreme.
+            </li>
+          </ul>
+          <p>Neste módulo, nosso foco será o <strong>nano</strong>.</p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-terminal"></i> A Interface do GNU nano</h3>
+          <p>Ao digitar <code>nano test.sh</code> no seu terminal, você verá uma tela semelhante a esta:</p>
+
+          <div class="terminal">
+            <pre>
+GNU nano 2.2.6              File: test.sh                         modified
+
+#!/bin/sh
+
+echo "Hello, World!"
+echo -n "the time is "
+date
+                                    
+                                                                                
+^G Get Help  ^O WriteOut  ^R Read File ^Y Prev Page ^K Cut Text  ^C Cur Po 
+^X Exit      ^J Justify   ^W Where Is  ^V Next Page ^U UnCut Text^T To Spell</pre
+            >
+          </div>
+
+          <p>
+            O editor nano possui os recursos básicos para você começar. Você simplesmente digita com o teclado, usa as setas direcionais
+            para se mover pelo texto e o botão <em>Delete/Backspace</em> para apagar. Na parte inferior da tela, ficam visíveis os comandos
+            disponíveis, que são sensíveis ao contexto e mudam dependendo do que você está fazendo.
+          </p>
+
+          <div class="alert alert-info">
+            <i class="fas fa-mouse-pointer"></i>
+            <strong>Dica de Uso:</strong> Se você estiver operando diretamente na máquina Linux física (em vez de uma conexão remota via
+            rede), também poderá usar o mouse para mover o cursor e selecionar textos dentro do nano.
+          </div>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-save"></i> Salvando e Saindo do Editor</h3>
+          <p>
+            Observe que a opção no canto inferior esquerdo é <code>^X Exit</code>, o que significa "pressione
+            <strong>Control e X</strong> para sair". Ao pressionar Ctrl e X juntos, o menu inferior mudará para o seguinte estado:
+          </p>
+
+          <div class="terminal">
+            <pre>
+Save modified buffer (ANSWERING "No" WILL DESTROY CHANGES) ?                 
+ Y Yes                                                                       
+ N No           ^C Cancel</pre
+            >
+          </div>
+
+          <p>
+            Neste ponto, você pode sair do programar sem salvar pressionando a tecla <strong>N</strong>, ou salvar as alterações
+            pressionando <strong>Y</strong>. O comportamento padrão é salvar o arquivo com o nome atual; basta pressionar a tecla
+            <strong>Enter</strong> para confirmar o nome, salvar e fechar.
+          </p>
+          <p style="margin-top: 1rem">
+            Você retornará imediatamente ao prompt do shell após salvar. Caso queira salvar o seu progresso enquanto trabalha
+            <em>sem fechar o editor</em>, basta pressionar <strong>Ctrl + O</strong> (WriteOut).
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-cut"></i> Manipulação de Texto (Recortar e Colar)</h3>
+          <p>Você pode praticar a edição utilizando atalhos de buffer de cópia:</p>
+          <ol style="margin: 1rem 0 1rem 2rem; color: var(--text)">
+            <li style="margin-bottom: 0.5rem">
+              Use as setas direcionais para mover o cursor até a linha que contém <code>"the time is "</code>.
+            </li>
+            <li style="margin-bottom: 0.5rem">
+              Pressione <strong>Ctrl + K</strong> duas vezes seguidas para recortar as duas últimas linhas para o buffer.
+            </li>
+            <li>
+              Mova o cursor para a linha restante e unsafe pressione <strong>Ctrl + U</strong> uma vez para colar o conteúdo do buffer na
+              posição atual.
+            </li>
+          </ol>
+          <p>
+            Isso fará com que o script exiba a hora atual <em>antes</em> de saudar o usuário, poupando o trabalho de ter que redigitar as
+            linhas do zero.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-keyboard"></i> Tabela de Atalhos Úteis do nano</h3>
+          <p>Abaixo estão listados os principais comandos que você precisará utilizar no dia a dia:</p>
+
+          <table class="table-custom">
+            <thead>
+              <tr>
+                <th>Comando</th>
+                <th>Descrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>Ctrl + W</code></td>
+                <td>Pesquisa um termo ou palavra no documento.</td>
+              </tr>
+              <tr>
+                <td><code>Ctrl + W</code>, depois <code>Ctrl + R</code></td>
+                <td>Localiza e substitui uma string por outra.</td>
+              </tr>
+              <tr>
+                <td><code>Ctrl + G</code></td>
+                <td>Abre a ajuda integrada mostrando todos os comandos possíveis.</td>
+              </tr>
+              <tr>
+                <td><code>Ctrl + Y</code> / <code>Ctrl + V</code></td>
+                <td>Avança (Page Down) ou retrocede (Page Up) uma página inteira.</td>
+              </tr>
+              <tr>
+                <td><code>Ctrl + C</code></td>
+                <td>Mostra a posição atual do cursor na linha/coluna e o tamanho total do arquivo.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section id="secao11-4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-graduation-cap"></i>
+          <span class="section-number">11.4</span> Fundamentos de Scripting
+        </h2>
+
+        <div class="card">
+          <p>
+            Você teve o seu primeiro contato com o desenvolvimento de scripts anteriormente neste capítulo, onde introduzimos um script
+            extremamente básico que executava um único comando. O script começava com a linha do <strong>shebang</strong> (ou
+            <em>hashbang</em>), informando ao Linux que o interpretador <code>/bin/bash</code> (que é o Bash) deve ser utilizado para
+            executar o script em questão.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-sitemap"></i> Os Três Pilares Essenciais</h3>
+          <p>
+            Além de simplesmente executar sequências de comandos básicos, existem <strong>3 tópicos essenciais</strong> com os quais você
+            deve se familiarizar para construir scripts inteligentes:
+          </p>
+
+          <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem">
+            <div style="border-left: 3px solid var(--info); padding-left: 1rem">
+              <h4 style="color: var(--info); font-size: 1.1rem; font-weight: 600"><i class="fas fa-box"></i> Variáveis</h4>
+              <p style="color: var(--text); font-size: 0.95rem">
+                Servem para armazenar e manipular informações temporárias durante o ciclo de execução do script.
+              </p>
+            </div>
+
+            <div style="border-left: 3px solid var(--warning); padding-left: 1rem">
+              <h4 style="color: var(--warning); font-size: 1.1rem; font-weight: 600"><i class="fas fa-code-branch"></i> Condicionais</h4>
+              <p style="color: var(--text); font-size: 0.95rem">
+                Permitem que o script tome decisões e execute diferentes blocos de código com base nos testes e validações que você definir.
+              </p>
+            </div>
+
+            <div style="border-left: 3px solid var(--primary); padding-left: 1rem">
+              <h4 style="color: var(--primary); font-size: 1.1rem; font-weight: 600">
+                <i class="fas fa-redo"></i> Loops (Laços de Repetição)
+              </h4>
+              <p style="color: var(--text); font-size: 0.95rem">
+                Permitem que o script repita a mesma tarefa ou conjunto de instruções de forma iterativa e automatizada quantas vezes for
+                necessário.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="secao11-4-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-box"></i>
+          <span class="section-number">11.4.1</span> Variáveis
+        </h2>
+
+        <div class="card">
+          <p>
+            As variáveis são uma parte fundamental de qualquer linguagem de programação. Pense em uma variável como uma caixa onde você pode
+            armazenar informações temporárias. Veja um exemplo simples de uso:
+          </p>
+
+          <div class="terminal">
+            <pre>
+#!/bin/bash
+
+ANIMAL="penguin"
+echo "My favorite animal is a $ANIMAL"</pre
+            >
+          </div>
+
+          <p>
+            Logo após a linha do shebang, temos uma diretiva para atribuir um texto a uma variável. O nome da variável é
+            <code>ANIMAL</code> e o sinal de igual (<code>=</code>) atribui a string <em>penguin</em> a ela. Após a execução dessa linha, a
+            caixa chamada <code>ANIMAL</code> conterá a palavra <em>penguin</em>.
+          </p>
+
+          <div class="alert alert-danger">
+            <i class="fas fa-exclamation-triangle"></i>
+            <strong>Atenção com Espaços:</strong> É fundamental que <strong>não haja espaços</strong> entre o nome da variável, o sinal de
+            igual e o valor atribuído. Se você inserir um espaço ali, receberá um erro estranho do tipo
+            <em>"command not found"</em> (comando não encontrado).
+          </div>
+
+          <p style="margin-top: 1rem">
+            Escrever o nome da variável em letras maiúsculas não é obrigatório, mas é uma convenção muito útil para separar visualmente as
+            suas variáveis dos comandos do sistema que serão executados.
+          </p>
+          <p style="margin-top: 1rem">
+            No comando <code>echo</code>, o nome da variável é precedido por um sinal de cifrão (<code>$</code>). Quando o interpretador
+            encontra esse caractere, ele reconhece que deve substituir o nome pelo conteúdo real da variável — um processo chamado de
+            <strong>interpolação</strong>. A saída do script será: <em>My favorite animal is a penguin</em>.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-random"></i> Atribuição Entre Variáveis</h3>
+          <p>
+            Para atribuir um valor a uma variável, use apenas o seu nome. Para acessar o seu conteúdo, adicione o prefixo <code>$</code>. É
+            perfeitamente possível atribuir o conteúdo de uma variável a outra:
+          </p>
+
+          <div class="terminal">
+            <pre>
+#!/bin/bash
+
+ANIMAL=penguin
+SOMETHING=$ANIMAL
+echo "My favorite animal is a $SOMETHING"</pre
+            >
+          </div>
+
+          <p>
+            Aqui, <code>ANIMAL</code> recebe a string <em>penguin</em> (neste exemplo, demonstrando a sintaxe alternativa sem o uso de
+            aspas). A variável <code>SOMETHING</code> recebe então o conteúdo de <code>ANIMAL</code> (porque ela possui o cifrão na frente).
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-quote-left"></i> Substituição de Comandos (Backticks)</h3>
+          <p>
+            Outra forma poderosa de definir uma variável é usar a saída de um comando do sistema como o seu conteúdo, envolvendo o comando
+            com crases (<em>backticks</em>):
+          </p>
+
+          <div class="terminal">
+            <pre>
+#!/bin/bash
+CURRENT_DIRECTORY=`pwd`
+echo "You are in $CURRENT_DIRECTORY"</pre
+            >
+          </div>
+
+          <p>
+            Esse padrão é amplamente utilizado no processamento de textos. Você pode extrair dados de uma variável ou arquivo de entrada,
+            passá-los por comandos como <code>sed</code> (editor de fluxos para STDIN) ou <code>awk</code> (linguagem de processamento de
+            texto) e salvar o resultado filtrado diretamente em uma nova variável.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-keyboard"></i> Interação e Entrada do Usuário (read)</h3>
+          <p>Você pode capturar dados digitados diretamente pelo usuário do script utilizando o comando <code>read</code>:</p>
+
+          <div class="terminal">
+            <pre>
+#!/bin/bash
+
+echo -n "What is your name? "
+read NAME
+echo "Hello $NAME!"</pre
+            >
+          </div>
+
+          <p>
+            O comando <code>read</code> aceita dados diretamente do teclado ou por meio de redirecionamentos de comandos (como pipes e
+            arquivos).
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-project-diagram"></i> Variáveis Especiais e Argumentos de Entrada</h3>
+          <p>O Linux disponibiliza variáveis internas especiais para lidar com parâmetros passados externamente para o script:</p>
+
+          <div class="terminal">
+            <pre>
+#!/bin/bash
+echo "Hello $1"</pre
+            >
+          </div>
+
+          <p>
+            O sinal de cifrão seguido por um número <em>N</em> corresponde ao enésimo argumento passado para o script. Se você executar o
+            script acima como <code>./test.sh World</code>, a saída será <em>Hello World</em>. A variável especial <code>$0</code> contém o
+            próprio nome do script executado.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-shield-alt"></i> Códigos de Retorno (Exit Codes)</h3>
+          <p>
+            Sempre que um programar ou script termina sua execução, ele retorna um código de saída (exit code), que é um número inteiro
+            entre <strong>0 e 255</strong>. Você pode consultar o resultado do último comando executado através da variável especial
+            <code>$?</code>:
+          </p>
+
+          <div class="terminal">
+            <pre>
+sysadmin@localhost:~$ grep -q root /etc/passwd
+sysadmin@localhost:~$ echo $?
+0
+sysadmin@localhost:~$ grep -q slartibartfast /etc/passwd
+sysadmin@localhost:~$ echo $?
+1</pre
+            >
+          </div>
+
+          <p>
+            O comando <code>grep</code> foi executado com a flag <code>-q</code> (modo silencioso ou <em>quiet</em>). Nesse modo, o
+            <code>grep</code> não exibe texto na tela, mas retorna <code>0</code> se a string for encontrada e <code>1</code> caso
+            contrário. Essa resposta é crucial para estruturas condicionais tomarem decisões.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-door-open"></i> Controlando a Saída e Comentários</h3>
+          <p>Você pode definir manualmente o código de saída do seu script utilizando o comando <code>exit</code>:</p>
+
+          <div class="terminal">
+            <pre>
+#!/bin/bash
+# Algo de errado aconteceu!
+exit 1</pre
+            >
+          </div>
+
+          <p>
+            O exemplo acima também introduz o uso de <strong>comentários</strong> usando o caractere <code>#</code>. Qualquer texto inserido
+            após a hashtag na mesma linha será ignorado pelo interpretador, servindo como notas para o desenvolvedor.
+          </p>
+
+          <div class="alert alert-success">
+            <i class="fas fa-check-circle"></i>
+            <strong>Convenção Padrão:</strong> Por padrão no Linux, um código de saída igual a <strong>0</strong> significa que tudo ocorreu
+            perfeitamente (<em>"everything is OK"</em>). Qualquer código maior que 0 indica que algum tipo de erro específico do programa
+            aconteceu.
+          </div>
+        </div>
+      </section>
+      <section id="secao11-4-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-code-branch"></i>
+          <span class="section-number">11.4.2</span> Condicionais
+        </h2>
+
+        <div class="card">
+          <p>
+            Agora que você já sabe manipular variáveis, é hora de fazer seu script executar funções diferentes com base em testes e tomadas
+            de decisão — um conceito chamado de <strong>desvio condicional</strong> (<em>branching</em>). A instrução <code>if</code> é o
+            operador básico para implementar essa lógica.
+          </p>
+          <p style="margin-top: 1rem">Uma estrutura básica do comando <code>if</code> funciona da seguinte forma:</p>
+
+          <div class="terminal">
+            <pre>
+if comando_qualquer; then
+  # este bloco será executado se o comando_qualquer retornar exit code 0
+fi</pre
+            >
+          </div>
+
+          <p>
+            O interpretador executará tudo o que estiver posicionado até o ponto e vírgula. Se o código de saída (exit code) for
+            <code>0</code> (sucesso), as instruções localizadas até o fechamento com a palavra-chave invertida <code>fi</code> serão
+            processadas.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-exchange-alt"></i> A Estrutura if/else</h3>
+          <p>
+            Utilizando o comportamento do comando <code>grep</code>, podemos criar um script que reage de formas diferentes dependendo da
+            existência de um usuário dentro do arquivo de senhas do sistema:
+          </p>
+
+          <div class="terminal">
+            <pre>
+#!/bin/bash
+
+if grep -q root /etc/passwd; then
+  echo "root is in the password file"
+else
+  echo "root is missing from the password file"
+fi</pre
+            >
+          </div>
+
+          <p>
+            Em vez de apenas fechar o bloco com <code>fi</code>, introduzimos a cláusula <code>else</code>. Isso permite determinar uma ação
+            padrão caso a condição testada seja falsa. O bloco do <code>else</code> também deve ser finalizado obrigatoriamente com o termo
+            <code>fi</code>.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-check-double"></i> O Comando test e Operadores de Comparação</h3>
+          <p>
+            Para tarefas comuns, como verificar a existência de arquivos, diretórios ou comparar strings e valores numéricos, utilizamos o
+            comando <code>test</code>. Ele disponibiliza operadores específicos para essas validações:
+          </p>
+
+          <table class="table-custom">
+            <thead>
+              <tr>
+                <th>Comando</th>
+                <th>Descrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>test -f /dev/ttyS0</code></td>
+                <td>Retorna 0 se o arquivo existir e for um arquivo regular.</td>
+              </tr>
+              <tr>
+                <td><code>test ! -f /dev/ttyS0</code></td>
+                <td>Retorna 0 se o arquivo <strong>não</strong> existir (operador de negação <code>!</code>).</td>
+              </tr>
+              <tr>
+                <td><code>test -d /tmp</code></td>
+                <td>Retorna 0 se o diretório pesquisado existir.</td>
+              </tr>
+              <tr>
+                <td><code>test -x `which ls`</code></td>
+                <td>Localiza o binário do comando <code>ls</code> e testa se o usuário atual tem permissão de execução.</td>
+              </tr>
+              <tr>
+                <td><code>test 1 -eq 1</code></td>
+                <td>Retorna 0 se os números forem numericamente iguais (<em>Equal</em>).</td>
+              </tr>
+              <tr>
+                <td><code>test ! 1 -eq 1</code></td>
+                <td>Inverte o resultado. Retorna 0 se a comparação falhar.</td>
+              </tr>
+              <tr>
+                <td><code>test 1 -ne 1</code></td>
+                <td>Forma direta para testar desigualdade numérica (<em>Not Equal</em>).</td>
+              </tr>
+              <tr>
+                <td><code>test "a" = "a"</code></td>
+                <td>Retorna 0 se a comparação de strings for idêntica.</td>
+              </tr>
+              <tr>
+                <td><code>test "a" != "a"</code></td>
+                <td>Retorna 0 se as strings comparadas forem diferentes.</td>
+              </tr>
+              <tr>
+                <td><code>test 1 -eq 1 -o 2 -eq 2</code></td>
+                <td>Operador lógico OR (<code>-o</code>): retorna sucesso se pelo menos uma das condições for verdadeira.</td>
+              </tr>
+              <tr>
+                <td><code>test 1 -eq 1 -a 2 -eq 2</code></td>
+                <td>Operador lógico AND (<code>-a</code>): retorna sucesso somente se ambas as condições forem verdadeiras.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="alert alert-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <strong>Importante:</strong> O comando <code>test</code> avalia de forma totalmente distinta strings e inteiros. Por exemplo, os
+            valores <code>01</code> e <code>1</code> são considerados idênticos em uma comparação numérica (<code>-eq</code>), mas são
+            interpretados como diferentes em uma comparação de strings (<code>=</code>). Fique sempre atento ao tipo de dado esperado.
+          </div>
+          <p style="margin-top: 1rem">
+            Existem diversos outros operadores, como o <code>-gt</code> (<em>greater than</em>) para validar se um número é maior que outro.
+            Para uma listagem completa, consulte as páginas de manual do comando rodando <code>man test</code>.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-brackets"></i> O Atalho dos Colchetes <code>[ ]</code></h3>
+          <p>
+            Como o comando <code>test</code> é usado de forma recorrente, o shell disponibiliza um alias mais enxuto: o caractere de
+            colchete esquerdo <code>[</code>. Envolver uma expressão em colchetes é semanticamente idêntico a chamar o comando
+            <code>test</code>. Portanto, estas duas estruturas são equivalentes:
+          </p>
+
+          <div class="terminal"><pre>if test -f /tmp/foo; then</pre></div>
+          <p>ou</p>
+          <div class="terminal"><pre>if [ -f /tmp/foo ]; then</pre></div>
+
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <strong>Sintaxe do Colchete:</strong> Embora a segunda forma seja a mais utilizada no dia a dia, lembre-se de que o colchete
+            esquerdo é um comando isolado do sistema. Ele requer obrigatoriamente um espaço após a sua abertura e exige o colchete de
+            fechamento <code>]</code> como seu último argumento.
+          </div>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-stream"></i> Múltiplas Validações com elif</h3>
+          <p>
+            A instrução <code>if</code> permite realizar encadeamentos de múltiplos testes sequenciais utilizando o operador
+            <code>elif</code> (abreviação de <em>else if</em>):
+          </p>
+
+          <div class="terminal">
+            <pre>
+#!/bin/bash
+
+if [ "$1" = "hello" ]; then
+  echo "hello yourself"
+elif [ "$1" = "goodbye" ]; then
+  echo "nice to have met you"
+  echo "I hope to see you again"
+else
+  echo "I didn't understand that"
+fi</pre
+            >
+          </div>
+
+          <p>
+            O script acima avalia o primeiro argumento (<code>$1</code>) enviado pelo terminal. Observe que a variável <code>$1</code> foi
+            envolvida em aspas e foi utilizado o operador de igualdade textual (<code>=</code>) em vez da versão numérica
+            (<code>-eq</code>).
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-folder-tree"></i> Simplificando Fluxos com o comando case</h3>
+          <p>
+            Quando as estruturas com múltiplos <code>elif</code> tornam-se muito extensas e complexas, o comando <code>case</code> oferece
+            uma alternativa mais limpa e legível para realizar casamentos de padrões:
+          </p>
+
+          <div class="terminal">
+            <pre>
+#!/bin/bash
+
+case "$1" in
+hello|hi)
+  echo "hello yourself"
+  ;;
+goodbye)
+  echo "nice to have met you"
+  echo "I hope to see you again"
+  ;;
+*)
+  echo "I didn't understand that"
+esac</pre
+            >
+          </div>
+
+          <p>
+            A instrução inicial define a expressão que passará pelo crivo de testes: <code>case EXPRESSÃO in</code>. Cada bloco avaliativo
+            termina com um caractere de parêntese de fechamento <code>)</code>. No primeiro caso, usamos a barra vertical
+            <code>|</code> para funcionar como o operador lógico OR, aceitando tanto <em>hello</em> quanto <em>hi</em>.
+          </p>
+          <p style="margin-top: 1rem">
+            As instruções internas executadas dentro de um padrão correspondido devem obrigatoriamente terminar com **dois pontos e vírgulas
+            seguidos (<code>;;</code>)**. O caractere curinga de asterisco <code>*</code> funciona de forma análoga à cláusula
+            <code>else</code>, capturando qualquer valor residual que não tenha casado com as regras anteriores. Por fim, fechamos toda a
+            estrutura invertendo a palavra inicial: <code>esac</code>.
+          </p>
+        </div>
+      </section>
+      <section id="secao11-4-3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-redo"></i>
+          <span class="section-number">11.4.3</span> Loops (Laços de Repetição)
+        </h2>
+
+        <div class="card">
+          <p>
+            Os <strong>Loops</strong> permitem que um bloco de código seja executado repetidamente. Eles são extremamente úteis em inúmeras
+            situações, como quando você precisa aplicar os mesmos comandos para cada arquivo dentro de um diretório ou repetir uma ação
+            específica 100 vezes. Existem dois laços de repetição principais em shell scripts: o loop <code>for</code> e o loop
+            <code>while</code>.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-list-ul"></i> O Loop for</h3>
+          <p>
+            Os loops <code>for</code> são utilizados quando você possui uma coleção finita sobre a qual deseja iterar, como uma lista de
+            arquivos ou uma lista de nomes de servidores:
+          </p>
+
+          <div class="terminal">
+            <pre>
+#!/bin/bash
+
+SERVERS="servera serverb serverc"
+for S in $SERVERS; do
+  echo "Doing something to $S"
+done</pre
+            >
+          </div>
+
+          <p>
+            O script define primeiro uma variável contendo uma lista de nomes de servidores separados por espaço. A instrução
+            <code>for</code> então itera sobre essa lista, e a cada passagem ela define a variável temporária <code>S</code> com o nome do
+            servidor atual. A escolha do nome <code>S</code> foi arbitrária. Note que o <code>S</code> inicial não possui o cifrão, mas
+            <code>$SERVERS</code> possui, indicando que a variável original será expandida na lista de elementos.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-folder-open"></i> Passagem Direta e Globbing de Arquivos</h3>
+          <p>
+            A lista de elementos não precisa obrigatoriamente estar dentro de uma variável. O exemplo abaixo demonstra duas formas
+            alternativas de passar dados para o laço:
+          </p>
+
+          <div class="terminal">
+            <pre>
+#!/bin/bash
+
+for NAME in Sean Jon Isaac David; do
+  echo "Hello $NAME"
+done
+
+for S in *; do
+  echo "Doing something to $S"
+done</pre
+            >
+          </div>
+
+          <p>
+            O primeiro loop funciona exatamente como o exemplo anterior, mas a lista de nomes é passada diretamente para o <code>for</code>,
+            sem intermediários. No entanto, usar uma variável no início ajuda na clareza do script, pois permite que outra pessoa faça
+            alterações na lista facilmente sem precisar mexer na lógica do laço.
+          </p>
+          <p style="margin-top: 1rem">
+            O segundo loop utiliza o caractere asterisco (<code>*</code>), que é um <strong>glob de arquivo</strong>. O shell expande esse
+            caractere transformando-o em uma lista contendo todos os arquivos presentes no diretório atual.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-hourglass-half"></i> O Loop while</h3>
+          <p>
+            O outro tipo de laço, o loop <code>while</code>, opera sobre listas ou condições de tamanho desconhecido. O seu papel é
+            continuar executando e, a cada iteração, realizar um teste lógico para verificar se deve ou não rodar mais uma vez. Você pode
+            pensar nele como: <em>"enquanto esta condição for verdadeira, continue fazendo isso"</em>.
+          </p>
+
+          <div class="terminal">
+            <pre>
+#!/bin/bash
+
+i=0
+while [ $i -lt 10 ]; do
+  echo $i
+  i=$(( $i + 1 ))
+done
+echo "Done counting"</pre
+            >
+          </div>
+
+          <p>
+            O exemplo acima mostra um loop <code>while</code> que faz uma contagem de 0 a 9. Uma variável contadora, <code>i</code>, é
+            inicializada com o valor 0. Em seguida, o <code>while</code> é executado testando:
+            <em>"o valor de $i é menor que 10?"</em> (operador <code>-lt</code> de <em>less than</em>). Observe que o loop
+            <code>while</code> utiliza a mesmíssima sintaxe de colchetes que aprendemos no comando <code>if</code>!
+          </p>
+          <p style="margin-top: 1rem">
+            Dentro do bloco, o valor atual de <code>i</code> é exibido na tela e, logo depois, o valor 1 é somado à variável por meio da
+            sintaxe de expressão aritmética <code>$(( aritmética ))</code>. Assim que <code>i</code> atinge o valor 10, o teste do
+            <code>while</code> retorna falso e o interpretador segue o fluxo, executando o código posicionado após o laço.
+          </p>
+        </div>
+      </section>
+    </div>
+    <footer
+      style="
+        padding: 40px 0;
+        text-align: center;
+        border-top: 1px solid var(--border);
+        margin-top: 60px;
+        color: var(--text-dim);
+        font-size: 0.85rem;
+      "
+    >
+      <p><i class="fab fa-linux"></i> NDG Linux Essentials — Curso de Capacitação Técnica</p>
+    </footer>
+
+    <script>
+      class SidebarMenu {
+        constructor() {
+          this.sidebar = document.getElementById('sidebar')
+          this.overlay = document.getElementById('sidebarOverlay')
+          this.openBtn = document.getElementById('openMenu')
+          this.closeBtn = document.getElementById('closeMenu')
+          this.init()
+        }
+
+        init() {
+          if (!this.sidebar) return
+
+          if (this.openBtn) {
+            this.openBtn.addEventListener('click', () => this.open())
+          }
+          if (this.closeBtn) {
+            this.closeBtn.addEventListener('click', () => this.close())
+          }
+          if (this.overlay) {
+            this.overlay.addEventListener('click', () => this.close())
+          }
+
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.sidebar.classList.contains('open')) {
+              this.close()
+            }
+          })
+
+          const links = document.querySelectorAll('.sidebar .nav-modules a')
+          links.forEach((link) => {
+            link.addEventListener('click', () => this.close())
+          })
+        }
+
+        open() {
+          this.sidebar.classList.add('open')
+          this.overlay.classList.add('active')
+          document.body.style.overflow = 'hidden'
+        }
+
+        close() {
+          this.sidebar.classList.remove('open')
+          this.overlay.classList.remove('active')
+          document.body.style.overflow = ''
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        new SidebarMenu()
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1490 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>NDG Linux Essentials | Módulo 10 - Trabalhando com Texto</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/questoes.css" />
+  </head>
+  <body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <button class="menu-toggle" id="openMenu">
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+      </button>
+      <a href="../index.html" class="top-bar-brand"> <i class="fab fa-linux"></i> NDG Linux Essentials </a>
+      <a href="../index.html" class="btn-outline"> <i class="fas fa-home"></i> Voltar </a>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-compass"></i> Navegação - Questões</h3>
+        <button class="close-sidebar" id="closeMenu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="nav-modules">
+        <li>
+          <a href="#questao1"><i class="fas fa-question-circle"></i> Q1 - Plataforma Linux mais popular</a>
+        </li>
+        <li>
+          <a href="#questao2"><i class="fas fa-question-circle"></i> Q2 - Ciclo de lançamento</a>
+        </li>
+        <li>
+          <a href="#questao3"><i class="fas fa-question-circle"></i> Q3 - Gerenciador de pacotes</a>
+        </li>
+        <li>
+          <a href="#questao4"><i class="fas fa-question-circle"></i> Q4 - Ciclo de manutenção</a>
+        </li>
+        <li>
+          <a href="#questao5"><i class="fas fa-question-circle"></i> Q5 - Escolhendo uma distribuição</a>
+        </li>
+        <li>
+          <a href="#questao6"><i class="fas fa-question-circle"></i> Q6 - Software de desktop</a>
+        </li>
+        <li>
+          <a href="#questao7"><i class="fas fa-question-circle"></i> Q7 - Compartilhamento de arquivos</a>
+        </li>
+        <li>
+          <a href="#questao8"><i class="fas fa-question-circle"></i> Q8 - Shell do Linux</a>
+        </li>
+        <li>
+          <a href="#questao9"><i class="fas fa-question-circle"></i> Q9 - Virtualização</a>
+        </li>
+        <li>
+          <a href="#questao10"><i class="fas fa-question-circle"></i> Q10 - Acessando o shell gráfico</a>
+        </li>
+        <li>
+          <a href="#questao11"><i class="fas fa-question-circle"></i> Q11 - Código-fonte</a>
+        </li>
+        <li>
+          <a href="#questao12"><i class="fas fa-question-circle"></i> Q12 - Open source</a>
+        </li>
+        <li>
+          <a href="#questao13"><i class="fas fa-question-circle"></i> Q13 - Copyleft</a>
+        </li>
+        <li>
+          <a href="#questao14"><i class="fas fa-question-circle"></i> Q14 - Licença do Linux</a>
+        </li>
+        <li>
+          <a href="#questao15"><i class="fas fa-question-circle"></i> Q15 - Creative Commons</a>
+        </li>
+        <li>
+          <a href="#questao16"><i class="fas fa-question-circle"></i> Q16 - Variável PATH</a>
+        </li>
+        <li>
+          <a href="#questao17"><i class="fas fa-question-circle"></i> Q17 - Localizar comando</a>
+        </li>
+        <li>
+          <a href="#questao18"><i class="fas fa-question-circle"></i> Q18 - Aspas duplas</a>
+        </li>
+        <li>
+          <a href="#questao19"><i class="fas fa-question-circle"></i> Q19 - Interpretador de comandos</a>
+        </li>
+        <li>
+          <a href="#questao20"><i class="fas fa-question-circle"></i> Q20 - Significado de CLI</a>
+        </li>
+        <li>
+          <a href="#questao21"><i class="fas fa-question-circle"></i> Q21 - Shell mais comum</a>
+        </li>
+        <li>
+          <a href="#questao22"><i class="fas fa-question-circle"></i> Q22 - Comandos pager</a>
+        </li>
+        <li>
+          <a href="#questao23"><i class="fas fa-question-circle"></i> Q23 - Buscar palavras-chave man</a>
+        </li>
+        <li>
+          <a href="#questao24"><i class="fas fa-question-circle"></i> Q24 - man vs info</a>
+        </li>
+        <li>
+          <a href="#questao25"><i class="fas fa-question-circle"></i> Q25 - Seções do man</a>
+        </li>
+        <li>
+          <a href="#questao26"><i class="fas fa-question-circle"></i> Q26 - Diretório raiz</a>
+        </li>
+        <li>
+          <a href="#questao27"><i class="fas fa-question-circle"></i> Q27 - Til (~)</a>
+        </li>
+        <li>
+          <a href="#questao28"><i class="fas fa-question-circle"></i> Q28 - cd sem argumentos</a>
+        </li>
+        <li>
+          <a href="#questao29"><i class="fas fa-question-circle"></i> Q29 - Mudar diretório</a>
+        </li>
+        <li>
+          <a href="#questao30"><i class="fas fa-question-circle"></i> Q30 - Primeiro caractere ls -l</a>
+        </li>
+        <li>
+          <a href="#questao31"><i class="fas fa-question-circle"></i> Q31 - Renomear arquivo</a>
+        </li>
+        <li>
+          <a href="#questao32"><i class="fas fa-question-circle"></i> Q32 - Comando touch</a>
+        </li>
+        <li>
+          <a href="#questao33"><i class="fas fa-question-circle"></i> Q33 - Caracteres glob</a>
+        </li>
+        <li>
+          <a href="#questao34"><i class="fas fa-question-circle"></i> Q34 - Propósito dos globs</a>
+        </li>
+        <li>
+          <a href="#questao35"><i class="fas fa-question-circle"></i> Q35 - Asterisco (*)</a>
+        </li>
+        <li>
+          <a href="#questao36"><i class="fas fa-question-circle"></i> Q36 - Compressão de arquivo</a>
+        </li>
+        <li>
+          <a href="#questao37"><i class="fas fa-question-circle"></i> Q37 - Compressão com perda</a>
+        </li>
+        <li>
+          <a href="#questao38"><i class="fas fa-question-circle"></i> Q38 - Comandos de compressão</a>
+        </li>
+        <li>
+          <a href="#questao39"><i class="fas fa-question-circle"></i> Q39 - Modos do tar</a>
+        </li>
+        <li>
+          <a href="#questao40"><i class="fas fa-question-circle"></i> Q40 - Flag -f do tar</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="badge-lab"><i class="fas fa-graduation-cap"></i> NDG Linux Essentials | Banco de Questões</div>
+        <h1>Exame do Módulo 10</h1>
+        <p>Trabalhando com Texto - Teste seus conhecimentos sobre comandos, pipes, redirecionamento, filtros e expressões regulares</p>
+        <div style="margin-top: 1.5rem">
+          <i class="fas fa-terminal" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-pipe" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-filter" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-code" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- QUESTÃO 1 -->
+      <section id="questao1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q1</span> Plataforma Linux mais popular para celulares
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-mobile-alt"></i> A plataforma Linux mais popular para celulares é:</div>
+          <div class="options" id="q1-options">
+            <li><input type="radio" name="q1" value="a" /> Android</li>
+            <li><input type="radio" name="q1" value="b" /> MobileLinux</li>
+            <li><input type="radio" name="q1" value="c" /> BlackBerry</li>
+            <li><input type="radio" name="q1" value="d" /> IOS</li>
+            <li><input type="radio" name="q1" value="e" /> Slackware</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q1',
+                'a',
+                'Android é baseado no kernel Linux e é a plataforma móvel mais popular do mundo, presente em bilhões de dispositivos.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q1-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 2 -->
+      <section id="questao2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q2</span> Ciclo de lançamento
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-calendar-alt"></i> O ciclo de lançamento (release cycle):</div>
+          <div class="options" id="q2-options">
+            <li><input type="radio" name="q2" value="a" /> Deve ser curto para que você sempre tenha os lançamentos mais recentes</li>
+            <li><input type="radio" name="q2" value="b" /> Deve ser longo para que você tenha tempo antes de precisar atualizar</li>
+            <li><input type="radio" name="q2" value="c" /> Só tem significado para software pago</li>
+            <li><input type="radio" name="q2" value="d" /> Dita com que frequência o software é atualizado</li>
+            <li><input type="radio" name="q2" value="e" /> Descreve por quanto tempo o software será suportado</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q2',
+                'd',
+                'O ciclo de lançamento dita com que frequência novas versões do software são lançadas. Pode ser fixo (como Ubuntu a cada 6 meses) ou rolling release (como Arch).'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q2-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 3 -->
+      <section id="questao3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q3</span> Adicionar e remover software
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-boxes"></i> O que uma distribuição fornece para adicionar e remover software do sistema?
+          </div>
+          <div class="options" id="q3-options">
+            <li><input type="radio" name="q3" value="a" /> Application Programming Interface (API)</li>
+            <li><input type="radio" name="q3" value="b" /> Partitioning tool</li>
+            <li><input type="radio" name="q3" value="c" /> Bash</li>
+            <li><input type="radio" name="q3" value="d" /> Compiler</li>
+            <li><input type="radio" name="q3" value="e" /> Package Manager</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q3',
+                'e',
+                'O Gerenciador de Pacotes (Package Manager) é a ferramenta que instala, atualiza e remove software na distribuição. Exemplos: apt (Debian/Ubuntu), dnf (Fedora), pacman (Arch).'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q3-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 4 -->
+      <section id="questao4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q4</span> Ciclo de manutenção
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-wrench"></i> Um ciclo de manutenção (maintenance cycle):</div>
+          <div class="options" id="q4-options">
+            <li><input type="radio" name="q4" value="a" /> Deve ser longo para que você tenha tempo antes de precisar atualizar</li>
+            <li><input type="radio" name="q4" value="b" /> Só tem significado para software pago</li>
+            <li><input type="radio" name="q4" value="c" /> Descreve com que frequência as atualizações de software são lançadas</li>
+            <li><input type="radio" name="q4" value="d" /> Deve ser curto para que você sempre tenha os lançamentos mais recentes</li>
+            <li><input type="radio" name="q4" value="e" /> Descreve por quanto tempo uma versão do software será suportada</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q4',
+                'e',
+                'O ciclo de manutenção descreve por quanto tempo uma versão do software receberá atualizações (correções de bugs, segurança). Ex: Ubuntu LTS tem 5 anos de suporte.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q4-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 5 -->
+      <section id="questao5" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q5</span> Escolhendo uma distribuição
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-distribution"></i> Ao escolher uma distribuição Linux, você deve considerar: (escolha cinco)
+          </div>
+          <div class="options" id="q5-options">
+            <li><input type="checkbox" name="q5" value="a" /> Os usuários precisarão de uma GUI?</li>
+            <li><input type="checkbox" name="q5" value="b" /> Será necessário suporte comercial para o SO?</li>
+            <li><input type="checkbox" name="q5" value="c" /> A organização exige suporte de longo prazo para o sistema?</li>
+            <li><input type="checkbox" name="q5" value="d" /> Popularidade nas redes sociais</li>
+            <li><input type="checkbox" name="q5" value="e" /> O software aplicativo é suportado pela distribuição?</li>
+            <li><input type="checkbox" name="q5" value="f" /> A distribuição oferece uma versão "estável"?</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q5',
+                ['a', 'b', 'c', 'e', 'f'],
+                'Ao escolher uma distribuição, considere: necessidade de GUI, suporte comercial, suporte de longo prazo (LTS), compatibilidade com aplicativos e disponibilidade de versão estável.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q5-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 6 -->
+      <section id="questao6" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q6</span> Exemplos de software desktop
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-desktop"></i> Quais são exemplos de software desktop? (escolha duas)</div>
+          <div class="options" id="q6-options">
+            <li><input type="checkbox" name="q6" value="a" /> Navegador web</li>
+            <li><input type="checkbox" name="q6" value="b" /> Compilador</li>
+            <li><input type="checkbox" name="q6" value="c" /> Player de música</li>
+            <li><input type="checkbox" name="q6" value="d" /> Servidor web</li>
+            <li><input type="checkbox" name="q6" value="e" /> Compartilhamento de arquivos</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q6',
+                ['a', 'c'],
+                'Software desktop são aplicativos usados diretamente pelo usuário final em sua interface gráfica: navegadores, players de música, editores de texto, etc.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q6-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 7 -->
+      <section id="questao7" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q7</span> Compartilhamento de arquivos
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-share-alt"></i> Quais softwares lidam com compartilhamento de arquivos? (escolha três)
+          </div>
+          <div class="options" id="q7-options">
+            <li><input type="checkbox" name="q7" value="a" /> NFS</li>
+            <li><input type="checkbox" name="q7" value="b" /> Samba</li>
+            <li><input type="checkbox" name="q7" value="c" /> PostgreSQL</li>
+            <li><input type="checkbox" name="q7" value="d" /> Netatalk</li>
+            <li><input type="checkbox" name="q7" value="e" /> X-Windows</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q7',
+                ['a', 'b', 'd'],
+                'NFS (Network File System) para compartilhamento Unix/Linux, Samba para compatibilidade com Windows, Netatalk para Apple/OSX.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q7-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 8 -->
+      <section id="questao8" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q8</span> Shell do Linux
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-terminal"></i> O shell do Linux: (escolha três)</div>
+          <div class="options" id="q8-options">
+            <li><input type="checkbox" name="q8" value="a" /> Possui um editor de texto embutido</li>
+            <li><input type="checkbox" name="q8" value="b" /> É personalizável</li>
+            <li><input type="checkbox" name="q8" value="c" /> Tem uma linguagem de script</li>
+            <li><input type="checkbox" name="q8" value="d" /> É responsável por rastrear a localização dos arquivos de configuração</li>
+            <li><input type="checkbox" name="q8" value="e" /> Permite executar programas</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q8',
+                ['b', 'c', 'e'],
+                'O shell é personalizável (aliases, variáveis), tem linguagem de script (bash scripting) e permite executar programas.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q8-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 9 -->
+      <section id="questao9" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q9</span> Virtualização
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-vr-cardboard"></i> Virtualização significa:</div>
+          <div class="options" id="q9-options">
+            <li><input type="radio" name="q9" value="a" /> Um único host pode ser dividido em múltiplos guests</li>
+            <li><input type="radio" name="q9" value="b" /> Dois usuários obtêm espaços de memória diferentes na mesma máquina</li>
+            <li>
+              <input type="radio" name="q9" value="c" /> Um usuário pode se conectar a um servidor pela rede e usar um console virtual
+            </li>
+            <li><input type="radio" name="q9" value="d" /> Muitos usuários podem compartilhar um único disco rígido</li>
+            <li><input type="radio" name="q9" value="e" /> Uma máquina pode trocar memória para o disco</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q9',
+                'a',
+                'Virtualização permite que um único hardware físico (host) execute múltiplos sistemas operacionais isolados (guests) simultaneamente.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q9-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 10 -->
+      <section id="questao10" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q10</span> Acessando o shell no modo gráfico
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-desktop"></i> No modo gráfico, você pode acessar um shell executando quais aplicativos? (escolha duas)
+          </div>
+          <div class="options" id="q10-options">
+            <li><input type="checkbox" name="q10" value="a" /> Terminal</li>
+            <li><input type="checkbox" name="q10" value="b" /> Console</li>
+            <li><input type="checkbox" name="q10" value="c" /> Guiterm</li>
+            <li><input type="checkbox" name="q10" value="d" /> Xterm</li>
+            <li><input type="checkbox" name="q10" value="e" /> Gbash</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q10',
+                ['a', 'd'],
+                'Os emuladores de terminal comuns no ambiente gráfico incluem Terminal (GNOME, KDE) e Xterm (clássico do X11).'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q10-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 11 -->
+      <section id="questao11" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q11</span> O que é código-fonte?
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-file-code"></i> Código-fonte se refere a:</div>
+          <div class="options" id="q11-options">
+            <li><input type="radio" name="q11" value="a" /> A versão de um programa que o computador executa na CPU</li>
+            <li><input type="radio" name="q11" value="b" /> Uma versão legível por humanos de um software de computador</li>
+            <li><input type="radio" name="q11" value="c" /> A licença que dita como você pode usar e compartilhar o software</li>
+            <li><input type="radio" name="q11" value="d" /> A interface que o software usa para se comunicar com o kernel</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q11',
+                'b',
+                'Código-fonte é o conjunto de instruções escritas em linguagem de programação que humanos podem ler e entender.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q11-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 12 -->
+      <section id="questao12" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q12</span> Open source significa
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-lock-open"></i> Open source significa: (escolha duas)</div>
+          <div class="options" id="q12-options">
+            <li><input type="checkbox" name="q12" value="a" /> Você deve suportar o software que compartilha</li>
+            <li><input type="checkbox" name="q12" value="b" /> Você deve compartilhar suas modificações</li>
+            <li><input type="checkbox" name="q12" value="c" /> Você pode modificar o código-fonte do software</li>
+            <li><input type="checkbox" name="q12" value="d" /> Você pode visualizar o código-fonte do software</li>
+            <li><input type="checkbox" name="q12" value="e" /> Você não pode cobrar nada pelo software</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q12',
+                ['c', 'd'],
+                'Open source significa que o código-fonte é acessível e pode ser modificado. Compartilhar modificações não é obrigatório em todas as licenças.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q12-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 13 -->
+      <section id="questao13" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q13</span> Copyleft
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-copyright"></i> Uma cláusula copyleft em uma licença de software significa:</div>
+          <div class="options" id="q13-options">
+            <li><input type="radio" name="q13" value="a" /> Você deve fornecer suporte para suas modificações</li>
+            <li><input type="radio" name="q13" value="b" /> Você renuncia ao seu copyright sobre o software</li>
+            <li><input type="radio" name="q13" value="c" /> Você deve fornecer cópias gratuitas do software se o usar</li>
+            <li><input type="radio" name="q13" value="d" /> Você não pode vincular a software de terceiros de código fechado</li>
+            <li>
+              <input type="radio" name="q13" value="e" /> Se redistribuir o software, você deve distribuir o código-fonte das suas
+              alterações
+            </li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q13',
+                'e',
+                'Copyleft (ex: GPL) exige que modificações distribuídas também sejam de código aberto e compartilhadas sob a mesma licença.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q13-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 14 -->
+      <section id="questao14" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q14</span> Licença do Linux
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fab fa-linux"></i> O Linux é distribuído sob qual licença?</div>
+          <div class="options" id="q14-options">
+            <li><input type="radio" name="q14" value="a" /> MIT</li>
+            <li><input type="radio" name="q14" value="b" /> Linux Foundation</li>
+            <li><input type="radio" name="q14" value="c" /> BSD</li>
+            <li><input type="radio" name="q14" value="d" /> GPLv3</li>
+            <li><input type="radio" name="q14" value="e" /> GPLv2</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q14',
+                'e',
+                'O kernel Linux é distribuído sob a GNU General Public License versão 2 (GPLv2). Linus Torvalds optou por permanecer com GPLv2.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q14-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 15 -->
+      <section id="questao15" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q15</span> Creative Commons
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fab fa-creative-commons"></i> As licenças Creative Commons permitem que você: (escolha três)
+          </div>
+          <div class="options" id="q15-options">
+            <li><input type="checkbox" name="q15" value="a" /> Tenha veto sobre onde o trabalho é usado</li>
+            <li><input type="checkbox" name="q15" value="b" /> Especifique se as alterações devem ser compartilhadas</li>
+            <li><input type="checkbox" name="q15" value="c" /> Especifique se as pessoas podem distribuir alterações</li>
+            <li><input type="checkbox" name="q15" value="d" /> Receba royalties pelo uso do trabalho</li>
+            <li><input type="checkbox" name="q15" value="e" /> Permitir ou não o uso comercial</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q15',
+                ['b', 'c', 'e'],
+                'CC permite definir: atribuição, compartilhamento de alterações (ShareAlike), permissão de modificações (NoDerivatives) e uso comercial.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q15-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 16 -->
+      <section id="questao16" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q16</span> Variável de ambiente PATH
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-dollar-sign"></i> Qual variável de ambiente contém uma lista de diretórios que é pesquisada para executar
+            comandos?
+          </div>
+          <div class="options" id="q16-options">
+            <li><input type="radio" name="q16" value="a" /> PS2</li>
+            <li><input type="radio" name="q16" value="b" /> PS1</li>
+            <li><input type="radio" name="q16" value="c" /> PATH</li>
+            <li><input type="radio" name="q16" value="d" /> EXEC</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q16',
+                'c',
+                'PATH contém a lista de diretórios onde o shell procura por comandos executáveis. Exemplo: echo $PATH'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q16-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 17 -->
+      <section id="questao17" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q17</span> Localizar um comando
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-search-location"></i> Selecione o comando que pode relatar a localização de um comando:
+          </div>
+          <div class="options" id="q17-options">
+            <li><input type="radio" name="q17" value="a" /> what</li>
+            <li><input type="radio" name="q17" value="b" /> where</li>
+            <li><input type="radio" name="q17" value="c" /> which</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q17',
+                'c',
+                'O comando &quot;which&quot; mostra o caminho completo do executável que seria executado no shell. Exemplo: which ls'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q17-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 18 -->
+      <section id="questao18" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q18</span> Aspas duplas
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-quote-right"></i> Um par de aspas duplas (") impedirá o shell de interpretar qualquer metacaractere.
+          </div>
+          <div class="options" id="q18-options">
+            <li><input type="radio" name="q18" value="a" /> True</li>
+            <li><input type="radio" name="q18" value="b" /> False</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q18',
+                'b',
+                'Aspas duplas (&quot;) permitem expansão de variáveis ($VAR) e substituição de comandos (`cmd`). Aspas simples (\') impedem todas as interpretações.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q18-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 19 -->
+      <section id="questao19" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q19</span> Interpretador de comandos
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-terminal"></i> O programa shell interpreta os comandos que você digita no terminal em instruções que o sistema
+            operacional Linux pode executar.
+          </div>
+          <div class="options" id="q19-options">
+            <li><input type="radio" name="q19" value="a" /> True</li>
+            <li><input type="radio" name="q19" value="b" /> False</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q19',
+                'a',
+                'Verdadeiro! O shell é um interpretador de linha de comando que traduz comandos do usuário para chamadas de sistema.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q19-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 20 -->
+      <section id="questao20" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q20</span> CLI significa
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-keyboard"></i> A sigla CLI significa:</div>
+          <div class="options" id="q20-options">
+            <li><input type="radio" name="q20" value="a" /> Computer Line Interface</li>
+            <li><input type="radio" name="q20" value="b" /> Command Line Interface</li>
+            <li><input type="radio" name="q20" value="c" /> Command Line Interpreter</li>
+            <li><input type="radio" name="q20" value="d" /> Computer Link Interpreter</li>
+          </div>
+          <button class="btn-check" onclick="checkAnswer('q20', 'b', 'CLI = Command Line Interface (Interface de Linha de Comando).')">
+            Verificar Resposta
+          </button>
+          <div id="q20-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 21 -->
+      <section id="questao21" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q21</span> Shell mais comum
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-code"></i> O shell mais comum usado nas distribuições Linux é o shell ________.</div>
+          <div class="options" id="q21-options">
+            <li><input type="radio" name="q21" value="a" /> Bash</li>
+            <li><input type="radio" name="q21" value="b" /> Fish</li>
+            <li><input type="radio" name="q21" value="c" /> Tsch</li>
+            <li><input type="radio" name="q21" value="d" /> Zsh</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="checkAnswer('q21', 'a', 'Bash (Bourne Again SHell) é o shell padrão na maioria das distribuições Linux.')"
+          >
+            Verificar Resposta
+          </button>
+          <div id="q21-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 22 -->
+      <section id="questao22" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q22</span> Comandos pager
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-scroll"></i> Quais dois comandos pager são usados pelo comando man para controlar o movimento dentro do
+            documento? (escolha duas)
+          </div>
+          <div class="options" id="q22-options">
+            <li><input type="checkbox" name="q22" value="a" /> page</li>
+            <li><input type="checkbox" name="q22" value="b" /> more</li>
+            <li><input type="checkbox" name="q22" value="c" /> less</li>
+            <li><input type="checkbox" name="q22" value="d" /> grep</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q22',
+                ['b', 'c'],
+                'O comando man usa more ou less como pagers para navegação pelo documento. Less é mais moderno e avançado.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q22-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 23 -->
+      <section id="questao23" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q23</span> Buscar palavra-chave no man
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-search"></i> Para pesquisar nas seções do man page pela palavra-chave "example", qual das seguintes linhas de
+            comando você poderia executar? (escolha duas)
+          </div>
+          <div class="options" id="q23-options">
+            <li><input type="checkbox" name="q23" value="a" /> man -k example</li>
+            <li><input type="checkbox" name="q23" value="b" /> apropos example</li>
+            <li><input type="checkbox" name="q23" value="c" /> man -f example</li>
+            <li><input type="checkbox" name="q23" value="d" /> whatis example</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q23',
+                ['a', 'b'],
+                'man -k e apropos são equivalentes e buscam por palavras-chave na descrição das páginas de manual.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q23-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 24 -->
+      <section id="questao24" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q24</span> man vs info
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-book"></i> A afirmação que descreve a diferença entre uma man page e uma info page é:
+          </div>
+          <div class="options" id="q24-options">
+            <li><input type="radio" name="q24" value="a" /> Há muito pouca diferença entre elas</li>
+            <li><input type="radio" name="q24" value="b" /> A info page é como um guia; a man page é uma referência mais concisa</li>
+            <li><input type="radio" name="q24" value="c" /> A man page é uma referência longa e detalhada; a info page é muito concisa</li>
+            <li><input type="radio" name="q24" value="d" /> A man page é como um guia; a info page é uma referência mais concisa</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q24',
+                'b',
+                'Info pages são mais estruturadas como documentos interativos (guias), enquanto man pages são referências mais concisas e tradicionais.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q24-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 25 -->
+      <section id="questao25" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q25</span> Seções comuns do man
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-book-open"></i> As seguintes seções comumente aparecem em uma man page: (escolha três)
+          </div>
+          <div class="options" id="q25-options">
+            <li><input type="checkbox" name="q25" value="a" /> NAME</li>
+            <li><input type="checkbox" name="q25" value="b" /> SYNOPSIS</li>
+            <li><input type="checkbox" name="q25" value="c" /> LICENSE</li>
+            <li><input type="checkbox" name="q25" value="d" /> DESCRIPTION</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q25',
+                ['a', 'b', 'd'],
+                'Seções comuns: NAME (nome), SYNOPSIS (sintaxe) e DESCRIPTION (descrição detalhada).'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q25-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 26 -->
+      <section id="questao26" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q26</span> Diretório raiz
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-folder-open"></i> O diretório de nível superior em um sistema Linux é representado como:
+          </div>
+          <div class="options" id="q26-options">
+            <li><input type="radio" name="q26" value="a" /> /home</li>
+            <li><input type="radio" name="q26" value="b" /> C:/</li>
+            <li><input type="radio" name="q26" value="c" /> /</li>
+            <li><input type="radio" name="q26" value="d" /> /root</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="checkAnswer('q26', 'c', 'O diretório raiz (root directory) no Linux é representado por &quot;/&quot;.')"
+          >
+            Verificar Resposta
+          </button>
+          <div id="q26-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 27 -->
+      <section id="questao27" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q27</span> Til (~)
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-tilde"></i> O til (~) é usado para representar:</div>
+          <div class="options" id="q27-options">
+            <li><input type="radio" name="q27" value="a" /> O diretório acima do diretório de trabalho atual</li>
+            <li><input type="radio" name="q27" value="b" /> Quaisquer dois caracteres únicos</li>
+            <li><input type="radio" name="q27" value="c" /> Nada; não tem significado especial</li>
+            <li><input type="radio" name="q27" value="d" /> O diretório home do usuário</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="checkAnswer('q27', 'd', 'O til (~) é um atalho para o diretório home do usuário atual. Exemplo: cd ~/Documentos')"
+          >
+            Verificar Resposta
+          </button>
+          <div id="q27-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 28 -->
+      <section id="questao28" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q28</span> cd sem argumentos
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-arrow-right"></i> O comando cd sozinho (sem argumentos) o levará para qual diretório?
+          </div>
+          <div class="options" id="q28-options">
+            <li><input type="radio" name="q28" value="a" /> O diretório raiz do sistema</li>
+            <li><input type="radio" name="q28" value="b" /> Seu diretório home</li>
+            <li><input type="radio" name="q28" value="c" /> Nenhum; não é um comando válido</li>
+            <li><input type="radio" name="q28" value="d" /> O diretório acima do diretório de trabalho atual</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="checkAnswer('q28', 'b', 'cd sem argumentos leva você ao seu diretório home (equivalente a cd ~).')"
+          >
+            Verificar Resposta
+          </button>
+          <div id="q28-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 29 -->
+      <section id="questao29" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q29</span> Mudar diretório atual
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-folder-open"></i> Qual comando permite alterar seu diretório de trabalho atual?</div>
+          <div class="options" id="q29-options">
+            <li><input type="radio" name="q29" value="a" /> list</li>
+            <li><input type="radio" name="q29" value="b" /> cd</li>
+            <li><input type="radio" name="q29" value="c" /> chdir</li>
+            <li><input type="radio" name="q29" value="d" /> ls</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="checkAnswer('q29', 'b', 'cd (change directory) é o comando para mudar o diretório de trabalho atual.')"
+          >
+            Verificar Resposta
+          </button>
+          <div id="q29-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 30 -->
+      <section id="questao30" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q30</span> Primeiro caractere ls -l
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-list"></i> O primeiro caractere em uma listagem longa (ls -l) indica:</div>
+          <div class="options" id="q30-options">
+            <li><input type="radio" name="q30" value="a" /> O proprietário</li>
+            <li><input type="radio" name="q30" value="b" /> O tamanho</li>
+            <li><input type="radio" name="q30" value="c" /> Se algo é um arquivo, diretório ou link simbólico</li>
+            <li><input type="radio" name="q30" value="d" /> As permissões</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q30',
+                'c',
+                'O primeiro caractere indica o tipo de arquivo: - (arquivo), d (directory/diretório), l (link simbólico).'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q30-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 31 -->
+      <section id="questao31" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q31</span> Renomear arquivo
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-i-cursor"></i> Qual dos seguintes comandos pode ser usado para renomear um arquivo?
+          </div>
+          <div class="options" id="q31-options">
+            <li><input type="radio" name="q31" value="a" /> mv</li>
+            <li><input type="radio" name="q31" value="b" /> name</li>
+            <li><input type="radio" name="q31" value="c" /> cp</li>
+            <li><input type="radio" name="q31" value="d" /> rm</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="checkAnswer('q31', 'a', 'mv (move) é usado para renomear arquivos: mv arquivo_antigo arquivo_novo.')"
+          >
+            Verificar Resposta
+          </button>
+          <div id="q31-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 32 -->
+      <section id="questao32" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q32</span> Comando touch
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-hand"></i> O comando touch pode ser usado para: (escolha duas)</div>
+          <div class="options" id="q32-options">
+            <li><input type="checkbox" name="q32" value="a" /> Criar novos arquivos</li>
+            <li><input type="checkbox" name="q32" value="b" /> Mudar a propriedade de um arquivo</li>
+            <li><input type="checkbox" name="q32" value="c" /> Mudar o nome de um arquivo</li>
+            <li><input type="checkbox" name="q32" value="d" /> Atualizar o timestamp de arquivos existentes</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q32',
+                ['a', 'd'],
+                'touch cria arquivos vazios (se não existirem) e atualiza o timestamp (data/hora) de arquivos existentes.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q32-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 33 -->
+      <section id="questao33" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q33</span> Caracteres glob
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-globe"></i> Quais são caracteres glob? (escolha três)</div>
+          <div class="options" id="q33-options">
+            <li><input type="checkbox" name="q33" value="a" /> O ponto de interrogação ?</li>
+            <li><input type="checkbox" name="q33" value="b" /> O asterisco *</li>
+            <li><input type="checkbox" name="q33" value="c" /> O caractere hífen -</li>
+            <li><input type="checkbox" name="q33" value="d" /> Os colchetes [ e ]</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q33',
+                ['a', 'b', 'd'],
+                'Glob characters: ? (um caractere), * (zero ou mais), [ ] (lista/intervalo). O hífen é usado dentro de colchetes para intervalos.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q33-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 34 -->
+      <section id="questao34" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q34</span> Propósito dos caracteres glob
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-file"></i> O principal propósito de usar caracteres glob é poder fornecer uma lista de nomes de arquivos para
+            um comando.
+          </div>
+          <div class="options" id="q34-options">
+            <li><input type="radio" name="q34" value="a" /> True</li>
+            <li><input type="radio" name="q34" value="b" /> False</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q34',
+                'a',
+                'Verdadeiro! Glob expansion permite usar curingas para expandir múltiplos nomes de arquivos como argumentos para comandos.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q34-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 35 -->
+      <section id="questao35" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q35</span> Asterisco (*)
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-asterisk"></i> O caractere asterisco é usado para representar zero ou mais de qualquer caractere em um nome de
+            arquivo.
+          </div>
+          <div class="options" id="q35-options">
+            <li><input type="radio" name="q35" value="a" /> True</li>
+            <li><input type="radio" name="q35" value="b" /> False</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q35',
+                'a',
+                'Verdadeiro! O * (asterisco) no globbing representa zero ou mais caracteres. Exemplo: *.txt pega todos arquivos .txt.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q35-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 36 -->
+      <section id="questao36" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q36</span> Compressão de arquivo
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-compress-alt"></i> A compressão de um arquivo funciona:</div>
+          <div class="options" id="q36-options">
+            <li><input type="radio" name="q36" value="a" /> Removendo informações redundantes</li>
+            <li><input type="radio" name="q36" value="b" /> Removendo o bit de ordem superior de cada byte</li>
+            <li>
+              <input type="radio" name="q36" value="c" /> Armazenando a maioria dos dados em mídia removível e deixando apenas um ponteiro
+            </li>
+            <li><input type="radio" name="q36" value="d" /> Consolidando múltiplos arquivos em um único arquivo</li>
+            <li><input type="radio" name="q36" value="e" /> Eliminando lacunas dentro do arquivo</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q36',
+                'a',
+                'Compressão funciona removendo informações redundantes e codificando padrões repetidos de forma mais eficiente.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q36-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 37 -->
+      <section id="questao37" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q37</span> Compressão com perda
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-image"></i> Compressão com perda (lossy): (escolha três)</div>
+          <div class="options" id="q37-options">
+            <li><input type="checkbox" name="q37" value="a" /> É frequentemente usada com documentos</li>
+            <li><input type="checkbox" name="q37" value="b" /> Descomprime para uma versão idêntica à original</li>
+            <li><input type="checkbox" name="q37" value="c" /> Sacrifica alguma qualidade</li>
+            <li><input type="checkbox" name="q37" value="d" /> É frequentemente usada com imagens</li>
+            <li><input type="checkbox" name="q37" value="e" /> Geralmente resulta em melhor compressão que a sem perda (lossless)</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q37',
+                ['c', 'd', 'e'],
+                'Lossy (JPEG, MP3) sacrifica qualidade, usado em imagens/áudio, e comprime melhor que lossless (PNG, ZIP).'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q37-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 38 -->
+      <section id="questao38" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q38</span> Comandos de compressão
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-file-archive"></i> Quais dos seguintes comandos podem ser usados para comprimir um arquivo? (escolha três)
+          </div>
+          <div class="options" id="q38-options">
+            <li><input type="checkbox" name="q38" value="a" /> zip</li>
+            <li><input type="checkbox" name="q38" value="b" /> cat</li>
+            <li><input type="checkbox" name="q38" value="c" /> bzip2</li>
+            <li><input type="checkbox" name="q38" value="d" /> bunzip2</li>
+            <li><input type="checkbox" name="q38" value="e" /> gzip</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer('q38', ['a', 'c', 'e'], 'Comandos de compressão: zip, gzip, bzip2. bunzip2 é usado para descomprimir.')
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q38-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 39 -->
+      <section id="questao39" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q39</span> Modos do tar
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-archive"></i> Os três modos principais do tar são: (escolha três)</div>
+          <div class="options" id="q39-options">
+            <li><input type="checkbox" name="q39" value="a" /> Extract</li>
+            <li><input type="checkbox" name="q39" value="b" /> Create</li>
+            <li><input type="checkbox" name="q39" value="c" /> Compress</li>
+            <li><input type="checkbox" name="q39" value="d" /> Copy</li>
+            <li><input type="checkbox" name="q39" value="e" /> List</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer('q39', ['a', 'b', 'e'], 'Modos do tar: -c (Create criar), -x (Extract extrair), -t (List listar).')
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q39-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- QUESTÃO 40 -->
+      <section id="questao40" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q40</span> Flag -f do tar
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-terminal"></i> No comando <code>tar -czf foo.tar.gz bar</code>, qual é o propósito da flag <code>-f</code>?
+          </div>
+          <div class="options" id="q40-options">
+            <li><input type="radio" name="q40" value="a" /> Diz ao tar para ler do arquivo que segue a flag</li>
+            <li><input type="radio" name="q40" value="b" /> Diz ao tar para copiar apenas arquivos, não diretórios</li>
+            <li><input type="radio" name="q40" value="c" /> Diz ao tar para escrever no arquivo que segue a flag</li>
+            <li><input type="radio" name="q40" value="d" /> Diz ao tar para imprimir o nome de cada arquivo conforme processado</li>
+            <li><input type="radio" name="q40" value="e" /> Especifica que compressão extra deve ser usada</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q40',
+                'c',
+                'A flag -f no tar especifica o nome do arquivo de saída (quando criando) ou de entrada (quando extraindo).'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q40-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- Gabarito -->
+      <details class="answer-key">
+        <summary><i class="fas fa-key"></i> 📋 Gabarito - Módulo 10 (40 questões)</summary>
+        <div style="margin-top: 1rem">
+          <p><strong>Q1:</strong> Android</p>
+          <p><strong>Q2:</strong> Dita com que frequência o software é atualizado</p>
+          <p><strong>Q3:</strong> Package Manager</p>
+          <p><strong>Q4:</strong> Descreve por quanto tempo uma versão do software será suportada</p>
+          <p><strong>Q5:</strong> GUI, suporte comercial, LTS, compatibilidade apps, versão estável</p>
+          <p><strong>Q6:</strong> Navegador web, Player de música</p>
+          <p><strong>Q7:</strong> NFS, Samba, Netatalk</p>
+          <p><strong>Q8:</strong> É personalizável, Tem linguagem de script, Permite executar programas</p>
+          <p><strong>Q9:</strong> Um único host pode ser dividido em múltiplos guests</p>
+          <p><strong>Q10:</strong> Terminal, Xterm</p>
+          <p><strong>Q11:</strong> Uma versão legível por humanos de um software de computador</p>
+          <p><strong>Q12:</strong> Você pode modificar o código-fonte, Você pode visualizar o código-fonte</p>
+          <p><strong>Q13:</strong> Se redistribuir, deve distribuir o código-fonte das alterações</p>
+          <p><strong>Q14:</strong> GPLv2</p>
+          <p>
+            <strong>Q15:</strong> Especificar se alterações devem ser compartilhadas, Especificar se pessoas podem distribuir alterações,
+            Permitir ou não uso comercial
+          </p>
+          <p><strong>Q16:</strong> PATH</p>
+          <p><strong>Q17:</strong> which</p>
+          <p><strong>Q18:</strong> False</p>
+          <p><strong>Q19:</strong> True</p>
+          <p><strong>Q20:</strong> Command Line Interface</p>
+          <p><strong>Q21:</strong> Bash</p>
+          <p><strong>Q22:</strong> more, less</p>
+          <p><strong>Q23:</strong> man -k example, apropos example</p>
+          <p><strong>Q24:</strong> A info page é como um guia; a man page é uma referência mais concisa</p>
+          <p><strong>Q25:</strong> NAME, SYNOPSIS, DESCRIPTION</p>
+          <p><strong>Q26:</strong> /</p>
+          <p><strong>Q27:</strong> O diretório home do usuário</p>
+          <p><strong>Q28:</strong> Seu diretório home</p>
+          <p><strong>Q29:</strong> cd</p>
+          <p><strong>Q30:</strong> Se algo é um arquivo, diretório ou link simbólico</p>
+          <p><strong>Q31:</strong> mv</p>
+          <p><strong>Q32:</strong> Criar novos arquivos, Atualizar o timestamp de arquivos existentes</p>
+          <p><strong>Q33:</strong> ?, *, [ ]</p>
+          <p><strong>Q34:</strong> True</p>
+          <p><strong>Q35:</strong> True</p>
+          <p><strong>Q36:</strong> Removendo informações redundantes</p>
+          <p>
+            <strong>Q37:</strong> Sacrifica alguma qualidade, É frequentemente usada com imagens, Geralmente resulta melhor compressão que a
+            sem perda
+          </p>
+          <p><strong>Q38:</strong> zip, bzip2, gzip</p>
+          <p><strong>Q39:</strong> Extract, Create, List</p>
+          <p><strong>Q40:</strong> Diz ao tar para escrever no arquivo que segue a flag</p>
+        </div>
+      </details>
+    </div>
+
+    <footer>
+      <p><i class="fab fa-linux"></i> NDG Linux Essentials – Banco de Questões com Justificativas</p>
+      <p style="font-size: 0.8rem; margin-top: 0.5rem">Módulo 10: Trabalhando com Texto | Revisão Geral</p>
+    </footer>
+
+    <script>
+      function checkAnswer(questionId, correctValue, justification) {
+        const selected = document.querySelector(`input[name="${questionId}"]:checked`)
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`)
+
+        if (!selected) {
+          feedbackDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Selecione uma resposta primeiro!'
+          feedbackDiv.className = 'feedback incorrect'
+          return
+        }
+
+        if (selected.value === correctValue) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback correct'
+        } else {
+          const correctElement = document.querySelector(`input[name="${questionId}"][value="${correctValue}"]`)
+          const correctText = correctElement ? correctElement.closest('li').innerText : correctValue
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-book-open"></i> A resposta correta é: <strong>${correctText}</strong><br><br><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback incorrect'
+        }
+      }
+
+      function checkMultipleAnswer(questionId, correctValues, justification) {
+        const selected = document.querySelectorAll(`input[name="${questionId}"]:checked`)
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`)
+
+        if (selected.length === 0) {
+          feedbackDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Selecione pelo menos uma resposta!'
+          feedbackDiv.className = 'feedback incorrect'
+          return
+        }
+
+        const selectedValues = Array.from(selected).map((cb) => cb.value)
+        const isCorrect = correctValues.length === selectedValues.length && correctValues.every((val) => selectedValues.includes(val))
+
+        if (isCorrect) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback correct'
+        } else {
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-book-open"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback incorrect'
+        }
+      }
+    </script>
+
+    <script src="../js/menu.js"></script>
+  </body>
+</html>

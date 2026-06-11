@@ -52,6 +52,16 @@ class NDGLinuxSearch {
         name: "Módulo 10",
         title: "Trabalhando com Texto",
       },
+      {
+        path: "pages/modulo_11.html",
+        name: "Módulo 11",
+        title: "Scripting Básico",
+      },
+      {
+        path: "pages/modulo_12.html",
+        name: "Módulo 12",
+        title: "Hardware do Computador",
+      },
       // Adicione novos módulos aqui:
       // { path: "pages/modulo_11.html", name: "Módulo 11", title: "Título" },
     ];

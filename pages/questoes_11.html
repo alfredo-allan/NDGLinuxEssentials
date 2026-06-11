@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>NDG Linux Essentials | Módulo 11 - Questões</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/questoes.css" />
+  </head>
+  <body>
+    <div class="top-bar">
+      <button class="menu-toggle" id="openMenu">
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+      </button>
+      <a href="../index.html" class="top-bar-brand"> <i class="fab fa-linux"></i> NDG Linux Essentials </a>
+      <a href="../index.html" class="btn-outline"> <i class="fas fa-home"></i> Voltar </a>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-compass"></i> Navegação - Questões</h3>
+        <button class="close-sidebar" id="closeMenu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="nav-modules">
+        <li>
+          <a href="#questao1"><i class="fas fa-question-circle"></i> Q1 - Editores para Scripting</a>
+        </li>
+        <li>
+          <a href="#questao2"><i class="fas fa-question-circle"></i> Q2 - Lógica do Script mkdir</a>
+        </li>
+        <li>
+          <a href="#questao3"><i class="fas fa-question-circle"></i> Q3 - Loops for e while</a>
+        </li>
+        <li>
+          <a href="#questao4"><i class="fas fa-question-circle"></i> Q4 - Argumentos de Posição</a>
+        </li>
+        <li>
+          <a href="#questao5"><i class="fas fa-question-circle"></i> Q5 - Atribuição de Variáveis</a>
+        </li>
+        <li>
+          <a href="#questao6"><i class="fas fa-question-circle"></i> Q6 - Entrada de Usuário</a>
+        </li>
+        <li>
+          <a href="#questao7"><i class="fas fa-question-circle"></i> Q7 - Variável especial $?</a>
+        </li>
+        <li>
+          <a href="#questao8"><i class="fas fa-question-circle"></i> Q8 - Exit Code Verdadeiro</a>
+        </li>
+        <li>
+          <a href="#questao9"><i class="fas fa-question-circle"></i> Q9 - Comparação Numérica</a>
+        </li>
+        <li>
+          <a href="#questao10"><i class="fas fa-question-circle"></i> Q10 - Comportamento do Laço</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <section class="hero">
+      <div class="container">
+        <div class="badge-lab"><i class="fas fa-graduation-cap"></i> NDG Linux Essentials | Banco de Questões</div>
+        <h1>Exame do Módulo 11</h1>
+        <p>Basic Scripting - Teste seus conhecimentos sobre variáveis, condicionais, loops, shebang e automação de rotinas no Linux</p>
+        <div style="margin-top: 1.5rem">
+          <i class="fas fa-terminal" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-code-branch" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-redo" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-box" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <section id="questao1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q1</span> Editores para Scripting
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-edit"></i> Which are appropriate editors for writing shell scripts? (Selecione a melhor alternativa técnica)
+          </div>
+          <div class="options" id="q1-options">
+            <li><input type="radio" name="q1" value="a" /> /bin/bash e nano</li>
+            <li><input type="radio" name="q1" value="b" /> Firefox e LibreOffice Writer</li>
+            <li><input type="radio" name="q1" value="c" /> vi e nano</li>
+            <li><input type="radio" name="q1" value="d" /> LibreOffice Writer e vi</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q1',
+                'c',
+                'Os editores vi (ou vim) e nano são ferramentas de texto puro adequadas para gerenciar e escrever códigos de shell script. Suítes como o LibreOffice criam metadados invisíveis de formatação que inutilizam o script.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q1-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q2</span> Lógica do Script mkdir
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-code"></i> O que o seguinte trecho de script realiza?
+            <div class="terminal" style="margin: 0.5rem 0">
+              <pre>
+FOO=/tmp/foo
+if [ ! -d $FOO ]; then
+    mkdir $FOO
+fi</pre
+              >
+            </div>
+          </div>
+          <div class="options" id="q2-options">
+            <li><input type="radio" name="q2" value="a" /> Cria o diretório /tmp/foo se ele não existir.</li>
+            <li><input type="radio" name="q2" value="b" /> Remove o diretório /tmp/foo caso ele exista no sistema.</li>
+            <li><input type="radio" name="q2" value="c" /> Apresenta uma mensagem de erro na tela de saída.</li>
+            <li><input type="radio" name="q2" value="d" /> Não realiza nada, pois possui erros de sintaxe estrutural.</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q2',
+                'a',
+                'A flag -d testa a existência de um diretório. A exclamação ! faz a negação lógica. Traduzindo: &quot;Se NÃO for um diretório existente, execute mkdir&quot;.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q2-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q3</span> Loops for e while
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-redo"></i> Qual das seguintes afirmações descreve corretamente o funcionamento dos laços for e while?
+          </div>
+          <div class="options" id="q3-options">
+            <li>
+              <input type="radio" name="q3" value="a" /> Os loops for realizam testes condicionais e loops while operam apenas sobre listas
+              fixas.
+            </li>
+            <li>
+              <input type="radio" name="q3" value="b" /> Loops while avaliam uma condição a cada ciclo e loops for operam sobre uma lista
+              estipulada de itens.
+            </li>
+            <li>
+              <input type="radio" name="q3" value="c" /> Ambos exigem listas estáticas e não realizam verificações dinâmicas de fim de
+              bloco.
+            </li>
+            <li>
+              <input type="radio" name="q3" value="d" /> O loop while roda obrigatoriamente um número fixo de 10 iterações por padrão.
+            </li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q3',
+                'b',
+                'O loop for foi desenvolvido para iterar sobre coleções ou elementos finitos/estáticos (como arquivos em uma pasta), enquanto o while monitora dinamicamente uma condição a cada ciclo até que vire falsa.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q3-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q4</span> Argumentos de Posição
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-terminal"></i> Considerando o script rodando como <code>./test.sh hello goodbye</code>:
+            <div class="terminal" style="margin: 0.5rem 0">
+              <pre>
+if [ -f $2 ]; then
+    echo "I am here"
+fi</pre
+              >
+            </div>
+            Quando a mensagem "I am here" será impressa na console?
+          </div>
+          <div class="options" id="q4-options">
+            <li><input type="radio" name="q4" value="a" /> Sempre que o script rodar, independente do ambiente.</li>
+            <li><input type="radio" name="q4" value="b" /> Se houver exatamente dois arquivos quaisquer criados no diretório atual.</li>
+            <li><input type="radio" name="q4" value="c" /> Se um arquivo chamado "hello" existir no diretório atual.</li>
+            <li><input type="radio" name="q4" value="d" /> Se um arquivo chamado "goodbye" existir no diretório atual.</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q4',
+                'd',
+                'A variável posicional $2 aponta para o segundo argumento passado via console (&quot;goodbye&quot;). O operador -f checa se esse arquivo de texto existe no diretório corrente.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q4-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao5" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q5</span> Atribuição de Variáveis
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-box"></i> Qual é a sintaxe correta para atribuir a palavra "Hello" a uma variável chamada A?
+          </div>
+          <div class="options" id="q5-options">
+            <li><input type="radio" name="q5" value="a" /> $A="Hello"</li>
+            <li><input type="radio" name="q5" value="b" /> A = "Hello"</li>
+            <li><input type="radio" name="q5" value="c" /> A="Hello"</li>
+            <li><input type="radio" name="q5" value="d" /> echo "Hello" &gt; A</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q5',
+                'c',
+                'Para atribuir valores no shell Bash, usamos NOME=VALOR diretamente, sem espaços adjacentes ao sinal de igual (=) e sem utilizar o cifrão ($) no momento da escrita.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q5-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao6" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q6</span> Entrada de Usuário
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-keyboard"></i> Qual comando do shell é utilizado para aceitar entradas digitadas diretamente pelo teclado do
+            usuário?
+          </div>
+          <div class="options" id="q6-options">
+            <li><input type="radio" name="q6" value="a" /> echo</li>
+            <li><input type="radio" name="q6" value="b" /> read</li>
+            <li><input type="radio" name="q6" value="c" /> input</li>
+            <li><input type="radio" name="q6" value="d" /> gets</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q6',
+                'b',
+                'O comando padrão utilizado no desenvolvimento de scripts Bash para interromper o fluxo e ler strings vindas do STDIN (teclado) é o read.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q6-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao7" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q7</span> Variável especial $?
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-info-circle"></i> Qual tipo de informação é armazenado na variável interna especial <code>$?</code> ?
+          </div>
+          <div class="options" id="q7-options">
+            <li><input type="radio" name="q7" value="a" /> O ID do processo em execução em primeiro plano.</li>
+            <li><input type="radio" name="q7" value="b" /> O código de término (exit code) do último comando executado.</li>
+            <li><input type="radio" name="q7" value="c" /> O número total de parâmetros passados para o shell script.</li>
+            <li><input type="radio" name="q7" value="d" /> O nome exato do arquivo binário do interpretador.</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q7',
+                'b',
+                'A variável especial $? armazena um número inteiro entre 0 e 255 correspondente ao código de saída do processo imediatamente anterior.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q7-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao8" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q8</span> Exit Code Verdadeiro
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-shield-alt"></i> Qual código de retorno (exit code) a estrutura condicional <code>if</code> espera receber para
+            interpretar uma condição como VERDADEIRA?
+          </div>
+          <div class="options" id="q8-options">
+            <li><input type="radio" name="q8" value="a" /> 1</li>
+            <li><input type="radio" name="q8" value="b" /> 0</li>
+            <li><input type="radio" name="q8" value="c" /> 255</li>
+            <li><input type="radio" name="q8" value="d" /> True</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q8',
+                'b',
+                'Diferente da maioria das linguagens de alto nível, no ecossistema do Linux/UNIX o valor numérico 0 indica sucesso de processamento (sem erros), logo, é avaliado como verdadeiro.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q8-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao9" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q9</span> Comparação Numérica
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-sort-numeric-up"></i> A quantidade de usuários conectados está salva na variável USERS. Como validar
+            numericamente se existem 5 usuários conectados?
+          </div>
+          <div class="options" id="q9-options">
+            <li><input type="radio" name="q9" value="a" /> test $USERS = 5</li>
+            <li><input type="radio" name="q9" value="b" /> test $USERS -a 5</li>
+            <li><input type="radio" name="q9" value="c" /> test $USERS -eq 5</li>
+            <li><input type="radio" name="q9" value="d" /> test -f USERS=5</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q9',
+                'c',
+                'Para realizar checagens de igualdade entre inteiros, usamos obrigatoriamente a flag -eq (equal). O sinal de igual simples (=) serve apenas para comparação léxica de strings.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q9-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao10" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q10</span> Comportamento do Laço
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-hourglass-start"></i> Analise o seguinte código:
+            <div class="terminal" style="margin: 0.5rem 0">
+              <pre>
+while [ ! -f /tmp/foo ]; do
+    echo -n "."
+    process_data > /tmp/foo
+done</pre
+              >
+            </div>
+            Se o arquivo <code>/tmp/foo</code> <strong>não existir</strong> antes do início da execução, o que acontecerá?
+          </div>
+          <div class="options" id="q10-options">
+            <li><input type="radio" name="q10" value="a" /> O loop rodará indefinidamente preenchendo a tela com pontos.</li>
+            <li><input type="radio" name="q10" value="b" /> O comando process_data será chamado no máximo uma única vez.</li>
+            <li><input type="radio" name="q10" value="c" /> O script quebrará apresentando erro porque o arquivo não existia.</li>
+            <li><input type="radio" name="q10" value="d" /> O comando process_data nunca chegará a ser acionado.</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q10',
+                'b',
+                'Como o arquivo não existe, a negação de test -f se torna verdadeira e o loop roda. Ele imprime um ponto e executa o process_data, gerando o arquivo /tmp/foo. No próximo ciclo, o arquivo passa a existir, tornando o teste falso e finalizando o laço após uma iteração.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q10-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <details class="answer-key">
+        <summary><i class="fas fa-key"></i> 📋 Gabarito - Módulo 11</summary>
+        <div style="margin-top: 1rem">
+          <p><strong>Q1:</strong> vi e nano</p>
+          <p><strong>Q2:</strong> Cria o diretório /tmp/foo se ele não existir.</p>
+          <p><strong>Q3:</strong> Loops while avaliam uma condição a cada ciclo e loops for operam sobre uma lista estipulada de itens.</p>
+          <p><strong>Q4:</strong> Se um arquivo chamado "goodbye" existir no diretório atual.</p>
+          <p><strong>Q5:</strong> A="Hello"</p>
+          <p><strong>Q6:</strong> read</p>
+          <p><strong>Q7:</strong> O código de término (exit code) do último comando executado.</p>
+          <p><strong>Q8:</strong> 0</p>
+          <p><strong>Q9:</strong> test $USERS -eq 5</p>
+          <p><strong>Q10:</strong> O comando process_data será chamado no máximo uma única vez.</p>
+        </div>
+      </details>
+    </div>
+
+    <footer>
+      <p><i class="fab fa-linux"></i> NDG Linux Essentials – Banco de Questões com Justificativas</p>
+      <p style="font-size: 0.8rem; margin-top: 0.5rem">Módulo 11: Scripting Básico | 10 questões</p>
+    </footer>
+
+    <script>
+      function checkAnswer(questionId, correctValue, justification) {
+        const selected = document.querySelector(`input[name="${questionId}"]:checked`)
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`)
+
+        if (!selected) {
+          feedbackDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Selecione uma resposta primeiro!'
+          feedbackDiv.className = 'feedback incorrect'
+          return
+        }
+
+        if (selected.value === correctValue) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback correct'
+        } else {
+          const correctElement = document.querySelector(`input[name="${questionId}"][value="${correctValue}"]`)
+          const correctText = correctElement ? correctElement.closest('li').innerText : correctValue
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-book-open"></i> A resposta correta é: <strong>${correctText}</strong><br><br><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback incorrect'
+        }
+      }
+    </script>
+
+    <script src="../js/menu.js"></script>
+  </body>
+</html>

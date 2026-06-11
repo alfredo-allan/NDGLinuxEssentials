@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>NDG Linux Essentials | Módulo 12 - Questões</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/questoes.css" />
+  </head>
+  <body>
+    <div class="top-bar">
+      <button class="menu-toggle" id="openMenu">
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+      </button>
+      <a href="../index.html" class="top-bar-brand"> <i class="fab fa-linux"></i> NDG Linux Essentials </a>
+      <a href="../index.html" class="btn-outline"> <i class="fas fa-home"></i> Voltar </a>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-compass"></i> Navegação - Questões</h3>
+        <button class="close-sidebar" id="closeMenu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="nav-modules">
+        <li>
+          <a href="#questao1"><i class="fas fa-question-circle"></i> Q1 - Arquiteturas de CPU</a>
+        </li>
+        <li>
+          <a href="#questao2"><i class="fas fa-question-circle"></i> Q2 - Endereçamento de Memória</a>
+        </li>
+        <li>
+          <a href="#questao3"><i class="fas fa-question-circle"></i> Q3 - Memória Virtual (Swap)</a>
+        </li>
+        <li>
+          <a href="#questao4"><i class="fas fa-question-circle"></i> Q4 - Sistemas de Barramento</a>
+        </li>
+        <li>
+          <a href="#questao5"><i class="fas fa-question-circle"></i> Q5 - Divisão de Disco</a>
+        </li>
+        <li>
+          <a href="#questao6"><i class="fas fa-question-circle"></i> Q6 - Tabelas de Partição</a>
+        </li>
+        <li>
+          <a href="#questao7"><i class="fas fa-question-circle"></i> Q7 - Nomenclatura IDE</a>
+        </li>
+        <li>
+          <a href="#questao8"><i class="fas fa-question-circle"></i> Q8 - Comandos de CPU</a>
+        </li>
+        <li>
+          <a href="#questao9"><i class="fas fa-question-circle"></i> Q9 - Drivers de Hardware</a>
+        </li>
+        <li>
+          <a href="#questao10"><i class="fas fa-question-circle"></i> Q10 - Ferramentas MBR</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <section class="hero">
+      <div class="container">
+        <div class="badge-lab"><i class="fas fa-graduation-cap"></i> NDG Linux Essentials | Banco de Questões</div>
+        <h1>Exame do Módulo 12</h1>
+        <p>Hardware do Computador - Teste seus conhecimentos sobre CPUs, RAM, Barramentos, Discos Rígidos e Gerenciamento de Periféricos</p>
+        <div style="margin-top: 1.5rem">
+          <i class="fas fa-microchip" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-memory" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-hdd" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-plug" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <section id="questao1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q1</span> Arquiteturas de CPU
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-microchip"></i> Quais são os tipos de arquitetura de CPU válidos para plataformas baseadas em Intel?
+          </div>
+          <div class="options" id="q1-options">
+            <li><input type="radio" name="q1" value="a" /> 24-bit e 48-bit</li>
+            <li><input type="radio" name="q1" value="b" /> 32-bit e 64-bit</li>
+            <li><input type="radio" name="q1" value="c" /> 16-bit e 128-bit</li>
+            <li><input type="radio" name="q1" value="d" /> Apenas 64-bit nativo</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer('q1', 'b', 'As arquiteturas dominantes no mercado de desktops e servidores são x86 (32 bits) e x86_64 (64 bits).')
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q1-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q2</span> Endereçamento de Memória
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-memory"></i> Plataformas de 64 bits podem acessar mais memória do que plataformas de 32 bits?
+          </div>
+          <div class="options" id="q2-options">
+            <li><input type="radio" name="q2" value="a" /> Verdadeiro</li>
+            <li><input type="radio" name="q2" value="b" /> Falso</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q2',
+                'a',
+                'Sistemas de 32 bits possuem um limite físico de 4 GB de endereçamento de RAM, enquanto sistemas de 64 bits suportam volumes massivamente maiores.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q2-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q3</span> Memória Virtual (Swap)
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-exchange-alt"></i> Sobre a RAM Virtual (Swap), quais afirmações são verdadeiras?</div>
+          <div class="options" id="q3-options">
+            <li><input type="radio" name="q3" value="a" /> É armazenada dentro dos registradores da CPU.</li>
+            <li><input type="radio" name="q3" value="b" /> É usada quando a RAM física está alta para acelerar o disco.</li>
+            <li><input type="radio" name="q3" value="c" /> É chamada de espaço de swap e fica armazenada no disco rígido.</li>
+            <li><input type="radio" name="q3" value="d" /> Ela substitui completamente a necessidade de chips de RAM física.</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q3',
+                'c',
+                'O swap (RAM virtual) é uma área no disco rígido usada como extensão da memória física quando a RAM disponível está baixa.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q3-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q4</span> Sistemas de Barramento
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-sitemap"></i> Quais destes são sistemas de barramento (bus) comuns na placa-mãe?</div>
+          <div class="options" id="q4-options">
+            <li><input type="radio" name="q4" value="a" /> RAM e BIOS</li>
+            <li><input type="radio" name="q4" value="b" /> CPU e Cache</li>
+            <li><input type="radio" name="q4" value="c" /> USB e PCI</li>
+            <li><input type="radio" name="q4" value="d" /> SATA e ROM</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q4',
+                'c',
+                'PCI (interno) e USB (geralmente externo) são as formas mais comuns de barramentos para conexão de componentes e periféricos.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q4-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao5" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q5</span> Divisão de Disco
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-hdd"></i> Uma divisão lógica de um disco rígido é referida como uma _______ .</div>
+          <div class="options" id="q5-options">
+            <li><input type="radio" name="q5" value="a" /> partição (partition)</li>
+            <li><input type="radio" name="q5" value="b" /> bloco (block)</li>
+            <li><input type="radio" name="q5" value="c" /> porção (portion)</li>
+            <li><input type="radio" name="q5" value="d" /> rótulo (label)</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="checkAnswer('q5', 'a', 'Particionar é o ato de dividir um disco físico em unidades lógicas independentes.')"
+          >
+            Verificar Resposta
+          </button>
+          <div id="q5-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao6" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q6</span> Tabelas de Partição
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-th-list"></i> Quais são tipos de particionamento (tabelas) válidos no Linux?</div>
+          <div class="options" id="q6-options">
+            <li><input type="radio" name="q6" value="a" /> PC e BIOS</li>
+            <li><input type="radio" name="q6" value="b" /> GPT e MBR</li>
+            <li><input type="radio" name="q6" value="c" /> NTFS e FAT32</li>
+            <li><input type="radio" name="q6" value="d" /> RAM e SWAP</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="checkAnswer('q6', 'b', 'MBR é o padrão legado e GPT é o padrão moderno que suporta discos maiores que 2TB.')"
+          >
+            Verificar Resposta
+          </button>
+          <div id="q6-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao7" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q7</span> Nomenclatura IDE
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-file-code"></i> Qual é o nome de arquivo de dispositivo válido para o primeiro disco rígido IDE no sistema?
+          </div>
+          <div class="options" id="q7-options">
+            <li><input type="radio" name="q7" value="a" /> /dev/sda</li>
+            <li><input type="radio" name="q7" value="b" /> /dev/hd1</li>
+            <li><input type="radio" name="q7" value="c" /> /dev/hda</li>
+            <li><input type="radio" name="q7" value="d" /> /dev/ide0</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q7',
+                'c',
+                'Discos IDE usam o prefixo &quot;hd&quot;, seguido de uma letra. O primeiro disco é &quot;a&quot;, logo: /dev/hda.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q7-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao8" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q8</span> Comandos de CPU
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-terminal"></i> Quais comandos abaixo exibem informações sobre a CPU no terminal?</div>
+          <div class="options" id="q8-options">
+            <li><input type="radio" name="q8" value="a" /> lspci e lsusb</li>
+            <li><input type="radio" name="q8" value="b" /> arch e lscpu</li>
+            <li><input type="radio" name="q8" value="c" /> showcpu e cpuinfo</li>
+            <li><input type="radio" name="q8" value="d" /> fdisk e free</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q8',
+                'b',
+                '&quot;arch&quot; mostra a arquitetura básica e &quot;lscpu&quot; traz um relatório detalhado do processador.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q8-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao9" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q9</span> Drivers de Hardware
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-puzzle-piece"></i> O software que permite que dispositivos de hardware se comuniquem com o sistema operacional
+            é chamado de:
+          </div>
+          <div class="options" id="q9-options">
+            <li><input type="radio" name="q9" value="a" /> Programas (Programs)</li>
+            <li><input type="radio" name="q9" value="b" /> Pacotes (Packages)</li>
+            <li><input type="radio" name="q9" value="c" /> Drivers</li>
+            <li><input type="radio" name="q9" value="d" /> Instruções (Instructions)</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="checkAnswer('q9', 'c', 'Drivers são tradutores entre o hardware físico e o kernel do sistema operacional.')"
+          >
+            Verificar Resposta
+          </button>
+          <div id="q9-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao10" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q10</span> Ferramentas MBR
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-tools"></i> Quais destes comandos podem ser usados para verificar partições MBR?</div>
+          <div class="options" id="q10-options">
+            <li><input type="radio" name="q10" value="a" /> fdisk, sfdisk e cfdisk</li>
+            <li><input type="radio" name="q10" value="b" /> gdisk, cgdisk e sgdisk</li>
+            <li><input type="radio" name="q10" value="c" /> lscpu, lspci e lsusb</li>
+            <li><input type="radio" name="q10" value="d" /> mount, umount e fsck</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q10',
+                'a',
+                'As ferramentas clássicas começadas com &quot;f&quot; (de fixed disk) são voltadas para o padrão MBR.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q10-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <details class="answer-key">
+        <summary><i class="fas fa-key"></i> 📋 Gabarito - Módulo 12</summary>
+        <div style="margin-top: 1rem">
+          <p><strong>Q1:</strong> 32-bit e 64-bit</p>
+          <p><strong>Q2:</strong> Verdadeiro</p>
+          <p><strong>Q3:</strong> É chamada de espaço de swap e fica armazenada no disco rígido.</p>
+          <p><strong>Q4:</strong> USB e PCI</p>
+          <p><strong>Q5:</strong> partição (partition)</p>
+          <p><strong>Q6:</strong> GPT e MBR</p>
+          <p><strong>Q7:</strong> /dev/hda</p>
+          <p><strong>Q8:</strong> arch e lscpu</p>
+          <p><strong>Q9:</strong> Drivers</p>
+          <p><strong>Q10:</strong> fdisk, sfdisk e cfdisk</p>
+        </div>
+      </details>
+    </div>
+
+    <footer>
+      <p><i class="fab fa-linux"></i> NDG Linux Essentials – Banco de Questões com Justificativas</p>
+      <p style="font-size: 0.8rem; margin-top: 0.5rem">Módulo 12: Hardware do Computador | 10 questões</p>
+    </footer>
+
+    <script>
+      function checkAnswer(questionId, correctValue, justification) {
+        const selected = document.querySelector(`input[name="${questionId}"]:checked`)
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`)
+
+        if (!selected) {
+          feedbackDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Selecione uma resposta primeiro!'
+          feedbackDiv.className = 'feedback incorrect'
+          return
+        }
+
+        if (selected.value === correctValue) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback correct'
+        } else {
+          const correctElement = document.querySelector(`input[name="${questionId}"][value="${correctValue}"]`)
+          const correctText = correctElement ? correctElement.closest('li').innerText : correctValue
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-book-open"></i> A resposta correta é: <strong>${correctText}</strong><br><br><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback incorrect'
+        }
+      }
+    </script>
+
+    <script src="../js/menu.js"></script>
+  </body>
+</html>
