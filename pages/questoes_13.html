@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>NDG Linux Essentials | Módulo 13 - Questões</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/questoes.css" />
+  </head>
+  <body>
+    <div class="top-bar">
+      <button class="menu-toggle" id="openMenu">
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+      </button>
+      <a href="../index.html" class="top-bar-brand"> <i class="fab fa-linux"></i> NDG Linux Essentials </a>
+      <a href="../index.html" class="btn-outline"> <i class="fas fa-home"></i> Voltar </a>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-compass"></i> Navegação - Questões</h3>
+        <button class="close-sidebar" id="closeMenu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="nav-modules">
+        <li>
+          <a href="#questao1"><i class="fas fa-question-circle"></i> Q1 - Retorno do dmesg</a>
+        </li>
+        <li>
+          <a href="#questao2"><i class="fas fa-question-circle"></i> Q2 - Pseudo-sistemas e Hardware</a>
+        </li>
+        <li>
+          <a href="#questao3"><i class="fas fa-question-circle"></i> Q3 - Subpastas em /proc</a>
+        </li>
+        <li>
+          <a href="#questao4"><i class="fas fa-question-circle"></i> Q4 - Log de Autenticação</a>
+        </li>
+        <li>
+          <a href="#questao5"><i class="fas fa-question-circle"></i> Q5 - Natureza dos Arquivos de Log</a>
+        </li>
+        <li>
+          <a href="#questao6"><i class="fas fa-question-circle"></i> Q6 - Instruções de Boot</a>
+        </li>
+        <li>
+          <a href="#questao7"><i class="fas fa-question-circle"></i> Q7 - Parâmetros do Kernel Persistentes</a>
+        </li>
+        <li>
+          <a href="#questao8"><i class="fas fa-question-circle"></i> Q8 - Listagem Geral de Processos</a>
+        </li>
+        <li>
+          <a href="#questao9"><i class="fas fa-question-circle"></i> Q9 - Logging Daemon do systemd</a>
+        </li>
+        <li>
+          <a href="#questao10"><i class="fas fa-question-circle"></i> Q10 - A Base do FHS</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <section class="hero" style="background: linear-gradient(135deg, #0f5132 0%, #198754 100%)">
+      <div class="container">
+        <div class="badge-lab" style="background: rgba(255, 255, 255, 0.15); color: #fff">
+          <i class="fas fa-graduation-cap"></i> NDG Linux Essentials | Banco de Questões
+        </div>
+        <h1 style="color: #ffffff; background: none; -webkit-text-fill-color: initial">Exame do Módulo 13</h1>
+        <p style="color: rgba(255, 255, 255, 0.8)">
+          Kernel, Pseudo-sistemas de Arquivos, Monitoramento de Processos, Logs e a Árvore Diretórios (FHS)
+        </p>
+      </div>
+    </section>
+
+    <div class="container">
+      <section id="questao1" class="section">
+        <h2 class="section-title"><i class="fas fa-question-circle"></i> <span class="section-number">Q1</span> Retorno do dmesg</h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-microchip"></i> Quando você executa o comando <code>dmesg</code>, o sistema exibe mensagens que foram geradas
+            diretamente pelo kernel?
+          </div>
+          <div class="options" id="q1-options">
+            <li><input type="radio" name="q1" value="a" /> Verdadeiro</li>
+            <li><input type="radio" name="q1" value="b" /> Falso</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q1',
+                'a',
+                'O comando dmesg lê o Kernel Ring Buffer, exibindo o histórico de mensagens e detecção de hardware gerados pelo núcleo do sistema.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q1-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q2</span> Pseudo-sistemas e Hardware
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-hdd"></i> O kernel Linux monta quais pseudo-sistemas de arquivos para prover acesso a informações sobre os
+            dispositivos de hardware conectados ao sistema?
+          </div>
+          <div class="options" id="q2-options">
+            <li><input type="radio" name="q2" value="a" /> /devices e /info</li>
+            <li><input type="radio" name="q2" value="b" /> /sys e /proc</li>
+            <li><input type="radio" name="q2" value="c" /> /dev e /hardware</li>
+            <li><input type="radio" name="q2" value="d" /> /etc e /var</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q2',
+                'b',
+                'As pastas /proc e /sys agem como pontes na memória RAM onde o kernel expõe dados operacionais finos sobre o estado do hardware e processos.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q2-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao3" class="section">
+        <h2 class="section-title"><i class="fas fa-question-circle"></i> <span class="section-number">Q3</span> Subpastas em /proc</h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-folder"></i> O diretório <code>/proc</code> contém um subdiretório numérico específico para cada processo ativo
+            presente no sistema operacional?
+          </div>
+          <div class="options" id="q3-options">
+            <li><input type="radio" name="q3" value="a" /> Verdadeiro</li>
+            <li><input type="radio" name="q3" value="b" /> Falso</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q3',
+                'a',
+                'Cada tarefa ou processo ganha um ID numérico (PID) único, e o kernel mapeia uma pasta virtual com este número correspondente dentro de /proc (ex: /proc/1).'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q3-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao4" class="section">
+        <h2 class="section-title"><i class="fas fa-question-circle"></i> <span class="section-number">Q4</span> Log de Autenticação</h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-shield-alt"></i> Qual arquivo de log armazena as mensagens e registros relacionados a autenticações e
+            autorizações de segurança no sistema?
+          </div>
+          <div class="options" id="q4-options">
+            <li><input type="radio" name="q4" value="a" /> /var/log/dmesg</li>
+            <li><input type="radio" name="q4" value="b" /> /var/log/syslog</li>
+            <li><input type="radio" name="q4" value="c" /> /var/log/secure</li>
+            <li><input type="radio" name="q4" value="d" /> /var/log/messages</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q4',
+                'c',
+                'O arquivo secure centraliza a auditoria de acessos, guardando tentativas de login com sucesso ou falha, além das execuções via sudo.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q4-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao5" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q5</span> Natureza dos Arquivos de Log
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-file-alt"></i> Todos os arquivos de log mapeados no Linux contêm estritamente e apenas dados em formato de
+            texto puro?
+          </div>
+          <div class="options" id="q5-options">
+            <li><input type="radio" name="q5" value="a" /> Verdadeiro</li>
+            <li><input type="radio" name="q5" value="b" /> Falso</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q5',
+                'b',
+                'Falso. Arquivos como o wtmp e btmp, assim como os registros do diário estruturado do journald, guardam dados estruturados em formato binário.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q5-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao6" class="section">
+        <h2 class="section-title"><i class="fas fa-question-circle"></i> <span class="section-number">Q6</span> Instruções de Boot</h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-terminal"></i> Qual arquivo virtual contém de forma exata as informações e parâmetros que foram repassados para
+            o kernel no momento do boot?
+          </div>
+          <div class="options" id="q6-options">
+            <li><input type="radio" name="q6" value="a" /> /proc/kargs</li>
+            <li><input type="radio" name="q6" value="b" /> /proc/cmdline</li>
+            <li><input type="radio" name="q6" value="c" /> /proc/kernel</li>
+            <li><input type="radio" name="q6" value="d" /> /proc/kopts</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q6',
+                'b',
+                'O arquivo /proc/cmdline expõe de forma literal a linha de comandos configurada no gerenciador de boot (como o GRUB) enviada ao kernel.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q6-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao7" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q7</span> Parâmetros do Kernel Persistentes
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-sliders-h"></i> Para tornar alterações permanentes e persistentes após a reinicialização para os arquivos de
+            parâmetros do kernel encontrados sob <code>/proc/sys</code>, qual arquivo de configuração deve receber as entradas?
+          </div>
+          <div class="options" id="q7-options">
+            <li><input type="radio" name="q7" value="a" /> /etc/procsys.conf</li>
+            <li><input type="radio" name="q7" value="b" /> /etc/sysinfo.conf</li>
+            <li><input type="radio" name="q7" value="c" /> /etc/procctl.conf</li>
+            <li><input type="radio" name="q7" value="d" /> /etc/sysctl.conf</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q7',
+                'd',
+                'O arquivo /etc/sysctl.conf serve para declarar de forma fixa parâmetros do subsistema de rede, memória e segurança que o kernel lerá e aplicará a cada boot.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q7-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao8" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q8</span> Listagem Geral de Processos
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-eye"></i> Quais das alternativas apresentam combinações de comandos válidas para inspecionar de forma ampla a
+            totalidade dos processos rodando no sistema?
+          </div>
+          <div class="options" id="q8-options">
+            <li><input type="radio" name="q8" value="a" /> ps e pstree padrão</li>
+            <li><input type="radio" name="q8" value="b" /> ps aux e ps -ef</li>
+            <li><input type="radio" name="q8" value="c" /> ps --local e ps -A</li>
+            <li><input type="radio" name="q8" value="d" /> top -static e lscpu</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q8',
+                'b',
+                'Tanto o modificador BSD &quot;aux&quot; quanto a sintaxe UNIX &quot;-ef&quot; instruem o comando ps a extrair e listar os processos de todos os usuários do sistema.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q8-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao9" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q9</span> Logging Daemon do systemd
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-book"></i> O daemon de gerenciamento de logs nativo e padrão nas distribuições modernas baseadas no framework
+            <code>systemd</code> chama-se:
+          </div>
+          <div class="options" id="q9-options">
+            <li><input type="radio" name="q9" value="a" /> journald</li>
+            <li><input type="radio" name="q9" value="b" /> klogd</li>
+            <li><input type="radio" name="q9" value="c" /> rsyslogd</li>
+            <li><input type="radio" name="q9" value="d" /> syslogd</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q9',
+                'a',
+                'O systemd utiliza o sub-serviço journald (systemd-journald) para gerenciar o log unificado e de alta performance da máquina.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q9-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao10" class="section">
+        <h2 class="section-title"><i class="fas fa-question-circle"></i> <span class="section-number">Q10</span> A Base do FHS</h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-sitemap"></i> Qual caractere representa o diretório que atua como a raiz absoluta de todo o sistema de arquivos
+            padrão (FHS) no Linux?
+          </div>
+          <div class="options" id="q10-options">
+            <li><input type="radio" name="q10" value="a" /> /root</li>
+            <li><input type="radio" name="q10" value="b" /> /home</li>
+            <li><input type="radio" name="q10" value="c" /> /</li>
+            <li><input type="radio" name="q10" value="d" /> ~</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q10',
+                'c',
+                'A barra simples (/) representa a raíz (root filesystem) onde toda a árvore hierárquica e demais unidades de armazenamento começam e são montadas.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q10-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <details class="answer-key">
+        <summary><i class="fas fa-key"></i> 📋 Gabarito - Módulo 13</summary>
+        <div style="margin-top: 1rem">
+          <p><strong>Q1:</strong> Verdadeiro</p>
+          <p><strong>Q2:</strong> /sys e /proc</p>
+          <p><strong>Q3:</strong> Verdadeiro</p>
+          <p><strong>Q4:</strong> /var/log/secure</p>
+          <p><strong>Q5:</strong> Falso</p>
+          <p><strong>Q6:</strong> /proc/cmdline</p>
+          <p><strong>Q7:</strong> /etc/sysctl.conf</p>
+          <p><strong>Q8:</strong> ps aux e ps -ef</p>
+          <p><strong>Q9:</strong> journald</p>
+          <p><strong>Q10:</strong> /</p>
+        </div>
+      </details>
+    </div>
+
+    <footer
+      style="
+        padding: 40px 0;
+        text-align: center;
+        border-top: 1px solid var(--border);
+        margin-top: 60px;
+        color: var(--text-dim);
+        font-size: 0.85rem;
+      "
+    >
+      <p><i class="fab fa-linux"></i> NDG Linux Essentials – Banco de Questões com Justificativas</p>
+      <p style="font-size: 0.8rem; margin-top: 0.5rem">Módulo 13: Onde os Dados são Armazenados | 10 questões</p>
+    </footer>
+
+    <script>
+      function checkAnswer(questionId, correctValue, justification) {
+        const selected = document.querySelector(`input[name="${questionId}"]:checked`)
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`)
+
+        if (!selected) {
+          feedbackDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Selecione uma resposta primeiro!'
+          feedbackDiv.className = 'feedback incorrect'
+          return
+        }
+
+        if (selected.value === correctValue) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback correct'
+        } else {
+          const correctElement = document.querySelector(`input[name="${questionId}"][value="${correctValue}"]`)
+          const correctText = correctElement ? correctElement.closest('li').innerText : correctValue
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-book-open"></i> A resposta correta é: <strong>${correctText}</strong><br><br><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback incorrect'
+        }
+      }
+    </script>
+    <script src="../js/menu.js"></script>
+  </body>
+</html>
