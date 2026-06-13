@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>NDG Linux Essentials | Módulo 14 - Configuração de Rede (Questões)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/questoes.css" />
+  </head>
+  <body>
+    <div class="top-bar">
+      <button class="menu-toggle" id="openMenu">
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+      </button>
+      <a href="../index.html" class="top-bar-brand"> <i class="fab fa-linux"></i> NDG Linux Essentials </a>
+      <a href="../index.html" class="btn-outline"> <i class="fas fa-home"></i> Voltar </a>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-compass"></i> Navegação - Questões</h3>
+        <button class="close-sidebar" id="closeMenu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="nav-modules">
+        <li>
+          <a href="#questao1"><i class="fas fa-question-circle"></i> Questão 1 - Definição de Host</a>
+        </li>
+        <li>
+          <a href="#questao2"><i class="fas fa-question-circle"></i> Questão 2 - O que é um Serviço?</a>
+        </li>
+        <li>
+          <a href="#questao3"><i class="fas fa-question-circle"></i> Questão 3 - Anatomia do Pacote</a>
+        </li>
+        <li>
+          <a href="#questao4"><i class="fas fa-question-circle"></i> Questão 4 - Uso de Hostnames</a>
+        </li>
+        <li>
+          <a href="#questao5"><i class="fas fa-question-circle"></i> Questão 5 - Validação de IPv4</a>
+        </li>
+        <li>
+          <a href="#questao6"><i class="fas fa-question-circle"></i> Questão 6 - Exibição de IP</a>
+        </li>
+        <li>
+          <a href="#questao7"><i class="fas fa-question-circle"></i> Questão 7 - Tabela de Roteamento</a>
+        </li>
+        <li>
+          <a href="#questao8"><i class="fas fa-question-circle"></i> Questão 8 - Acesso Remoto</a>
+        </li>
+        <li>
+          <a href="#questao9"><i class="fas fa-question-circle"></i> Questão 9 - Reinício Global de Rede</a>
+        </li>
+        <li>
+          <a href="#questao10"><i class="fas fa-question-circle"></i> Questão 10 - Estatísticas de Sockets</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <section class="hero" style="background: linear-gradient(135deg, #6f42c1 0%, #4b2c85 100%)">
+      <div class="container">
+        <div class="badge-lab" style="background: rgba(255, 255, 255, 0.15); color: #fff">
+          <i class="fas fa-graduation-cap"></i> NDG Linux Essentials | Banco de Questões
+        </div>
+        <h1>Exame do Módulo 14</h1>
+        <p>
+          Network Configuration - Teste seus conhecimentos sobre conceitos de redes, endereçamento, roteamento e comandos de diagnóstico
+        </p>
+        <div style="margin-top: 1.5rem">
+          <i class="fas fa-network-wired" style="color: #fff; font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-route" style="color: #fff; font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-server" style="color: #fff; font-size: 1.5rem; margin: 0 0.5rem"></i>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <section id="questao1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q1</span> Definição de Host
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-laptop"></i> Qual das seguintes opções seria considerada um host em uma infraestrutura de rede?
+          </div>
+          <div class="options" id="q1-options">
+            <li><input type="radio" name="q1" value="a" /> Um cabo de rede física (par trançado/fibra)</li>
+            <li><input type="radio" name="q1" value="b" /> Uma mídia de CD-ROM do sistema</li>
+            <li><input type="radio" name="q1" value="c" /> O disco rígido interno de um computador</li>
+            <li><input type="radio" name="q1" value="d" /> Uma impressora conectada à rede por meio de um endereço IP</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q1',
+                'd',
+                'Em redes de computadores, um host é qualquer dispositivo final capaz de emitir, receber e processar dados de comunicação de rede. Uma impressora de rede com IP próprio atua como host, enquanto cabos e discos são apenas componentes físicos ou periféricos.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q1-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q2</span> O que é um Serviço?
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-concierge-bell"></i> Um serviço (service) no contexto de redes é definido como:</div>
+          <div class="options" id="q2-options">
+            <li><input type="radio" name="q2" value="a" /> Um nome alternativo para o hostname de um computador</li>
+            <li><input type="radio" name="q2" value="b" /> Uma funcionalidade ou recurso fornecido por um computador a outro</li>
+            <li><input type="radio" name="q2" value="c" /> Um arquivo de texto puro que armazena informações de parametrização local</li>
+            <li><input type="radio" name="q2" value="d" /> Um identificador numérico idêntico ao endereço IP</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q2',
+                'b',
+                'Dentro da arquitetura cliente/servidor, um serviço é o recurso lógico especializado disponibilizado por um servidor para consumo dos clientes conectados (por exemplo, hospedar páginas via HTTP ou gerenciar tabelas de bancos de dados).'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q2-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q3</span> Anatomia do Pacote de Rede
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-box"></i> Um pacote de rede encapsulado contém obrigatoriamente quais das seguintes informações em seu
+            cabeçalho estrutural? (escolha duas)
+          </div>
+          <div class="options" id="q3-options">
+            <li><input type="checkbox" name="q3" value="a" /> Uma tabela com o particionamento do disco rígido local</li>
+            <li><input type="checkbox" name="q3" value="b" /> O nome textual atribuído ao roteador de borda</li>
+            <li><input type="checkbox" name="q3" value="c" /> O endereço IP da máquina de destino</li>
+            <li><input type="checkbox" name="q3" value="d" /> O endereço IP da máquina de origem (remetente)</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q3',
+                ['c', 'd'],
+                'Para que o tráfego de dados ocorra de forma bidirecional e eficiente, cada pacote de rede precisa carregar o endereço do host de destino (para onde o dado vai) e o endereço de retorno/origem (quem enviou), permitindo que os roteadores guiem o pacote e o destino saiba para onde responder.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q3-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q4</span> Uso de Hostnames
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-id-card"></i> Apenas servidores possuem ou utilizam nomes de host (hostnames) em uma rede de computadores.
+          </div>
+          <div class="options" id="q4-options">
+            <li><input type="radio" name="q4" value="a" /> Verdadeiro</li>
+            <li><input type="radio" name="q4" value="b" /> Falso</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q4',
+                'b',
+                'Falso. Qualquer máquina participante de uma rede de dados (seja um servidor, uma estação de trabalho cliente, uma impressora ou um smartphone) pode e deve receber um nome de host (hostname) amigável para simplificar o mapeamento e a identificação por seres humanos.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q4-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao5" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q5</span> Validação de Endereços IPv4
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-fingerprint"></i> Quais das alternativas abaixo apresentam estruturas válidas de endereços no padrão IPv4?
+            (escolha duas)
+          </div>
+          <div class="options" id="q5-options">
+            <li><input type="checkbox" name="q5" value="a" /> 192.105.10.10</li>
+            <li><input type="checkbox" name="q5" value="b" /> 192.301.25.25</li>
+            <li><input type="checkbox" name="q5" value="c" /> 192.105.10.10.2</li>
+            <li><input type="checkbox" name="q5" value="d" /> 10.33.55.77</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q5',
+                ['a', 'd'],
+                'Um endereço IPv4 válido é composto estritamente por quatro octetos separados por pontos (32 bits no total). O valor de cada bloco numérico deve pertencer estritamente à faixa de 0 a 255. O número 301 excede o teto de 8 bits, e a opção com cinco blocos viola o tamanho estrutural do protocolo.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q5-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao6" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q6</span> Exibição do Endereço IP
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-terminal"></i> Qual dos seguintes comandos clássicos é utilizado para exibir e inspecionar os endereços IPs
+            configurados nas interfaces de rede de um sistema Linux?
+          </div>
+          <div class="options" id="q6-options">
+            <li><input type="radio" name="q6" value="a" /> ifconfig</li>
+            <li><input type="radio" name="q6" value="b" /> route</li>
+            <li><input type="radio" name="q6" value="c" /> dig</li>
+            <li><input type="radio" name="q6" value="d" /> ipconfig</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q6',
+                'a',
+                'O comando clássico do Linux para interrogar, parametrizar e exibir o IP e as flags operacionais das interfaces de rede do sistema é o ifconfig (ou ip addr em ambientes mais recentes). Nota: o utilitário ipconfig pertence estritamente ao ecossistema Microsoft Windows.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q6-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao7" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q7</span> Exibição da Tabela de Roteamento
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-route"></i> Quais dos seguintes comandos do console podem ser invocados pelo administrador para imprimir e
+            inspecionar a tabela de rotas do kernel? (escolha duas)
+          </div>
+          <div class="options" id="q7-options">
+            <li><input type="checkbox" name="q7" value="a" /> netstat -r</li>
+            <li><input type="checkbox" name="q7" value="b" /> ifconfig</li>
+            <li><input type="checkbox" name="q7" value="c" /> route</li>
+            <li><input type="checkbox" name="q7" value="d" /> dig</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q7',
+                ['a', 'c'],
+                'As regras de encaminhamento de tráfego externo (tabela de rotas do IP) podem ser verificadas por meio do comando focado route ou passando o modificador de roteamento no comando global de estatísticas de conexões, utilizando netstat -r.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q7-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao8" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q8</span> Administração e Acesso Remoto
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-door-open"></i> Qual comando permite estabelecer uma sessão de terminal criptografada para logar e executar
+            tarefas de administração em um servidor Linux remoto através da rede?
+          </div>
+          <div class="options" id="q8-options">
+            <li><input type="radio" name="q8" value="a" /> dig</li>
+            <li><input type="radio" name="q8" value="b" /> netstat</li>
+            <li><input type="radio" name="q8" value="c" /> ssh</li>
+            <li><input type="radio" name="q8" value="d" /> route</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q8',
+                'c',
+                'O utilitário ssh (Secure Shell) substituiu os antigos protocolos inseguros de texto puro (como o Telnet) e atua como o padrão industrial absoluto para efetuar login, autenticação e controle remoto de sistemas operacionais Linux de forma totalmente cifrada.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q8-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao9" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q9</span> Impacto do Reinício Global de Rede
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-exclamation-triangle"></i> Ao executar a instrução de reinício amplo por meio do comando
+            <code>service network restart</code>, o que ocorre operacionalmente no host?
+          </div>
+          <div class="options" id="q9-options">
+            <li>
+              <input type="radio" name="q9" value="a" /> O sistema ativa de forma automática todas as interfaces, relê apenas os logs e
+              levanta o firewall nativo
+            </li>
+            <li>
+              <input type="radio" name="q9" value="b" /> O tráfego de rede da máquina é pausado temporariamente por 30 segundos e depois
+              reativado de onde parou
+            </li>
+            <li>
+              <input type="radio" name="q9" value="c" /> O comando desativa e derruba todas as interfaces de rede ativas, força a releitura
+              completa de todos os scripts de diretivas e reinicializa o subsistema de rede do host
+            </li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q9',
+                'c',
+                'O comando service network restart realiza um ciclo completo e agressivo: ele desativa sumariamente todas as placas e adaptadores de rede de uma vez, relê os arquivos de parametrização e reinicia o serviço global. Por essa razão, deve ser evitado em servidores de produção, pois interrompe conexões de outros administradores e causa quedas de serviços ativas.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q9-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao10" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q10</span> Estatísticas de Sockets
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-chart-pie"></i> Qual comando moderno do Linux foi projetado para extrair estatísticas de sockets diretamente do
+            kernel, possuindo suporte nativo a todos os principais tipos de conexões e pacotes?
+          </div>
+          <div class="options" id="q10-options">
+            <li><input type="radio" name="q10" value="a" /> ss</li>
+            <li><input type="radio" name="q10" value="b" /> top</li>
+            <li><input type="radio" name="q10" value="c" /> route</li>
+            <li><input type="radio" name="q10" value="d" /> ifconfig</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q10',
+                'a',
+                'O comando ss (Socket Statistics) é o substituto moderno oficial para o antigo netstat. Ele é capaz de interrogar diretamente o kernel sobre sockets TCP, UDP, RAW e UNIX com performance consideravelmente superior e riqueza de detalhes.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q10-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <details class="answer-key">
+        <summary><i class="fas fa-key"></i> 📋 Gabarito - Módulo 14</summary>
+        <div style="margin-top: 1rem">
+          <p><strong>Q1:</strong> Uma impressora conectada à rede por meio de um endereço IP</p>
+          <p><strong>Q2:</strong> Uma funcionalidade ou recurso fornecido por um computador a outro</p>
+          <p><strong>Q3:</strong> O endereço IP da máquina de destino; O endereço IP da máquina de origem (remetente)</p>
+          <p><strong>Q4:</strong> Falso</p>
+          <p><strong>Q5:</strong> 192.105.10.10; 10.33.55.77</p>
+          <p><strong>Q6:</strong> ifconfig</p>
+          <p><strong>Q7:</strong> netstat -r; route</p>
+          <p><strong>Q8:</strong> ssh</p>
+          <p>
+            <strong>Q9:</strong> O comando desativa e derruba todas as interfaces de rede ativas, força a releitura completa de todos os
+            scripts de diretivas e reinicializa o subsistema de rede do host
+          </p>
+          <p><strong>Q10:</strong> ss</p>
+        </div>
+      </details>
+    </div>
+
+    <footer>
+      <p><i class="fab fa-linux"></i> NDG Linux Essentials – Banco de Questões com Justificativas</p>
+      <p style="font-size: 0.8rem; margin-top: 0.5rem">Módulo 14: Network Configuration</p>
+    </footer>
+
+    <script>
+      function checkAnswer(questionId, correctValue, justification) {
+        const selected = document.querySelector(`input[name="${questionId}"]:checked`)
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`)
+
+        if (!selected) {
+          feedbackDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Selecione uma resposta primeiro!'
+          feedbackDiv.className = 'feedback incorrect'
+          return
+        }
+
+        if (selected.value === correctValue) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback correct'
+        } else {
+          const correctElement = document.querySelector(`input[name="${questionId}"][value="${correctValue}"]`)
+          const correctText = correctElement ? correctElement.closest('li').innerText : correctValue
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-book-open"></i> A resposta correta é: <strong>${correctText}</strong><br><br><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback incorrect'
+        }
+      }
+
+      function checkMultipleAnswer(questionId, correctValues, justification) {
+        const selected = document.querySelectorAll(`input[name="${questionId}"]:checked`)
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`)
+
+        if (selected.length === 0) {
+          feedbackDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Selecione pelo menos uma resposta!'
+          feedbackDiv.className = 'feedback incorrect'
+          return
+        }
+
+        const selectedValues = Array.from(selected).map((cb) => cb.value)
+        const isCorrect = correctValues.length === selectedValues.length && correctValues.every((val) => selectedValues.includes(val))
+
+        if (isCorrect) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback correct'
+        } else {
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-book-open"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback incorrect'
+        }
+      }
+    </script>
+
+    <script src="../js/menu.js"></script>
+  </body>
+</html>
