@@ -1,124 +1,79 @@
-/**
- * NDG Linux Essentials - Agente de IA Local (Pinguim IA)
- * Comunicação Segura via API Serverless
- */
-
 class NDGLinuxAgent {
   constructor() {
-    // Define o endpoint da API dependendo se você está rodando local ou na produção (Vercel)
-    this.apiEndpoint =
-      window.location.hostname === "localhost" ||
-      window.location.hostname === "127.0.0.1"
-        ? "http://localhost:3000/api/chat"
-        : "/api/chat";
+    if (window.__ndgAgentInitialized) {
+      return;
+    }
+    window.__ndgAgentInitialized = true;
 
-    this.modules = [
-      {
-        path: "/pages/modulo_1.html",
-        name: "Módulo 1",
-        title: "Introdução ao Linux",
-      },
-      {
-        path: "/pages/modulo_2.html",
-        name: "Módulo 2",
-        title: "Sistemas Operacionais",
-      },
-      {
-        path: "/pages/modulo_3.html",
-        name: "Módulo 3",
-        title: "Trabalhando em Linux",
-      },
-      {
-        path: "/pages/modulo_4.html",
-        name: "Módulo 4",
-        title: "Software de Código Aberto e Licenciamento",
-      },
-      {
-        path: "/pages/modulo_5.html",
-        name: "Módulo 5",
-        title: "Habilidades de Linha de Comando",
-      },
-      {
-        path: "/pages/modulo_6.html",
-        name: "Módulo 6",
-        title: "Obtendo Ajuda no Linux",
-      },
-      {
-        path: "/pages/modulo_7.html",
-        name: "Módulo 7",
-        title: "Navegando pelo Sistema de Arquivos",
-      },
-      {
-        path: "/pages/modulo_8.html",
-        name: "Módulo 8",
-        title: "Manipulando Arquivos e Diretórios",
-      },
-      {
-        path: "/pages/modulo_9.html",
-        name: "Módulo 9",
-        title: "Arquivamento e Compressão",
-      },
-      {
-        path: "/pages/modulo_10.html",
-        name: "Módulo 10",
-        title: "Trabalhando com Texto",
-      },
-    ];
+    this.apiEndpoint = "http://localhost:3000/api/chat";
+    this.isLoading = false;
 
     this.init();
   }
 
   init() {
-    this.injectStyles();
+    // this.injectStyles();
     this.injectHTML();
     this.bindEvents();
   }
 
   injectStyles() {
-    // Busca se o estilo já foi injetado para evitar duplicidade
     if (!document.querySelector("link[href*='agent.css']")) {
       const link = document.createElement("link");
       link.rel = "stylesheet";
-      // O "/" no início garante que ele busque a partir da raiz na Vercel ou Localhost
-      link.href = "/css/agent.css";
+      link.href = "./css/agent.css";
       document.head.appendChild(link);
     }
   }
 
   injectHTML() {
-    const chatHTML = `
+    if (document.getElementById("ndgAgentWidgetContainer")) {
+      return;
+    }
+
+    const container = document.createElement("div");
+    container.id = "ndgAgentWidgetContainer";
+
+    container.innerHTML = `
       <div id="ndgAgentToggle" class="ndg-agent-toggle">
         <i class="fas fa-robot"></i>
       </div>
 
-      <div id="ndgAgentWindow" class="ndg-agent-window ng-hidden">
+      <div id="ndgAgentWindow" class="ndg-agent-window">
         <div class="ndg-agent-header">
           <div class="ndg-agent-brand">
             <i class="fab fa-linux"></i>
             <div class="ndg-agent-brand-info">
               <h4>Pinguim IA</h4>
-              <span id="agentStatus" style="color: var(--primary)">Online - Protegido</span>
+              <span id="agentStatus">Online • Ollama</span>
             </div>
           </div>
-          <button id="ndgAgentClose" class="ndg-agent-close"><i class="fas fa-times"></i></button>
+          <button id="ndgAgentClose" class="ndg-agent-close">
+            <i class="fas fa-times"></i>
+          </button>
         </div>
-        
+
         <div id="ndgAgentMessages" class="ndg-agent-messages">
           <div class="ng-msg system">
-            🐧 Olá! Sou o <strong>Pinguim IA</strong>. Faça uma pergunta sobre o conteúdo dos módulos do curso e eu usarei o material local para formular uma resposta!
+            🐧 Olá! Sou o <strong>Pinguim IA</strong>.<br>
+            Faça perguntas sobre Linux Essentials.
           </div>
         </div>
 
         <div class="ndg-agent-input-zone">
-          <input type="text" id="ndgAgentInput" placeholder="Digite sua dúvida sobre Linux..." />
-          <button id="ndgAgentSend" class="ndg-agent-send-btn"><i class="fas fa-paper-plane"></i></button>
+          <input
+            type="text"
+            id="ndgAgentInput"
+            placeholder="Digite sua dúvida..."
+            autocomplete="off"
+          />
+          <button id="ndgAgentSend" class="ndg-agent-send-btn">
+            <i class="fas fa-paper-plane"></i>
+          </button>
         </div>
       </div>
     `;
 
-    const container = document.createElement("div");
-    container.id = "ndgAgentWidgetContainer";
-    container.innerHTML = chatHTML;
     document.body.appendChild(container);
   }
 
@@ -129,58 +84,117 @@ class NDGLinuxAgent {
     const inputField = document.getElementById("ndgAgentInput");
     const sendBtn = document.getElementById("ndgAgentSend");
 
-    toggleBtn.addEventListener("click", () =>
-      windowDiv.classList.remove("ng-hidden")
-    );
-    closeBtn.addEventListener("click", () =>
-      windowDiv.classList.add("ng-hidden")
-    );
+    // 🟢 AÇÃO DE ABRIR
+    toggleBtn.onclick = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      windowDiv.classList.add("ng-active");
+    };
 
-    sendBtn.addEventListener("click", () => this.handleUserInput());
-    inputField.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") this.handleUserInput();
-    });
+    // 🟢 AÇÃO DE FECHAR SIMPLES E DIRETA (SEM BARREIRAS ASSASSINAS)
+    closeBtn.onclick = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      windowDiv.classList.remove("ng-active");
+    };
+
+    // 🟢 CLIQUE FORA: Se clicar no fundo do site (fora do widget), não faz nada.
+    // Mas garante que cliques dentro do modal não se espalhem para a busca global
+    windowDiv.onclick = (e) => {
+      e.stopPropagation();
+    };
+
+    // Enviar no botão de papel de carta
+    sendBtn.onclick = (e) => {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      this.handleUserInput();
+    };
+
+    // Enviar ao pressionar Enter no teclado
+    inputField.onkeydown = (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        e.stopPropagation();
+        this.handleUserInput();
+      }
+    };
   }
 
   async handleUserInput() {
+    if (this.isLoading) {
+      return;
+    }
+
     const inputField = document.getElementById("ndgAgentInput");
+    const sendBtn = document.getElementById("ndgAgentSend");
+
+    if (!inputField || !sendBtn) return;
+
     const query = inputField.value.trim();
     if (!query) return;
 
+    this.isLoading = true;
+
+    inputField.disabled = true;
+    sendBtn.disabled = true;
     inputField.value = "";
+
     this.appendMessage(query, "user");
 
     const loadingId = this.appendMessage(
-      "🤖 Pinguim IA está analisando os arquivos locais...",
+      "🤖 Consultando o Pinguim IA...",
       "loading"
     );
 
-    // 1. Varre os módulos HTML locais para achar trechos com base na pergunta
-    const context = await this.buildLocalContext(query);
+    try {
+      const result = await this.askPinguim(query);
 
-    // 2. Dispara a requisição para o back-end seguro (/api/chat)
-    const result = await this.fetchGemini(query, context);
+      const loadingEl = document.getElementById(loadingId);
+      if (loadingEl) {
+        loadingEl.remove();
+      }
 
-    document.getElementById(loadingId)?.remove();
-
-    if (result.success) {
-      this.appendMessage(result.answer, "ai");
-    } else {
-      this.appendMessage(
-        `⚠️ Falha no processamento: ${result.error}`,
-        "system"
-      );
+      if (result.success) {
+        this.appendMessage(result.answer, "ai");
+      } else {
+        this.appendMessage(`⚠️ ${result.error}`, "system");
+      }
+    } catch (error) {
+      const loadingEl = document.getElementById(loadingId);
+      if (loadingEl) {
+        loadingEl.remove();
+      }
+      this.appendMessage(`⚠️ ${error.message}`, "system");
     }
+
+    // Aguarda 100ms para liberar os campos e devolver o foco com segurança
+    setTimeout(() => {
+      if (inputField && sendBtn) {
+        inputField.disabled = false;
+        sendBtn.disabled = false;
+
+        const windowDiv = document.getElementById("ndgAgentWindow");
+        if (windowDiv && windowDiv.classList.contains("ng-active")) {
+          inputField.focus();
+        }
+      }
+      this.isLoading = false;
+    }, 100);
   }
 
   appendMessage(text, type) {
     const msgArea = document.getElementById("ndgAgentMessages");
+    if (!msgArea) return null;
+
     const msgDiv = document.createElement("div");
-    const id = "msg_" + Math.random().toString(36).substr(2, 9);
+    const id = `msg_${Date.now()}`;
 
     msgDiv.id = id;
     msgDiv.className = `ng-msg ${type}`;
-    msgDiv.innerHTML = text.replace(/\n/g, "<br>");
+    msgDiv.innerHTML = String(text).replace(/\n/g, "<br>");
 
     msgArea.appendChild(msgDiv);
     msgArea.scrollTop = msgArea.scrollHeight;
@@ -188,64 +202,38 @@ class NDGLinuxAgent {
     return id;
   }
 
-  async buildLocalContext(userQuery) {
-    let contextChunks = [];
-    const keywords = userQuery
-      .toLowerCase()
-      .split(" ")
-      .filter((w) => w.length > 3);
-
-    for (const mod of this.modules) {
-      try {
-        const response = await fetch(mod.path);
-        if (!response.ok) continue;
-
-        const html = await response.text();
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, "text/html");
-        const elements = doc.querySelectorAll(
-          "section, p, .terminal pre, .alert, h2, h3, td"
-        );
-
-        elements.forEach((el) => {
-          const text = el.textContent.trim();
-          const hasKeyword = keywords.some((k) =>
-            text.toLowerCase().includes(k)
-          );
-          if (text.length > 15 && (hasKeyword || keywords.length === 0)) {
-            contextChunks.push(`[${mod.name}]: ${text}`);
-          }
-        });
-      } catch (e) {
-        console.warn("Erro ao indexar página local:", e);
-      }
-    }
-    return contextChunks.slice(0, 12).join("\n\n");
-  }
-
-  async fetchGemini(question, context) {
+  async askPinguim(question) {
     try {
       const response = await fetch(this.apiEndpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question, context }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ question }),
       });
 
       const data = await response.json();
-      if (data.success) {
-        return { success: true, answer: data.answer };
-      } else {
-        return { success: false, error: data.error || "Erro na requisição." };
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || "Falha ao consultar o servidor.");
       }
-    } catch (e) {
+
+      return {
+        success: true,
+        answer: data.answer,
+      };
+    } catch (error) {
+      console.error(error);
       return {
         success: false,
-        error: "Não foi possível conectar ao servidor do agente.",
+        error: error.message,
       };
     }
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  window.ndgLinuxAgent = new NDGLinuxAgent();
+  if (!window.ndgLinuxAgent) {
+    window.ndgLinuxAgent = new NDGLinuxAgent();
+  }
 });

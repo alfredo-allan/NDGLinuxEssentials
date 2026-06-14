@@ -62,6 +62,36 @@ class NDGLinuxSearch {
         name: "Módulo 12",
         title: "Hardware do Computador",
       },
+      {
+        path: "pages/modulo_13.html",
+        name: "Módulo 13",
+        title: "Sistema de Arquivos",
+      },
+      {
+        path: "pages/modulo_14.html",
+        name: "Módulo 14",
+        title: "Configuração de Rede",
+      },
+      {
+        path: "pages/modulo_15.html",
+        name: "Módulo 15",
+        title: "Contas de Usuários e Grupos",
+      },
+      {
+        path: "pages/modulo_16.html",
+        name: "Módulo 16",
+        title: "Criação de Usuários e Grupos",
+      },
+      {
+        path: "pages/modulo_17.html",
+        name: "Módulo 17",
+        title: "Propriedade e Permissões",
+      },
+      {
+        path: "pages/modulo_18.html",
+        name: "Módulo 18",
+        title: "Diretórios e Arquivos Especiais",
+      },
       // Adicione novos módulos aqui:
       // { path: "pages/modulo_11.html", name: "Módulo 11", title: "Título" },
     ];
@@ -83,7 +113,9 @@ class NDGLinuxSearch {
     }
 
     console.log("✅ Motor de busca iniciado!");
-    modulesCount.textContent = this.pages.length + " módulos";
+    if (modulesCount) {
+      modulesCount.textContent = this.pages.length + " módulos";
+    }
 
     searchInput.addEventListener("input", (e) => {
       clearTimeout(this.searchTimeout);
@@ -108,8 +140,13 @@ class NDGLinuxSearch {
       }, 500);
     });
 
+    // CORREÇÃO MÁXIMA: Garante isolamento total no keypress
     searchInput.addEventListener("keypress", (e) => {
       if (e.key === "Enter") {
+        // CORREÇÃO: Garante que o evento morra aqui dentro e não vaze para o Pinguim IA
+        e.preventDefault();
+        e.stopPropagation();
+
         clearTimeout(this.searchTimeout);
         const term = e.target.value.trim();
         if (term.length >= 2) {
