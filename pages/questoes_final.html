@@ -1,0 +1,1815 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>NDG Linux Essentials | Exame Compreensivo Final</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/questoes.css" />
+  </head>
+  <body>
+    <div class="top-bar">
+      <button class="menu-toggle" id="openMenu">
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+      </button>
+      <a href="../index.html" class="top-bar-brand"> <i class="fab fa-linux"></i> NDG Linux Essentials </a>
+      <a href="../index.html" class="btn-outline"> <i class="fas fa-home"></i> Voltar </a>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-compass"></i> Navegação - 50 Questões</h3>
+        <button class="close-sidebar" id="closeMenu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="nav-modules">
+        <li>
+          <a href="#questao1"><i class="fas fa-question-circle"></i> Q1 - Sistemas Embarcados</a>
+        </li>
+        <li>
+          <a href="#questao2"><i class="fas fa-question-circle"></i> Q2 - Plataforma Original do Linux</a>
+        </li>
+        <li>
+          <a href="#questao3"><i class="fas fa-question-circle"></i> Q3 - Componentes de uma Distribuição</a>
+        </li>
+        <li>
+          <a href="#questao4"><i class="fas fa-question-circle"></i> Q4 - Ciclo de Lançamento de Software</a>
+        </li>
+        <li>
+          <a href="#questao5"><i class="fas fa-question-circle"></i> Q5 - Atributos do Microsoft Windows</a>
+        </li>
+        <li>
+          <a href="#questao6"><i class="fas fa-question-circle"></i> Q6 - Linguagens Interpretadas</a>
+        </li>
+        <li>
+          <a href="#questao7"><i class="fas fa-question-circle"></i> Q7 - Arquitetura Host vs Guest</a>
+        </li>
+        <li>
+          <a href="#questao8"><i class="fas fa-question-circle"></i> Q8 - Conceito de Computação em Nuvem</a>
+        </li>
+        <li>
+          <a href="#questao9"><i class="fas fa-question-circle"></i> Q9 - Restrições de Acesso ao Código</a>
+        </li>
+        <li>
+          <a href="#questao10"><i class="fas fa-question-circle"></i> Q10 - Filosofia Central da FSF</a>
+        </li>
+        <li>
+          <a href="#questao11"><i class="fas fa-question-circle"></i> Q11 - Obras em Domínio Público</a>
+        </li>
+        <li>
+          <a href="#questao12"><i class="fas fa-question-circle"></i> Q12 - Operador de Ponto e Vírgula</a>
+        </li>
+        <li>
+          <a href="#questao13"><i class="fas fa-question-circle"></i> Q13 - Utilitário History</a>
+        </li>
+        <li>
+          <a href="#questao14"><i class="fas fa-question-circle"></i> Q14 - Tipo da Variável HOME</a>
+        </li>
+        <li>
+          <a href="#questao15"><i class="fas fa-question-circle"></i> Q15 - Navegação em Páginas Man</a>
+        </li>
+        <li>
+          <a href="#questao16"><i class="fas fa-question-circle"></i> Q16 - Acesso à Ajuda do Info</a>
+        </li>
+        <li>
+          <a href="#questao17"><i class="fas fa-question-circle"></i> Q17 - Busca Global no Sistema</a>
+        </li>
+        <li>
+          <a href="#questao18"><i class="fas fa-question-circle"></i> Q18 - Metacaractere de Arquivos Ocultos</a>
+        </li>
+        <li>
+          <a href="#questao19"><i class="fas fa-question-circle"></i> Q19 - Estrutura de Nível Superior</a>
+        </li>
+        <li>
+          <a href="#questao20"><i class="fas fa-question-circle"></i> Q20 - Comando ls Puro</a>
+        </li>
+        <li>
+          <a href="#questao21"><i class="fas fa-question-circle"></i> Q21 - Ordenação via Flags do ls</a>
+        </li>
+        <li>
+          <a href="#questao22"><i class="fas fa-question-circle"></i> Q22 - Sintaxe do Comando cp</a>
+        </li>
+        <li>
+          <a href="#questao23"><i class="fas fa-question-circle"></i> Q23 - Negação em Colchetes (Globbing)</a>
+        </li>
+        <li>
+          <a href="#questao24"><i class="fas fa-question-circle"></i> Q24 - Mecânica de Operação do gzip</a>
+        </li>
+        <li>
+          <a href="#questao25"><i class="fas fa-question-circle"></i> Q25 - Listar Conteúdo de Tarball</a>
+        </li>
+        <li>
+          <a href="#questao26"><i class="fas fa-question-circle"></i> Q26 - Comportamento Padrão do zip</a>
+        </li>
+        <li>
+          <a href="#questao27"><i class="fas fa-question-circle"></i> Q27 - Fluxo de Saída de Erro Padrão</a>
+        </li>
+        <li>
+          <a href="#questao28"><i class="fas fa-question-circle"></i> Q28 - Filtragem com Regex Estendida</a>
+        </li>
+        <li>
+          <a href="#questao29"><i class="fas fa-question-circle"></i> Q29 - Linha Interpretadora de Scripts</a>
+        </li>
+        <li>
+          <a href="#questao30"><i class="fas fa-question-circle"></i> Q30 - Padrões de Particionamento</a>
+        </li>
+        <li>
+          <a href="#questao31"><i class="fas fa-question-circle"></i> Q31 - Tradução de Hardware pelo Sistema</a>
+        </li>
+        <li>
+          <a href="#questao32"><i class="fas fa-question-circle"></i> Q32 - Suíte de Gerenciamento GPT</a>
+        </li>
+        <li>
+          <a href="#questao33"><i class="fas fa-question-circle"></i> Q33 - Parâmetros de Inicialização do Kernel</a>
+        </li>
+        <li>
+          <a href="#questao34"><i class="fas fa-question-circle"></i> Q34 - Ferramenta de Configuração de Rede</a>
+        </li>
+        <li>
+          <a href="#questao35"><i class="fas fa-question-circle"></i> Q35 - Estatísticas de Sockets de Rede</a>
+        </li>
+        <li>
+          <a href="#questao36"><i class="fas fa-question-circle"></i> Q36 - Mapeamento de Grupos de Usuário</a>
+        </li>
+        <li>
+          <a href="#questao37"><i class="fas fa-question-circle"></i> Q37 - Limitações de Sistemas UNIX Legados</a>
+        </li>
+        <li>
+          <a href="#questao38"><i class="fas fa-question-circle"></i> Q38 - Tempo Mínimo de Vida da Senha</a>
+        </li>
+        <li>
+          <a href="#questao39"><i class="fas fa-question-circle"></i> Q39 - Princípios de Execução do Sudo</a>
+        </li>
+        <li>
+          <a href="#questao40"><i class="fas fa-question-circle"></i> Q40 - Métricas de Sistema e Uptime</a>
+        </li>
+        <li>
+          <a href="#questao41"><i class="fas fa-question-circle"></i> Q41 - Gerenciamento de Grupos com Usermod</a>
+        </li>
+        <li>
+          <a href="#questao42"><i class="fas fa-question-circle"></i> Q42 - Escopo Administrativo do Groupmod</a>
+        </li>
+        <li>
+          <a href="#questao43"><i class="fas fa-question-circle"></i> Q43 - Arquivo de Mapeamento de Contas</a>
+        </li>
+        <li>
+          <a href="#questao44"><i class="fas fa-question-circle"></i> Q44 - Bloqueio Administrativo de Contas</a>
+        </li>
+        <li>
+          <a href="#questao45"><i class="fas fa-question-circle"></i> Q45 - Mapeamento de Pastas Pessoais</a>
+        </li>
+        <li>
+          <a href="#questao46"><i class="fas fa-question-circle"></i> Q46 - Estratégia de Alocação de IDs</a>
+        </li>
+        <li>
+          <a href="#questao47"><i class="fas fa-question-circle"></i> Q47 - Regras de Exclusão de Arquivos</a>
+        </li>
+        <li>
+          <a href="#questao48"><i class="fas fa-question-circle"></i> Q48 - Direitos de Mudança de Grupo</a>
+        </li>
+        <li>
+          <a href="#questao49"><i class="fas fa-question-circle"></i> Q49 - Listagem Longa e Completa</a>
+        </li>
+        <li>
+          <a href="#questao50"><i class="fas fa-question-circle"></i> Q50 - Criação de Links Rígidos</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <section class="hero">
+      <div class="container">
+        <div class="badge-lab"><i class="fas fa-graduation-cap"></i> NDG Linux Essentials | Simulado Completo</div>
+        <h1>Exame Compreensivo Final</h1>
+        <p>Banco de Questões Geral abrangendo arquitetura, rede, permissões, gerenciamento de usuários e armazenamento</p>
+        <div style="margin-top: 1.5rem">
+          <i class="fab fa-linux" style="color: var(--primary); font-size: 1.8rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-server" style="color: var(--primary); font-size: 1.8rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-shield-alt" style="color: var(--primary); font-size: 1.8rem; margin: 0 0.5rem"></i>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <section id="questao1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q1</span> Definição de Sistemas Embarcados
+        </h2>
+        <div class="question-card">
+          <div class="question-text">O termo "Sistemas Embarcados" (Embedded Systems) significa:</div>
+          <div class="options">
+            <li>
+              <input type="radio" name="q1" value="a" /> Sistemas operacionais projetados para executar bancos de dados genéricos em nuvem
+            </li>
+            <li>
+              <input type="radio" name="q1" value="b" /> Sistemas projetados para realizar uma tarefa específica em hardware otimizado
+              apenas para essa finalidade
+            </li>
+            <li><input type="radio" name="q1" value="c" /> Rotinas de firmware usadas para formatar partições de disco dinamicamente</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q1',
+                'b',
+                'Sistemas embarcados executam funções dedicadas sobre um hardware especificamente projetado e otimizado para aquela finalidade (ex: firmwares automotivos, TVs, roteadores).'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q1-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q2</span> Plataforma de Destino Original do Linux
+        </h2>
+        <div class="question-card">
+          <div class="question-text">Originalmente, o Linux funcionava apenas em:</div>
+          <div class="options">
+            <li><input type="radio" name="q2" value="a" /> Microcontroladores Motorola 68000</li>
+            <li><input type="radio" name="q2" value="b" /> PCs Intel 386</li>
+            <li><input type="radio" name="q2" value="c" /> Arquiteturas PowerPC Macintosh</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q2',
+                'b',
+                'Linus Torvalds desenvolveu o protótipo inicial do Linux visando especificamente os recursos de paginação e modo protegido do processador Intel 80386.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q2-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q3</span> O Conceito de uma Distribuição Linux
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            O agrupamento de utilitários, ferramentas de gerenciamento e softwares aplicativos junto ao Kernel Linux é chamado de:
+          </div>
+          <div class="options">
+            <li><input type="radio" name="q3" value="a" /> Extensão customizada do Kernel</li>
+            <li><input type="radio" name="q3" value="b" /> Uma distribuição Linux</li>
+            <li><input type="radio" name="q3" value="c" /> Imagem de sistema monolítica</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q3',
+                'b',
+                'Uma distribuição Linux une o Kernel com utilitários GNU, ferramentas de gerenciamento de espaço de usuário e gerenciadores de pacotes para o usuário final.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q3-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q4</span> Ciclo de Lançamento de Software
+        </h2>
+        <div class="question-card">
+          <div class="question-text">Um ciclo de lançamento de software (release cycle) descreve:</div>
+          <div class="options">
+            <li>
+              <input type="radio" name="q4" value="a" /> Com que frequência o hardware deve ser atualizado para suportar novos programas
+            </li>
+            <li>
+              <input type="radio" name="q4" value="b" /> Com que frequência um projeto de software lança novas versões, atualizações ou
+              patches de estabilidade
+            </li>
+            <li>
+              <input type="radio" name="q4" value="c" /> O tempo total necessário para compilar um componente de software a partir do
+              código-fonte
+            </li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q4',
+                'b',
+                'O ciclo de lançamento (Release Cycle) dita o ritmo e o cronograma com que novas atualizações estruturadas e patches são publicados por um projeto.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q4-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao5" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q5</span> Características do Microsoft Windows
+        </h2>
+        <div class="question-card">
+          <div class="question-text">Sobre o Microsoft Windows: (escolha três)</div>
+          <div class="options">
+            <li><input type="checkbox" name="q5" value="a" /> Possui um ambiente de scripts chamado PowerShell</li>
+            <li><input type="checkbox" name="q5" value="b" /> Oferece produtos tanto para desktop quanto para servidores</li>
+            <li><input type="checkbox" name="q5" value="c" /> Geralmente é retrocompatível com versões anteriores de software</li>
+            <li><input type="checkbox" name="q5" value="d" /> É fundamentalmente gerenciado sob licenças de código aberto</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q5',
+                ['a', 'b', 'c'],
+                'O Windows fornece a shell de automação PowerShell, possui edições Desktop e Server e preza fortemente pela retrocompatibilidade de softwares antigos (.exe).'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q5-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao6" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q6</span> Paradigmas de Linguagens Interpretadas
+        </h2>
+        <div class="question-card">
+          <div class="question-text">Uma linguagem de programação interpretada: (escolha duas)</div>
+          <div class="options">
+            <li>
+              <input type="checkbox" name="q6" value="a" /> É convertida em instruções específicas de máquina à medida que o programa é
+              executado
+            </li>
+            <li>
+              <input type="checkbox" name="q6" value="b" /> Tende a oferecer mais recursos ou maior flexibilidade abstrata de dados do que
+              linguagens compiladas
+            </li>
+            <li>
+              <input type="checkbox" name="q6" value="c" /> Requer compilação direta em binários ELF estáticos nativos antes da execução
+            </li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q6',
+                ['a', 'b'],
+                'Linguagens interpretadas são processadas em tempo de execução por um intermediário e oferecem alta abstração em comparação a binários de compilação estática (ex: Python).'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q6-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao7" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q7</span> Terminologia de Virtualização
+        </h2>
+        <div class="question-card">
+          <div class="question-text">Em virtualização, o que são o "host" e o "guest"? (escolha duas)</div>
+          <div class="options">
+            <li><input type="checkbox" name="q7" value="a" /> Um guest é uma máquina virtual</li>
+            <li><input type="checkbox" name="q7" value="b" /> Um host é a máquina física que executa o hypervisor</li>
+            <li><input type="checkbox" name="q7" value="c" /> Um host é uma máquina virtual</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q7',
+                ['a', 'b'],
+                'O Host (Hospedeiro) é o hardware físico real que roda o Hypervisor, enquanto os Guests (Convidados) são os sistemas operacionais virtualizados.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q7-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao8" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q8</span> Definição de Computação em Nuvem
+        </h2>
+        <div class="question-card">
+          <div class="question-text">Computação em nuvem (Cloud computing) é:</div>
+          <div class="options">
+            <li><input type="radio" name="q8" value="a" /> Alocação sob demanda de pools de recursos altamente escaláveis via rede</li>
+            <li><input type="radio" name="q8" value="b" /> Tarifação baseada no uso dinâmico de instâncias virtuais compartilhadas</li>
+            <li>
+              <input type="radio" name="q8" value="c" /> Provisionamento instantâneo de pilhas computacionais sem necessidade de engenharia
+              física manual
+            </li>
+            <li><input type="radio" name="q8" value="d" /> Todas as alternativas estão corretas</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q8',
+                'd',
+                'A computação em nuvem engloba o fornecimento sob demanda, elasticidade automática, pagamento proporcional ao uso e entrega de infraestrutura através da internet.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q8-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao9" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q9</span> Categorias de Acesso ao Código-Fonte
+        </h2>
+        <div class="question-card">
+          <div class="question-text">Uma licença onde você não tem acesso ao código-fonte é chamada de:</div>
+          <div class="options">
+            <li><input type="radio" name="q9" value="a" /> Licença Copyleft</li>
+            <li><input type="radio" name="q9" value="b" /> Código fechado (Closed source)</li>
+            <li><input type="radio" name="q9" value="c" /> Licença permissiva</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q9',
+                'b',
+                'Licenças de código fechado ou proprietárias ocultam as linhas de código originais, distribuindo aos usuários apenas os binários compilados executáveis.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q9-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao10" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q10</span> Ideais da Free Software Foundation
+        </h2>
+        <div class="question-card">
+          <div class="question-text">A Free Software Foundation (FSF) acredita que: (escolha duas)</div>
+          <div class="options">
+            <li><input type="checkbox" name="q10" value="a" /> O software deve ser livre para ser compartilhado</li>
+            <li><input type="checkbox" name="q10" value="b" /> O software deve ser livre para ser modificado</li>
+            <li><input type="checkbox" name="q10" value="c" /> Empresas comerciais não devem ter permissão para usar softwares livres</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q10',
+                ['a', 'b'],
+                'A FSF baseia suas diretrizes nas quatro liberdades essenciais: executar para qualquer propósito, estudar o código, modificar livremente e redistribuir cópias.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q10-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao11" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q11</span> Conceito Legal de Domínio Público
+        </h2>
+        <div class="question-card">
+          <div class="question-text">O que significa quando uma obra é colocada em domínio público?</div>
+          <div class="options">
+            <li><input type="radio" name="q11" value="a" /> O autor renunciou aos direitos autorais (copyright) sobre a obra</li>
+            <li><input type="radio" name="q11" value="b" /> O código do sistema é relicenciado sob diretrizes restritivas de copyleft</li>
+            <li>
+              <input type="radio" name="q11" value="c" /> Apenas instituições governamentais públicas têm permissão para utilizar o software
+            </li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q11',
+                'a',
+                'Obras em domínio público não possuem direitos autorais patrimoniais vigentes, permitindo livre cópia, alteração e exploração sem necessidade de pagamentos ou permissões.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q11-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao12" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q12</span> Execução Sequencial de Comandos no Shell
+        </h2>
+        <div class="question-card">
+          <div class="question-text">O ponto e vírgula (;) pode ser usado para separar múltiplos comandos a serem executados em ordem.</div>
+          <div class="options">
+            <li><input type="radio" name="q12" value="a" /> Verdadeiro (True)</li>
+            <li><input type="radio" name="q12" value="b" /> Falso (False)</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q12',
+                'a',
+                'O ponto e vírgula (`;`) atua como um separador sequencial simples. O shell executa o comando seguinte assim que o anterior terminar, ignorando se ele falhou ou funcionou.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q12-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao13" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q13</span> Registro de Comandos Executados
+        </h2>
+        <div class="question-card">
+          <div class="question-text">O comando _______ imprimirá uma lista dos comandos que você executou anteriormente.</div>
+          <div class="options">
+            <li><input type="radio" name="q13" value="a" /> logging</li>
+            <li><input type="radio" name="q13" value="b" /> history</li>
+            <li><input type="radio" name="q13" value="c" /> recall</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q13',
+                'b',
+                'O comando embutido `history` lê os comandos salvos na memória RAM da sessão atual e nos arquivos de histórico (como o `.bash_history`) e os exibe numerados.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q13-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao14" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q14</span> Contexto de Variáveis do Sistema
+        </h2>
+        <div class="question-card">
+          <div class="question-text">HOME é um exemplo de _________.</div>
+          <div class="options">
+            <li><input type="radio" name="q14" value="a" /> Uma variável de ambiente (environment variable)</li>
+            <li><input type="radio" name="q14" value="b" /> Um alias local temporário do shell</li>
+            <li><input type="radio" name="q14" value="c" /> Uma variável estática de configuração de boot do kernel</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q14',
+                'a',
+                '`HOME` é uma variável de ambiente global que armazena o caminho absoluto da pasta pessoal do usuário logado.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q14-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao15" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q15</span> Interatividade de Páginas de Manual (Man)
+        </h2>
+        <div class="question-card">
+          <div class="question-text">Para iniciar uma busca dentro de uma man page, a primeira tecla que você pressiona é:</div>
+          <div class="options">
+            <li><input type="radio" name="q15" value="a" /> s</li>
+            <li><input type="radio" name="q15" value="b" /> /</li>
+            <li><input type="radio" name="q15" value="c" /> Ctrl+F</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q15',
+                'b',
+                'O comando `man` envia o texto para o paginador `less`. Pressionar a barra (`/`) abre o campo de busca textual no rodapé do terminal.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q15-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao16" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q16</span> Comandos de Documentação do Info
+        </h2>
+        <div class="question-card">
+          <div class="question-text">Para obter ajuda sobre como usar o comando info, execute: (escolha duas)</div>
+          <div class="options">
+            <li><input type="checkbox" name="q16" value="a" /> man info</li>
+            <li><input type="checkbox" name="q16" value="b" /> info info</li>
+            <li><input type="checkbox" name="q16" value="c" /> help --info</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q16',
+                ['a', 'b'],
+                '`man info` abre a página clássica de manual, enquanto `info info` acessa os manuais estruturados em nós hipertextuais do próprio utilitário.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q16-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao17" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q17</span> Busca de Arquivos Baseada em Índice
+        </h2>
+        <div class="question-card">
+          <div class="question-text">O comando _____ pode ser usado para encontrar qualquer arquivo, não apenas comandos ou man pages.</div>
+          <div class="options">
+            <li><input type="radio" name="q17" value="a" /> which</li>
+            <li><input type="radio" name="q17" value="b" /> type</li>
+            <li><input type="radio" name="q17" value="c" /> locate</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q17',
+                'c',
+                'O comando `locate` varre um banco de dados de caminhos pré-indexado (`mlocate.db`), localizando arquivos instantaneamente sem precisar ler fisicamente as pastas do disco.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q17-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao18" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q18</span> Identificação de Arquivos Ocultos
+        </h2>
+        <div class="question-card">
+          <div class="question-text">Arquivos ocultos são arquivos que começam com qual caractere?</div>
+          <div class="options">
+            <li><input type="radio" name="q18" value="a" /> Um ponto (.)</li>
+            <li><input type="radio" name="q18" value="b" /> Um cifrão ($)</li>
+            <li><input type="radio" name="q18" value="c" /> Um hífen duplo (--)</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q18',
+                'a',
+                'No Linux, arquivos e diretórios cujos nomes iniciam com um ponto final (`.`) tornam-se ocultos automaticamente, sendo omitidos em listagens normais do `ls`.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q18-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao19" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q19</span> Diretório de Nível Superior do Sistema
+        </h2>
+        <div class="question-card">
+          <div class="question-text">O diretório de nível superior (raiz) em um sistema Linux é representado como:</div>
+          <div class="options">
+            <li><input type="radio" name="q19" value="a" /> /root</li>
+            <li><input type="radio" name="q19" value="b" /> /</li>
+            <li><input type="radio" name="q19" value="c" /> /home</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q19',
+                'b',
+                'Conforme o padrão FHS, a barra comum (`/`) representa a raiz do sistema de arquivos, a base absoluta de toda a estrutura de diretórios.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q19-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao20" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q20</span> Comportamento do Comando ls sem Argumentos
+        </h2>
+        <div class="question-card">
+          <div class="question-text">O comando ls sem opções ou argumentos...</div>
+          <div class="options">
+            <li><input type="radio" name="q20" value="a" /> ...lista o conteúdo do diretório atual de trabalho.</li>
+            <li><input type="radio" name="q20" value="b" /> ...exibe detalhes completos do hardware dos blocos conectados.</li>
+            <li><input type="radio" name="q20" value="c" /> ...retorna um erro exigindo a especificação de uma pasta.</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q20',
+                'a',
+                'Quando disparado de forma crua, o utilitário `ls` assume o diretório de trabalho atual (`.`) como alvo da listagem.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q20-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao21" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q21</span> Opções de Ordenação no ls
+        </h2>
+        <div class="question-card">
+          <div class="question-text">O comando ls -S ordenará os arquivos:</div>
+          <div class="options">
+            <li><input type="radio" name="q21" value="a" /> Pelo número de links simbólicos, do maior para o menor</li>
+            <li><input type="radio" name="q21" value="b" /> Pelo tamanho do arquivo, do maior para o menor</li>
+            <li><input type="radio" name="q21" value="c" /> Pela data de modificação dos metadados</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q21',
+                'b',
+                'A flag `-S` (S maiúsculo) do comando `ls` altera o critério de ordenação padrão para basear-se estritamente no tamanho dos arquivos em bytes.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q21-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao22" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q22</span> Requisitos de Replicação de Arquivos
+        </h2>
+        <div class="question-card">
+          <div class="question-text">Ao usar o comando cp, você deve fornecer obrigatoriamente uma origem e um destino.</div>
+          <div class="options">
+            <li><input type="radio" name="q22" value="a" /> Verdadeiro (True)</li>
+            <li><input type="radio" name="q22" value="b" /> Falso (False)</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q22',
+                'a',
+                'O comando `cp` (copy) requer por definição sintática ao menos dois caminhos lógicos: o arquivo ou pasta que será copiado (origem) e o local de destino.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q22-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao23" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q23</span> Negação de Padrões via Expressão Globbing
+        </h2>
+        <div class="question-card">
+          <div class="question-text">Qual comando listará os arquivos que NÃO começam com as letras T ou W?</div>
+          <div class="options">
+            <li><input type="radio" name="q23" value="a" /> echo /etc/!TW</li>
+            <li><input type="radio" name="q23" value="b" /> echo /etc/[!TW]*</li>
+            <li><input type="radio" name="q23" value="c" /> ls --exclude=TW /etc</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q23',
+                'b',
+                'Na expansão de padrões do shell (globbing), o uso de uma exclamação `!` logo após a abertura dos colchetes nega os caracteres especificados naquele conjunto.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q23-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao24" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q24</span> Mecânica de Operação do Gzip
+        </h2>
+        <div class="question-card">
+          <div class="question-text">Você digita o comando gzip myfile.tar. O que acontece? (escolha duas)</div>
+          <div class="options">
+            <li><input type="checkbox" name="q24" value="a" /> O arquivo original myfile.tar é removido</li>
+            <li>
+              <input type="checkbox" name="q24" value="b" /> O arquivo myfile.tar.gz passa a guardar a versão compactada de myfile.tar
+            </li>
+            <li><input type="checkbox" name="q24" value="c" /> O arquivo é comprimido, mantendo a cópia original não compactada intacta</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q24',
+                ['a', 'b'],
+                'O comportamento nativo do utilitário `gzip` é descartar o arquivo de origem não compactado assim que o equivalente compactado de terminação `.gz` é gerado.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q24-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao25" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q25</span> Diagnóstico e Inspeção de Arquivos Tarball
+        </h2>
+        <div class="question-card">
+          <div class="question-text">Qual comando mostrará o que está dentro de um arquivo empacotado e compactado chamado foo.tar.gz?</div>
+          <div class="options">
+            <li><input type="radio" name="q25" value="a" /> tar –czf foo.tar.gz</li>
+            <li><input type="radio" name="q25" value="b" /> tar –tzf foo.tar.gz</li>
+            <li><input type="radio" name="q25" value="c" /> tar –xzf foo.tar.gz</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q25',
+                'b',
+                'A flag `-t` (list) instrui o utilitário `tar` a listar o índice de arquivos contidos no pacote sem extraí-los, enquanto `-z` trata a descompressão gzip em memória.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q25-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao26" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q26</span> Comportamento Padrão de Modificação do Zip
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            Por padrão, o comando zip substitui os arquivos não compactados originais pelos arquivos compactados.
+          </div>
+          <div class="options">
+            <li><input type="radio" name="q26" value="a" /> Verdadeiro (True)</li>
+            <li><input type="radio" name="q26" value="b" /> Falso (False)</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q26',
+                'b',
+                'Ao contrário do `gzip` e `bzip2`, o comando `zip` cria um arquivo `.zip` separado e preserva os arquivos de origem intactos na pasta.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q26-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao27" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q27</span> Redirecionamento e Canais de Saída
+        </h2>
+        <div class="question-card">
+          <div class="question-text">Mensagens de erro geradas por comandos são enviadas para onde por padrão?</div>
+          <div class="options">
+            <li><input type="radio" name="q27" value="a" /> STDOUT</li>
+            <li><input type="radio" name="q27" value="b" /> STDERR</li>
+            <li><input type="radio" name="q27" value="c" /> STDIN</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q27',
+                'b',
+                'O padrão POSIX separa os fluxos de saída. Mensagens de sucesso vão para o STDOUT (1) e mensagens de erro vão para o canal STDERR (2).'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q27-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao28" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q28</span> Filtragem com Expressões Regulares
+        </h2>
+        <div class="question-card">
+          <div class="question-text">Qual dos seguintes comandos exibirá linhas que contêm a palavra "start" ou a palavra "end"?</div>
+          <div class="options">
+            <li><input type="radio" name="q28" value="a" /> grep 'start|end' file.txt</li>
+            <li><input type="radio" name="q28" value="b" /> egrep 'start|end' file.txt</li>
+            <li><input type="radio" name="q28" value="c" /> fgrep 'start or end' file.txt</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q28',
+                'b',
+                'O caractere pipe `|` funciona como o operador lógico alternativo `OU` em Expressões Regulares Estendidas (ERE). O comando `egrep` ativa esse suporte nativamente.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q28-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao29" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q29</span> Interpretação da Linha Shebang
+        </h2>
+        <div class="question-card">
+          <div class="question-text">Um arquivo começa com a linha #!/bin/csh. Isso significa que:</div>
+          <div class="options">
+            <li><input type="radio" name="q29" value="a" /> O arquivo é um certificado criptografado de segurança de hash</li>
+            <li>
+              <input type="radio" name="q29" value="b" /> A execução do script invocará o interpretador /bin/csh para processar o restante
+              do arquivo
+            </li>
+            <li><input type="radio" name="q29" value="c" /> Esta linha restringe a execução do arquivo apenas ao usuário root</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q29',
+                'b',
+                'A sequência de cabeçalho `#!` (Shebang) indica ao Kernel do sistema operacional qual binário interpretador deve ser chamado para ler e rodar as instruções daquele script.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q29-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao30" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q30</span> Padrões de Particionamento de Blocos
+        </h2>
+        <div class="question-card">
+          <div class="question-text">Quais das seguintes alternativas são tipos válidos de particionamento? (escolha duas)</div>
+          <div class="options">
+            <li><input type="checkbox" name="q30" value="a" /> BIOS</li>
+            <li><input type="checkbox" name="q30" value="b" /> MBR</li>
+            <li><input type="checkbox" name="q30" value="c" /> PC</li>
+            <li><input type="checkbox" name="q30" value="d" /> GPT</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q30',
+                ['b', 'd'],
+                'MBR (Master Boot Record) e GPT (GUID Partition Table) são os dois modelos principais de estruturação e indexação de tabelas de partições em discos.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q30-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao31" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q31</span> Tradução de Interfaces de Hardware
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            O software que permite que os dispositivos de hardware se comuniquem com o sistema operacional instalado é chamado de?
+          </div>
+          <div class="options">
+            <li><input type="radio" name="q31" value="a" /> Pacotes (Packages)</li>
+            <li><input type="radio" name="q31" value="b" /> Drivers (Controladores)</li>
+            <li><input type="radio" name="q31" value="c" /> Programas (Programs)</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q31',
+                'b',
+                'Drivers atuam diretamente como tradutores entre o Kernel do sistema operacional e as portas elétricas/circuitos de um hardware físico específico.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q31-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao32" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q32</span> Ferramentas de Verificação de Tabelas GPT
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            Quais dos seguintes comandos são usados para verificar partições GPT de um disco rígido? (escolha três)
+          </div>
+          <div class="options">
+            <li><input type="checkbox" name="q32" value="a" /> gdisk</li>
+            <li><input type="checkbox" name="q32" value="b" /> sfdisk</li>
+            <li><input type="checkbox" name="q32" value="c" /> cgdisk</li>
+            <li><input type="checkbox" name="q32" value="d" /> sgdisk</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q32',
+                ['a', 'c', 'd'],
+                'gdisk (interativo por menus), cgdisk (interativo por ncurses) e sgdisk (via linha de comando direta) compõem a suíte padrão para gerenciamento de GPT.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q32-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao33" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q33</span> Parâmetros de Inicialização do Kernel
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            Qual arquivo contém as informações e strings de argumentos passadas ao kernel no momento da inicialização (boot)?
+          </div>
+          <div class="options">
+            <li><input type="radio" name="q33" value="a" /> /proc/kargs</li>
+            <li><input type="radio" name="q33" value="b" /> /proc/cmdline</li>
+            <li><input type="radio" name="q33" value="c" /> /proc/kernel</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q33',
+                'b',
+                'O arquivo virtual `/proc/cmdline` expõe em formato de texto os parâmetros exatos que o gerenciador de boot (como o GRUB) enviou para o Kernel iniciar.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q33-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao34" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q34</span> Visualização de Configurações de Rede
+        </h2>
+        <div class="question-card">
+          <div class="question-text">Qual dos seguintes comandos exibirá o endereço IP em um sistema Linux?</div>
+          <div class="options">
+            <li><input type="radio" name="q34" value="a" /> route</li>
+            <li><input type="radio" name="q34" value="b" /> ifconfig</li>
+            <li><input type="radio" name="q34" value="c" /> dig</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q34',
+                'b',
+                'Historicamente, o comando `ifconfig` é a ferramenta utilizada para listar e configurar os endereços IPv4/IPv6 de placas de rede locais.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q34-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao35" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q35</span> Telemetria de Conexões e Sockets
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            Qual comando pode ser usado para exibir estatísticas de sockets, suportando todos os principais tipos de pacotes e conexões?
+          </div>
+          <div class="options">
+            <li><input type="radio" name="q35" value="a" /> top</li>
+            <li><input type="radio" name="q35" value="b" /> route</li>
+            <li><input type="radio" name="q35" value="c" /> ss</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q35',
+                'c',
+                'O comando `ss` (socket statistics) extrai métricas detalhadas diretamente das estruturas de conexões TCP, UDP e UNIX internas do Kernel.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q35-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao36" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q36</span> Auditoria de Identidades e Grupos
+        </h2>
+        <div class="question-card">
+          <div class="question-text">Qual dos seguintes comandos exibirá os grupos aos quais o usuário "bob" pertence?</div>
+          <div class="options">
+            <li><input type="radio" name="q36" value="a" /> group bob</li>
+            <li><input type="radio" name="q36" value="b" /> id bob</li>
+            <li><input type="radio" name="q36" value="c" /> groups -a</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q36',
+                'b',
+                'O utilitário `id` consulta a base do sistema e retorna o identificador numérico de usuário (UID), o grupo primário (GID) e todos os grupos secundários na mesma linha.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q36-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao37" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q37</span> Limitações Históricas de Sistemas UNIX
+        </h2>
+        <div class="question-card">
+          <div class="question-text">Os sistemas UNIX tradicionais antigos permitiam que os usuários pertencessem a quantos grupos?</div>
+          <div class="options">
+            <li><input type="radio" name="q37" value="a" /> 16</li>
+            <li><input type="radio" name="q37" value="b" /> 1</li>
+            <li><input type="radio" name="q37" value="c" /> 256</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q37',
+                'b',
+                'Na arquitetura de segurança do UNIX tradicional, as contas eram atreladas de forma rígida a apenas **1** único grupo (o primário). Grupos adicionais foram adicionados posteriormente.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q37-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao38" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q38</span> Validação de Políticas de Envelhecimento de Senhas
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            O valor 0 no campo de idade "mínima" da senha (password aging) significa que o usuário está impedido de alterar sua própria
+            senha.
+          </div>
+          <div class="options">
+            <li><input type="radio" name="q38" value="a" /> Verdadeiro (True)</li>
+            <li><input type="radio" name="q38" value="b" /> Falso (False)</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q38',
+                'b',
+                'O valor `0` no campo correspondente do arquivo `/etc/shadow` significa que não há restrição de espera por dias, permitindo que a senha seja alterada a qualquer momento.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q38-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao39" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q39</span> Escopo de Delegação de Privilégios
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            Os privilégios do comando sudo permitem que os usuários executem tarefas como se fossem outro usuário do sistema.
+          </div>
+          <div class="options">
+            <li><input type="radio" name="q39" value="a" /> Verdadeiro (True)</li>
+            <li><input type="radio" name="q39" value="b" /> Falso (False)</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q39',
+                'a',
+                'O `sudo` (*superuser do*) permite delegar direitos para rodar programas com os privilégios do administrador `root` ou de qualquer outro usuário definido no arquivo sudoers.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q39-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao40" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q40</span> Métricas de Tempo de Atividade e Sessão
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            A primeira linha da saída deste comando exibe há quanto tempo o sistema está funcionando de forma contínua desde o último
+            reboot.
+          </div>
+          <div class="options">
+            <li><input type="radio" name="q40" value="a" /> who</li>
+            <li><input type="radio" name="q40" value="b" /> w</li>
+            <li><input type="radio" name="q40" value="c" /> getent</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q40',
+                'b',
+                'A linha de cabeçalho impressa pelo utilitário `w` puxa os dados de *uptime* do sistema, relatando os dias e horas operacionais da máquina.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q40-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao41" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q41</span> Modificadores de Grupo do Usermod
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            Quais opções do comando usermod podem ser usadas para especificar o ID de grupo de um usuário (seja primário ou secundário)?
+            (escolha duas)
+          </div>
+          <div class="options">
+            <li><input type="checkbox" name="q41" value="a" /> -g</li>
+            <li><input type="checkbox" name="q41" value="b" /> -G</li>
+            <li><input type="checkbox" name="q41" value="c" /> -s</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q41',
+                ['a', 'b'],
+                'No comando `usermod`, o caractere `-g` minúsculo altera o grupo primário da conta, enquanto a flag `-G` maiúscula define os grupos suplementares.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q41-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao42" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q42</span> Escopo de Alteração com Groupmod
+        </h2>
+        <div class="question-card">
+          <div class="question-text">O comando groupmod pode ser utilizado para adicionar novos usuários a um grupo específico.</div>
+          <div class="options">
+            <li><input type="radio" name="q42" value="a" /> Verdadeiro (True)</li>
+            <li><input type="radio" name="q42" value="b" /> Falso (False)</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q42',
+                'b',
+                'O comando `groupmod` gerencia estritamente as propriedades do próprio grupo (como mudar o nome ou o GID numérico), não lidando com inclusão de membros.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q42-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao43" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q43</span> Bases de Dados de Identidade do Linux
+        </h2>
+        <div class="question-card">
+          <div class="question-text">Qual dos seguintes arquivos contém o mapeamento dos IDs numéricos dos usuários (UIDs)?</div>
+          <div class="options">
+            <li><input type="radio" name="q43" value="a" /> /etc/shadow</li>
+            <li><input type="radio" name="q43" value="b" /> /etc/passwd</li>
+            <li><input type="radio" name="q43" value="c" /> /etc/group</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q43',
+                'b',
+                'O arquivo `/etc/passwd` concentra os dados públicos das identidades do sistema, posicionando o número do UID estritamente no seu terceiro campo de registro.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q43-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao44" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q44</span> Bloqueio de Acesso Administrativo
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            Qual dos seguintes comandos, executado como root, impedirá o usuário "bob" de efetuar login no sistema?
+          </div>
+          <div class="options">
+            <li><input type="radio" name="q44" value="a" /> usermod -l bob</li>
+            <li><input type="radio" name="q44" value="b" /> usermod -L bob</li>
+            <li><input type="radio" name="q44" value="c" /> usermod -d bob</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q44',
+                'b',
+                'A flag `-L` (*Lock*) insere um sinal de exclamação no início da senha criptografada do usuário dentro do arquivo `/etc/shadow`, inviabilizando qualquer autenticação baseada em senha.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q44-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao45" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q45</span> Hierarquia de Pastas Pessoais de Usuários
+        </h2>
+        <div class="question-card">
+          <div class="question-text">Qual diretório concentra os diretórios pessoais (home) dos usuários comuns do sistema?</div>
+          <div class="options">
+            <li><input type="radio" name="q45" value="a" /> /user</li>
+            <li><input type="radio" name="q45" value="b" /> /home</li>
+            <li><input type="radio" name="q45" value="c" /> /rootfs</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q45',
+                'b',
+                'O padrão FHS dita que a árvore `/home` deve abrigar as pastas particulares dos usuários comuns do sistema (ex: `/home/bob`).'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q45-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao46" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q46</span> Estratégia de Alocação de IDs de Sistema
+        </h2>
+        <div class="question-card">
+          <div class="question-text">GIDs numéricos abaixo de 500 (ou 1000) são comumente reservados para qual tipo de grupo?</div>
+          <div class="options">
+            <li><input type="radio" name="q46" value="a" /> Uso exclusivo do sistema (System use)</li>
+            <li><input type="radio" name="q46" value="b" /> Administradores globais</li>
+            <li><input type="radio" name="q46" value="c" /> Grupos privados de usuários (UPG)</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q46',
+                'a',
+                'A faixa inicial de identificadores de 1 a 499 (ou 999) é reservada por convenção para serviços, daemons e contas de segundo plano nativas do sistema operacional.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q46-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao47" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q47</span> Regras de Exclusão e Permissões de Arquivos
+        </h2>
+        <div class="question-card">
+          <div class="question-text">Um usuário não pode deletar um arquivo se ele não for o proprietário (dono) do mesmo.</div>
+          <div class="options">
+            <li><input type="radio" name="q47" value="a" /> Verdadeiro (True)</li>
+            <li><input type="radio" name="q47" value="b" /> Falso (False)</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q47',
+                'b',
+                'A exclusão de arquivos depende estritamente das permissões de escrita (`w`) presentes no **diretório pai** onde o arquivo está guardado, e não das permissões do próprio arquivo.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q47-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao48" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q48</span> Privilégios de Atribuição de Grupo Proprietário
+        </h2>
+        <div class="question-card">
+          <div class="question-text">O comando chown permite que apenas o usuário root altere o grupo proprietário de um arquivo.</div>
+          <div class="options">
+            <li><input type="radio" name="q48" value="a" /> Verdadeiro (True)</li>
+            <li><input type="radio" name="q48" value="b" /> Falso (False)</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q48',
+                'b',
+                'Um usuário comum tem permissão para alterar o grupo de arquivos dos quais ele seja o dono, desde que os transfira para um grupo secundário do qual ele também faça parte ativa.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q48-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao49" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q49</span> Operações Avançadas de Listagem
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            Qual dos seguintes comandos listará os arquivos ocultos, bem como as suas respectivas informações de propriedade e donos?
+          </div>
+          <div class="options">
+            <li><input type="radio" name="q49" value="a" /> ls -l</li>
+            <li><input type="radio" name="q49" value="b" /> ls -la</li>
+            <li><input type="radio" name="q49" value="c" /> ls -a</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q49',
+                'b',
+                'A flag `-a` (all) força a amostragem dos arquivos ocultos iniciados por ponto e a opção `-l` ativa o formato de exibição detalhado (long format).'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q49-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao50" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i> <span class="section-number">Q50</span> Sintaxe de Construção de Links Rígidos
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            Qual dos seguintes comandos criará um link rígido (hard link) ligando o codinome "link" ao arquivo existente "file"?
+          </div>
+          <div class="options">
+            <li><input type="radio" name="q50" value="a" /> ln link file</li>
+            <li><input type="radio" name="q50" value="b" /> ln file link</li>
+            <li><input type="radio" name="q50" value="c" /> ln -s file link</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q50',
+                'b',
+                'O comando `ln` sem flags gera Hard Links apontando para o mesmo número de Inode. A sintaxe padrão exige apontar a origem existente primeiro e o nome do atalho por último.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q50-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <details class="answer-key">
+        <summary><i class="fas fa-key"></i> 📋 Gabarito Oficial - Final Comprehensive Exam (50 Questões)</summary>
+        <div style="margin-top: 1rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.5rem">
+          <div>
+            <p><strong>Q1:</strong> Hardware Otimizado</p>
+          </div>
+          <div>
+            <p><strong>Q2:</strong> PCs Intel 386</p>
+          </div>
+          <div>
+            <p><strong>Q3:</strong> Uma distribuição Linux</p>
+          </div>
+          <div>
+            <p><strong>Q4:</strong> Frequência de Versões</p>
+          </div>
+          <div>
+            <p><strong>Q5:</strong> PowerShell / Server / Retro</p>
+          </div>
+          <div>
+            <p><strong>Q6:</strong> Tempo Real / Abstração</p>
+          </div>
+          <div>
+            <p><strong>Q7:</strong> Guest VM / Host Físico</p>
+          </div>
+          <div>
+            <p><strong>Q8:</strong> Todas as Alternativas</p>
+          </div>
+          <div>
+            <p><strong>Q9:</strong> Código Fechado</p>
+          </div>
+          <div>
+            <p><strong>Q10:</strong> Compartilhar / Modificar</p>
+          </div>
+          <div>
+            <p><strong>Q11:</strong> Direitos Renunciados</p>
+          </div>
+          <div>
+            <p><strong>Q12:</strong> Verdadeiro</p>
+          </div>
+          <div>
+            <p><strong>Q13:</strong> history</p>
+          </div>
+          <div>
+            <p><strong>Q14:</strong> Variável de Ambiente</p>
+          </div>
+          <div>
+            <p><strong>Q15:</strong> /</p>
+          </div>
+          <div>
+            <p><strong>Q16:</strong> man info / info info</p>
+          </div>
+          <div>
+            <p><strong>Q17:</strong> locate</p>
+          </div>
+          <div>
+            <p><strong>Q18:</strong> Um ponto (.)</p>
+          </div>
+          <div>
+            <p><strong>Q19:</strong> /</p>
+          </div>
+          <div>
+            <p><strong>Q20:</strong> Lista diretório atual</p>
+          </div>
+          <div>
+            <p><strong>Q21:</strong> Ordenação por tamanho</p>
+          </div>
+          <div>
+            <p><strong>Q22:</strong> Verdadeiro</p>
+          </div>
+          <div>
+            <p><strong>Q23:</strong> echo /etc/[!TW]*</p>
+          </div>
+          <div>
+            <p><strong>Q24:</strong> Origem removida / Criação .gz</p>
+          </div>
+          <div>
+            <p><strong>Q25:</strong> tar –tzf foo.tar.gz</p>
+          </div>
+          <div>
+            <p><strong>Q26:</strong> Falso</p>
+          </div>
+          <div>
+            <p><strong>Q27:</strong> STDERR</p>
+          </div>
+          <div>
+            <p><strong>Q28:</strong> egrep 'start|end' file.txt</p>
+          </div>
+          <div>
+            <p><strong>Q29:</strong> Invocação do interpretador</p>
+          </div>
+          <div>
+            <p><strong>Q30:</strong> MBR / GPT</p>
+          </div>
+          <div>
+            <p><strong>Q31:</strong> Drivers (Controladores)</p>
+          </div>
+          <div>
+            <p><strong>Q32:</strong> gdisk / cgdisk / sgdisk</p>
+          </div>
+          <div>
+            <p><strong>Q33:</strong> /proc/cmdline</p>
+          </div>
+          <div>
+            <p><strong>Q34:</strong> ifconfig</p>
+          </div>
+          <div>
+            <p><strong>Q35:</strong> ss</p>
+          </div>
+          <div>
+            <p><strong>Q36:</strong> id bob</p>
+          </div>
+          <div>
+            <p><strong>Q37:</strong> 1</p>
+          </div>
+          <div>
+            <p><strong>Q38:</strong> Falso</p>
+          </div>
+          <div>
+            <p><strong>Q39:</strong> Verdadeiro</p>
+          </div>
+          <div>
+            <p><strong>Q40:</strong> w</p>
+          </div>
+          <div>
+            <p><strong>Q41:</strong> -g / -G</p>
+          </div>
+          <div>
+            <p><strong>Q42:</strong> Falso</p>
+          </div>
+          <div>
+            <p><strong>Q43:</strong> /etc/passwd</p>
+          </div>
+          <div>
+            <p><strong>Q44:</strong> usermod -L bob</p>
+          </div>
+          <div>
+            <p><strong>Q45:</strong> /home</p>
+          </div>
+          <div>
+            <p><strong>Q46:</strong> Uso do sistema (System use)</p>
+          </div>
+          <div>
+            <p><strong>Q47:</strong> Falso</p>
+          </div>
+          <div>
+            <p><strong>Q48:</strong> Falso</p>
+          </div>
+          <div>
+            <p><strong>Q49:</strong> ls -la</p>
+          </div>
+          <div>
+            <p><strong>Q50:</strong> ln file link</p>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <footer>
+      <p><i class="fab fa-linux"></i> NDG Linux Essentials – Simulado Completo de Questões para Revisão Geral</p>
+      <p style="font-size: 0.8rem; margin-top: 0.5rem">Edição de Engenharia de Sistemas Corporativos – 2026</p>
+    </footer>
+
+    <script>
+      // Validador de questões de escolha única (Radio)
+      function checkAnswer(questionId, correctValue, justification) {
+        const selected = document.querySelector(`input[name="${questionId}"]:checked`)
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`)
+
+        if (!selected) {
+          feedbackDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Selecione uma alternativa para validar!'
+          feedbackDiv.className = 'feedback incorrect'
+          return
+        }
+
+        if (selected.value === correctValue) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback correct'
+        } else {
+          const correctElement = document.querySelector(`input[name="${questionId}"][value="${correctValue}"]`)
+          const correctText = correctElement ? correctElement.closest('li').innerText : correctValue
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-book-open"></i> A resposta correta é: <strong>${correctText}</strong><br><br><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback incorrect'
+        }
+      }
+
+      // Validador de questões de múltipla escolha (Checkbox)
+      function checkMultipleAnswer(questionId, correctValues, justification) {
+        const selected = document.querySelectorAll(`input[name="${questionId}"]:checked`)
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`)
+
+        if (selected.length === 0) {
+          feedbackDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Selecione pelo menos uma alternativa de resposta!'
+          feedbackDiv.className = 'feedback incorrect'
+          return
+        }
+
+        const selectedValues = Array.from(selected).map((cb) => cb.value)
+        const isCorrect = correctValues.length === selectedValues.length && correctValues.every((val) => selectedValues.includes(val))
+
+        if (isCorrect) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback correct'
+        } else {
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-book-open"></i> Verifique atentamente todos os requisitos técnicos descritos na questão.<br><br><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback incorrect'
+        }
+      }
+    </script>
+
+    <script src="../js/menu.js"></script>
+  </body>
+</html>
