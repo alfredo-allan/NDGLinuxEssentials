@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>NDG Linux Essentials | Módulo 17 - Propriedade e Permissões</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/questoes.css" />
+  </head>
+  <body>
+    <div class="top-bar">
+      <button class="menu-toggle" id="openMenu">
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+      </button>
+      <a href="../index.html" class="top-bar-brand"> <i class="fab fa-linux"></i> NDG Linux Essentials </a>
+      <a href="../index.html" class="btn-outline"> <i class="fas fa-home"></i> Voltar </a>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-compass"></i> Navegação - Questões</h3>
+        <button class="close-sidebar" id="closeMenu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="nav-modules">
+        <li>
+          <a href="#questao1"><i class="fas fa-question-circle"></i> Questão 1 - Métodos do chmod</a>
+        </li>
+        <li>
+          <a href="#questao2"><i class="fas fa-question-circle"></i> Questão 2 - Permissões em Diretório</a>
+        </li>
+        <li>
+          <a href="#questao3"><i class="fas fa-question-circle"></i> Questão 3 - Exclusão de Arquivo</a>
+        </li>
+        <li>
+          <a href="#questao4"><i class="fas fa-question-circle"></i> Questão 4 - Bit de Execução</a>
+        </li>
+        <li>
+          <a href="#questao5"><i class="fas fa-question-circle"></i> Questão 5 - Uso do chmod</a>
+        </li>
+        <li>
+          <a href="#questao6"><i class="fas fa-question-circle"></i> Questão 6 - Execução Padrão</a>
+        </li>
+        <li>
+          <a href="#questao7"><i class="fas fa-question-circle"></i> Questão 7 - Sintaxe do chown</a>
+        </li>
+        <li>
+          <a href="#questao8"><i class="fas fa-question-circle"></i> Questão 8 - chown e Grupo</a>
+        </li>
+        <li>
+          <a href="#questao9"><i class="fas fa-question-circle"></i> Questão 9 - Prioridade de Dono</a>
+        </li>
+        <li>
+          <a href="#questao10"><i class="fas fa-question-circle"></i> Questão 10 - Arquivos Ocultos</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <section class="hero">
+      <div class="container">
+        <div class="badge-lab"><i class="fas fa-graduation-cap"></i> NDG Linux Essentials | Banco de Questões</div>
+        <h1>Exame do Módulo 17</h1>
+        <p>File Ownership and Permissions - Teste seus conhecimentos sobre donos, grupos, chmod, chown e umask</p>
+        <div style="margin-top: 1.5rem">
+          <i class="fab fa-linux" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-user-shield" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-key" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <section id="questao1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q1</span> Métodos do comando chmod
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-hammer"></i> Quais das seguintes alternativas representam métodos válidos para a configuração e modificação de
+            permissões através do comando <code>chmod</code>? (escolha duas)
+          </div>
+          <div class="options" id="q1-options">
+            <li><input type="checkbox" name="q1" value="a" /> primary</li>
+            <li><input type="checkbox" name="q1" value="b" /> octal</li>
+            <li><input type="checkbox" name="q1" value="c" /> symbolic</li>
+            <li><input type="checkbox" name="q1" value="d" /> letter</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q1',
+                ['b', 'c'],
+                'O comando chmod aceita duas abordagens metodológicas para gerenciar os bits de acesso: a técnica simbólica (symbolic), utilizando combinações de letras e operadores (ex: g+w), e a técnica numérica ou octal (octal), baseada na somatória com pesos binários de 0 a 7.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q1-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q2</span> Permissões Máximas em Diretório
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-folder-open"></i> Qual das seguintes configurações de permissão octal permitiria que absolutamente todos os
+            usuários do sistema criassem, visualizassem e deletassem arquivos dentro de um diretório específico?
+          </div>
+          <div class="options" id="q2-options">
+            <li><input type="radio" name="q2" value="a" /> 777</li>
+            <li><input type="radio" name="q2" value="b" /> 775</li>
+            <li><input type="radio" name="q2" value="c" /> 666</li>
+            <li><input type="radio" name="q2" value="d" /> 750</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q2',
+                'a',
+                'Para gerenciar arquivos em um diretório (criar e deletar), é obrigatório o bit de escrita (w) e o de execução (x) na pasta. Para visualizar a listagem, exige-se leitura (r). A somatória r+w+x equivale a 7. Como o direito deve se estender a todos (dono, grupo e outros), a máscara correta é 777.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q2-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q3</span> Exclusão de Arquivos e Propriedade
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-trash-alt"></i> Um usuário comum está categoricamente impedido de deletar um arquivo do sistema caso ele não
+            seja o proprietário (dono) legítimo desse arquivo.
+          </div>
+          <div class="options" id="q3-options">
+            <li><input type="radio" name="q3" value="true" /> Verdadeiro</li>
+            <li><input type="radio" name="q3" value="false" /> Falso</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q3',
+                'false',
+                'Falso. No Linux, a capacidade de remover ou desvincular um arquivo depende estritamente das permissões de escrita (w) e execução (x) configuradas sobre o diretório pai que o abriga, e não dos bits de permissão gravados nos metadados do arquivo em si.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q3-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q4</span> Propósito do Bit de Execução
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-play-circle"></i> A atribuição da permissão de execução (<code>x</code>) sobre um arquivo regular confere ao
+            usuário o direito de:
+          </div>
+          <div class="options" id="q4-options">
+            <li><input type="radio" name="q4" value="a" /> Rodar o arquivo como um script ou processo binário</li>
+            <li><input type="radio" name="q4" value="b" /> Mover o arquivo para um novo diretório</li>
+            <li><input type="radio" name="q4" value="c" /> Deletar o arquivo</li>
+            <li>
+              <input type="radio" name="q4" value="d" /> Nenhuma das alternativas; essa permissão não possui significado para arquivos de
+              texto
+            </li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q4',
+                'a',
+                'Em arquivos comuns, o bit x (execute) sinaliza ao kernel que o arquivo possui propriedades estruturais para ser mapeado em memória e interpretado/executado como um programa, processo ou script executável do shell.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q4-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao5" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q5</span> Restrições de Uso do comando chmod
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-user-lock"></i> O comando <code>chmod</code> pode ser operado em um arquivo por:</div>
+          <div class="options" id="q5-options">
+            <li><input type="radio" name="q5" value="a" /> O proprietário do arquivo e o usuário root</li>
+            <li><input type="radio" name="q5" value="b" /> Apenas pelo proprietário do arquivo</li>
+            <li><input type="radio" name="q5" value="c" /> Apenas pelo usuário root</li>
+            <li><input type="radio" name="q5" value="d" /> Qualquer usuário que pertença ao grupo proprietário do arquivo</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q5',
+                'a',
+                'Por diretrizes de segurança de integridade dos metadados, apenas duas entidades possuem privilégios de redefinir os modos de acesso de um objeto: o próprio usuário criador/proprietário do arquivo (owner) ou o superusuário administrador administrativo (root).'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q5-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao6" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q6</span> Herança de Execução e umask
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-shield-alt"></i> A permissão de execução nunca é atribuída a arquivos de forma automática por padrão no momento
+            de sua criação.
+          </div>
+          <div class="options" id="q6-options">
+            <li><input type="radio" name="q6" value="true" /> Verdadeiro</li>
+            <li><input type="radio" name="q6" value="false" /> Falso</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q6',
+                'true',
+                'Verdadeiro. No Linux, a permissão máxima base de partida para a criação de novos arquivos comuns é 666 (rw-rw-rw-). O bit de execução x (1) é omitido deliberadamente por proteção contra a execução nativa de códigos e scripts maliciosos.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q6-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao7" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q7</span> Sintaxe Completa do chown
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-user-edit"></i> Quais dos seguintes comandos <code>chown</code> alterarão simultaneamente o usuário
+            proprietário do arquivo <i>myFile</i> para <b>sam</b> e o grupo proprietário para <b>administrators</b>? (escolha duas)
+          </div>
+          <div class="options" id="q7-options">
+            <li><input type="checkbox" name="q7" value="a" /> chown sam.administrators myFile</li>
+            <li><input type="checkbox" name="q7" value="b" /> chown sam+administrators myFile</li>
+            <li><input type="checkbox" name="q7" value="c" /> chown sam administrators myFile</li>
+            <li><input type="checkbox" name="q7" value="d" /> chown sam:administrators myFile</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q7',
+                ['a', 'd'],
+                'O comando chown aceita o caractere de dois-pontos (:) ou o ponto (.) como delimitadores válidos para realizar a transferência casada de propriedades de usuário e grupo em uma mesma linha de instrução.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q7-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao8" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q8</span> Gerenciamento de Grupo com chown
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-users-cog"></i> O comando <code>chown</code> permite a alteração de grupo proprietário de um arquivo
+            exclusivamente quando executado pelo usuário root.
+          </div>
+          <div class="options" id="q8-options">
+            <li><input type="radio" name="q8" value="true" /> Verdadeiro</li>
+            <li><input type="radio" name="q8" value="false" /> Falso</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q8',
+                'false',
+                'Falso. Embora a mudança de usuário proprietário exija credenciais administrativas de root, a alteração estrita do grupo proprietário de um objeto pode ser feita por um usuário comum, desde que ele seja o atual dono do arquivo e o grupo de destino seja um grupo secundário ao qual ele pertença.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q8-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao9" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q9</span> Hierarquia e Precedência de Classes
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-sort-amount-down"></i> O usuário proprietário de um arquivo sempre possuirá um nível de permissão igual ou
+            superior ao atribuído à classe "others".
+          </div>
+          <div class="options" id="q9-options">
+            <li><input type="radio" name="q9" value="true" /> Verdadeiro</li>
+            <li><input type="radio" name="q9" value="false" /> Falso</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q9',
+                'false',
+                'Falso. Como visto no Cenário #6 (prioridade de permissões), se o dono do arquivo for configurado com bits zerados (ex: ----rw-rwx), o kernel interrompe a checagem no bloco do dono e aplica o bloqueio total, fazendo com que ele tenha menos acesso que a classe others.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q9-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao10" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q10</span> Arquivos Ocultos e Propriedades
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-eye-slash"></i> Qual dos seguintes comandos listará os arquivos ocultos de um diretório juntamente com suas
+            informações detalhadas de propriedade?
+          </div>
+          <div class="options" id="q10-options">
+            <li><input type="radio" name="q10" value="a" /> ls -z</li>
+            <li><input type="radio" name="q10" value="b" /> ls -l</li>
+            <li><input type="radio" name="q10" value="c" /> ls -la</li>
+            <li><input type="radio" name="q10" value="d" /> ls -a</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q10',
+                'c',
+                'A opção -a ativa a exibição de todas as entradas do diretório (incluindo arquivos ocultos iniciados por ponto), enquanto a opção -l ativa o formato longo, exibindo os metadados textuais de propriedade de usuário, grupo dono e tamanho.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q10-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <details class="answer-key">
+        <summary><i class="fas fa-key"></i> 📋 Gabarito - Módulo 17</summary>
+        <div style="margin-top: 1rem">
+          <p><strong>Q1:</strong> octal; symbolic</p>
+          <p><strong>Q2:</strong> 777</p>
+          <p><strong>Q3:</strong> Falso</p>
+          <p><strong>Q4:</strong> Rodar o arquivo como um script ou processo binário</p>
+          <p><strong>Q5:</strong> O proprietário do arquivo e o usuário root</p>
+          <p><strong>Q6:</strong> Verdadeiro</p>
+          <p><strong>Q7:</strong> chown sam.administrators myFile; chown sam:administrators myFile</p>
+          <p><strong>Q8:</strong> Falso</p>
+          <p><strong>Q9:</strong> Falso</p>
+          <p><strong>Q10:</strong> ls -la</p>
+        </div>
+      </details>
+    </div>
+
+    <footer>
+      <p><i class="fab fa-linux"></i> NDG Linux Essentials – Banco de Questões com Justificativas</p>
+      <p style="font-size: 0.8rem; margin-top: 0.5rem">Módulo 17: File Ownership and Permissions</p>
+    </footer>
+
+    <script>
+      function checkAnswer(questionId, correctValue, justification) {
+        const selected = document.querySelector(`input[name="${questionId}"]:checked`)
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`)
+
+        if (!selected) {
+          feedbackDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Selecione uma resposta primeiro!'
+          feedbackDiv.className = 'feedback incorrect'
+          return
+        }
+
+        if (selected.value === correctValue) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback correct'
+        } else {
+          const correctElement = document.querySelector(`input[name="${questionId}"][value="${correctValue}"]`)
+          const correctText = correctElement ? correctElement.closest('li').innerText : correctValue
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-book-open"></i> A resposta correta é: <strong>${correctText}</strong><br><br><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback incorrect'
+        }
+      }
+
+      function checkMultipleAnswer(questionId, correctValues, justification) {
+        const selected = document.querySelectorAll(`input[name="${questionId}"]:checked`)
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`)
+
+        if (selected.length === 0) {
+          feedbackDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Selecione pelo menos uma resposta!'
+          feedbackDiv.className = 'feedback incorrect'
+          return
+        }
+
+        const selectedValues = Array.from(selected).map((cb) => cb.value)
+        const isCorrect = correctValues.length === selectedValues.length && correctValues.every((val) => selectedValues.includes(val))
+
+        if (isCorrect) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback correct'
+        } else {
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-book-open"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback incorrect'
+        }
+      }
+    </script>
+
+    <script src="../js/menu.js"></script>
+  </body>
+</html>

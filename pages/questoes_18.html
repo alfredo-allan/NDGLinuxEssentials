@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>NDG Linux Essentials | Módulo 18 - Diretórios e Arquivos Especiais</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/questoes.css" />
+  </head>
+  <body>
+    <div class="top-bar">
+      <button class="menu-toggle" id="openMenu">
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+      </button>
+      <a href="../index.html" class="top-bar-brand"> <i class="fab fa-linux"></i> NDG Linux Essentials </a>
+      <a href="../index.html" class="btn-outline"> <i class="fas fa-home"></i> Voltar </a>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-compass"></i> Navegação - Questões</h3>
+        <button class="close-sidebar" id="closeMenu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="nav-modules">
+        <li>
+          <a href="#questao1"><i class="fas fa-question-circle"></i> Questão 1 - Sticky Bit</a>
+        </li>
+        <li>
+          <a href="#questao2"><i class="fas fa-question-circle"></i> Questão 2 - SetUID</a>
+        </li>
+        <li>
+          <a href="#questao3"><i class="fas fa-question-circle"></i> Questão 3 - chmod 4755</a>
+        </li>
+        <li>
+          <a href="#questao4"><i class="fas fa-question-circle"></i> Questão 4 - SetGID (Múltipla)</a>
+        </li>
+        <li>
+          <a href="#questao5"><i class="fas fa-question-circle"></i> Questão 5 - Listagem de SetGID</a>
+        </li>
+        <li>
+          <a href="#questao6"><i class="fas fa-question-circle"></i> Questão 6 - Hard Link e FS</a>
+        </li>
+        <li>
+          <a href="#questao7"><i class="fas fa-question-circle"></i> Questão 7 - Exclusão e Soft Link</a>
+        </li>
+        <li>
+          <a href="#questao8"><i class="fas fa-question-circle"></i> Questão 8 - Soft Link e FS</a>
+        </li>
+        <li>
+          <a href="#questao9"><i class="fas fa-question-circle"></i> Questão 9 - Criando Hard Link</a>
+        </li>
+        <li>
+          <a href="#questao10"><i class="fas fa-question-circle"></i> Questão 10 - Criando Soft Link</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <section class="hero">
+      <div class="container">
+        <div class="badge-lab"><i class="fas fa-graduation-cap"></i> NDG Linux Essentials | Banco de Questões</div>
+        <h1>Exame do Módulo 18</h1>
+        <p>Special Directories and Files - Teste seus conhecimentos sobre SetUID, SetGID, Sticky Bit e Links.</p>
+        <div style="margin-top: 1.5rem">
+          <i class="fas fa-thumbtack" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-user-secret" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-link" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <section id="questao1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q1</span> Propósito do Sticky Bit
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-thumbtack"></i> A permissão especial Sticky Bit...</div>
+          <div class="options" id="q1-options">
+            <li><input type="radio" name="q1" value="a" /> ...define o grupo proprietário de qualquer arquivo novo em um diretório.</li>
+            <li><input type="radio" name="q1" value="b" /> ...altera o grupo proprietário de arquivos existentes em um diretório.</li>
+            <li>
+              <input type="radio" name="q1" value="c" /> ...impede que outros usuários removam arquivos que não possuem de um diretório
+              comum.
+            </li>
+            <li>
+              <input type="radio" name="q1" value="d" /> ...impede que outros sobrescrevam arquivos que não possuem em diretórios comuns.
+            </li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q1',
+                'c',
+                'O Sticky Bit (visto na seção 18.4) é usado em diretórios compartilhados como o /tmp para garantir que apenas o dono do arquivo (ou o root) possa excluí-lo ou renomeá-lo, mesmo que outros usuários tenham permissão de escrita no diretório.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q1-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q2</span> O comportamento do SetUID
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-user-secret"></i> A permissão especial setuid...</div>
+          <div class="options" id="q2-options">
+            <li><input type="radio" name="q2" value="a" /> ...impede que o dono de um arquivo seja alterado.</li>
+            <li><input type="radio" name="q2" value="b" /> ...relata a saída de um script para o dono.</li>
+            <li>
+              <input type="radio" name="q2" value="c" /> ...permite que arquivos em um diretório sejam manipulados como se fosse o dono do
+              diretório.
+            </li>
+            <li>
+              <input type="radio" name="q2" value="d" /> ...permite que um comando seja executado com os privilégios do dono do arquivo.
+            </li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q2',
+                'd',
+                'Como visto na seção 18.2, o SetUID permite que um binário seja executado com a identidade e os privilégios do proprietário do arquivo, sendo comum em comandos como o passwd, que precisa acessar o /etc/shadow.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q2-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q3</span> Sintaxe Numérica do SetUID
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-hashtag"></i> Qual dos seguintes comandos definirá o bit SetUID para o arquivo <code>/usr/bin/program</code>?
+          </div>
+          <div class="options" id="q3-options">
+            <li><input type="radio" name="q3" value="a" /> chmod 4755 /usr/bin/program</li>
+            <li><input type="radio" name="q3" value="b" /> chmod 1755 /usr/bin/program</li>
+            <li><input type="radio" name="q3" value="c" /> Nenhuma das alternativas acima</li>
+            <li><input type="radio" name="q3" value="d" /> chmod 2755 /usr/bin/program</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q3',
+                'a',
+                'Na representação octal de quatro dígitos, o bit SetUID possui peso 4000, o SetGID possui peso 2000 e o Sticky Bit possui peso 1000. Portanto, 4755 ativa o SetUID (seção 18.2).'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q3-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q4</span> As funções do SetGID
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-users-shield"></i> Sobre a permissão setgid: (escolha duas)</div>
+          <div class="options" id="q4-options">
+            <li><input type="checkbox" name="q4" value="a" /> ...ela só pode ser definida em arquivos.</li>
+            <li>
+              <input type="checkbox" name="q4" value="b" /> ...permite que arquivos criados em um diretório pertençam ao grupo proprietário
+              desse diretório.
+            </li>
+            <li><input type="checkbox" name="q4" value="c" /> ...impede que o grupo proprietário de um arquivo seja alterado.</li>
+            <li>
+              <input type="checkbox" name="q4" value="d" /> ...permite que um comando seja executado com as permissões do grupo proprietário
+              do arquivo.
+            </li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q4',
+                ['b', 'd'],
+                'O SetGID tem dois comportamentos: em binários, ele concede privilégios temporários do grupo dono do arquivo (18.3.1); em diretórios, ele força a herança do grupo da pasta pai para novos arquivos (18.3.2).'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q4-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao5" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q5</span> Identificação Visual do SetGID
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-search"></i> Qual das seguintes listagens longas representa o bit SetGID definido para o diretório
+            <code>/shared</code>?
+          </div>
+          <div class="options" id="q5-options">
+            <li><input type="radio" name="q5" value="a" /> drwxrwxrws. 12 root group 4096 Oct 21 13:12 /shared</li>
+            <li><input type="radio" name="q5" value="b" /> drwsrwxrwx. 12 root group 4096 Oct 21 13:12 /shared</li>
+            <li><input type="radio" name="q5" value="c" /> drwxrwsrwx. 12 root group 4096 Oct 21 13:12 /shared</li>
+            <li><input type="radio" name="q5" value="d" /> drwSrwxrwx. 12 root group 4096 Oct 21 13:12 /shared</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q5',
+                'c',
+                'O SetGID é representado por um \'s\' na posição do bit de execução da classe do Grupo. A alternativa \'c\' mostra rwx (dono), rws (grupo) e rwx (outros).'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q5-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao6" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q6</span> Limites do Hard Link
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-cubes"></i> Um arquivo de origem e um link físico (hard link) devem obrigatoriamente fazer parte do mesmo
+            sistema de arquivos.
+          </div>
+          <div class="options" id="q6-options">
+            <li><input type="radio" name="q6" value="true" /> Verdadeiro</li>
+            <li><input type="radio" name="q6" value="false" /> Falso</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q6',
+                'true',
+                'Verdadeiro. Como explicado na seção 18.5.3, os hard links apontam para números de inode. Cada partição tem sua própria tabela de inodes, impossibilitando links físicos que cruzam partições.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q6-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao7" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q7</span> Exclusão da Origem no Soft Link
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-link-slash"></i> Excluir um arquivo de origem quebrará um link simbólico (soft link) associado.
+          </div>
+          <div class="options" id="q7-options">
+            <li><input type="radio" name="q7" value="true" /> Verdadeiro</li>
+            <li><input type="radio" name="get_q7" value="false" /> Falso</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q7',
+                'true',
+                'Verdadeiro. Links simbólicos são apenas ponteiros textuais para o nome do arquivo original. Se o original sumir, o link aponta para o vazio (seção 18.5.3).'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q7-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao8" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q8</span> Soft Links e Partições
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-project-diagram"></i> Um arquivo de origem e um link simbólico devem obrigatoriamente fazer parte do mesmo
+            sistema de arquivos.
+          </div>
+          <div class="options" id="q8-options">
+            <li><input type="radio" name="q8" value="true" /> Verdadeiro</li>
+            <li><input type="radio" name="q8" value="false" /> Falso</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q8',
+                'false',
+                'Falso. Links simbólicos usam caminhos de texto (pathnames) e não números de inode, o que permite que eles cruzem partições e sistemas de arquivos diferentes livremente.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q8-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao9" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q9</span> Criando um Hard Link
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-plus-square"></i> Qual dos seguintes comandos criará um link físico chamado <code>link</code> para o arquivo
+            <code>file</code>?
+          </div>
+          <div class="options" id="q9-options">
+            <li><input type="radio" name="q9" value="a" /> ln file link</li>
+            <li><input type="radio" name="q9" value="b" /> ln -s file link</li>
+            <li><input type="radio" name="q9" value="c" /> ln -s link file</li>
+            <li><input type="radio" name="q9" value="d" /> ln link file</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q9',
+                'a',
+                'A sintaxe correta para o hard link é \'ln alvo nome_do_link\'. Sem flags adicionais, o comando ln cria links físicos (seção 18.5.1).'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q10-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao10" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q10</span> Criando um Soft Link
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-external-link-alt"></i> Qual dos seguintes comandos criará um link simbólico chamado <code>link</code> para o
+            arquivo <code>file</code>?
+          </div>
+          <div class="options" id="q10-options">
+            <li><input type="radio" name="q10" value="a" /> ln link file</li>
+            <li><input type="radio" name="q10" value="b" /> ln -s file link</li>
+            <li><input type="radio" name="q10" value="c" /> ln file link</li>
+            <li><input type="radio" name="q10" value="d" /> ln -s link file</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q10',
+                'b',
+                'A flag -s indica a criação de um link simbólico (symbolic). A ordem dos argumentos é: origem (file) e depois o atalho (link). Seção 18.5.2.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q10-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <details class="answer-key">
+        <summary><i class="fas fa-key"></i> 📋 Gabarito - Módulo 18</summary>
+        <div style="margin-top: 1rem">
+          <p><strong>Q1:</strong> ...impede que outros usuários removam arquivos que não possuem de um diretório comum.</p>
+          <p><strong>Q2:</strong> ...permite que um comando seja executado com os privilégios do dono do arquivo.</p>
+          <p><strong>Q3:</strong> chmod 4755 /usr/bin/program</p>
+          <p><strong>Q4:</strong> Herança de grupo em diretórios; Execução como grupo proprietário.</p>
+          <p><strong>Q5:</strong> drwxrwsrwx. ... /shared</p>
+          <p><strong>Q6:</strong> Verdadeiro</p>
+          <p><strong>Q7:</strong> Verdadeiro</p>
+          <p><strong>Q8:</strong> Falso</p>
+          <p><strong>Q9:</strong> ln file link</p>
+          <p><strong>Q10:</strong> ln -s file link</p>
+        </div>
+      </details>
+    </div>
+
+    <footer>
+      <p><i class="fab fa-linux"></i> NDG Linux Essentials – Banco de Questões com Justificativas</p>
+      <p style="font-size: 0.8rem; margin-top: 0.5rem">Módulo 18: Special Directories and Files</p>
+    </footer>
+
+    <script>
+      function checkAnswer(questionId, correctValue, justification) {
+        const selected = document.querySelector(`input[name="${questionId}"]:checked`)
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`)
+        if (!selected) {
+          feedbackDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Selecione uma resposta primeiro!'
+          feedbackDiv.className = 'feedback incorrect'
+          feedbackDiv.style.display = 'block'
+          return
+        }
+        if (selected.value === correctValue) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback correct'
+        } else {
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback incorrect'
+        }
+        feedbackDiv.style.display = 'block'
+      }
+
+      function checkMultipleAnswer(questionId, correctValues, justification) {
+        const selected = document.querySelectorAll(`input[name="${questionId}"]:checked`)
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`)
+        if (selected.length === 0) {
+          feedbackDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Selecione pelo menos uma resposta!'
+          feedbackDiv.className = 'feedback incorrect'
+          feedbackDiv.style.display = 'block'
+          return
+        }
+        const selectedValues = Array.from(selected).map((cb) => cb.value)
+        const isCorrect = correctValues.length === selectedValues.length && correctValues.every((val) => selectedValues.includes(val))
+        if (isCorrect) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback correct'
+        } else {
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback incorrect'
+        }
+        feedbackDiv.style.display = 'block'
+      }
+    </script>
+    <script src="../js/menu.js"></script>
+  </body>
+</html>

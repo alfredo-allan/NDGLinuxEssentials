@@ -1,0 +1,1485 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NDG Linux Essentials | Contas de Usuários e Grupos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <div class="top-bar">
+      <button class="menu-toggle" id="openMenu">
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+      </button>
+      <a href="index.html" class="top-bar-brand"> <i class="fab fa-linux"></i> NDG Linux Essentials </a>
+      <a
+        href="../index.html"
+        class="btn-outline"
+        style="
+          color: var(--primary);
+          text-decoration: none;
+          border: 1px solid var(--primary);
+          padding: 0.4rem 0.8rem;
+          border-radius: 8px;
+          font-size: 0.85rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        "
+      >
+        <i class="fas fa-home"></i> Voltar
+      </a>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-compass"></i> Navegação</h3>
+        <button class="close-sidebar" id="closeMenu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="nav-modules">
+        <li>
+          <a href="#secao15-1"><i class="fab fa-linux"></i> 15.1 Introdução</a>
+        </li>
+        <li>
+          <a href="#secao15-2"><i class="fas fa-shield-alt"></i> 15.2 Contas Administrativas</a>
+        </li>
+        <li>
+          <a href="#secao15-2-1"><i class="fas fa-terminal"></i> 15.2.1 Alternando Usuários</a>
+        </li>
+        <li>
+          <a href="#secao15-2-2"><i class="fas fa-shield-alt"></i> 15.2.2 Executando Comandos Privilegiados</a>
+        </li>
+        <li>
+          <a href="#secao15-3"><i class="fas fa-folder-open"></i> 15.3 Contas de Usuários</a>
+        </li>
+        <li>
+          <a href="#secao15-3-1"><i class="fas fa-key"></i> 15.3.1 Senhas (Passwords)</a>
+        </li>
+        <li>
+          <a href="#secao15-4"><i class="fas fa-server"></i> 15.4 Contas de Sistema (System Accounts)</a>
+        </li>
+        <li>
+          <a href="#secao15-5"><i class="fas fa-sitemap"></i> 15.5 Contas de Grupos (Group Accounts)</a>
+        </li>
+        <li>
+          <a href="#secao15-6"><i class="fas fa-id-card"></i> 15.6 Visualizando Informações de Usuários</a>
+        </li>
+        <li>
+          <a href="#secao15-7"><i class="fas fa-users"></i> 15.7 Visualizando Usuários Atuais</a>
+        </li>
+        <li>
+          <a href="#secao15-8"><i class="fas fa-book"></i> 15.8 Visualizando Histórico de Login</a>
+        </li>
+        <li>
+          <a href="../pages/questoes_15.html"><i class="fas fa-question-circle"></i> Questões</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <section class="hero">
+      <div class="container">
+        <span class="badge-lab"><i class="fas fa-shield-alt"></i> Módulo 15</span>
+        <h1>Contas de Usuários e Grupos</h1>
+        <p style="color: var(--text-dim); max-width: 600px; margin: 0 auto; font-size: 1.1rem">
+          Compreendendo a estrutura de segurança, permissões de arquivos e gerenciamento de identidades no Linux.
+        </p>
+      </div>
+    </section>
+
+    <div class="container">
+      <section id="secao15-1" class="section">
+        <h2 class="section-title">
+          <i class="fab fa-linux"></i>
+          <span class="section-number">15.1</span> Introdução
+        </h2>
+
+        <div class="card">
+          <p>
+            As contas de usuário são projetadas para fornecer segurança em um sistema operacional Linux. Cada pessoa no sistema deve fazer
+            login usando uma conta de usuário que permite ou nega o acesso a arquivos e diretórios específicos.
+          </p>
+
+          <p>
+            Isso é feito por meio de <strong>permissões de arquivos</strong>, que são restrições e concessões associadas a arquivos e
+            diretórios dadas pelo sistema para usuários, grupos e todos os outros que se autenticam. Essas permissões podem ser editadas e
+            modificadas pelo usuário <strong>root</strong>.
+          </p>
+        </div>
+
+        <div class="card">
+          <p>
+            As contas de usuário também pertencem a <strong>grupos</strong>, que também podem ser utilizados para fornecer acesso a arquivos
+            e diretórios. Cada usuário pertence a pelo menos um grupo (frequentemente a vários) para permitir que compartilhem dados
+            armazenados em arquivos com outros usuários de forma mais fácil.
+          </p>
+        </div>
+
+        <div
+          class="alert alert-info"
+          style="
+            border-left: 4px solid var(--info);
+            background: rgba(0, 170, 255, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i class="fas fa-info-circle" style="color: var(--info); font-size: 1.2rem; margin-top: 0.2rem"></i>
+          <div>
+            <span style="color: var(--info); font-weight: bold; display: block; margin-bottom: 0.25rem">Nota de Segurança:</span>
+            Os dados de contas de usuários e grupos são armazenados em arquivos de banco de dados do sistema. Conhecer o conteúdo desses
+            arquivos permite entender melhor quais usuários possuem acesso a arquivos e diretórios, além de conter informações vitais de
+            segurança que afetam a capacidade de login e autenticação.
+          </div>
+        </div>
+
+        <div class="card">
+          <p>
+            Diversos comandos fornecem a habilidade de visualizar informações de contas de usuários e grupos, bem como alternar de uma conta
+            de usuário para outra (desde que você tenha a autoridade apropriada para fazê-lo). Esses comandos são valiosos para investigar o
+            uso do sistema, diagnosticar problemas (troubleshooting) e monitorar acessos não autorizados.
+          </p>
+        </div>
+      </section>
+      <section id="secao15-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-shield-alt"></i>
+          <span class="section-number">15.2</span> Contas Administrativas
+        </h2>
+
+        <div class="card">
+          <p>
+            Existem muitas maneiras diferentes de executar um comando que exige privilégios administrativos ou de <strong>root</strong>.
+            Fazer login no sistema como usuário root permite que você execute comandos como administrador. No entanto, esse tipo de acesso é
+            potencialmente perigoso, pois você pode esquecer que está conectado como root e rodar um comando que cause sérios problemas ao
+            sistema. Como resultado, <strong>não é recomendado fazer login diretamente como usuário root</strong>.
+          </p>
+        </div>
+
+        <div
+          class="alert alert-warning"
+          style="
+            border-left: 4px solid var(--warning);
+            background: rgba(255, 204, 0, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i class="fas fa-exclamation-triangle" style="color: var(--warning); font-size: 1.2rem; margin-top: 0.2rem"></i>
+          <div>
+            <span style="color: var(--warning); font-weight: bold; display: block; margin-bottom: 0.25rem">Aviso de Risco:</span>
+            Como a utilização da conta root é arriscada, você deve apenas executar comandos com esses privilégios quando eles forem
+            estritamente necessários.
+          </div>
+        </div>
+
+        <div class="card">
+          <p>
+            Se a conta root estiver desativada (como ocorre nativamente na distribuição Ubuntu), os comandos administrativos podem ser
+            executados utilizando o comando <code>sudo</code>. Caso a conta root esteja ativada, um usuário comum pode executar o comando
+            <code>su</code> para alternar de conta para o usuário root.
+          </p>
+        </div>
+
+        <div class="card">
+          <p>
+            Quando você faz login no sistema diretamente como root para executar tarefas, absolutamente tudo na sua sessão é executado sob
+            esse usuário. Se estiver utilizando um ambiente gráfico, isso se torna ainda mais perigoso, pois o processo de login gráfico é
+            composto por muitos executáveis diferentes. Cada programa que roda como root representa uma ameaça muito maior do que um
+            processo executado por um usuário padrão, já que esses programas têm permissão para fazer quase qualquer coisa, enquanto os
+            programas de usuários comuns são altamente restritos.
+          </p>
+        </div>
+
+        <div
+          class="alert alert-danger"
+          style="
+            border-left: 4px solid var(--danger);
+            background: rgba(255, 68, 68, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i class="fas fa-skull-crossbones" style="color: var(--danger); font-size: 1.2rem; margin-top: 0.2rem"></i>
+          <div>
+            <span style="color: var(--danger); font-weight: bold; display: block; margin-bottom: 0.25rem">Perigo Potencial:</span>
+            Outro grande risco de logar como root é esquecer de encerrar a sessão (logout) para realizar tarefas cotidianas e não
+            administrativas. Isso permite que softwares como navegadores web e clientes de e-mail rodem com privilégios de root, totalmente
+            sem restrições. O fato de várias distribuições Linux importantes, como o Ubuntu, bloquearem o login direto como root é o maior
+            indicativo de que esta <strong>não</strong> é a forma ideal de realizar tarefas administrativas.
+          </div>
+        </div>
+      </section>
+      <section id="secao15-2-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-terminal"></i>
+          <span class="section-number">15.2.1</span> Alternando Usuários
+        </h2>
+
+        <div class="card">
+          <p>
+            O comando <code>su</code> (<em>substitute user</em>) permite que você execute um <strong>shell</strong> como um usuário
+            diferente. Embora a alternância para o usuário root seja o uso mais frequente do comando <code>su</code>, ele também pode ser
+            utilizado para alternar para qualquer outro usuário do sistema.
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>su [opções] [nome_de_usuário]</pre>
+        </div>
+
+        <div class="card">
+          <p>
+            Ao alternar de usuário, é altamente recomendável utilizar a opção de <strong>login shell</strong>. Essa opção configura
+            completamente o novo ambiente do shell com as definições, variáveis de ambiente e caminhos do novo usuário, garantindo que
+            quaisquer comandos executados funcionem corretamente.
+          </p>
+          <p>
+            Se essa opção for omitida, o novo shell altera apenas o UID (User ID), mas não realiza o login completo do usuário. A opção de
+            <em>login shell</em> pode ser especificada de três formas equivalentes:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+su -
+su -l
+su --login</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            Por padrão, se um nome de usuário não for especificado, o comando <code>su</code> abrirá um novo shell como o usuário
+            <strong>root</strong>. Os dois comandos abaixo são maneiras equivalentes de iniciar um shell como administrador:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+su - root
+su -</pre
+          >
+        </div>
+
+        <div
+          class="alert alert-warning"
+          style="
+            border-left: 4px solid var(--warning);
+            background: rgba(255, 204, 0, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i class="fas fa-key" style="color: var(--warning); font-size: 1.2rem; margin-top: 0.2rem"></i>
+          <div>
+            <span style="color: var(--warning); font-weight: bold; display: block; margin-bottom: 0.25rem">Autenticação:</span>
+            Após pressionar Enter para executar qualquer um desses comandos, o usuário deve fornecer a
+            <strong>senha do usuário root</strong> para iniciar o novo shell. Se você não souber a senha da conta para a qual está migrando,
+            o comando <code>su</code> falhará.
+          </div>
+        </div>
+
+        <div class="card">
+          <p>
+            Observe no exemplo de terminal abaixo como o prompt de comando se altera para refletir o usuário atual (mudando o caractere
+            final de <code>$</code> para <code>#</code>, o que indica privilégios de superusuário):
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ su -
+Password: netlab123
+root@localhost:~# id
+uid=0(root) gid=0(root) groups=0(root)</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            Depois de usar o shell iniciado pelo comando <code>su</code> para realizar as tarefas administrativas necessárias, você deve
+            retornar ao seu shell original (e à sua conta de usuário comum) utilizando o comando <code>exit</code>.
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+root@localhost:~# exit
+logout
+sysadmin@localhost:~$ id
+uid=1001(sysadmin) gid=1001(sysadmin) groups=1001(sysadmin),4(adm),27(sudo)</pre
+          >
+        </div>
+      </section>
+      <section id="secao15-2-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-shield-alt"></i>
+          <span class="section-number">15.2.2</span> Executando Comandos Privilegiados
+        </h2>
+
+        <div class="card">
+          <p>
+            O comando <code>sudo</code> (<em>superuser do</em>) permite que os usuários executem comandos como outro usuário. De forma
+            semelhante ao comando <code>su</code>, assume-se por padrão o usuário <strong>root</strong> caso nenhum outro seja especificado.
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>sudo [opções] comando</pre>
+        </div>
+
+        <div class="card">
+          <p>
+            Em distribuições que não permitem o login direto do usuário root (ou através do comando <code>su</code>), o processo de
+            instalação configura automaticamente uma conta de usuário inicial para que ela possa utilizar o comando <code>sudo</code> para
+            executar tarefas como se o próprio usuário root as estivesse executando.
+          </p>
+          <p>Por exemplo, privilégios administrativos são estritamente necessários para ler o arquivo <code>/etc/shadow</code>:</p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ head /etc/shadow
+head: cannot open '/etc/shadow' for reading: Permission denied</pre
+          >
+        </div>
+
+        <div
+          class="alert alert-info"
+          style="
+            border-left: 4px solid var(--info);
+            background: rgba(0, 170, 255, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i
+            class="fas fa-key"
+            style="color: var(--info); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+          ></i>
+          <div>
+            <span style="color: var(--info); font-weight: bold; display: block; margin-bottom: 0.25rem">Autenticação com Sudo:</span>
+            Ao utilizar o <code>sudo</code> para executar um comando como root, o sistema solicita a
+            <strong>senha do próprio usuário atual</strong>, e não a senha do root. Esse recurso de segurança evita acessos administrativos
+            não autorizados caso o usuário deixe o computador temporariamente sozinho. Além disso, a senha não será solicitada novamente
+            enquanto o usuário continuar executando novos comandos com <code>sudo</code> em um intervalo menor que cinco minutos.
+          </div>
+        </div>
+
+        <div class="card">
+          <p>
+            O exemplo a seguir demonstra a execução correta do comando anterior precedido pelo <code>sudo</code>. Note que a senha
+            solicitada é a do usuário comum <code>sysadmin</code>:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ sudo head /etc/shadow
+[sudo] password for sysadmin: netlab123
+root:$6$4Yga95H9$8HbxqsMEIBTZ0YomlMffYCV9VE1SQ4T2H3SHXw41M02SQtfAdDVE9mqGp2hr20q.ZuncJpLyWkYwQdKlSJyS8.:16464:0:99999:7:::
+daemon:*:16463:0:99999:7:::
+bin:*:16463:0:99999:7:::
+sys:*:16463:0:99999:7:::
+sync:*:16463:0:99999:7:::
+games:*:16463:0:99999:7:::
+man:*:16463:0:99999:7:::
+lp:*:16463:0:99999:7:::
+mail:*:16463:0:99999:7:::
+news:*:16463:0:99999:7:::</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            O uso do comando <code>sudo</code> para executar comandos administrativos gera obrigatoriamente uma entrada em um arquivo de
+            <strong>log</strong> do sistema. Cada registro inclui o nome do usuário que executou a ação, o comando exato que foi rodado,
+            além da data e hora da execução.
+          </p>
+          <p>
+            Isso garante um alto nível de <strong>rastreabilidade (accountability)</strong>, o oposto de sistemas onde múltiplos usuários
+            compartilham a mesma senha de root e usam <code>su</code> de forma anônima.
+          </p>
+        </div>
+
+        <div class="card">
+          <p>
+            Uma grande vantagem prática de utilizar o <code>sudo</code> é a redução drástica de erros acidentais como root. A intenção de
+            executar uma tarefa crítica fica explícita: ela só rodará com privilégios de superusuário se for explicitamente prefixada com o
+            comando <code>sudo</code>. Caso contrário, será interpretada com os limites seguros de um usuário comum.
+          </p>
+        </div>
+      </section>
+      <section id="secao15-3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-folder-open"></i>
+          <span class="section-number">15.3</span> Contas de Usuários
+        </h2>
+
+        <div class="card">
+          <p>
+            Existem vários arquivos de texto no diretório <code>/etc</code> que contêm os dados de contas dos usuários e grupos definidos no
+            sistema. Por exemplo, para verificar se uma conta de usuário específica foi criada no sistema, o local correto para checar é o
+            arquivo <code>/etc/passwd</code>.
+          </p>
+          <p>
+            O arquivo <code>/etc/passwd</code> define algumas das informações essenciais das contas de usuário. O exemplo a seguir mostra as
+            últimas cinco linhas de um arquivo <code>/etc/passwd</code> típico:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ tail -5 /etc/passwd
+syslog:x:101:103::/home/syslog:/bin/false
+bind:x:102:105::/var/cache/bind:/bin/false
+sshd:x:103:65534::/var/run/sshd:/usr/sbin/nologin
+operator:x:1000:37::/root:/bin/sh
+sysadmin:x:1001:1001:System Administrator,,,,:/home/sysadmin:/bin/bash</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            Cada linha contém informações pertencentes a um único usuário. Os dados são separados em campos pelo caractere de dois-pontos
+            (<code>:</code>). A seguir, descrevemos detalhadamente cada um dos campos, da esquerda para a direita, utilizando a última linha
+            da saída do terminal anterior como exemplo:
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-user" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Nome de Usuário (Username)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre><strong>sysadmin</strong>:x:1001:1001:System Administrator,,,,:/home/sysadmin:/bin/bash</pre>
+          </div>
+          <p>
+            O primeiro campo contém o nome do usuário ou o <em>username</em>. Este nome é utilizado ao fazer login no sistema e quando a
+            propriedade dos arquivos é visualizada com o comando <code>ls -l</code>. Ele existe para facilitar a referência humana à conta,
+            enquanto o sistema operacional gerencia tudo internamente por IDs.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-lock" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Marcador de Senha (Password
+            Placeholder)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre>sysadmin:<strong>x</strong>:1001:1001:System Administrator,,,,:/home/sysadmin:/bin/bash</pre>
+          </div>
+          <p>
+            Antigamente, a senha criptografada do usuário era armazenada diretamente neste local. Atualmente, o caractere
+            <code>x</code> neste campo indica ao sistema que a senha real e protegida está armazenada no arquivo <code>/etc/shadow</code>.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-id-card" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>ID do Usuário (UID)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre>sysadmin:x:<strong>1001</strong>:1001:System Administrator,,,,:/home/sysadmin:/bin/bash</pre>
+          </div>
+          <p>
+            Cada conta recebe um ID de Usuário (UID - <em>User ID</em>). Os nomes de usuário não são usados diretamente pelo sistema para
+            controle interno, que define a conta pelo UID. Por exemplo, a propriedade e os donos de arquivos são associados a UIDs, e não a
+            nomes de texto.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-users" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>ID do Grupo Principal (GID)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre>sysadmin:x:1001:<strong>1001</strong>:System Administrator,,,,:/home/sysadmin:/bin/bash</pre>
+          </div>
+          <p>
+            Este campo indica o ID do Grupo Principal (GID - <em>Group ID</em>) ao qual o usuário pertence. Isso significa que o usuário
+            herdará automaticamente as permissões especiais concedidas a este grupo em qualquer arquivo ou diretório do sistema.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-comment-alt" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Comentário (GECOS / Comment)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre>sysadmin:x:1001:1001:<strong>System Administrator,,,,</strong>:/home/sysadmin:/bin/bash</pre>
+          </div>
+          <p>
+            Este campo pode conter qualquer informação adicional sobre o usuário, incluindo seu nome completo real, número de telefone ou
+            outras notas administrativas úteis.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-home" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Diretório Home (Home Directory)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre>sysadmin:x:1001:1001:System Administrator,,,,:<strong>/home/sysadmin</strong>:/bin/bash</pre>
+          </div>
+          <p>
+            Define a localização física do diretório de início (home) do usuário. Para usuários comuns, este caminho geralmente segue o
+            padrão <code>/home/nome_do_usuario</code> (ex: <code>/home/bob</code>). O usuário administrador <strong>root</strong> possui um
+            local diferente e exclusivo para seu diretório home: o diretório <code>/root</code>.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-terminal" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Shell de Login (Shell)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre>sysadmin:x:1001:1001:System Administrator,,,,:/home/sysadmin:<strong>/bin/bash</strong></pre>
+          </div>
+          <p>
+            Este campo indica o caminho do interpretador de comandos (shell) de login do usuário. Por padrão, o usuário é direcionado para
+            este shell sempre que se autentica em um ambiente de linha de comando ou abre uma janela de terminal. O shell Bash
+            (<code>/bin/bash</code>) é o mais comum para usuários Linux.
+          </p>
+        </div>
+
+        <div
+          class="alert alert-success"
+          style="
+            border-left: 4px solid var(--success);
+            background: rgba(0, 255, 136, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i
+            class="fas fa-lightbulb"
+            style="color: var(--success); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+          ></i>
+          <div>
+            <span style="color: var(--success); font-weight: bold; display: block; margin-bottom: 0.25rem">Dica de Administração:</span>
+            Uma maneira muito eficiente de verificar se um usuário específico já foi definido no sistema é buscar o registro dele
+            diretamente no arquivo <code>/etc/passwd</code> utilizando o comando <code>grep</code>. Veja o exemplo:
+          </div>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ grep sysadmin /etc/passwd
+sysadmin:x:1001:1001:System Administrator,,,,:/home/sysadmin:/bin/bash</pre
+          >
+        </div>
+      </section>
+      <section id="secao15-3-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-key"></i>
+          <span class="section-number">15.3.1</span> Senhas (Passwords)
+        </h2>
+
+        <div class="card">
+          <p>
+            Como mencionado anteriormente, o arquivo <code>/etc/shadow</code> contém as informações de conta relacionadas às senhas dos
+            usuários. Por motivos de segurança, os usuários comuns não têm permissão para ler o conteúdo do arquivo
+            <code>/etc/shadow</code>. Para visualizar este arquivo, é necessário autenticar-se como administrador (conta
+            <strong>root</strong>):
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ su -
+Password: netlab123
+root@localhost:~#</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>Um arquivo <code>/etc/shadow</code> típico exibe uma estrutura semelhante ao exemplo abaixo:</p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+root@localhost:~# tail -5 /etc/shadow
+syslog:*:16874:0:99999:7:::
+bind:*:16874:0:99999:7:::
+sshd:*:16874:0:99999:7:::
+operator:!:16874:0:99999:7:::
+sysadmin:$6$c75ekQWF$.GpiZpFnIXLzkALjDpZXmjxZcIll14OvL2mFSIfnc1aU2cQ/221QL5AX5RjKXpXPJRQ0uVN35TY3/..c7v0.n0:16874:5:30:7:60:15050:</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            Assim como no arquivo anterior, cada linha é dividida em campos separados pelo caractere de dois-pontos (<code>:</code>).
+            Abaixo, detalhamos cada campo, da esquerda para a direita, baseando-se no registro do usuário <code>sysadmin</code>:
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-user" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Nome de Usuário (Username)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre><strong>sysadmin</strong>:$6$c75ekQWF$...:16874:5:30:7:60:15050::</pre>
+          </div>
+          <p>
+            O primeiro campo armazena o nome da conta de usuário. Ele corresponde exatamente ao nome de usuário registrado no arquivo
+            <code>/etc/passwd</code>.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-lock" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Senha Criptografada (Password)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre>
+sysadmin:<strong>$6$c75ekQWF$.GpiZpFnIXLzkALjDpZXmjxZcIll14OvL2mFSIfnc1aU2cQ/221QL5AX5RjKXpXPJRQ0uVN35TY3/..c7v0.n0</strong>:16874:5:30:7:60:15050::</pre
+            >
+          </div>
+          <p>
+            Contém o hash da senha criptografada. Esta longa string é gerada por uma criptografia unidirecional (<em>one-way encryption</em
+            >), o que significa que ela não pode ser revertida para descobrir a senha original. Enquanto usuários comuns possuem este hash
+            complexo, contas de sistema geralmente exibem um caractere de asterisco (<code>*</code>) ou ponto de exclamação (<code>!</code>)
+            nesta área, impedindo logins diretos.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-calendar-alt" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Última Alteração (Last
+            Change)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre>sysadmin:$6$c75ekQWF$...:<strong>16874</strong>:5:30:7:60:15050::</pre>
+          </div>
+          <p>
+            Este campo armazena uma data numérica que representa a última vez que a senha foi modificada. O número é baseado no total de
+            dias decorridos desde 1º de janeiro de 1970 (conhecido como a <strong>Epoch</strong> do Unix). O valor é atualizado de forma
+            automática e serve como base para os recursos de expiração de senhas.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-hourglass-start" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Dias Mínimos (Minimum)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre>sysadmin:$6$c75ekQWF$...:16874:<strong>5</strong>:30:7:60:15050::</pre>
+          </div>
+          <p>
+            Indica a quantidade mínima de dias que o usuário deve esperar entre as alterações de senha. Um valor diferente de zero (como
+            <code>5</code> neste exemplo) impede que um usuário mude sua senha e a altere imediatamente de volta para a senha antiga. Caso o
+            valor seja zero (<code>0</code>), o usuário pode alterar sua senha a qualquer momento.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-hourglass-end" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Dias Máximos (Maximum)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre>sysadmin:$6$c75ekQWF$...:16874:5:<strong>30</strong>:7:60:15050:</pre>
+          </div>
+          <p>
+            Estipula a quantidade máxima de dias que a senha permanece válida, forçando o usuário a renová-la periodicamente. O valor
+            <code>30</code> indica que a senha deve ser trocada a cada 30 dias para evitar o bloqueio da conta. Se o valor estiver definido
+            como <code>99999</code>, a senha é considerada perpétua (equivalente a aproximadamente 274 anos).
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-bell" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Aviso (Warn)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre>sysadmin:$6$c75ekQWF$...:16874:5:30:<strong>7</strong>:60:15050::</pre>
+          </div>
+          <p>
+            Define quantos dias antes da expiração da senha o sistema começará a exibir avisos durante o processo de login por linha de
+            comando. No exemplo, o usuário receberá alertas de expiração durante os <code>7</code> dias anteriores ao vencimento do prazo
+            máximo.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-user-clock" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Inatividade (Inactive)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre>sysadmin:$6$c75ekQWF$...:16874:5:30:7:<strong>60</strong>:15050::</pre>
+          </div>
+          <p>
+            Caso o usuário ignore os avisos e a senha expire, a conta entra em um período de carência. O campo de inatividade estipula o
+            número de dias em que o usuário ainda consegue alterar sua própria senha durante o login gráfico ou de terminal. Se o prazo
+            terminar (como os <code>60</code> dias estipulados aqui), a conta será totalmente desativada e apenas um administrador poderá
+            redefini-la.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-ban" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Expiração da Conta (Expire)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre>sysadmin:$6$c75ekQWF$...:16874:5:30:7:60:<strong>15050</strong>::</pre>
+          </div>
+          <p>
+            Indica a data absoluta em que a conta será permanentemente bloqueada, também representada pelo número de dias desde a
+            <strong>Epoch</strong> (1º de janeiro de 1970). Diferente de uma exclusão, uma conta expirada é apenas congelada, permitindo que
+            administradores a desbloqueiem redefinindo seus parâmetros. É um recurso muito comum para gerenciar contas de funcionários
+            temporários ou prestadores de serviço.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-code" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Reservado (Reserved)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre>sysadmin:$6$c75ekQWF$...:16874:5:30:7:60:15050:<strong>:</strong></pre>
+          </div>
+          <p>
+            Este último campo não possui função atribuída atualmente; ele permanece em branco e está reservado para uso futuro do sistema
+            operacional.
+          </p>
+        </div>
+
+        <div
+          class="alert alert-info"
+          style="
+            border-left: 4px solid var(--info);
+            background: rgba(0, 170, 255, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i
+            class="fas fa-lightbulb"
+            style="color: var(--info); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+          ></i>
+          <div>
+            <span style="color: var(--info); font-weight: bold; display: block; margin-bottom: 0.25rem"
+              >Considere Isto: Comando getent</span
+            >
+            Além do comando <code>grep</code>, outra excelente técnica para extrair informações de contas contidas nos arquivos
+            <code>/etc/passwd</code> e <code>/etc/shadow</code> é usar o comando <code>getent</code>. A grande vantagem do
+            <code>getent</code> é a sua capacidade de buscar dados definidos localmente (nos arquivos de texto tradicionais) ou vindos
+            diretamente de um servidor de diretório na rede (como LDAP ou Active Directory).
+          </div>
+        </div>
+
+        <div class="card">
+          <p>A sintaxe geral do comando <code>getent</code> é:</p>
+          <div class="terminal"><pre>getent banco_de_dados registro</pre></div>
+          <p>
+            Por exemplo, o comando a seguir recupera as informações cadastrais do usuário <code>sysadmin</code> consultando a base de dados
+            de senhas do sistema:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ getent passwd sysadmin
+sysadmin:x:1001:1001:System Administrator,,,,:/home/sysadmin:/bin/bash</pre
+          >
+        </div>
+      </section>
+      <section id="secao15-4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-server"></i>
+          <span class="section-number">15.4</span> Contas de Sistema (System Accounts)
+        </h2>
+
+        <div class="card">
+          <p>
+            Os usuários comuns realizam login no sistema utilizando contas de usuário regulares. Tipicamente, essas contas possuem valores
+            de UID (User ID) superiores a <strong>500</strong> (ou superiores a <strong>1.000</strong> em várias distribuições modernas). Já
+            o usuário administrador <strong>root</strong> possui acesso total e irrestrito ao sistema operacional, privilégio este concedido
+            especificamente à conta que possui o <strong>UID igual a 0</strong>.
+          </p>
+          <p>
+            Além dessas, existem contas adicionais que não foram projetadas para que pessoas reais façam login. Essas contas, que geralmente
+            ocupam a faixa de <strong>UID 1 a 499</strong> (ou até 999 dependendo da distribuição), são chamadas de
+            <strong>contas de sistema</strong>. Elas existem para fornecer contextos de execução e segurança isolados para os diversos
+            serviços e daemons que rodam no background do Linux.
+          </p>
+        </div>
+
+        <div class="card">
+          <p>
+            As contas de sistema possuem alguns campos nos arquivos <code>/etc/passwd</code> e <code>/etc/shadow</code> que diferem bastante
+            das contas comuns. Por exemplo, elas raramente possuem diretórios home válidos, já que serviços não costumam criar ou armazenar
+            arquivos pessoais.
+          </p>
+          <p>
+            No arquivo <code>/etc/passwd</code>, as contas de sistema exibem um programa de bloqueio (não-login) no campo destinado ao
+            shell:
+          </p>
+          <div class="terminal" style="margin-top: 0.5rem">
+            <pre>sshd:x:103:65534::/var/run/sshd:<strong>/usr/sbin/nologin</strong></pre>
+          </div>
+        </div>
+
+        <div class="card">
+          <p>
+            No arquivo <code>/etc/shadow</code>, as contas de sistema tipicamente trazem um caractere de asterisco (<code>*</code>) ou
+            exclamação (<code>!</code>) no lugar destinado ao hash da senha, inviabilizando qualquer tentativa de autenticação direta:
+          </p>
+          <div class="terminal" style="margin-top: 0.5rem"><pre>sshd:<strong>*</strong>:16874:0:99999:7:::</pre></div>
+        </div>
+
+        <div
+          class="alert alert-danger"
+          style="
+            border-left: 4px solid var(--danger);
+            background: rgba(255, 68, 68, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i
+            class="fas fa-exclamation-triangle"
+            style="color: var(--danger); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+          ></i>
+          <div>
+            <span style="color: var(--danger); font-weight: bold; display: block; margin-bottom: 0.25rem"
+              >Aviso Crítico de Administração:</span
+            >
+            A grande maioria das contas de sistema é estritamente necessária para o funcionamento correto do sistema operacional.
+            <strong>Você nunca deve excluir uma conta de sistema</strong> a menos que tenha certeza absoluta de que a remoção dela não
+            causará falhas nos serviços dependentes ou instabilidade no kernel.
+          </div>
+        </div>
+
+        <div class="card">
+          <p>
+            Dedique um tempo para aprender a função de cada conta de sistema ativa (como <em>bin, daemon, sshd, bind, mail</em>). Os
+            administradores de sistemas têm a tarefa crucial de garantir a segurança global do ambiente, e isso inclui auditar e proteger
+            adequadamente os privilégios e acessos dessas contas de serviço.
+          </p>
+        </div>
+      </section>
+      <section id="secao15-5" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-sitemap"></i>
+          <span class="section-number">15.5</span> Contas de Grupos (Group Accounts)
+        </h2>
+
+        <div class="card">
+          <p>
+            O seu nível de acesso a um sistema não é determinado unicamente pela sua conta de usuário. Cada usuário pode ser membro de um ou
+            mais <strong>grupos</strong>, o que também afeta diretamente o nível de privilégios e acesso aos arquivos no sistema
+            operacional.
+          </p>
+          <p>
+            Tradicionalmente, os sistemas UNIX limitavam a participação dos usuários a no máximo dezesseis grupos no total. No entanto, os
+            kernels Linux recentes suportam usuários associados a mais de <strong>65.000 grupos simultaneamente</strong>.
+          </p>
+          <p>
+            O arquivo <code>/etc/passwd</code> define a filiação ao <strong>grupo primário</strong> de um usuário. Já a filiação aos
+            <strong>grupos suplementares</strong> (ou grupos secundários), bem como a existência dos próprios grupos, são definidas no
+            arquivo <code>/etc/group</code>.
+          </p>
+        </div>
+
+        <div class="card">
+          <p>
+            O arquivo <code>/etc/group</code> é mais um arquivo de texto estruturado e delimitado por caracteres de dois-pontos
+            (<code>:</code>). Abaixo, descrevemos os seus campos em detalhes, utilizando uma linha típica de conta de grupo como base:
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-users" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Nome do Grupo (Group Name)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre><strong>mail</strong>:x:12:mail,postfix</pre>
+          </div>
+          <p>
+            Este campo contém o nome do grupo. Assim como acontece com os nomes de usuário, termos em texto são mais naturais e fáceis de
+            memorizar para as pessoas do que números isolados. Internamente, o sistema operacional utiliza IDs numéricos para gerenciar os
+            grupos.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-lock" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Marcador de Senha (Password
+            Placeholder)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0"><pre>mail:<strong>x</strong>:12:mail,postfix</pre></div>
+          <p>
+            Embora existam senhas para grupos, elas são raramente utilizadas no ecossistema Linux. Se um administrador optar por criar uma
+            senha para um grupo, ela será armazenada de forma segura no arquivo <code>/etc/gshadow</code>. O caractere <code>x</code> neste
+            campo serve apenas para indicar ao sistema que a senha não está armazenada de forma direta neste arquivo.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-id-card" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>ID do Grupo (GID)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0"><pre>mail:x:<strong>12</strong>:mail,postfix</pre></div>
+          <p>
+            Cada grupo mapeado no sistema operacional é associado de forma única a um número de identificação de grupo, chamado de
+            <strong>GID (Group ID)</strong>, posicionado exatamente neste campo.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-list" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Lista de Usuários (User List)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre>mail:x:12:<strong>mail,postfix</strong></pre>
+          </div>
+          <p>
+            Este último campo indica explicitamente quais usuários são membros deste grupo. Enquanto o grupo primário de um usuário fica
+            registrado lá no arquivo <code>/etc/passwd</code>, os usuários que forem atribuídos a este grupo como uma
+            <strong>função secundária ou suplementar</strong> terão seus nomes listados aqui, separados por vírgula. Neste exemplo prático,
+            os usuários <code>mail</code> e <code>postfix</code> são membros secundários do grupo <code>mail</code>.
+          </p>
+        </div>
+
+        <div
+          class="alert alert-info"
+          style="
+            border-left: 4px solid var(--info);
+            background: rgba(0, 170, 255, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i
+            class="fas fa-info-circle"
+            style="color: var(--info); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+          ></i>
+          <div>
+            <span style="color: var(--info); font-weight: bold; display: block; margin-bottom: 0.25rem">Nota de Padrão:</span>
+            No Linux, é extremamente comum que um nome de usuário também exista de forma idêntica como um nome de grupo (conhecido como
+            grupo privado do usuário). Também é padrão o usuário pertencer de forma primária a esse grupo de mesmo nome.
+          </div>
+        </div>
+
+        <div class="card">
+          <p>
+            Para inspecionar as informações sobre um grupo específico de forma ágil, você pode recorrer tanto ao comando
+            <code>grep</code> quanto ao comando <code>getent</code>. Os exemplos a seguir exibem o mesmo resultado consultando o grupo
+            <code>mail</code>:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ grep mail /etc/group
+mail:x:12:mail,postfix
+
+sysadmin@localhost:~$ getent group mail
+mail:x:12:mail,postfix</pre
+          >
+        </div>
+      </section>
+      <section id="secao15-6" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-id-card"></i>
+          <span class="section-number">15.6</span> Visualizando Informações de Usuários
+        </h2>
+
+        <div class="card">
+          <p>
+            O comando <code>id</code> é utilizado para exibir as informações de identificação de usuário e de grupo de uma conta específica.
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>id [opções] [nome_de_usuário]</pre>
+        </div>
+
+        <div class="card">
+          <p>
+            Ao alternar frequentemente entre diferentes contas no terminal, pode ser confuso lembrar qual usuário está logado no momento.
+            Quando executado sem nenhum argumento, o comando <code>id</code> exibe as informações do usuário atual da sessão, permitindo que
+            você confirme a sua identidade no sistema.
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ id
+uid=1001(sysadmin) gid=1001(sysadmin) groups=1001(sysadmin),4(adm),27(sudo)</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            A saída do comando <code>id</code> sempre lista as informações da conta do usuário em primeiro lugar, exibindo o ID do usuário
+            (UID) e o nome do usuário:
+          </p>
+          <div class="terminal" style="margin: 0.5rem 0">
+            <pre><strong>uid=1001(sysadmin)</strong> gid=1001(sysadmin) groups=1001(sysadmin),4(adm),27(sudo)</pre>
+          </div>
+
+          <p style="margin-top: 1.5rem">
+            Logo após o nome do usuário, o grupo primário é listado, indicado tanto pelo ID do grupo (GID) quanto pelo nome do grupo:
+          </p>
+          <div class="terminal" style="margin: 0.5rem 0">
+            <pre>uid=1001(sysadmin) <strong>gid=1001(sysadmin)</strong> groups=1001(sysadmin),4(adm),27(sudo)</pre>
+          </div>
+
+          <p style="margin-top: 1.5rem">
+            As demais informações listadas incluem todos os grupos aos quais o usuário pertence (grupos primário e secundários), também
+            indicados pelos IDs dos grupos seguidos por seus respectivos nomes. O usuário do exemplo pertence a três grupos:
+          </p>
+          <div class="terminal" style="margin: 0.5rem 0">
+            <pre>uid=1001(sysadmin) gid=1001(sysadmin) <strong>groups=1001(sysadmin),4(adm),27(sudo)</strong></pre>
+          </div>
+        </div>
+
+        <div class="card">
+          <p>
+            Se o comando receber um nome de usuário como argumento (por exemplo, <code>root</code>), ele exibirá as informações específicas
+            da conta informada, independentemente de quem estiver executando o comando:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ id root
+uid=0(root) gid=0(root) groups=0(root)</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>Para imprimir <strong>apenas</strong> o ID numérico do grupo primário do usuário, utilize a opção <code>-g</code>:</p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ id -g
+1001</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            O comando <code>id</code> também pode ser utilizado para verificar todas as filiações a grupos do usuário (primário e
+            suplementares) em formato numérico usando a opção <code>-G</code>:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ id -G
+1001 4 27</pre
+          >
+        </div>
+
+        <div
+          class="alert alert-info"
+          style="
+            border-left: 4px solid var(--info);
+            background: rgba(0, 170, 255, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i
+            class="fas fa-link"
+            style="color: var(--info); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+          ></i>
+          <div>
+            <span style="color: var(--info); font-weight: bold; display: block; margin-bottom: 0.25rem">Correlação com o Sistema:</span>
+            O resultado do exemplo anterior se alinha perfeitamente com o conteúdo do arquivo <code>/etc/group</code>. Uma busca pelas
+            ocorrências do termo <code>sysadmin</code> com o comando <code>grep</code> revela exatamente a associação do usuário aos grupos
+            secundários (<em>adm</em> e <em>sudo</em>):
+          </div>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ cat /etc/group | grep sysadmin
+adm:x:4:syslog,sysadmin
+sudo:x:27:sysadmin
+sysadmin:x:1001:</pre
+          >
+        </div>
+      </section>
+      <section id="secao15-7" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-users"></i>
+          <span class="section-number">15.7</span> Visualizando Usuários Atuais
+        </h2>
+
+        <div class="card">
+          <p>
+            O comando <code>who</code> exibe uma lista dos usuários que estão atualmente conectados (logados) no sistema, de onde eles estão
+            conectados e quando efetuaram o login. Por meio do uso de opções, este comando também é capaz de exibir informações como o
+            <strong>runlevel</strong> atual (o estado funcional do computador) e o horário em que o sistema foi inicializado (boot).
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ who
+root     	tty2        2013-10-11 10:00
+sysadmin	tty1        2013-10-11 09:58 (:0)
+sysadmin 	pts/0       2013-10-11 09:59 (:0.0)
+sysadmin 	pts/1       2013-10-11 10:00 (example.com)</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>Abaixo descrevemos detalhadamente as colunas do resultado do comando <code>who</code>:</p>
+
+          <p style="margin-top: 1.5rem">
+            <strong>Nome de Usuário (Username):</strong> Indica o nome de quem realizou a autenticação. É importante destacar que por
+            "conectado" entende-se qualquer processo de login ativo ou janela de terminal aberta.
+          </p>
+          <div class="terminal" style="margin: 0.5rem 0 1.5rem 0">
+            <pre><strong>root</strong>     	tty2        2013-10-11 10:00</pre>
+          </div>
+
+          <p>
+            <strong>Terminal:</strong> Indica em qual janela ou sessão de terminal o usuário está trabalhando. Se o nome começar com
+            <code>tty</code>, indica um login local (terminal de linha de comando nativo). Se começar com <code>pts</code>, indica uma
+            pseudo-tela, usada para conexões remotas ou janelas de terminal abertas dentro de uma interface gráfica.
+          </p>
+          <div class="terminal" style="margin: 0.5rem 0 1.5rem 0">
+            <pre>
+root     	<strong>tty2</strong>        2013-10-11 10:00
+sysadmin	<strong>pts/0</strong>       2013-10-11 09:59 (:0.0)</pre
+            >
+          </div>
+
+          <p><strong>Data (Date):</strong> Indica o momento exato (data e hora) em que o usuário efetuou o login no sistema.</p>
+          <div class="terminal" style="margin: 0.5rem 0 1.5rem 0">
+            <pre>root     	tty2        <strong>2013-10-11 10:00</strong></pre>
+          </div>
+
+          <p>
+            <strong>Host / Origem:</strong> Exibe informações sobre a localização do acesso. Se contiver um hostname, nome de domínio ou
+            endereço IP, o usuário realizou um <strong>login remoto</strong>:
+          </p>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre>sysadmin 	pts/1       2013-10-11 10:00 <strong>(example.com)</strong></pre>
+          </div>
+
+          <p>Se houver dois-pontos seguidos de um número, indica que foi realizado um <strong>login gráfico local</strong>:</p>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre>sysadmin     tty1        2013-10-11 09:59 <strong>(:0)</strong></pre>
+          </div>
+
+          <p>
+            Se nenhuma informação de localização aparecer na última coluna, significa que o usuário logou diretamente por uma interface
+            local de linha de comando:
+          </p>
+          <div class="terminal" style="margin: 0.5rem 0 0 0"><pre>root     	tty2        2013-10-11 10:00</pre></div>
+        </div>
+
+        <div
+          class="alert alert-info"
+          style="
+            border-left: 4px solid var(--info);
+            background: rgba(0, 170, 255, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i
+            class="fas fa-lightbulb"
+            style="color: var(--info); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+          ></i>
+          <div>
+            <span style="color: var(--info); font-weight: bold; display: block; margin-bottom: 0.25rem"
+              >Considere Isto: Status do Sistema</span
+            >
+            O comando <code>who</code> possui opções úteis para analisar o estado do sistema. A opção <code>-b</code> exibe a última
+            inicialização do sistema (boot) e a opção <code>-r</code> mostra o momento em que o sistema atingiu o <em>runlevel</em> atual.
+          </div>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ who -b -r
+         system boot  	2013-10-11 09:54
+         run-level 5    2013-10-11 09:54</pre
+          >
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-microchip" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>O Comando w</h3>
+          <p>
+            Haverá momentos em que serão necessárias mais informações sobre os usuários e o que exatamente eles estão executando. O comando
+            <code>w</code> fornece uma lista muito mais detalhada do que o <code>who</code>, além de trazer um resumo completo sobre o
+            estado da máquina:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ w
+ 10:44:03 up 50 min,  4 users,  load average: 0.78, 0.44, 0.19
+USER     	TTY     FROM	    LOGIN@   IDLE  	JCPU   	PCPU    WHAT
+root     	tty2    -           10:00    43:44 	0.01s  	0.01s   -bash
+sysadmin 	tty1    :0          09:58    50:02	5.68s 	0.16s   pam: gdm-password
+sysadmin	pts/0   :0.0        09:59    0.00s      0.14s  	0.13s   ssh 192.168.1.2
+sysadmin 	pts/1   example.com 10:00    0.00s  	0.03s  	0.01s   w</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            A primeira linha de saída do comando <code>w</code> é idêntica à do comando <code>uptime</code>. Ela exibe a hora atual, há
+            quanto tempo o sistema está ligado, o número total de usuários conectados e a <strong>média de carga (load average)</strong> do
+            sistema calculada nos últimos 1, 5 e 15 minutos.
+          </p>
+          <p>
+            A média de carga representa a utilização da CPU onde, para um sistema de <strong>um único núcleo (single-core)</strong>, o valor
+            1 significa 100% de uso da CPU naquele período. Para um sistema <strong>dual-core</strong>, significaria 50% de uso, e para um
+            sistema <strong>quad-core</strong>, representaria 25% de uso.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-list-alt" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Campos do Comando w</h3>
+          <table class="table-custom">
+            <thead>
+              <tr>
+                <th>Coluna</th>
+                <th>Exemplo</th>
+                <th>Descrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>USER</strong></td>
+                <td><code>root</code></td>
+                <td>O nome do usuário que efetuou o login.</td>
+              </tr>
+              <tr>
+                <td><strong>TTY</strong></td>
+                <td><code>tty2</code></td>
+                <td>Em qual janela ou sessão de terminal o usuário está trabalhando.</td>
+              </tr>
+              <tr>
+                <td><strong>FROM</strong></td>
+                <td><code>example.com</code></td>
+                <td>A origem de onde o usuário se conectou (host remoto ou local).</td>
+              </tr>
+              <tr>
+                <td><strong>LOGIN@</strong></td>
+                <td><code>10:00</code></td>
+                <td>O horário em que o usuário efetuou o login.</td>
+              </tr>
+              <tr>
+                <td><strong>IDLE</strong></td>
+                <td><code>43:44</code></td>
+                <td>Tempo de inatividade do usuário desde que o último comando foi executado.</td>
+              </tr>
+              <tr>
+                <td><strong>JCPU</strong></td>
+                <td><code>0.01s</code></td>
+                <td>O tempo total de CPU utilizado por todos os processos iniciados desde o login.</td>
+              </tr>
+              <tr>
+                <td><strong>PCPU</strong></td>
+                <td><code>0.01s</code></td>
+                <td>O tempo total de CPU consumido unicamente pelo processo atual.</td>
+              </tr>
+              <tr>
+                <td><strong>WHAT</strong></td>
+                <td><code>-bash</code></td>
+                <td>O comando ou processo atual que o usuário está executando.</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 1rem">
+            * Nota: O caractere <code>s</code> representa segundos nas colunas de tempo de CPU.
+          </p>
+        </div>
+      </section>
+      <section id="secao15-8" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-book"></i>
+          <span class="section-number">15.8</span> Visualizando Histórico de Login
+        </h2>
+
+        <div class="card">
+          <p>
+            O comando <code>last</code> lê todo o histórico de autenticações a partir do arquivo <code>/var/log/wtmp</code> e exibe, por
+            padrão, todos os registros de logins e reinicializações (reboots) do sistema.
+          </p>
+          <p>
+            Um detalhe interessante sobre os registros de reinicialização é que o comando exibe a versão do
+            <strong>kernel Linux</strong> que foi carregada no boot em vez de exibir um local de login. O arquivo
+            <code>/var/log/wtmp</code> mantém um log contínuo de todos os usuários que entraram e saíram do sistema.
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+sysadmin@localhost:~$ last
+sysadmin console Tue Sep 18 02:31   still logged in
+sysadmin console                    Tue Sep 18 02:31 - 02:31  (00:00)
+wtmp begins Tue Sep 18 02:31:57 2018</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            O comando <code>last</code> funciona de forma ligeiramente diferente dos comandos <code>who</code> e <code>w</code>. Por padrão,
+            ele também exibe o nome de usuário, o terminal e o local de origem do login, mas não se limita apenas às sessões ativas no
+            momento, mostrando também as <strong>sessões passadas</strong> (históricas).
+          </p>
+          <p>
+            Além disso, ele exibe a data e a hora exatas em que o usuário se conectou ao sistema. Se o usuário já tiver encerrado a sessão
+            (logout), o comando calcula e exibe o tempo total que o usuário passou conectado; caso contrário, exibirá a mensagem
+            <code>still logged in</code> (ainda conectado).
+          </p>
+        </div>
+
+        <div
+          class="alert alert-info"
+          style="
+            border-left: 4px solid var(--info);
+            background: rgba(0, 170, 255, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i
+            class="fas fa-lightbulb"
+            style="color: var(--info); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+          ></i>
+          <div>
+            <span style="color: var(--info); font-weight: bold; display: block; margin-bottom: 0.25rem">Considere Isto: utmp vs wtmp</span>
+            O comando <code>who</code> lê as informações diretamente do arquivo <code>/var/log/utmp</code>, que registra estritamente os
+            usuários conectados <strong>no momento atual</strong>. Por outro lado, o comando <code>last</code> extrai seus dados do arquivo
+            <code>/var/log/wtmp</code>, encarregado de manter o histórico acumulado de todos os logins e logouts do sistema.
+          </div>
+        </div>
+      </section>
+    </div>
+    <footer
+      style="
+        padding: 40px 0;
+        text-align: center;
+        border-top: 1px solid var(--border);
+        margin-top: 60px;
+        color: var(--text-dim);
+        font-size: 0.85rem;
+      "
+    >
+      <p><i class="fab fa-linux"></i> NDG Linux Essentials — Curso de Capacitação Técnica</p>
+    </footer>
+    <script>
+      class SidebarMenu {
+        constructor() {
+          this.sidebar = document.getElementById('sidebar')
+          this.overlay = document.getElementById('sidebarOverlay')
+          this.openBtn = document.getElementById('openMenu')
+          this.closeBtn = document.getElementById('closeMenu')
+          this.init()
+        }
+
+        init() {
+          if (!this.sidebar) return
+
+          if (this.openBtn) {
+            this.openBtn.addEventListener('click', () => this.open())
+          }
+          if (this.closeBtn) {
+            this.closeBtn.addEventListener('click', () => this.close())
+          }
+          if (this.overlay) {
+            this.overlay.addEventListener('click', () => this.close())
+          }
+
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.sidebar.classList.contains('open')) {
+              this.close()
+            }
+          })
+
+          const links = document.querySelectorAll('.sidebar .nav-modules a')
+          links.forEach((link) => {
+            link.addEventListener('click', () => this.close())
+          })
+        }
+
+        open() {
+          this.sidebar.classList.add('open')
+          this.overlay.classList.add('active')
+          document.body.style.overflow = 'hidden'
+        }
+
+        close() {
+          this.sidebar.classList.remove('open')
+          this.overlay.classList.remove('active')
+          document.body.style.overflow = ''
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        new SidebarMenu()
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>NDG Linux Essentials | Módulo 15 - Contas de Usuários e Grupos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/questoes.css" />
+  </head>
+  <body>
+    <div class="top-bar">
+      <button class="menu-toggle" id="openMenu">
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+      </button>
+      <a href="../index.html" class="top-bar-brand"> <i class="fab fa-linux"></i> NDG Linux Essentials </a>
+      <a href="../index.html" class="btn-outline"> <i class="fas fa-home"></i> Voltar </a>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-compass"></i> Navegação - Questões</h3>
+        <button class="close-sidebar" id="closeMenu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="nav-modules">
+        <li>
+          <a href="#questao1"><i class="fas fa-question-circle"></i> Questão 1 - Arquivos de Contas</a>
+        </li>
+        <li>
+          <a href="#questao2"><i class="fas fa-question-circle"></i> Questão 2 - Comando de Identificação</a>
+        </li>
+        <li>
+          <a href="#questao3"><i class="fas fa-question-circle"></i> Questão 3 - Filiação a Grupos</a>
+        </li>
+        <li>
+          <a href="#questao4"><i class="fas fa-question-circle"></i> Questão 4 - Usuários Conectados</a>
+        </li>
+        <li>
+          <a href="#questao5"><i class="fas fa-question-circle"></i> Questão 5 - Grupos de um Usuário</a>
+        </li>
+        <li>
+          <a href="#questao6"><i class="fas fa-question-circle"></i> Questão 6 - Estrutura do /etc/group</a>
+        </li>
+        <li>
+          <a href="#questao7"><i class="fas fa-question-circle"></i> Questão 7 - Configuração do Sudo</a>
+        </li>
+        <li>
+          <a href="#questao8"><i class="fas fa-question-circle"></i> Questão 8 - Edição de Permissões</a>
+        </li>
+        <li>
+          <a href="#questao9"><i class="fas fa-question-circle"></i> Questão 9 - Exibir Grupos</a>
+        </li>
+        <li>
+          <a href="#questao10"><i class="fas fa-question-circle"></i> Questão 10 - Privilégios do Sudo</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <section class="hero">
+      <div class="container">
+        <div class="badge-lab"><i class="fas fa-graduation-cap"></i> NDG Linux Essentials | Banco de Questões</div>
+        <h1>Exame do Módulo 15</h1>
+        <p>User and Group Accounts - Teste seus conhecimentos sobre o gerenciamento de contas, permissões e segurança no Linux</p>
+        <div style="margin-top: 1.5rem">
+          <i class="fab fa-linux" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-shield-alt" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-users" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <section id="questao1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q1</span> Arquivos de Contas de Usuário
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-file-alt"></i> Quais arquivos contêm informações sobre as contas de usuários? (escolha duas)
+          </div>
+          <div class="options" id="q1-options">
+            <li><input type="checkbox" name="q1" value="a" /> /etc/shadow</li>
+            <li><input type="checkbox" name="q1" value="b" /> /etc/group</li>
+            <li><input type="checkbox" name="q1" value="c" /> /etc/passwd</li>
+            <li><input type="checkbox" name="q1" value="d" /> /etc/passwords</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkMultipleAnswer(
+                'q1',
+                ['a', 'c'],
+                'O arquivo /etc/passwd define os dados principais dos usuários (como UID, GID e Home), enquanto o /etc/shadow armazena de forma segura os hashes criptografados das senhas.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q1-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q2</span> Comando de Identificação
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-terminal"></i> Qual comando exibirá o UID, o GID e os grupos aos quais o seu usuário atual pertence?
+          </div>
+          <div class="options" id="q2-options">
+            <li><input type="radio" name="q2" value="a" /> who</li>
+            <li><input type="radio" name="q2" value="b" /> about</li>
+            <li><input type="radio" name="q2" value="c" /> id</li>
+            <li><input type="radio" name="q2" value="d" /> whoami</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q2',
+                'c',
+                'O comando id imprime as informações completas de identidade da sessão ativa, exibindo os identificadores numéricos e textuais do usuário (UID), do grupo primário (GID) e de todos os grupos suplementares.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q2-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q3</span> Filiação a Grupos
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-sitemap"></i> Cada usuário pertence a pelo menos um grupo. Verdadeiro ou Falso?</div>
+          <div class="options" id="q3-options">
+            <li><input type="radio" name="q3" value="a" /> Verdadeiro</li>
+            <li><input type="radio" name="q3" value="b" /> Falso</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q3',
+                'a',
+                'Verdadeiro. No Linux, todo usuário deve pertencer obrigatoriamente a pelo menos um grupo, que é designado como seu grupo primário e fica registrado no arquivo /etc/passwd.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q3-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q4</span> Usuários Conectados
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-users"></i> Qual comando exibirá os usuários que estão atualmente conectados ao sistema?
+          </div>
+          <div class="options" id="q4-options">
+            <li><input type="radio" name="q4" value="a" /> whoami</li>
+            <li><input type="radio" name="q4" value="b" /> id</li>
+            <li><input type="radio" name="q4" value="c" /> who</li>
+            <li><input type="radio" name="q4" value="d" /> about</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q4',
+                'c',
+                'O comando who consulta o arquivo /var/log/utmp para listar em tempo real o nome de usuário, a linha de terminal e o horário de login de todos que estão ativos na máquina.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q4-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao5" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q5</span> Grupos de um Usuário Alvo
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-search"></i> Qual dos seguintes comandos exibirá os grupos aos quais o usuário `bob` pertence?
+          </div>
+          <div class="options" id="q5-options">
+            <li><input type="radio" name="q5" value="a" /> groups -a</li>
+            <li><input type="radio" name="q5" value="b" /> id bob</li>
+            <li><input type="radio" name="q5" value="c" /> all bob</li>
+            <li><input type="radio" name="q5" value="d" /> group bob</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q5',
+                'b',
+                'Passar o nome de um usuário como argumento para o comando id (ex: id bob) instrui o sistema a buscar e exibir os dados de filiação daquela conta específica, em vez de mostrar o usuário logado atual.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q5-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao6" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q6</span> Estrutura do Arquivo /etc/group
+        </h2>
+        <div class="question-card">
+          <div class="question-text"><i class="fas fa-code"></i> O arquivo `/etc/group` segue qual estrutura de campos?</div>
+          <div class="options" id="q6-options">
+            <li><input type="radio" name="q6" value="a" /> group:GID:user_list</li>
+            <li><input type="radio" name="q6" value="b" /> group_name:password_placeholder:GID:user_list</li>
+            <li><input type="radio" name="q6" value="c" /> groups -a</li>
+            <li><input type="radio" name="q6" value="d" /> user:group</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q6',
+                'b',
+                'A estrutura padrão e completa do arquivo /etc/group é separada por dois-pontos em quatro campos ordenados: nome do grupo, marcador de senha (geralmente x), o ID numérico do grupo (GID) e a lista de usuários membros secundários.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q6-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao7" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q7</span> Configuração Automatizada do Sudo
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-shield-alt"></i> Em distribuições que não permitem o login direto do usuário root, o processo de instalação
+            configura automaticamente uma conta de usuário para utilizar o comando `sudo`. Verdadeiro ou Falso?
+          </div>
+          <div class="options" id="q7-options">
+            <li><input type="radio" name="q7" value="a" /> Verdadeiro</li>
+            <li><input type="radio" name="q7" value="b" /> Falso</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q7',
+                'a',
+                'Verdadeiro. Sistemas como o Ubuntu bloqueiam logins diretos da conta root por motivos de segurança e adicionam o primeiro usuário comum criado no grupo administrativo para que use o sudo sempre que precisar de privilégios de superusuário.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q7-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao8" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q8</span> Edição de Permissões e o Superusuário
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-lock-open"></i> As permissões de arquivos não podem ser editadas pelo usuário root. Verdadeiro ou Falso?
+          </div>
+          <div class="options" id="q8-options">
+            <li><input type="radio" name="q8" value="a" /> Verdadeiro</li>
+            <li><input type="radio" name="q8" value="b" /> Falso</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q8',
+                'b',
+                'Falso. O usuário administrador root possui controle irrestrito e autoridade máxima sobre a estrutura de arquivos e diretórios, podendo editar e sobrescrever as permissões de qualquer elemento do sistema.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q8-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao9" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q9</span> Exibir Grupos de Forma Abrangente
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-id-card"></i> Para exibir os grupos aos quais um usuário pertence, utiliza-se o seguinte comando:
+          </div>
+          <div class="options" id="q9-options">
+            <li><input type="radio" name="q9" value="a" /> grep</li>
+            <li><input type="radio" name="q9" value="b" /> id</li>
+            <li><input type="radio" name="q9" value="c" /> all</li>
+            <li><input type="radio" name="q9" value="d" /> whoami</li>
+            <li><input type="radio" name="q9" value="e" /> group</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q9',
+                'b',
+                'O comando id é a ferramenta nativa e mais completa projetada para auditar as conexões de grupos de uma conta no sistema (usando opções como -g ou -G para filtrar as saídas de dados).'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q9-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao10" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q10</span> Finalidade dos Privilégios do Sudo
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-user-shield"></i> Os privilégios do comando `sudo` permitem que os usuários executem comandos atuando como se
+            fossem outro usuário. Verdadeiro ou Falso?
+          </div>
+          <div class="options" id="q10-options">
+            <li><input type="radio" name="q10" value="a" /> Verdadeiro</li>
+            <li><input type="radio" name="q10" value="b" /> Falso</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q10',
+                'a',
+                'Verdadeiro. Embora o comando assuma o superusuário root como alvo padrão, o sudo permite executar uma ação simulando a identidade e as permissões de qualquer outro usuário especificado nas opções do comando.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q10-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <details class="answer-key">
+        <summary><i class="fas fa-key"></i> 📋 Gabarito Oficial - Módulo 15</summary>
+        <div style="margin-top: 1rem">
+          <p><strong>Q1:</strong> /etc/shadow e /etc/passwd</p>
+          <p><strong>Q2:</strong> id</p>
+          <p><strong>Q3:</strong> Verdadeiro</p>
+          <p><strong>Q4:</strong> who</p>
+          <p><strong>Q5:</strong> id bob</p>
+          <p><strong>Q6:</strong> group_name:password_placeholder:GID:user_list</p>
+          <p><strong>Q7:</strong> Verdadeiro</p>
+          <p><strong>Q8:</strong> Falso</p>
+          <p><strong>Q9:</strong> id</p>
+          <p><strong>Q10:</strong> Verdadeiro</p>
+        </div>
+      </details>
+    </div>
+
+    <footer>
+      <p><i class="fab fa-linux"></i> NDG Linux Essentials – Banco de Questões com Justificativas</p>
+      <p style="font-size: 0.8rem; margin-top: 0.5rem">Módulo 15: User and Group Accounts</p>
+    </footer>
+
+    <script>
+      function checkAnswer(questionId, correctValue, justification) {
+        const selected = document.querySelector(`input[name="${questionId}"]:checked`)
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`)
+
+        if (!selected) {
+          feedbackDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Selecione uma resposta primeiro!'
+          feedbackDiv.className = 'feedback incorrect'
+          return
+        }
+
+        if (selected.value === correctValue) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback correct'
+        } else {
+          const correctElement = document.querySelector(`input[name="${questionId}"][value="${correctValue}"]`)
+          const correctText = correctElement ? correctElement.closest('li').innerText : correctValue
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-book-open"></i> A resposta correta é: <strong>${correctText}</strong><br><br><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback incorrect'
+        }
+      }
+
+      function checkMultipleAnswer(questionId, correctValues, justification) {
+        const selected = document.querySelectorAll(`input[name="${questionId}"]:checked`)
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`)
+
+        if (selected.length === 0) {
+          feedbackDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Selecione pelo menos uma resposta!'
+          feedbackDiv.className = 'feedback incorrect'
+          return
+        }
+
+        const selectedValues = Array.from(selected).map((cb) => cb.value)
+        const isCorrect = correctValues.length === selectedValues.length && correctValues.every((val) => selectedValues.includes(val))
+
+        if (isCorrect) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback correct'
+        } else {
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-book-open"></i> Verifique as alternativas com atenção de acordo com o conteúdo estudado e tente novamente.</div>`
+          feedbackDiv.className = 'feedback incorrect'
+        }
+      }
+    </script>
+
+    <script src="../js/menu.js"></script>
+  </body>
+</html>

@@ -2,6 +2,19 @@
    NDG LINUX ESSENTIALS - AGENTE DE IA (WIDGET FLUTUANTE)
    ========================================================================== */
 
+/* Garante variáveis seguras caso não estejam declaradas no tema global */
+:root {
+  --bg-dark: #0d1117;
+  --bg-card: #161b22;
+  --bg-card-hover: #21262d;
+  --border: #30363d;
+  --primary: #00ff88;
+  --secondary: #0078d4;
+  --text: #c9d1d9;
+  --text-dim: #8b949e;
+  --danger: #f85149;
+}
+
 /* Botão Flutuante (Trigger) */
 .ndg-agent-toggle {
   position: fixed;
@@ -20,7 +33,7 @@
   cursor: pointer;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
   z-index: 2000;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .ndg-agent-toggle:hover {
@@ -30,7 +43,7 @@
   box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
 }
 
-/* Janela do Chat Principal */
+/* Janela do Chat Principal - CONFIGURADA PARA INICIAR OCULTA */
 .ndg-agent-window {
   position: fixed;
   bottom: 90px;
@@ -42,20 +55,22 @@
   border: 1px solid var(--border);
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-  display: flex;
+  display: none; /* Começa fechado estruturalmente */
   flex-direction: column;
   z-index: 2000;
   overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 0; /* Invisível para a animação inicial */
+  transform: translateY(20px) scale(0.95);
+  transition:
+    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Estado Escondido (Classe de Controle) */
-.ndg-agent-window.ng-hidden {
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(20px) scale(0.95);
+/* 🟢 CLASSE DE EXIBIÇÃO: Ativada pelo agent.js ao abrir / Removida ao fechar */
+.ndg-agent-window.ng-active {
+  display: flex !important;
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
 }
 
 /* Cabeçalho do Chat */
@@ -110,7 +125,7 @@
   color: var(--text-dim);
   font-size: 1.2rem;
   cursor: pointer;
-  transition: color 0.2s;
+  transition: color 0.2s ease;
 }
 
 .ndg-agent-close:hover {
@@ -126,6 +141,7 @@
   flex-direction: column;
   gap: 1rem;
   background: var(--bg-dark);
+  scroll-behavior: smooth; /* Rolagem fluida nas respostas da IA */
 }
 
 /* Balões de Mensagem */
@@ -199,7 +215,7 @@
   font-size: 0.9rem;
   font-family: 'Inter', sans-serif;
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s ease;
 }
 
 .ndg-agent-input-zone input:focus {
@@ -217,7 +233,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .ndg-agent-send-btn:hover {
@@ -226,7 +244,7 @@
 }
 
 /* ==========================================================================
-   📱 OTIMIZAÇÃO RESPONSIVA (MOBILE FIRST COMPLIANT)
+   📱 OTIMIZAÇÃO RESPONSIVA (MOBILE FULLSCREEN)
    ========================================================================== */
 @media (max-width: 768px) {
   .ndg-agent-toggle {
@@ -237,7 +255,6 @@
     font-size: 1.2rem;
   }
 
-  /* Janela de Chat vira Fullscreen no Mobile para melhor usabilidade */
   .ndg-agent-window {
     position: fixed;
     bottom: 0;
@@ -249,14 +266,18 @@
     max-height: 100vh;
     border-radius: 0;
     border: none;
-    z-index: 2001; /* Fica acima da top-bar mobile */
+    z-index: 2001;
+    transform: translateY(100%); /* Esconde jogando a tela para baixo */
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .ndg-agent-window.ng-hidden {
-    transform: translateY(100%); /* Desliza suave de baixo para cima */
+  /* Exibição correta quando o script injetar a classe ng-active no mobile */
+  .ndg-agent-window.ng-active {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
   }
 
   .ndg-agent-header {
-    padding-top: env(safe-area-inset-top, 1rem); /* Suporte a notch de celulares */
+    padding-top: env(safe-area-inset-top, 1rem);
   }
 }

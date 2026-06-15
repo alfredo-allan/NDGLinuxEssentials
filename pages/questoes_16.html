@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>NDG Linux Essentials | Módulo 16 - Criação de Usuários e Grupos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/questoes.css" />
+  </head>
+  <body>
+    <div class="top-bar">
+      <button class="menu-toggle" id="openMenu">
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+      </button>
+      <a href="../index.html" class="top-bar-brand"> <i class="fab fa-linux"></i> NDG Linux Essentials </a>
+      <a href="../index.html" class="btn-outline"> <i class="fas fa-home"></i> Voltar </a>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-compass"></i> Navegação - Questões</h3>
+        <button class="close-sidebar" id="closeMenu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="nav-modules">
+        <li>
+          <a href="#questao1"><i class="fas fa-question-circle"></i> Questão 1 - Especificar UID</a>
+        </li>
+        <li>
+          <a href="#questao2"><i class="fas fa-question-circle"></i> Questão 2 - Anexar Grupo Secundário</a>
+        </li>
+        <li>
+          <a href="#questao3"><i class="fas fa-question-circle"></i> Questão 3 - Escopo do groupmod</a>
+        </li>
+        <li>
+          <a href="#questao4"><i class="fas fa-question-circle"></i> Questão 4 - Modificar Grupos</a>
+        </li>
+        <li>
+          <a href="#questao5"><i class="fas fa-question-circle"></i> Questão 5 - Senhas Criptografadas</a>
+        </li>
+        <li>
+          <a href="#questao6"><i class="fas fa-question-circle"></i> Questão 6 - Bloqueio de Login</a>
+        </li>
+        <li>
+          <a href="#questao7"><i class="fas fa-question-circle"></i> Questão 7 - Renomear Grupo</a>
+        </li>
+        <li>
+          <a href="#questao8"><i class="fas fa-question-circle"></i> Questão 8 - Excluir Grupos Primários</a>
+        </li>
+        <li>
+          <a href="#questao9"><i class="fas fa-question-circle"></i> Questão 9 - Função do /etc/passwd</a>
+        </li>
+        <li>
+          <a href="#questao10"><i class="fas fa-question-circle"></i> Questão 10 - Localizar IDs de Grupos</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <section class="hero">
+      <div class="container">
+        <div class="badge-lab"><i class="fas fa-graduation-cap"></i> NDG Linux Essentials | Banco de Questões</div>
+        <h1>Exame do Módulo 16</h1>
+        <p>
+          User and Group Creation - Avalie seus conhecimentos práticos sobre comandos de provisionamento, modificação e políticas de
+          segurança
+        </p>
+        <div style="margin-top: 1.5rem">
+          <i class="fab fa-linux" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-user-plus" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+          <i class="fas fa-users-cog" style="color: var(--primary); font-size: 1.5rem; margin: 0 0.5rem"></i>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <section id="questao1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q1</span> Definição Customizada de UID
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-id-card"></i> Qual das seguintes opções do comando `useradd` permite ao root especificar o UID a ser associado
+            à nova conta?
+          </div>
+          <div class="options" id="q1-options">
+            <li><input type="radio" name="q1" value="a" /> -M</li>
+            <li><input type="radio" name="q1" value="b" /> -G</li>
+            <li><input type="radio" name="q1" value="c" /> -u</li>
+            <li><input type="radio" name="q1" value="d" /> -g</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q1',
+                'c',
+                'A flag -u (user id) serve para definir manualmente um UID exclusivo para a conta no momento do provisionamento com o comando useradd.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q1-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q2</span> Anexar Grupo Secundário
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-user-edit"></i> Qual dos seguintes comandos adicionará o grupo `extra` aos grupos secundários do usuário `bob`,
+            mantendo intactas as suas filiações secundárias atuais?
+          </div>
+          <div class="options" id="q2-options">
+            <li><input type="radio" name="q2" value="a" /> usermod -ag bob extra</li>
+            <li><input type="radio" name="q2" value="b" /> usermod -a extra bob</li>
+            <li><input type="radio" name="q2" value="c" /> usermod -aG extra bob</li>
+            <li><input type="radio" name="q2" value="d" /> usermod -G extra bob</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q2',
+                'c',
+                'A combinação de opções -aG (append e groups) adiciona o novo grupo à lista de grupos suplementares do usuário. Invocar apenas o -G sem a opção -a removeria o usuário de todos os grupos secundários anteriores.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q2-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q3</span> Limitações do Comando groupmod
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-sitemap"></i> O comando `groupmod` pode ser utilizado para adicionar usuários a um grupo. Verdadeiro ou Falso?
+          </div>
+          <div class="options" id="q3-options">
+            <li><input type="radio" name="q3" value="a" /> Verdadeiro</li>
+            <li><input type="radio" name="q3" value="b" /> Falso</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q3',
+                'a',
+                'Falso. O comando groupmod gerencia propriedades estruturais do grupo (como ID e nome textual). Para vincular ou desvincular contas de usuários em um grupo, recorre-se aos comandos usermod ou gpasswd.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q3-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q4</span> Modificação de Grupos Existentes
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-edit"></i> Qual dos seguintes comandos pode ser utilizado para modificar as propriedades de um grupo?
+          </div>
+          <div class="options" id="q4-options">
+            <li><input type="radio" name="q4" value="a" /> groupadd</li>
+            <li><input type="radio" name="q4" value="b" /> modgroup</li>
+            <li><input type="radio" name="q4" value="c" /> groupmod</li>
+            <li><input type="radio" name="q4" value="d" /> addgroup</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q4',
+                'c',
+                'O comando groupmod (group modify) é o binário padrão do sistema administrativo encarregado de aplicar alterações em grupos já existentes.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q4-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao5" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q5</span> Repositório de Senhas Criptografadas
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-key"></i> Qual dos seguintes arquivos armazena as informações de senhas criptografadas dos usuários?
+          </div>
+          <div class="options" id="q5-options">
+            <li><input type="radio" name="q5" value="a" /> /etc/group</li>
+            <li><input type="radio" name="q5" value="b" /> /etc/shadow</li>
+            <li><input type="radio" name="q5" value="c" /> /etc/passwd</li>
+            <li><input type="radio" name="q5" value="d" /> /etc/usr</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q5',
+                'b',
+                'O arquivo /etc/shadow guarda de forma protegida os hashes de senhas criptografadas e parâmetros de validade, possuindo permissões de leitura estritas ao superusuário.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q5-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao6" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q6</span> Bloqueio Administrativo de Contas
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-user-lock"></i> Qual dos seguintes comandos, executado como root, impedirá o usuário `bob` de efetuar login no
+            sistema?
+          </div>
+          <div class="options" id="q6-options">
+            <li><input type="radio" name="q6" value="a" /> usermod -L bob</li>
+            <li><input type="radio" name="q6" value="b" /> usermod -l bob</li>
+            <li><input type="radio" name="q6" value="c" /> usermod -D bob</li>
+            <li><input type="radio" name="q6" value="d" /> usermod -d bob</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q6',
+                'a',
+                'A opção -L (Lock) do usermod tranca a conta de usuário inserindo um ponto de exclamação no início do campo de hash da senha no arquivo /etc/shadow, inviabilizando logins.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q6-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao7" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q7</span> Alteração de Nome de Grupo
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-font"></i> O comando `groupmod` pode ser empregado para alterar o nome de um grupo. Verdadeiro ou Falso?
+          </div>
+          <div class="options" id="q7-options">
+            <li><input type="radio" name="q7" value="a" /> Verdadeiro</li>
+            <li><input type="radio" name="q7" value="b" /> Falso</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q7',
+                'a',
+                'Verdadeiro. O comando groupmod associado à flag -n permite renomear um grupo sem corromper as permissões dos arquivos, pois o ID numérico (GID) permanece o mesmo.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q7-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao8" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q8</span> Exclusão de Grupos Primários
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-ban"></i> O comando `groupdel` pode ser utilizado para excluir grupos definidos como primários. Verdadeiro ou
+            Falso?
+          </div>
+          <div class="options" id="q8-options">
+            <li><input type="radio" name="q8" value="a" /> Verdadeiro</li>
+            <li><input type="radio" name="q8" value="b" /> Falso</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q8',
+                'b',
+                'Falso. O Linux impede a remoção de qualquer grupo que atue como o grupo primário de um usuário ativo no sistema operacional, a fim de evitar inconsistências e arquivos órfãos.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q8-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao9" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q9</span> Conteúdo do Arquivo /etc/passwd
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-file-invoice"></i> O arquivo `/etc/passwd` contém as senhas criptografadas dos usuários atuais do Linux.
+            Verdadeiro ou Falso?
+          </div>
+          <div class="options" id="q9-options">
+            <li><input type="radio" name="q9" value="a" /> Falso</li>
+            <li><input type="radio" name="q9" value="b" /> Verdadeiro</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q9',
+                'a',
+                'Falso. Embora no início da arquitetura UNIX as senhas residissem nele, atualmente os hashes de senhas foram migrados exclusivamente para o arquivo /etc/shadow por motivos de segurança.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q9-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <section id="questao10" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span class="section-number">Q10</span> Identificadores de Grupos (GIDs)
+        </h2>
+        <div class="question-card">
+          <div class="question-text">
+            <i class="fas fa-users"></i> Qual dos seguintes arquivos serve de banco de dados base para localizar os IDs de Grupos (GIDs) no
+            sistema?
+          </div>
+          <div class="options" id="q10-options">
+            <li><input type="radio" name="q10" value="a" /> /etc/usr</li>
+            <li><input type="radio" name="q10" value="b" /> /etc/passwd</li>
+            <li><input type="radio" name="q10" value="c" /> /etc/group</li>
+            <li><input type="radio" name="q10" value="d" /> /etc/shadow</li>
+          </div>
+          <button
+            class="btn-check"
+            onclick="
+              checkAnswer(
+                'q10',
+                'c',
+                'O arquivo /etc/group é o local projetado pelo sistema operacional para armazenar os mapeamentos estruturais dos grupos e seus respectivos GIDs numéricos.'
+              )
+            "
+          >
+            Verificar Resposta
+          </button>
+          <div id="q10-feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <details class="answer-key">
+        <summary><i class="fas fa-key"></i> 📋 Gabarito Oficial - Módulo 16</summary>
+        <div style="margin-top: 1rem">
+          <p><strong>Q1:</strong> -u</p>
+          <p><strong>Q2:</strong> usermod -aG extra bob</p>
+          <p><strong>Q3:</strong> Falso</p>
+          <p><strong>Q4:</strong> groupmod</p>
+          <p><strong>Q5:</strong> /etc/shadow</p>
+          <p><strong>Q6:</strong> usermod -L bob</p>
+          <p><strong>Q7:</strong> Verdadeiro</p>
+          <p><strong>Q8:</strong> Falso</p>
+          <p><strong>Q9:</strong> Falso</p>
+          <p><strong>Q10:</strong> /etc/group</p>
+        </div>
+      </details>
+    </div>
+
+    <footer>
+      <p><i class="fab fa-linux"></i> NDG Linux Essentials – Banco de Questões com Justificativas</p>
+      <p style="font-size: 0.8rem; margin-top: 0.5rem">Módulo 16: User and Group Creation</p>
+    </footer>
+
+    <script>
+      function checkAnswer(questionId, correctValue, justification) {
+        const selected = document.querySelector(`input[name="${questionId}"]:checked`)
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`)
+
+        if (!selected) {
+          feedbackDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Selecione uma resposta primeiro!'
+          feedbackDiv.className = 'feedback incorrect'
+          return
+        }
+
+        if (selected.value === correctValue) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback correct'
+        } else {
+          const correctElement = document.querySelector(`input[name="${questionId}"][value="${correctValue}"]`)
+          const correctText = correctElement ? correctElement.closest('li').innerText : correctValue
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-book-open"></i> A resposta correta é: <strong>${correctText}</strong><br><br><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback incorrect'
+        }
+      }
+
+      function checkMultipleAnswer(questionId, correctValues, justification) {
+        const selected = document.querySelectorAll(`input[name="${questionId}"]:checked`)
+        const feedbackDiv = document.getElementById(`${questionId}-feedback`)
+
+        if (selected.length === 0) {
+          feedbackDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Selecione pelo menos uma resposta!'
+          feedbackDiv.className = 'feedback incorrect'
+          return
+        }
+
+        const selectedValues = Array.from(selected).map((cb) => cb.value)
+        const isCorrect = correctValues.length === selectedValues.length && correctValues.every((val) => selectedValues.includes(val))
+
+        if (isCorrect) {
+          feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> ✅ Correto!<div class="justification"><i class="fas fa-info-circle"></i> ${justification}</div>`
+          feedbackDiv.className = 'feedback correct'
+        } else {
+          feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Incorreto.<div class="justification"><i class="fas fa-book-open"></i> Verifique as alternativas com atenção de acordo com o conteúdo estudado e tente novamente.</div>`
+          feedbackDiv.className = 'feedback incorrect'
+        }
+      }
+    </script>
+
+    <script src="../js/menu.js"></script>
+  </body>
+</html>

@@ -1,0 +1,2184 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NDG Linux Essentials | Criação de Usuários e Grupos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <div class="top-bar">
+      <button class="menu-toggle" id="openMenu">
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+      </button>
+      <a href="index.html" class="top-bar-brand"> <i class="fab fa-linux"></i> NDG Linux Essentials </a>
+      <a
+        href="../index.html"
+        class="btn-outline"
+        style="
+          color: var(--primary);
+          text-decoration: none;
+          border: 1px solid var(--primary);
+          padding: 0.4rem 0.8rem;
+          border-radius: 8px;
+          font-size: 0.85rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        "
+      >
+        <i class="fas fa-home"></i> Voltar
+      </a>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-compass"></i> Navegação</h3>
+        <button class="close-sidebar" id="closeMenu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="nav-modules">
+        <li>
+          <a href="#secao16-1"><i class="fab fa-linux"></i> 16.1 Introdução</a>
+        </li>
+        <li>
+          <a href="#secao16-2"><i class="fas fa-sitemap"></i> 16.2 Grupos (Groups)</a>
+        </li>
+        <li>
+          <a href="#secao16-2-1"><i class="fas fa-plus-circle"></i> 16.2.1 Criando um Grupo</a>
+        </li>
+        <li>
+          <a href="#secao16-2-1-1"><i class="fas fa-exclamation-triangle"></i> 16.2.1.1 Considerações sobre GID</a>
+        </li>
+        <li>
+          <a href="#secao16-2-1-2"><i class="fas fa-font"></i> 16.2.1.2 Considerações sobre Nomes de Grupos</a>
+        </li>
+        <li>
+          <a href="#secao16-2-2"><i class="fas fa-edit"></i> 16.2.2 Modificando um Grupo</a>
+        </li>
+        <li>
+          <a href="#secao16-2-3"><i class="fas fa-trash-alt"></i> 16.2.3 Excluindo um Grupo</a>
+        </li>
+        <li>
+          <a href="#secao16-3"><i class="fas fa-users"></i> 16.3 Usuários (Users)</a>
+        </li>
+        <li>
+          <a href="#secao16-3-1"><i class="fas fa-file-alt"></i> 16.3.1 Arquivos de Configuração de Usuário</a>
+        </li>
+        <li>
+          <a href="#secao16-3-2"><i class="fas fa-sliders-h"></i> 16.3.2 Diretrizes Globais com o login.defs</a>
+        </li>
+        <li>
+          <a href="#secao16-3-3"><i class="fas fa-clipboard-list"></i> 16.3.3 Considerações sobre Contas</a>
+        </li>
+        <li>
+          <a href="#secao16-3-4"><i class="fas fa-user-plus"></i> 16.3.4 Criando um Usuário na Prática</a>
+        </li>
+        <li>
+          <a href="#secao16-3-5"><i class="fas fa-key"></i> 16.3.5 Políticas de Senhas</a>
+        </li>
+        <li>
+          <a href="#secao16-3-5-1"><i class="fas fa-user-lock"></i> 16.3.5.1 Configurando uma Senha de Usuário</a>
+        </li>
+        <li>
+          <a href="#secao16-3-5-2"><i class="fas fa-calendar-alt"></i> 16.3.5.2 Gerenciando a Expiração de Senhas (chage)</a>
+        </li>
+        <li>
+          <a href="#secao16-3-6"><i class="fas fa-user-edit"></i> 16.3.6 Modificando um Usuário (usermod)</a>
+        </li>
+        <li>
+          <a href="#secao16-3-7"><i class="fas fa-user-minus"></i> 16.3.7 Excluindo um Usuário (userdel)</a>
+        </li>
+        <li>
+          <a href="../pages/questoes_16.html"><i class="fas fa-question-circle"></i> Questões</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <section class="hero">
+      <div class="container">
+        <span class="badge-lab"><i class="fas fa-graduation-cap"></i> Módulo 16</span>
+        <h1>Criação de Usuários e Grupos</h1>
+        <p style="color: var(--text-dim); max-width: 600px; margin: 0 auto; font-size: 1.1rem">
+          Aprendendo a planejar, provisionar e modificar contas de usuários e grupos através da linha de comando no Linux.
+        </p>
+      </div>
+    </section>
+
+    <div class="container">
+      <section id="secao16-1" class="section">
+        <h2 class="section-title">
+          <i class="fab fa-linux"></i>
+          <span class="section-number">16.1</span> Introdução
+        </h2>
+
+        <div class="card">
+          <p>
+            Durante o processo de instalação do sistema, a maioria dos instaladores cria um usuário comum inicial e concede a ele a
+            permissão para executar comandos administrativos via <code>sudo</code>, ou exige que uma senha para a conta do usuário
+            <strong>root</strong> seja configurada. Quase todos os sistemas Linux são estruturados para permitir que ao menos um usuário sem
+            privilégios faça login e tenha a capacidade de executar comandos como root, direta ou indiretamente.
+          </p>
+          <p>
+            Se o computador for utilizado por apenas uma pessoa, ter uma única conta de usuário comum pode ser o suficiente. No entanto, se
+            uma máquina precisa ser compartilhada por múltiplos indivíduos, torna-se desejável ter uma conta separada e exclusiva para cada
+            pessoa.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>
+            <i class="fas fa-shield-alt" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Vantagens de Contas
+            Individuais
+          </h3>
+          <p>
+            <strong>Acesso Seletivo:</strong> As contas são usadas para conceder acessos específicos a arquivos ou serviços. Por exemplo,
+            cada conta possui seu próprio diretório home (diretório pessoal), que por padrão não pode ser acessado por outros usuários
+            comuns.
+          </p>
+          <p>
+            <strong>Rastreabilidade com Sudo:</strong> O comando <code>sudo</code> pode ser configurado para liberar apenas comandos
+            administrativos selecionados. Ao exigir o uso do <code>sudo</code> para tarefas críticas, o sistema gera logs detalhados de qual
+            usuário executou cada ação.
+          </p>
+          <p>
+            <strong>Flexibilidade de Gerenciamento:</strong> Cada conta individual pode ter suas próprias associações a grupos e direitos
+            específicos, permitindo um controle muito mais maleável da infraestrutura.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>
+            <i class="fas fa-users" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Grupos Privados de Usuário (UPG)
+          </h3>
+          <p>
+            Em algumas distribuições, a criação de uma nova conta de usuário gera automaticamente uma conta de grupo correspondente chamada
+            de <strong>User Private Group (UPG)</strong> ou Grupo Privado do Usuário. Nesses sistemas, o nome do grupo e o nome do usuário
+            serão idênticos, e o único membro inicial desse grupo recém-criado será o próprio usuário correspondente.
+          </p>
+          <p>
+            Para as distribuições que não adotam o padrão de UPG, as novas contas geralmente recebem um grupo genérico chamado
+            <code>users</code> como seu grupo primário. Independentemente do método, os usuários podem ser modificados a qualquer momento
+            para entrar ou sair de grupos, mas devem obrigatoriamente pertencer a pelo menos um grupo para atuar como seu
+            <strong>grupo primário</strong>.
+          </p>
+        </div>
+
+        <div
+          class="alert alert-info"
+          style="
+            border-left: 4px solid var(--info);
+            background: rgba(0, 170, 255, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i
+            class="fas fa-lightbulb"
+            style="color: var(--info); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+          ></i>
+          <div>
+            <span style="color: var(--info); font-weight: bold; display: block; margin-bottom: 0.25rem"
+              >Dica de Planejamento Administrativo:</span
+            >
+            Antes de começar a criar usuários de forma desordenada, você deve planejar como utilizará as estruturas de grupos. É muito mais
+            eficiente criar primeiro os seus grupos de colaboração e, em seguida, provisionar os usuários já vinculando-os às suas
+            respectivas associações. Caso faça o oposto (criar os usuários primeiro e os grupos depois), você terá o retrabalho de executar
+            etapas extras de modificação para cada um dos usuários.
+          </div>
+        </div>
+      </section>
+      <section id="secao15-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-sitemap"></i>
+          <span class="section-number">16.2</span> Grupos (Groups)
+        </h2>
+
+        <div class="card">
+          <p>
+            O motivo mais comum para se criar um grupo no Linux é fornecer um meio prático para que os usuários compartilhem arquivos e
+            colaborem entre si.
+          </p>
+          <p>
+            Considere um cenário onde várias pessoas trabalham juntas no mesmo projeto e precisam editar ou visualizar documentos em comum
+            armazenados no servidor. Para resolver isso, o administrador do sistema pode tornar essas pessoas membras de um grupo em comum,
+            alterar a propriedade (ownership) do diretório do projeto para este novo grupo e ajustar as permissões do diretório para
+            permitir que todos os membros do grupo acessem e manipulem os arquivos ali dentro.
+          </p>
+        </div>
+
+        <div class="card">
+          <p>
+            Após criar ou modificar um grupo, você pode verificar se as alterações foram aplicadas corretamente consultando as informações
+            de configuração do grupo diretamente no arquivo <code>/etc/group</code> utilizando o comando <code>grep</code>.
+          </p>
+          <p>
+            Caso você esteja trabalhando em um ambiente corporativo com serviços de autenticação baseados em rede (como LDAP ou Active
+            Directory), o comando <code>getent</code> é o mais indicado, pois exibe tanto os grupos locais quanto os mapeados via rede.
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+grep padrão arquivo
+getent banco_de_dados registro</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            Para uso estritamente local, ambos os comandos retornarão exatamente o mesmo resultado. Veja o exemplo de consulta realizado
+            para o grupo do superusuário <code>root</code>:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+root@localhost:~# grep root /etc/group
+root:x:0:
+root@localhost:~# getent group root
+root:x:0:</pre
+          >
+        </div>
+      </section>
+      <section id="secao16-2-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-plus-circle"></i>
+          <span class="section-number">16.2.1</span> Criando um Grupo
+        </h2>
+
+        <div class="card">
+          <p>
+            O comando <code>groupadd</code> pode ser executado pelo usuário <strong>root</strong> para criar um novo grupo no sistema. Em
+            sua sintaxe mais simples, o comando exige apenas o nome do grupo que se deseja criar.
+          </p>
+          <p>
+            Caso seja necessário determinar um ID específico, a opção <code>-g</code> pode ser utilizada para especificar manualmente o GID
+            (Group ID) do novo grupo:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+root@localhost:~# groupadd -g 1005 research
+root@localhost:~# grep research /etc/group
+research:x:1005:</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            Se a opção <code>-g</code> não for fornecida durante a execução, o comando <code>groupadd</code> atribuirá automaticamente um
+            GID para o novo grupo.
+          </p>
+          <p>
+            Para realizar essa atribuição automatizada, o binário analisa o arquivo <code>/etc/group</code> e seleciona um número que seja
+            exatamente uma unidade maior (<code>+1</code>) do que o maior GID atualmente em uso no sistema. A execução dos comandos abaixo
+            ilustra esse comportamento sequencial:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+root@localhost:~# groupadd development
+root@localhost:~# grep development /etc/group
+development:x:1006:</pre
+          >
+        </div>
+      </section>
+      <section id="secao16-2-1-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-exclamation-triangle"></i>
+          <span class="section-number">16.2.1.1</span> Considerações sobre GID
+        </h2>
+
+        <div class="card">
+          <p>
+            Em algumas distribuições Linux, particularmente aquelas baseadas em Red Hat, quando um ID de usuário (UID) é criado, um grupo
+            privado de usuário (UPG) também é criado com esse usuário como seu único membro. Nessas distribuições, o UID e o ID do UPG
+            correspondente devem ser idênticos (possuir o mesmo número).
+          </p>
+          <p>
+            Portanto, ao gerenciar o sistema, você deve <strong>evitar criar GIDs nos mesmos intervalos numéricos</strong> onde planeja
+            criar UIDs. Isso previne o risco de conflito entre um GID criado manualmente por você e um número de UPG gerado de forma
+            automática para corresponder a um novo UID.
+          </p>
+        </div>
+
+        <div
+          class="alert alert-warning"
+          style="
+            border-left: 4px solid var(--warning);
+            background: rgba(255, 204, 0, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i
+            class="fas fa-shield-alt"
+            style="color: var(--warning); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+          ></i>
+          <div>
+            <span style="color: var(--warning); font-weight: bold; display: block; margin-bottom: 0.25rem"
+              >Intervalos de IDs Reservados:</span
+            >
+            GIDs abaixo de <strong>500</strong> (no padrão Red Hat) ou de <strong>1.000</strong> (no padrão Debian/Ubuntu) são estritamente
+            reservados para o uso de contas e serviços do próprio sistema operacional.
+          </div>
+        </div>
+
+        <div class="card">
+          <p>
+            Eventualmente, você pode precisar criar e atribuir um GID de sistema de valor mais baixo para um novo serviço. Para alcançar
+            esse resultado, utilize a opção <code>-r</code>, que instrui o comando a alocar para o novo grupo um GID que seja menor do que o
+            menor GID padrão de usuários comuns:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+root@localhost:~# groupadd -r sales
+root@localhost:~# getent group sales
+sales:x:999:</pre
+          >
+        </div>
+      </section>
+      <section id="secao16-2-1-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-font"></i>
+          <span class="section-number">16.2.1.2</span> Considerações sobre Nomes de Grupos
+        </h2>
+
+        <div class="card">
+          <p>
+            Seguir diretrizes padronizadas para a nomenclatura de grupos ajuda a garantir que o nome escolhido seja
+            <strong>portável</strong> (ou seja, que funcione corretamente de forma integrada com outros sistemas operacionais, scripts ou
+            serviços de diretório).
+          </p>
+          <p>As boas práticas recomendadas para a definição de nomes de grupos incluem:</p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-list-check" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Regras de Sintaxe</h3>
+          <table class="table-custom">
+            <thead>
+              <tr>
+                <th>Regra</th>
+                <th>Descrição Técnica</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Primeiro Caractere</strong></td>
+                <td>Deve ser obrigatoriamente um caractere de sublinhado (<code>_</code>) ou uma letra minúscula de <code>a-z</code>.</td>
+              </tr>
+              <tr>
+                <td><strong>Comprimento Máximo</strong></td>
+                <td>
+                  A maioria das distribuições Linux aceita nomes de até 32 caracteres. No entanto, utilizar mais do que
+                  <strong>16 caracteres</strong> pode causar problemas de compatibilidade em ambientes legados.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Caracteres Restantes</strong></td>
+                <td>
+                  Após o primeiro caractere, são permitidos caracteres alfanuméricos, hífens (<code>-</code>) ou sublinhados
+                  (<code>_</code>).
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Último Caractere</strong></td>
+                <td>O nome do grupo <strong>não</strong> deve terminar com um hífen (<code>-</code>).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div
+          class="alert alert-warning"
+          style="
+            border-left: 4px solid var(--warning);
+            background: rgba(255, 204, 0, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i
+            class="fas fa-info-circle"
+            style="color: var(--warning); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+          ></i>
+          <div>
+            <span style="color: var(--warning); font-weight: bold; display: block; margin-bottom: 0.25rem">Nota de Compatibilidade:</span>
+            Infelizmente, essas diretrizes nem sempre são validadas de forma rígida pelo sistema operacional. O risco real não está no
+            comando <code>groupadd</code> falhar ao criar um nome fora dos padrões, mas sim no fato de que
+            <strong>outros comandos, scripts automatizados ou daemons de rede podem não funcionar corretamente</strong> ao processar
+            caracteres inesperados.
+          </div>
+        </div>
+      </section>
+      <section id="secao16-2-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-edit"></i>
+          <span class="section-number">16.2.2</span> Modificando um Grupo
+        </h2>
+
+        <div class="card">
+          <p>
+            O comando <code>groupmod</code> é utilizado na administração do sistema para alterar as propriedades de um grupo existente. Suas
+            principais flags são a opção <code>-n</code> (para alterar o nome de um grupo) e a opção <code>-g</code> (Rh-b para alterar o
+            GID numérico do grupo).
+          </p>
+          <p>
+            Alterar o <strong>nome</strong> de um grupo pode confundir os usuários que estavam habituados com a nomenclatura antiga. No
+            entanto, do ponto de vista técnico, renomear um grupo <strong>não causará nenhum problema de acesso a arquivos</strong>, pois o
+            kernel do Linux gerencia a propriedade dos arquivos através dos GIDs numéricos, e não por strings de texto. Veja o exemplo:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+root@localhost:~# ls -l index.html
+-rw-r-----. 1 root sales 0 Aug  1 13:21 index.html
+root@localhost:~# groupmod -n clerks sales
+root@localhost:~# ls -l index.html
+-rw-r-----. 1 root clerks 0 Aug  1 13:21 index.html</pre
+          >
+        </div>
+
+        <div
+          class="alert alert-info"
+          style="
+            border-left: 4px solid var(--info);
+            background: rgba(0, 170, 255, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i
+            class="fas fa-info-circle"
+            style="color: var(--info); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+          ></i>
+          <div>
+            <span style="color: var(--info); font-weight: bold; display: block; margin-bottom: 0.25rem">Nota do Laboratório:</span>
+            O arquivo <code>index.html</code> utilizado no exemplo acima serve apenas para ilustração didática e não está fisicamente
+            disponível dentro da máquina virtual deste curso.
+          </div>
+        </div>
+
+        <div class="card">
+          <p>
+            Como observado após a execução do comando <code>groupmod -n</code>, o arquivo passou a exibir um nome de grupo proprietário
+            diferente (<code>clerks</code>). No entanto, todos os usuários que pertenciam ao antigo grupo <code>sales</code> continuam
+            associados ao mesmo ID interno e agora fazem parte do grupo <code>clerks</code>, mantendo seu acesso intacto ao arquivo.
+          </p>
+        </div>
+
+        <div
+          class="alert alert-danger"
+          style="
+            border-left: 4px solid var(--danger);
+            background: rgba(255, 68, 68, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i
+            class="fas fa-exclamation-triangle"
+            style="color: var(--danger); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+          ></i>
+          <div>
+            <span style="color: var(--danger); font-weight: bold; display: block; margin-bottom: 0.25rem"
+              >Risco Crítico ao Alterar o GID:</span
+            >
+            Por outro lado, se você optar por <strong>alterar o GID numérico</strong> de um grupo existente, todos os arquivos previamente
+            associados àquele grupo perderão o vínculo textual com o nome dele. Na realidade, o sistema deixará de mapear qualquer nome de
+            grupo para esses arquivos, exibindo apenas o GID numérico antigo órfão no output do comando <code>ls</code>:
+          </div>
+        </div>
+
+        <div class="terminal">
+          <pre>
+root@localhost:~# groupmod -g 10003 clerks
+root@localhost:~# ls -l index.html
+-rw-r-----. 1 root 491 13370 Aug  1 13:21 index.html</pre
+          >
+        </div>
+
+        <div
+          class="alert alert-warning"
+          style="
+            border-left: 4px solid var(--warning);
+            background: rgba(255, 204, 0, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i
+            class="fas fa-lightbulb"
+            style="color: var(--warning); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+          ></i>
+          <div>
+            <span style="color: var(--warning); font-weight: bold; display: block; margin-bottom: 0.25rem"
+              >Considere Isto: Arquivos Órfãos (Orphaned Files)</span
+            >
+            Arquivos no sistema de arquivos que apontam para um GID sem nome associado no <code>/etc/group</code> são conhecidos como
+            <strong>arquivos órfãos</strong>. Para varrer o sistema em busca de todos os arquivos associados a um ID de grupo inexistente,
+            utilize a opção <code>-nogroup</code> combinada ao comando <code>find</code>:
+          </div>
+        </div>
+
+        <div class="terminal">
+          <pre>
+root@localhost:~# find / -nogroup 
+/root/index.html</pre
+          >
+        </div>
+      </section>
+      <section id="secao16-2-3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-trash-alt"></i>
+          <span class="section-number">16.2.3</span> Excluindo um Grupo
+        </h2>
+
+        <div class="card">
+          <p>
+            Se você decidir excluir um grupo utilizando o comando <code>groupdel</code>, fique atento ao fato de que quaisquer arquivos que
+            pertenciam a esse grupo perderão sua referência textual e se tornarão <strong>arquivos órfãos</strong> (mantendo apenas o antigo
+            GID numérico gravado nos metadados).
+          </p>
+        </div>
+
+        <div
+          class="alert alert-danger"
+          style="
+            border-left: 4px solid var(--danger);
+            background: rgba(255, 68, 68, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i
+            class="fas fa-ban"
+            style="color: var(--danger); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+          ></i>
+          <div>
+            <span style="color: var(--danger); font-weight: bold; display: block; margin-bottom: 0.25rem">Restrição Importante:</span>
+            Apenas grupos suplementares (secundários) podem ser excluídos diretamente do sistema. Se um grupo estiver definido atualmente
+            como o <strong>grupo primário de qualquer usuário</strong>, o comando <code>groupdel</code> recusará a ação e falhará.
+          </div>
+        </div>
+
+        <div class="card">
+          <p>
+            Para contornar essa restrição, o administrador deve primeiro modificar a conta do usuário em questão, definindo um grupo
+            diferente como seu grupo primário. Uma vez que o grupo antigo passe a ser apenas um grupo secundário ou fique totalmente sem
+            usuários associados, ele poderá ser removido de forma definitiva.
+          </p>
+          <p>
+            Certificando-se de que o grupo alvo não é o grupo primário de ninguém, a exclusão é efetuada passando o comando
+            <code>groupdel</code> acompanhado do nome do grupo:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>root@localhost:~# groupdel clerks</pre>
+        </div>
+      </section>
+      <section id="secao16-3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-users"></i>
+          <span class="section-number">16.3</span> Usuários (Users)
+        </h2>
+
+        <div class="card">
+          <p>
+            Como estudado anteriormente, as informações cadastrais das contas de usuário ficam armazenadas no arquivo
+            <code>/etc/passwd</code>, enquanto as informações de autenticação (os dados das senhas criptografadas) ficam guardadas no
+            arquivo <code>/etc/shadow</code>.
+          </p>
+          <p>
+            A criação de um novo usuário poderia ser feita inserindo manualmente uma nova linha de texto no final de cada um desses
+            arquivos, mas essa técnica <strong>geralmente não é recomendada</strong> em ambientes de produção.
+          </p>
+        </div>
+
+        <div
+          class="alert alert-danger"
+          style="
+            border-left: 4px solid var(--danger);
+            background: rgba(255, 68, 68, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i
+            class="fas fa-exclamation-triangle"
+            style="color: var(--danger); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+          ></i>
+          <div>
+            <span style="color: var(--danger); font-weight: bold; display: block; margin-bottom: 0.25rem"
+              >Risco de Corrupção de Arquivos:</span
+            >
+            Ao utilizar os comandos apropriados para provisionar um novo usuário, esses arquivos críticos do sistema são modificados de
+            forma automatizada, encadeada e segura. Se você tentasse alterá-los manualmente usando um editor de texto comum, correria o
+            risco de cometer um erro de sintaxe ou de digitação que poderia corromper a base de dados e
+            <strong>impedir que todos os usuários do sistema fizessem login normalmente</strong>.
+          </div>
+        </div>
+
+        <div class="card">
+          <p>
+            Antes de começar a criar contas de usuários no seu sistema operacional, é uma excelente prática administrativa verificar ou
+            estabelecer valores práticos que serão aplicados por padrão sempre que o comando <code>useradd</code> for invocado.
+          </p>
+          <p>
+            Essas diretrizes de comportamento padrão ficam guardadas em arquivos específicos de configuração que servem de base para o
+            utilitário <code>useradd</code>.
+          </p>
+        </div>
+
+        <div
+          class="alert alert-success"
+          style="
+            border-left: 4px solid var(--success);
+            background: rgba(0, 255, 136, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i
+            class="fas fa-lightbulb"
+            style="color: var(--success); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+          ></i>
+          <div>
+            <span style="color: var(--success); font-weight: bold; display: block; margin-bottom: 0.25rem">Boa Prática de Automação:</span>
+            Garantir que os valores dentro desses arquivos de configuração padrão sejam razoáveis e estejam de acordo com a política de
+            segurança da sua empresa antes de adicionar os usuários poupará muito tempo e trabalho, evitando que você tenha que corrigir
+            manualmente as definições de cada conta após o provisionamento em lote.
+          </div>
+        </div>
+      </section>
+      <section id="secao16-3-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-file-alt"></i>
+          <span class="section-number">16.3.1</span> Arquivos de Configuração de Usuário
+        </h2>
+
+        <div class="card">
+          <p>
+            A opção <code>-D</code> do comando <code>useradd</code> permite que você visualize ou altere alguns dos valores padrões
+            utilizados no provisionamento de novas contas. Os parâmetros exibidos pelo comando <code>useradd -D</code> também podem ser
+            visualizados ou atualizados manipulando diretamente o arquivo de configuração <code>/etc/default/useradd</code>:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+root@localhost:~# useradd -D 
+GROUP=100
+HOME=/home
+INACTIVE=-1
+EXPIRE=
+SHELL=/bin/bash
+SKEL=/etc/skel
+CREATE_MAIL_SPOOL=yes</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>Abaixo descrevemos detalhadamente o impacto técnico de cada um desses valores padrão:</p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-users" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Grupo Padrão (GROUP)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre><strong>GROUP=100</strong></pre>
+          </div>
+          <p>
+            Em distribuições que não utilizam o conceito de UPG (User Private Group), este define o grupo primário padrão para um novo
+            usuário caso nenhum outro seja especificado com o comando. Normalmente, aponta para o grupo <code>users</code> com GID 100.
+          </p>
+          <p>Essa configuração afeta diretamente o campo de ID do grupo primário no arquivo <code>/etc/passwd</code> destacado abaixo:</p>
+          <div class="terminal" style="margin-bottom: 1rem"><pre>bob:x:600:<strong>600</strong>:bob:/home/bob:/bin/bash</pre></div>
+          <p>
+            <em
+              >Nota: A opção <code>-g</code> do comando <code>useradd</code> permite que você defina um grupo primário diferente do padrão
+              no momento da criação.</em
+            >
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-folder" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Diretório Base Home (HOME)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre><strong>HOME=/home</strong></pre>
+          </div>
+          <p>
+            O diretório <code>/home</code> atua como a pasta base padrão sob a qual o diretório pessoal de cada novo usuário será criado.
+            Isso significa que um usuário com a conta chamada <code>bob</code> receberá a home em <code>/home/bob</code>.
+          </p>
+          <p>Essa configuração afeta o campo de diretório home do arquivo <code>/etc/passwd</code> destacado abaixo:</p>
+          <div class="terminal" style="margin-bottom: 1rem"><pre>bob:x:600:600:bob:<strong>/home/bob</strong>:/bin/bash</pre></div>
+          <p>
+            <em
+              >Nota: A opção <code>-b</code> do comando <code>useradd</code> permite definir um diretório base diferente para a home durante
+              o provisionamento.</em
+            >
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-user-clock" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Período de Inatividade
+            (INACTIVE)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre><strong>INACTIVE=-1</strong></pre>
+          </div>
+          <p>
+            Este valor representa a quantidade de dias tolerados após o vencimento de uma senha para que a conta seja desativada por
+            completo pelo sistema. O valor <code>-1</code> desabilita esse recurso, significando que nenhuma data de inatividade será
+            aplicada por padrão para novas contas.
+          </p>
+          <p>Essa configuração afeta o campo de inatividade do arquivo <code>/etc/shadow</code> destacado abaixo:</p>
+          <div class="terminal" style="margin-bottom: 1rem"><pre>bob:pw:15020:5:30:7:<strong>60</strong>:15050:</pre></div>
+          <p>
+            <em
+              >Nota: A opção <code>-f</code> do comando <code>useradd</code> permite que você configure um valor de inatividade
+              customizado.</em
+            >
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-calendar-times" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Data de Expiração (EXPIRE)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre><strong>EXPIRE=</strong></pre>
+          </div>
+          <p>
+            Por padrão, não há nenhuma data de encerramento global definida. Normalmente, prazos de validade são estipulados para contas
+            individuais e temporárias, e não para todos os usuários criados no sistema.
+          </p>
+          <p>
+            Por exemplo, se um prestador de serviço foi contratado para trabalhar apenas até o final do dia 1 de novembro de 2019, você pode
+            garantir o bloqueio do login configurando este campo na conta dele.
+          </p>
+          <p>Essa configuração afeta o campo de expiração da conta do arquivo <code>/etc/shadow</code> destacado abaixo:</p>
+          <div class="terminal" style="margin-bottom: 1rem"><pre>bob:pw:15020:5:30:7:60:<strong>15050</strong>:</pre></div>
+          <p>
+            <em
+              >Nota: A opção <code>-e</code> do comando <code>useradd</code> permite definir uma data de expiração específica para uma
+              conta.</em
+            >
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-terminal" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Shell Padrão (SHELL)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre><strong>SHELL=/bin/bash</strong></pre>
+          </div>
+          <p>
+            Indica qual interpretador de comandos será atribuído ao usuário por padrão assim que ele se autenticar no ambiente de terminal.
+          </p>
+          <p>Essa configuração afeta o campo do shell de login no arquivo <code>/etc/passwd</code> destacado abaixo:</p>
+          <div class="terminal" style="margin-bottom: 1rem">
+            <pre>bob:x:600:600:bob:/home/bob:<strong>/bin/bash</strong></pre>
+          </div>
+          <p>
+            <em
+              >Nota: A opção <code>-s</code> do comando <code>useradd</code> permite que você especifique um shell diferente no momento do
+              provisionamento.</em
+            >
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-folder-open" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Diretório Esqueleto (SKEL)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre><strong>SKEL=/etc/skel</strong></pre>
+          </div>
+          <p>
+            O valor de SKEL determina qual diretório modelo (esqueleto) terá todo o seu conteúdo e arquivos ocultos clonados para dentro do
+            novo diretório home do usuário. O sistema realiza a cópia e altera automaticamente o proprietário (ownership) desses novos
+            arquivos para o usuário recém-criado.
+          </p>
+          <p>
+            Esse recurso fornece aos administradores uma forma simples de popular novos perfis com variáveis e perfis de inicialização
+            padronizados (como <code>.bashrc</code> e <code>.profile</code>).
+          </p>
+          <p>
+            <em>Nota: A opção <code>-k</code> do comando <code>useradd</code> permite utilizar um diretório esqueleto alternativo.</em>
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-envelope" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Criar Caixa de E-mail
+            (CREATE_MAIL_SPOOL)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre><strong>CREATE_MAIL_SPOOL=yes</strong></pre>
+          </div>
+          <p>
+            Um <em>mail spool</em> é um arquivo de sistema onde as mensagens recebidas locais são armazenadas. O valor definido como
+            <code>yes</code> configura por padrão a habilidade de receber e armazenar mensagens internas no servidor. Se você não pretende
+            operar serviços de e-mail local, este valor pode ser alterado para <code>no</code>.
+          </p>
+        </div>
+
+        <div
+          class="alert alert-info"
+          style="
+            border-left: 4px solid var(--info);
+            background: rgba(0, 170, 255, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i
+            class="fas fa-shield-alt"
+            style="color: var(--info); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+          ></i>
+          <div>
+            <span style="color: var(--info); font-weight: bold; display: block; margin-bottom: 0.25rem"
+              >Como Modificar as Configurações Padrão:</span
+            >
+            Embora você possa editar o arquivo <code>/etc/default/useradd</code> diretamente com um editor de texto, uma abordagem muito
+            mais segura para realizar atualizações controladas é invocar o próprio comando <code>useradd -D</code> acompanhado do parâmetro
+            desejado.
+          </div>
+        </div>
+
+        <div class="card">
+          <p>
+            Por exemplo, se você deseja que as senhas expiradas de novos usuários ainda permitam logins e carências por até 30 dias antes do
+            bloqueio da conta, execute o seguinte comando:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+root@localhost:~# useradd -D -f 30
+root@localhost:~# useradd -D
+GROUP=100
+HOME=/home
+INACTIVE=30
+EXPIRE=
+SHELL=/bin/bash
+SKEL=/etc/skel
+CREATE_MAIL_SPOOL=yes</pre
+          >
+        </div>
+      </section>
+      <section id="secao16-3-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-sliders-h"></i>
+          <span class="section-number">16.3.2</span> Diretrizes Globais com o login.defs
+        </h2>
+
+        <div class="card">
+          <p>
+            O arquivo <code>/etc/login.defs</code> também armazena valores que são aplicados por padrão aos novos usuários criados através
+            do comando <code>useradd</code>. Diferente do arquivo <code>/etc/default/useradd</code>, o arquivo
+            <code>/etc/login.defs</code> é rotineiramente editado de forma direta pelo administrador com um editor de texto sempre que há
+            necessidade de alterar suas diretrizes.
+          </p>
+          <p>
+            Como este arquivo é composto por muitos comentários explicativos e linhas em branco, você pode filtrar a saída do terminal para
+            exibir apenas as configurações de fato ativas utilizando a seguinte expressão regular com o comando <code>grep</code>:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+root@localhost:~# grep -Ev '^#|^$' /etc/login.defs
+MAIL_DIR	/var/mail/spool
+PASS_MAX_DAYS	99999
+PASS_MIN_DAYS	0
+PASS_MIN_LEN	5
+PASS_WARN_AGE	7
+UID_MIN			  500
+UID_MAX			60000
+GID_MIN			  500
+GID_MAX			60000
+CREATE_HOME	yes
+UMASK           077
+USERGROUPS_ENAB yes
+ENCRYPT_METHOD SHA512
+MD5_CRYPT_ENAB no</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            O exemplo acima reflete a estrutura típica de um arquivo <code>/etc/login.defs</code> de uma distribuição CentOS 6. Abaixo,
+            detalhamos o significado e a função de cada um desses parâmetros:
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-envelope-open-text" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Diretório de Correio
+            (MAIL_DIR)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre><strong>MAIL_DIR	/var/mail/spool</strong></pre>
+          </div>
+          <p>Especifica o caminho absoluto do diretório do sistema onde o arquivo de spool de e-mail local do usuário será criado.</p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-calendar-max" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Validade Máxima da Senha
+            (PASS_MAX_DAYS)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre><strong>PASS_MAX_DAYS	99999</strong></pre>
+          </div>
+          <p>
+            Determina a quantidade máxima de dias que um usuário pode continuar utilizando a mesma senha. Sendo o padrão
+            <code>99999</code> dias (o que ultrapassa 270 anos), isso significa que a troca nunca será exigida de forma compulsória pelo
+            sistema.
+          </p>
+          <p>
+            Organizações que seguem políticas rígidas de segurança corporativa costumam reduzir este parâmetro para <code>30</code> ou
+            <code>60</code> dias. Esta variável preenche por padrão o campo destacado no arquivo <code>/etc/shadow</code>:
+          </p>
+          <div class="terminal" style="margin-bottom: 1rem"><pre>bob:pw:15020:5:<strong>30</strong>:7:60:15050:</pre></div>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-calendar-min" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Intervalo Mínimo de Troca
+            (PASS_MIN_DAYS)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre><strong>PASS_MIN_DAYS	0</strong></pre>
+          </div>
+          <p>
+            Sendo zero (<code>0</code>) o padrão, o tempo mínimo exigido para o usuário manter uma senha é nulo. Isso significa que ele pode
+            redefinir sua senha e, imediatamente em sequência, alterá-la de volta para o valor que quiser.
+          </p>
+          <p>
+            Se este valor fosse configurado, por exemplo, para <code>3</code> dias, o usuário seria obrigado a esperar esse intervalo antes
+            de conseguir efetuar uma nova troca. Esta variável reflete o campo destacado no arquivo <code>/etc/shadow</code>:
+          </p>
+          <div class="terminal" style="margin-bottom: 1rem"><pre>bob:pw:15020:<strong>3</strong>:30:7:60:15050:</pre></div>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-text-width" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Comprimento Mínimo da Senha
+            (PASS_MIN_LEN)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre><strong>PASS_MIN_LEN	5</strong></pre>
+          </div>
+          <p>Estipula a quantidade mínima de caracteres que o sistema aceitará ao validar a criação de uma nova senha.</p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-bell" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Aviso de Expiração (PASS_WARN_AGE)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre><strong>PASS_WARN_AGE	7</strong></pre>
+          </div>
+          <p>
+            Determina o comportamento padrão para o campo de alertas de expiração. Conforme o usuário se aproxima da quantidade máxima de
+            dias permitidos para o uso daquela senha, o Linux começará a disparar avisos preventivos durante o procedimento de login.
+          </p>
+          <p>Esta configuração alimenta o campo destacado no arquivo <code>/etc/shadow</code>:</p>
+          <div class="terminal" style="margin-bottom: 1rem"><pre>bob:pw:15020:3:30:<strong>7</strong>:60:15050:</pre></div>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-id-card-alt" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Limites de UID (UID_MIN /
+            UID_MAX)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre><strong>UID_MIN		500
+UID_MAX		60000</strong></pre>
+          </div>
+          <p>
+            O parâmetro <code>UID_MIN</code> estabelece o primeiro identificador numérico que será atribuído a uma conta de usuário comum
+            comum. Qualquer valor abaixo deste limite fica reservado exclusivamente para o uso do root e de contas de serviços do sistema. O
+            <code>UID_MAX</code> limita o teto seguro de IDs para manter a compatibilidade em ambientes legados.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-users-cog" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Limites de GID (GID_MIN /
+            GID_MAX)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre><strong>GID_MIN		500
+GID_MAX		60000</strong></pre>
+          </div>
+          <p>
+            Assim como os UIDs, o <code>GID_MIN</code> define o número inicial para novos grupos de usuários comuns. Para garantir o pleno
+            funcionamento da estrutura de Grupos Privados de Usuário (UPG), os tetos máximos de <code>UID_MAX</code> e
+            <code>GID_MAX</code> devem ser mantidos com o mesmo valor.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-folder-plus" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Geração Automática de Home
+            (CREATE_HOME)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre><strong>CREATE_HOME	yes</strong></pre>
+          </div>
+          <p>
+            O valor definido aqui determina se um novo diretório pessoal será ou não gerado fisicamente no disco no mesmo instante em que a
+            conta do usuário for inserida.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-user-shield" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Máscara de Permissões (UMASK)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre><strong>UMASK           077</strong></pre>
+          </div>
+          <p>
+            A variável <code>UMASK</code> atua diretamente no instante em que o diretório home do usuário é criado, definindo quais
+            permissões restritivas padrão serão aplicadas a essa pasta. Utilizar a máscara padrão <code>077</code> significa remover todo e
+            qualquer privilégio de outros grupos e terceiros, fazendo com que <strong>apenas o proprietário da conta</strong> consiga
+            acessar e listar os arquivos daquela home.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-layer-group" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Habilitar Grupos Privados
+            (USERGROUPS_ENAB)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre><strong>USERGROUPS_ENAB yes</strong></pre>
+          </div>
+          <p>
+            Em distribuições que implementam a arquitetura de criar um grupo exclusivo para cada usuário (como o CentOS e o Ubuntu), esta
+            variável assume o valor <code>yes</code>. Caso a distribuição adote um grupo genérico compartilhado para novos usuários comuns,
+            o valor será configurado como <code>no</code>.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--primary)">
+            <i class="fas fa-key" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Algoritmo de Criptografia
+            (ENCRYPT_METHOD / MD5_CRYPT_ENAB)
+          </h3>
+          <div class="terminal" style="margin: 0.5rem 0 1rem 0">
+            <pre><strong>ENCRYPT_METHOD SHA512
+MD5_CRYPT_ENAB no</strong></pre>
+          </div>
+          <p>
+            Determina qual algoritmo criptográfico de hash de via única será utilizado para embaralhar e proteger as senhas no arquivo
+            <code>/etc/shadow</code>. Atualmente, o padrão de segurança recomendado é o <strong>SHA512</strong>. A linha
+            <code>MD5_CRYPT_ENAB no</code> refere-se a um método legado (MD5) que foi inteiramente descontinuado e substituído pelo
+            parâmetro moderno de criptografia do sistema.
+          </p>
+        </div>
+      </section>
+      <section id="secao16-3-3" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-clipboard-list"></i>
+          <span class="section-number">16.3.3</span> Considerações sobre Contas
+        </h2>
+
+        <div class="card">
+          <p>
+            O provisionamento de uma conta de usuário em sistemas Linux pode exigir o levantamento prévio de diversas informações de
+            infraestrutura. Embora o único argumento estritamente obrigatório seja o nome da conta, um bom planejamento administrativo deve
+            considerar o mapeamento do <strong>UID</strong>, do <strong>grupo primário</strong>, dos <strong>grupos suplementares</strong>,
+            do <strong>diretório home</strong>, do <strong>diretório esqueleto (skel)</strong> e do <strong>shell de login</strong> que
+            serão utilizados.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-user" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Nome de Usuário (Username)</h3>
+          <p>
+            O nome da conta é o único argumento obrigatório do comando <code>useradd</code>. Ele deve seguir rigorosamente as mesmas
+            diretrizes de portabilidade especificadas para os nomes de grupos (letras minúsculas de <code>a-z</code> ou sublinhado
+            <code>_</code> no primeiro caractere, máximo de 16 a 32 caracteres, sem hífens no final).
+          </p>
+          <p>
+            Se o usuário precisa acessar múltiplos servidores na rede, é altamente recomendável que o nome da conta seja idêntico em todas
+            as máquinas. O nome de usuário deve ser exclusivo no sistema.
+          </p>
+          <div class="terminal"><pre>root@localhost:~# useradd jane</pre></div>
+        </div>
+
+        <div class="card">
+          <h3>
+            <i class="fas fa-id-badge" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Identificador de Usuário (UID)
+          </h3>
+          <p>
+            Por padrão, após a criação de um usuário, o sistema incrementa o UID em uma unidade (<code>+1</code>) para a próxima conta. Em
+            redes corporativas, garanta que o UID de um mesmo funcionário seja idêntico em todos os servidores para manter a consistência
+            nas permissões de rede.
+          </p>
+          <p>
+            A flag <code>-u</code> permite estipular um número de UID customizado. Para máxima compatibilidade com sistemas legados, o teto
+            recomendado é de <strong>60.000</strong>.
+          </p>
+          <div class="terminal"><pre>root@localhost:~# useradd -u 1000 jane</pre></div>
+
+          <div
+            class="alert alert-danger"
+            style="
+              border-left: 4px solid var(--danger);
+              background: rgba(255, 68, 68, 0.1);
+              padding: 1rem;
+              border-radius: 12px;
+              margin: 1.5rem 0;
+              display: flex;
+              gap: 0.75rem;
+              align-items: flex-start;
+            "
+          >
+            <i
+              class="fas fa-exclamation-triangle"
+              style="color: var(--danger); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+            ></i>
+            <div>
+              <span style="color: var(--danger); font-weight: bold; display: block; margin-bottom: 0.25rem"
+                >Risco de Segurança com UID 0:</span
+              >
+              O usuário <strong>root possui o UID 0</strong>, o que concede privilégios totais ao sistema.
+              <strong>Qualquer outra conta configurada com o UID igual a 0 atuará e terá os mesmos poderes do administrador root</strong>,
+              independentemente do nome de texto que possua.
+            </div>
+          </div>
+
+          <p>
+            As contas de sistema rodam serviços em background (daemons) sob UIDs reservados (geralmente de 1 a 499 ou de 1 a 999), limitando
+            o raio de destruição caso o serviço seja comprometido. Uma exceção histórica a essa faixa é a conta <code>nfsnobody</code>, que
+            utiliza o UID <code>65534</code>. Como boa prática em novos sistemas, inicie os UIDs de usuários comuns a partir de
+            <strong>1000</strong>.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-users" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Grupo Primário e Suplementar</h3>
+          <p>
+            Em distribuições com UPG, o grupo primário homônimo é criado junto com o usuário. Caso contrário, o sistema adota o grupo padrão
+            <code>users</code> (GID 100).
+          </p>
+          <p>
+            Use a flag <code>-g</code> para especificar um grupo primário customizado (por nome ou GID) e a flag <code>-G</code> para
+            associar o usuário a uma lista de grupos suplementares (secundários) separados por vírgula:
+          </p>
+          <div class="terminal">
+            <pre>
+root@localhost:~# useradd -g users jane
+root@localhost:~# useradd -G sales,research jane</pre
+            >
+          </div>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-folder" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Diretório Home</h3>
+          <p>
+            A home padrão assume o nome do usuário dentro da pasta base configurada (ex: <code>/home/jane</code>). Veja as opções do comando
+            <code>useradd</code> que gerenciam esse comportamento:
+          </p>
+
+          <table class="table-custom" style="margin-top: 1rem">
+            <thead>
+              <tr>
+                <th>Flag</th>
+                <th>Comportamento Técnico</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>-M</code></td>
+                <td>
+                  Instrui explicitamente o comando a <strong>não criar</strong> o diretório home, mesmo se a variável
+                  <code>CREATE_HOME</code> estiver ativa.
+                </td>
+              </tr>
+              <tr>
+                <td><code>-m</code></td>
+                <td>Força a <strong>criação física</strong> do diretório home (útil se o padrão do sistema estiver desativado).</td>
+              </tr>
+              <tr>
+                <td><code>-b [diretório_base]</code></td>
+                <td>
+                  Determina uma pasta base alternativa para abrigar a home do usuário (ex: <code>-b /test</code> gerará
+                  <code>/test/jane</code>).
+                </td>
+              </tr>
+              <tr>
+                <td><code>-d [caminho_completo]</code></td>
+                <td>Define um caminho absoluto customizado e específico para atuar como o diretório home do usuário.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p style="margin-top: 1.5rem">Veja os exemplos práticos de customização de caminhos da home no terminal:</p>
+          <div class="terminal">
+            <pre>
+root@localhost:~# useradd -m jane
+root@localhost:~# ls -ld /home/jane                                             
+drwxr-xr-x 2 jane jane 4096 Dec 18 19:14 /home/jane
+
+root@localhost:~# useradd -mb /test jane
+root@localhost:~# ls -ld /test/jane
+drwxr-xr-x 2 jane jane 4096 Dec 18 19:16 /test/jane
+
+root@localhost:~# useradd -md /test/jane jane
+root@localhost:~--# ls -ld /test/jane
+drwxr-xr-x 2 jane jane 4096 Dec 18 19:19 /test/jane</pre
+            >
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>
+            <i class="fas fa-copy" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Diretório Esqueleto (Skeleton
+            Directory)
+          </h3>
+          <p>
+            Por padrão, o conteúdo de <code>/etc/skel</code> é clonado para a home do novo usuário. A flag <code>-k</code> permite apontar
+            para uma pasta modelo alternativa para popular esse novo perfil.
+          </p>
+          <div
+            class="alert alert-warning"
+            style="
+              border-left: 4px solid var(--warning);
+              background: rgba(255, 204, 0, 0.1);
+              padding: 1rem;
+              border-radius: 12px;
+              margin: 1.5rem 0;
+              display: flex;
+              gap: 0.75rem;
+              align-items: flex-start;
+            "
+          >
+            <i
+              class="fas fa-exclamation-circle"
+              style="color: var(--warning); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+            ></i>
+            <div>
+              <span style="color: var(--warning); font-weight: bold; display: block; margin-bottom: 0.25rem"
+                >Regra de Sintaxe Obrigatória:</span
+              >
+              Sempre que utilizar a flag <code>-k</code>, você é <strong>obrigado a passar também a flag <code>-m</code></strong
+              >. Caso contrário, o comando <code>useradd</code> falhará emitindo um erro.
+            </div>
+          </div>
+          <div class="terminal">
+            <pre>
+root@localhost:~# useradd -mk /home/sysadmin jane
+root@localhost:~# ls /home/jane
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos</pre
+            >
+          </div>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-terminal" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Shell de Login</h3>
+          <p>
+            O shell padrão pode ser substituído no ato da criação com a flag <code>-s</code>. Para contas de serviços ou de sistema (que não
+            devem realizar interações humanas), adote o shell de bloqueio <code>/sbin/nologin</code>:
+          </p>
+          <div class="terminal"><pre>root@localhost:~# useradd -s /bin/bash jane</pre></div>
+        </div>
+
+        <div class="card">
+          <h3>
+            <i class="fas fa-comment" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Campo de Comentário (GECOS)
+          </h3>
+          <p>
+            Originalmente chamado de campo GECOS (<em>General Electric Comprehensive Operating System</em>), o campo de comentário armazena
+            metadados da conta, como o nome completo real do usuário. Vários gerenciadores de login gráfico exibem este valor na tela de
+            autenticação. Defina-o usando a flag <code>-c</code>:
+          </p>
+          <div class="terminal"><pre>root@localhost:~# useradd -c 'Jane Doe' jane</pre></div>
+        </div>
+      </section>
+      <section id="secao16-3-4" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-user-plus"></i>
+          <span class="section-number">16.3.4</span> Criando um Usuário na Prática
+        </h2>
+
+        <div class="card">
+          <p>
+            Depois de verificar quais valores padrão serão adotados e reunir todas as informações estruturais necessárias sobre a nova
+            conta, você estará pronto para efetuar o provisionamento do usuário.
+          </p>
+          <p>
+            O exemplo a seguir demonstra a invocação do comando <code>useradd</code> combinando múltiplas flags de customização em uma única
+            linha:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>root@localhost:~# useradd -u 1009 -g users -G sales,research -m -c 'Jane Doe' jane</pre>
+        </div>
+
+        <div class="card">
+          <p>Este comando instrui o sistema operacional a criar uma conta com as seguintes especificações técnicas:</p>
+          <ul>
+            <li><strong>Nome da Conta (Username):</strong> <code>jane</code></li>
+            <li><strong>ID do Usuário (UID):</strong> <code>1009</code></li>
+            <li><strong>Grupo Primário (Primary Group):</strong> <code>users</code></li>
+            <li><strong>Grupos Suplementares (Supplementary Groups):</strong> <code>sales</code> e <code>research</code></li>
+            <li><strong>Campo de Comentário (GECOS):</strong> <code>Jane Doe</code></li>
+            <li><strong>Diretório Home:</strong> Criação forçada pela flag <code>-m</code></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <p>
+            Imediatamente após a execução do comando, as tabelas de dados do sistema são atualizadas de forma síncrona. Os dados cadastrais
+            básicos e de segurança da usuária são injetados nos arquivos <code>/etc/passwd</code> e <code>/etc/shadow</code>, enquanto os
+            mapeamentos de acessos suplementares são consolidados nos arquivos de grupos <code>/etc/group</code> e
+            <code>/etc/gshadow</code>:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+root@localhost:~# grep jane /etc/passwd
+jane:x:1009:100:Jane Doe:/home/jane:/bin/sh
+
+root@localhost:~# grep jane /etc/shadow
+jane:!:17883:0:99999:7:30::
+
+root@localhost:~# grep jane /etc/group
+research:x:1005:jane
+sales:x:999:jane
+
+root@localhost:~# grep jane /etc/gshadow
+research:!::jane
+sales:!::jane</pre
+          >
+        </div>
+
+        <div
+          class="alert alert-warning"
+          style="
+            border-left: 4px solid var(--warning);
+            background: rgba(255, 204, 0, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i
+            class="fas fa-key"
+            style="color: var(--warning); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+          ></i>
+          <div>
+            <span style="color: var(--warning); font-weight: bold; display: block; margin-bottom: 0.25rem"
+              >Aviso Importante de Segurança:</span
+            >
+            Note no arquivo <code>/etc/shadow</code> o caractere de ponto de exclamação (<code>!</code>) no campo do hash. Isso indica que a
+            conta recém-criada **ainda não possui uma senha válida configurada** e permanece temporariamente bloqueada para autenticações
+            externas até que uma senha seja definida.
+          </div>
+        </div>
+
+        <div class="card">
+          <p>
+            Adicionalmente, se a diretriz <code>CREATE_MAIL_SPOOL</code> estiver definida como <code>yes</code> nas configurações base, o
+            arquivo de spool de e-mails <code>/var/spool/mail/jane</code> será provisionado automaticamente no sistema:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+root@localhost:~# ls /var/spool/mail
+jane  root  rpc  sysadmin</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            Por fim, devido à inclusão da flag <code>-m</code>, o diretório home <code>/home/jane</code> é gerado fisicamente no disco com
+            permissões restritivas e exclusivas de leitura e escrita para o usuário proprietário. O conteúdo do modelo esqueleto localizado
+            em <code>/etc/skel</code> é integralmente clonado para dentro desta pasta:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+root@localhost:~# ls /home
+jane  sysadmin</pre
+          >
+        </div>
+      </section>
+      <section id="secao16-3-5" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-key"></i>
+          <span class="section-number">16.3.5</span> Políticas de Senhas
+        </h2>
+
+        <div class="card">
+          <p>
+            Escolher uma boa senha não é uma tarefa simples, mas é crítico que isso seja feito de forma adequada para evitar que a segurança
+            de uma conta (ou de todo o sistema operacional) seja severamente comprometida.
+          </p>
+          <p>
+            Definir uma senha forte é apenas o primeiro passo; você deve ser extremamente cauteloso para que ela nunca seja revelada a
+            terceiros. Nunca informe sua senha a ninguém e jamais permita que observem você digitando-a. Se optar por anotá-la, guarde-a em
+            um local físico estritamente seguro, como um cofre.
+          </p>
+        </div>
+
+        <div
+          class="alert alert-danger"
+          style="
+            border-left: 4px solid var(--danger);
+            background: rgba(255, 68, 68, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i
+            class="fas fa-user-shield"
+            style="color: var(--danger); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+          ></i>
+          <div>
+            <span style="color: var(--danger); font-weight: bold; display: block; margin-bottom: 0.25rem"
+              >O Perigo de Senhas Previsíveis:</span
+            >
+            É muito fácil criar uma senha fraca por descuido. Se você utilizar qualquer informação pessoal ou contextual que esteja
+            relacionada a você, esses dados poderão ser facilmente descobertos ou minerados por engenharia social. Uma senha segura
+            <strong>nunca deve conter dados pessoais seus ou de conhecidos</strong>, tais como primeiro nome, sobrenome, data de nascimento,
+            telefone, nomes de animais de estimação ou números de documentos (como CPF e RG).
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>
+            <i class="fas fa-shield-alt" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Fatores para a Escolha de
+            Senhas
+          </h3>
+          <p>
+            Existem inúmeros critérios técnicos que o administrador do sistema deve ponderar ao estabelecer as diretrizes de autenticação do
+            ambiente:
+          </p>
+
+          <ul>
+            <li>
+              <strong>Comprimento (Length):</strong> O arquivo <code>/etc/login.defs</code> permite que o administrador determine o tamanho
+              mínimo de uma senha. Embora exista o mito de que quanto mais longa a senha, melhor, isso nem sempre é verdade na prática.
+              Senhas excessivamente longas e complexas são difíceis de memorizar e, consequentemente, induzem o usuário a anotá-las em
+              papéis ou arquivos de texto desprotegidos, elevando o risco de exposição.
+            </li>
+            <li style="margin-top: 0.75rem">
+              <strong>Composição (Composition):</strong> Uma senha robusta deve ser composta obrigatoriamente por uma combinação aleatória
+              de caracteres alfabéticos (letras maiúsculas e minúsculas), caracteres numéricos e símbolos/caracteres especiais.
+            </li>
+            <li style="margin-top: 0.75rem">
+              <strong>Tempo de Vida (Lifetime):</strong> Limitar o tempo de validade máxima de uma senha é uma prática recomendada por
+              vários motivos de segurança:
+              <ul style="margin-top: 0.5rem; padding-left: 1.5rem; list-style-type: circle">
+                <li>
+                  Se uma conta for comprometida sem o conhecimento do administrador, o invasor perderá o acesso assim que o prazo expirar e
+                  a senha se tornar inválida.
+                </li>
+                <li>
+                  Contas antigas ou que não estão sendo utilizadas serão desativadas automaticamente pelo sistema assim que a senha vencer.
+                </li>
+                <li>
+                  Se atacantes tentarem uma invasão por força bruta (<em>brute-force attack</em>), a senha será alterada antes que o ataque
+                  tenha tempo computacional para ter sucesso.
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div
+          class="alert alert-warning"
+          style="
+            border-left: 4px solid var(--warning);
+            background: rgba(255, 204, 0, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i
+            class="fas fa-exclamation-triangle"
+            style="color: var(--warning); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+          ></i>
+          <div>
+            <span style="color: var(--warning); font-weight: bold; display: block; margin-bottom: 0.25rem"
+              >Efeitos Colaterais de Trocas Excessivas:</span
+            >
+            Exigir que os usuários alterem suas senhas com uma frequência exagerada pode gerar novos problemas de segurança
+            contraintuitivos, tais como:
+            <ul style="margin-top: 0.5rem; padding-left: 1.2rem; list-style-type: square; color: var(--text-main)">
+              <li>
+                A qualidade e a complexidade das senhas escolhidas pelos usuários tendem a despencar (ex: o usuário passa a apenas
+                incrementar um número no final da palavra).
+              </li>
+              <li>O usuário fatalmente começará a anotar as senhas em post-its ou cadernos, facilitando o roubo físico da credencial.</li>
+              <li>
+                Contas legítimas de uso esporádico expiram frequentemente, sobrecarregando a equipe de suporte e administração com
+                requisições de reset.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-clock" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Recomendações de Intervalos</h3>
+          <p>
+            As opiniões variam sobre a frequência ideal com que os usuários devem ser forçados a renovar suas credenciais. Para contas de
+            alta sensibilidade ou com privilégios administrativos (como o root e acessos com <code>sudo</code>), recomenda-se uma rotação
+            frequente, como a cada <strong>30 dias</strong>.
+          </p>
+          <p>
+            Por outro lado, para contas comuns de baixa criticidade e sem acesso a dados confidenciais, a necessidade de trocas constantes é
+            menor. Em cenários de risco mínimo, definir uma validade padrão de <strong>90 dias</strong> é considerado o balanço mais
+            razoável entre segurança operacional e usabilidade.
+          </p>
+        </div>
+      </section>
+      <section id="secao16-3-5-1" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-user-lock"></i>
+          <span class="section-number">16.3.5.1</span> Configurando uma Senha de Usuário
+        </h2>
+
+        <div class="card">
+          <p>
+            Existem diferentes maneiras de se alterar a senha de uma conta no Linux. O próprio usuário comum pode rodar o comando
+            <code>passwd</code>, o administrador do sistema pode executar o comando <code>passwd</code> passando o nome do usuário alvo como
+            argumento, ou podem ser utilizadas ferramentas de interface gráfica integradas à distribuição.
+          </p>
+          <p>
+            O administrador utiliza o comando <code>passwd [nome_do_usuário]</code> tanto para definir a credencial inicial de uma conta
+            recém-criada quanto para resetar senhas esquecidas. No exemplo abaixo, ao disparar o comando para a conta <code>jane</code>, o
+            sistema abre um prompt interativo. Se o procedimento for concluído com sucesso, o hash da nova senha será injetado e salvo
+            diretamente no arquivo <code>/etc/shadow</code>.
+          </p>
+        </div>
+
+        <div
+          class="alert alert-warning"
+          style="
+            border-left: 4px solid var(--warning);
+            background: rgba(255, 204, 0, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i
+            class="fas fa-crown"
+            style="color: var(--warning); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+          ></i>
+          <div>
+            <span style="color: var(--warning); font-weight: bold; display: block; margin-bottom: 0.25rem"
+              >Privilégio Absoluto do Root:</span
+            >
+            Enquanto os usuários comuns são obrigados a obedecer a rígidos critérios de complexidade de senhas, o superusuário
+            <strong>root precisa seguir apenas uma regra: a senha não pode ser deixada em branco</strong>. Se o root decidir violar as
+            diretrizes de segurança impostas pelo sistema, o terminal exibirá avisos de alerta (warnings), mas a regra não será aplicada de
+            forma impeditiva, permitindo que a ação seja concluída.
+          </div>
+        </div>
+
+        <div class="terminal">
+          <pre>
+root@localhost:~# passwd jane
+Enter new UNIX password:
+BAD PASSWORD: it is WAY too short
+BAD PASSWORD: is too simple
+Retype new UNIX password:
+passwd: password updated successfully</pre
+          >
+        </div>
+
+        <div class="card">
+          <p>
+            Após o administrador estipular a credencial inicial, o usuário comum já estará habilitado a realizar o login na máquina
+            utilizando seu nome de conta e senha correspondentes.
+          </p>
+          <p>
+            Assim que abrir o terminal, o usuário pode invocar o comando <code>passwd</code> **sem nenhum argumento** para alterar e
+            customizar sua própria senha secreta. O sistema solicitará primeiro a senha atual da sessão por motivos de segurança e, na
+            sequência, exigirá a digitação da nova credencial por duas vezes para evitar erros de digitação.
+          </p>
+        </div>
+
+        <div
+          class="alert alert-info"
+          style="
+            border-left: 4px solid var(--info);
+            background: rgba(0, 170, 255, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i
+            class="fas fa-info-circle"
+            style="color: var(--info); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+          ></i>
+          <div>
+            <span style="color: var(--info); font-weight: bold; display: block; margin-bottom: 0.25rem"
+              >Comportamento para Usuários Comuns:</span
+            >
+            Para um usuário comum, pode ser difícil configurar uma nova senha válida de primeira devido às restrições automáticas de
+            dicionário, comprimento e histórico do Linux. O sistema concede por padrão <strong>três tentativas</strong> para que o usuário
+            informe uma combinação que satisfaça os pré-requisitos antes que o comando <code>passwd</code> seja abortado com uma mensagem de
+            erro.
+          </div>
+        </div>
+
+        <div class="card">
+          <p>
+            Utilizando os privilégios totais do usuário root, os hashes criptografados e todas as demais variáveis de controle e
+            envelhecimento de senhas podem ser auditados abrindo o arquivo <code>/etc/shadow</code>. Vale ressaltar que usuários comuns não
+            possuem os privilégios de leitura (permissão de read) sobre este arquivo confidencial.
+          </p>
+        </div>
+      </section>
+      <section id="secao16-3-5-2" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-calendar-alt"></i>
+          <span class="section-number">16.3.5.2</span> Gerenciando a Expiração de Senhas (chage)
+        </h2>
+
+        <div class="card">
+          <p>
+            O comando <code>chage</code> (<em>change age</em>) fornece uma série de opções avançadas para gerenciar as políticas e
+            informações de envelhecimento e expiração de senhas registradas no arquivo <code>/etc/shadow</code>.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>
+            <i class="fas fa-sliders-h" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Parâmetros do Comando chage
+          </h3>
+          <table class="table-custom">
+            <thead>
+              <tr>
+                <th>Opção Curta</th>
+                <th>Opção Longa</th>
+                <th>Descrição Técnica</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>-l</code></td>
+                <td><code>--list</code></td>
+                <td>Lista detalhadamente todas as informações atuais de envelhecimento e expiração da conta.</td>
+              </tr>
+              <tr>
+                <td><code>-d DATA</code></td>
+                <td><code>--lastday DATA</code></td>
+                <td>Define a data da última alteração de senha para a data especificada (formato Epoch ou AAAA-MM-DD).</td>
+              </tr>
+              <tr>
+                <td><code>-E DATA</code></td>
+                <td><code>--expiredate DATA</code></td>
+                <td>Define a data absoluta em que a conta de usuário será desativada e expirada por completo.</td>
+              </tr>
+              <tr>
+                <td><code>-h</code></td>
+                <td><code>--help</code></td>
+                <td>Exibe o menu de ajuda rápida com a sintaxe do comando <code>chage</code>.</td>
+              </tr>
+              <tr>
+                <td><code>-I DIAS</code></td>
+                <td><code>--inactive DIAS</code></td>
+                <td>Estipula o período de carência (dias de inatividade) permitido para login após a senha expirar.</td>
+              </tr>
+              <tr>
+                <td><code>-m DIAS</code></td>
+                <td><code>--mindays DIAS</code></td>
+                <td>Define a quantidade mínima de dias que o usuário deve aguardar antes de poder alterar a senha novamente.</td>
+              </tr>
+              <tr>
+                <td><code>-M DIAS</code></td>
+                <td><code>--maxdays DIAS</code></td>
+                <td>Configura a quantidade máxima de dias que a senha permanece válida antes de exigir a troca.</td>
+              </tr>
+              <tr>
+                <td><code>-W DIAS</code></td>
+                <td><code>--warndays DIAS</code></td>
+                <td>Define quantos dias antes da expiração o sistema começará a emitir avisos de alerta no login.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <p>
+            Um excelente exemplo prático do uso do comando <code>chage</code> é ajustar o tempo de vida máximo da senha de um usuário
+            específico para 60 dias.
+          </p>
+          <p>
+            No terminal abaixo, alteramos a política da conta <code>jane</code> e, em seguida, validamos a modificação extraindo o quinto
+            campo (campo correspondente ao <em>maxdays</em>) do arquivo <code>/etc/shadow</code> com o comando <code>cut</code>:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>
+root@localhost:~# chage -M 60 jane
+root@localhost:~# grep jane /etc/shadow | cut -d: -f1,5
+jane:60</pre
+          >
+        </div>
+      </section>
+      <section id="secao16-3-6" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-user-edit"></i>
+          <span class="section-number">16.3.6</span> Modificando um Usuário (usermod)
+        </h2>
+
+        <div class="card">
+          <p>
+            Antes de realizar alterações em uma conta de usuário existente, é fundamental compreender que
+            <strong>alguns comandos falharão se o usuário alvo estiver logado no sistema no momento</strong> (como a tentativa de alterar o
+            nome de login/username da conta).
+          </p>
+          <p>
+            Outras modificações não impedirão a execução do comando, mas só entrarão em vigor após o usuário encerrar a sessão atual
+            (logout) e realizar um novo login. Por exemplo, ao modificar os grupos suplementares de uma conta, esses novos privilégios e
+            associações não estarão disponíveis para o usuário até que uma nova sessão de login seja estabelecida.
+          </p>
+          <p>
+            Em ambos os casos, dominar o uso dos comandos <code>who</code>, <code>w</code> e <code>last</code> é indispensável para que o
+            administrador audite quem está ativo na máquina antes de aplicar alterações estruturais.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>
+            <i class="fas fa-sliders-h" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>Parâmetros do Comando usermod
+          </h3>
+          <table class="table-custom">
+            <thead>
+              <tr>
+                <th>Opção Curta</th>
+                <th>Opção Longa</th>
+                <th>Descrição Técnica</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>-c COMENTÁRIO</code></td>
+                <td>—</td>
+                <td>Altera o valor do campo de comentário ou GECOS da conta (ex: nome completo).</td>
+              </tr>
+              <tr>
+                <td><code>-d DIRETÓRIO</code></td>
+                <td><code>--home DIRETÓRIO</code></td>
+                <td>Define um novo caminho de diretório home para o usuário.</td>
+              </tr>
+              <tr>
+                <td><code>-e DATA</code></td>
+                <td><code>--expiredate DATA</code></td>
+                <td>Ajusta ou define a data absoluta de expiração da conta de usuário.</td>
+              </tr>
+              <tr>
+                <td><code>-f DIRETÓRIO</code></td>
+                <td><code>--inactive DIAS</code></td>
+                <td>Configura o período de carência (inatividade) após o vencimento da senha.</td>
+              </tr>
+              <tr>
+                <td><code>-g GRUPO</code></td>
+                <td><code>--gid GRUPO</code></td>
+                <td>Modifica o <strong>grupo primário</strong> do usuário (por nome ou GID).</td>
+              </tr>
+              <tr>
+                <td><code>-G GRUPOS</code></td>
+                <td><code>--groups GRUPOS</code></td>
+                <td>Especifica uma lista de grupos suplementares (separados por vírgula).</td>
+              </tr>
+              <tr>
+                <td><code>-a</code></td>
+                <td><code>--append</code></td>
+                <td><strong>Adiciona/Anexa</strong> novos grupos secundários (deve ser usado junto com <code>-G</code>).</td>
+              </tr>
+              <tr>
+                <td><code>-h</code></td>
+                <td><code>--help</code></td>
+                <td>Exibe o menu de ajuda rápida com a sintaxe do comando.</td>
+              </tr>
+              <tr>
+                <td><code>-l NOVO_NOME</code></td>
+                <td><code>--login NOVO_NOME</code></td>
+                <td>Modifica o nome de login (username) do usuário.</td>
+              </tr>
+              <tr>
+                <td><code>-L</code></td>
+                <td><code>--lock</code></td>
+                <td><strong>Bloqueia</strong> a conta do usuário (insere um <code>!</code> no shadow).</td>
+              </tr>
+              <tr>
+                <td><code>-s SHELL</code></td>
+                <td><code>--shell SHELL</code></td>
+                <td>Altera o shell de login padrão atribuído à conta.</td>
+              </tr>
+              <tr>
+                <td><code>-u NOVO_UID</code></td>
+                <td><code>--uid NOVO_UID</code></td>
+                <td>Modifica o ID numérico do usuário (UID).</td>
+              </tr>
+              <tr>
+                <td><code>-U</code></td>
+                <td><code>--unlock</code></td>
+                <td><strong>Desbloqueia</strong> a conta do usuário, restabelecendo o acesso.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div
+          class="alert alert-danger"
+          style="
+            border-left: 4px solid var(--danger);
+            background: rgba(255, 68, 68, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i
+            class="fas fa-exclamation-triangle"
+            style="color: var(--danger); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+          ></i>
+          <div>
+            <span style="color: var(--danger); font-weight: bold; display: block; margin-bottom: 0.25rem"
+              >Risco de Arquivos Órfãos ao Alterar UID:</span
+            >
+            Assim como nos grupos, alterar o UID de um usuário com a opção <code>-u</code> pode ser altamente problemático, pois todos os
+            arquivos criados anteriormente por ele no disco **se tornarão órfãos** (exibindo apenas o UID numérico antigo). Por outro lado,
+            alterar apenas o nome textual com <code>-l</code> não gera arquivos órfãos, já que o ID numérico permanece o mesmo.
+          </div>
+        </div>
+
+        <div
+          class="alert alert-warning"
+          style="
+            border-left: 4px solid var(--warning);
+            background: rgba(255, 204, 0, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i
+            class="fas fa-user-lock"
+            style="color: var(--warning); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+          ></i>
+          <div>
+            <span style="color: var(--warning); font-weight: bold; display: block; margin-bottom: 0.25rem"
+              >Estratégia de Bloqueio de Contas (Lock):</span
+            >
+            Excluir um usuário definitivamente com o comando <code>userdel</code> pode apagar ou deixar arquivos órfãos espalhados pelo
+            servidor. Uma alternativa muito mais segura em processos de desligamento é apenas
+            <strong>bloquear temporariamente a conta</strong> usando a flag <code>-L</code>. Isso impede qualquer login ou uso da conta
+            imediatamente, mas preserva intacta a propriedade e o acesso aos arquivos associados a ela para futuras auditorias.
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>
+            <i class="fas fa-link-slash" style="font-size: 1.1rem; display: inline; margin-right: 0.5rem"></i>O Perigo Oculto da Flag -G
+          </h3>
+          <p>
+            Existe uma pegadinha crucial na administração de grupos suplementares: se você invocar a opção <code>-G</code> **sem** a opção
+            <code>-a</code> (append), você substituirá integralmente as filiações do usuário. Isso significa que você é obrigado a listar
+            todos os grupos antigos que deseja manter na mesma linha de comando.
+          </p>
+          <p>
+            Esquecer de associar a flag <code>-a</code> fará com que o <code>usermod</code>
+            <strong>remova acidentalmente o usuário de todos os grupos secundários anteriores</strong> aos quais ele pertencia.
+          </p>
+          <p>
+            Para apenas adicionar um novo grupo suplementar mantendo os atuais intactos, utilize obrigatoriamente a combinação de flags
+            <code>-aG</code>. No exemplo abaixo, adicionamos a usuária <code>jane</code> (que já pertence a <em>sales</em> e
+            <em>research</em>) ao grupo <code>development</code> de forma segura:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>root@localhost:~# usermod -aG development jane</pre>
+        </div>
+      </section>
+      <section id="secao16-3-7" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-user-minus"></i>
+          <span class="section-number">16.3.7</span> Excluindo um Usuário (userdel)
+        </h2>
+
+        <div class="card">
+          <p>O comando <code>userdel</code> é a ferramenta utilizada para remover contas de usuários do sistema operacional.</p>
+          <p>
+            Ao optar por excluir um usuário, você deve tomar uma decisão administrativa crucial:
+            <strong>remover ou preservar o diretório home do usuário</strong>. Os arquivos pessoais de um colaborador podem conter dados
+            intelectuais vitais para a organização ou estar sujeitos a regulamentações legais de retenção por prazos específicos. Portanto,
+            avalie esse cenário com muita cautela.
+          </p>
+        </div>
+
+        <div
+          class="alert alert-danger"
+          style="
+            border-left: 4px solid var(--danger);
+            background: rgba(255, 68, 68, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i
+            class="fas fa-exclamation-triangle"
+            style="color: var(--danger); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+          ></i>
+          <div>
+            <span style="color: var(--danger); font-weight: bold; display: block; margin-bottom: 0.25rem">Aviso de Ação Irreversível:</span>
+            A menos que você possua rotinas consolidadas de backup de dados, uma vez executado o comando para apagar o usuário junto com
+            suas respectivas pastas, <strong>não há como reverter a ação</strong>. Os arquivos serão permanentemente expurgados do disco.
+          </div>
+        </div>
+
+        <div class="card">
+          <p>
+            Para remover estritamente os metadados e o registro do usuário <code>jane</code> (retirando-a do <code>/etc/passwd</code> e
+            <code>/etc/shadow</code>), mas <strong>preservando intacto</strong> o seu diretório home em <code>/home/jane</code>, execute o
+            comando de forma direta:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>root@localhost:~# userdel jane</pre>
+        </div>
+
+        <div
+          class="alert alert-warning"
+          style="
+            border-left: 4px solid var(--warning);
+            background: rgba(255, 204, 0, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i
+            class="fas fa-link-slash"
+            style="color: var(--warning); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+          ></i>
+          <div>
+            <span style="color: var(--warning); font-weight: bold; display: block; margin-bottom: 0.25rem"
+              >Geração de Arquivos Órfãos:</span
+            >
+            Fique ciente de que excluir um usuário mantendo a pasta home dele fará com que todos os arquivos ali contidos se tornem
+            <strong>órfãos</strong>. O mapeamento textual sumirá e o comando <code>ls -l</code> passará a exibir apenas os antigos UID e GID
+            numéricos como proprietários dos dados.
+          </div>
+        </div>
+
+        <div class="card">
+          <p>
+            Se o objetivo for realizar um expurgo completo — removendo a conta do usuário, o diretório home associado e a caixa de entrada
+            de e-mails local (mail spool) de forma simultânea —, utilize a opção de remoção recursiva <code>-r</code>:
+          </p>
+        </div>
+
+        <div class="terminal">
+          <pre>root@localhost:~# userdel -r jane</pre>
+        </div>
+
+        <div
+          class="alert alert-danger"
+          style="
+            border-left: 4px solid var(--danger);
+            background: rgba(255, 68, 68, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <i
+            class="fas fa-radiation"
+            style="color: var(--danger); font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0; width: 24px; text-align: center"
+          ></i>
+          <div>
+            <span style="color: var(--danger); font-weight: bold; display: block; margin-bottom: 0.25rem">Aviso: Limitação da Flag -r</span>
+            O comando <code>userdel -r</code> limpará <strong>apenas</strong> os arquivos contidos dentro do diretório home do usuário e o
+            seu respectivo arquivo no spool de e-mails. Se este usuário tiver criado ou assumido a propriedade de outros arquivos fora da
+            sua home (como em diretórios compartilhados como <code>/var/www/</code>, <code>/tmp/</code> ou <code>/opt/</code>), esses
+            arquivos <strong>continuarão existindo no sistema operacional como arquivos órfãos</strong> e deverão ser localizados
+            manualmente via comando <code>find -nouser</code>.
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer
+      style="
+        padding: 40px 0;
+        text-align: center;
+        border-top: 1px solid var(--border);
+        margin-top: 60px;
+        color: var(--text-dim);
+        font-size: 0.85rem;
+      "
+    >
+      <p><i class="fab fa-linux"></i> NDG Linux Essentials — Curso de Capacitação Técnica</p>
+    </footer>
+
+    <script>
+      class SidebarMenu {
+        constructor() {
+          this.sidebar = document.getElementById('sidebar')
+          this.overlay = document.getElementById('sidebarOverlay')
+          this.openBtn = document.getElementById('openMenu')
+          this.closeBtn = document.getElementById('closeMenu')
+          this.init()
+        }
+
+        init() {
+          if (!this.sidebar) return
+
+          if (this.openBtn) {
+            this.openBtn.addEventListener('click', () => this.open())
+          }
+          if (this.closeBtn) {
+            this.closeBtn.addEventListener('click', () => this.close())
+          }
+          if (this.overlay) {
+            this.overlay.addEventListener('click', () => this.close())
+          }
+
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.sidebar.classList.contains('open')) {
+              this.close()
+            }
+          })
+
+          const links = document.querySelectorAll('.sidebar .nav-modules a')
+          links.forEach((link) => {
+            link.addEventListener('click', () => this.close())
+          })
+        }
+
+        open() {
+          this.sidebar.classList.add('open')
+          this.overlay.classList.add('active')
+          document.body.style.overflow = 'hidden'
+        }
+
+        close() {
+          this.sidebar.classList.remove('open')
+          this.overlay.classList.remove('active')
+          document.body.style.overflow = ''
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        new SidebarMenu()
+      })
+    </script>
+  </body>
+</html>
